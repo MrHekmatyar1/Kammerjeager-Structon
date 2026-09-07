@@ -8,6 +8,7 @@ import UnserProzess from '@/components/sections/UnserProzess';
 import LeadWizard from '@/components/interactive/LeadWizard';
 import Footer from '@/components/layout/Footer';
 import ChatBot from '@/components/interactive/ChatBot';
+import FAQ from '@/components/sections/FAQ';
 
 // 1. Указываем Next.js, какие страницы (города) предгенерировать во время сборки (SSG)
 export async function generateStaticParams() {
@@ -54,6 +55,19 @@ export default function CityPage({ params }: { params: { city: string } }) {
             <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
                 <ReviewSlider />
             </section>
+
+            {/* ── FAQ ── */}
+            <div className="w-full px-4 mt-20 md:mt-28 mb-20 md:mb-28">
+                <FAQ 
+                    title={`Häufige Fragen zu Kammerjägern in ${cityData.name}`} 
+                    faqs={[
+                        { question: `Wie schnell ist ein Kammerjäger in ${cityData.name} bei mir?`, answer: `Dank unseres lokalen Netzwerks in ${cityData.name} sind wir in Notfällen meist innerhalb von 24 Stunden vor Ort, oft sogar am selben Tag.` },
+                        { question: `Bieten Sie in ${cityData.name} Festpreise an?`, answer: `Ja, wir arbeiten mit transparenten Festpreisen. Nach der telefonischen oder Vor-Ort-Analyse in ${cityData.name} nennen wir Ihnen einen garantierten Preis.` },
+                        { question: `Sind Ihre Kammerjäger in ${cityData.name} zertifiziert?`, answer: `Absolut. Alle unsere Partner für ${cityData.name} und Umgebung sind geprüfte IHK-Schädlingsbekämpfer mit langjähriger Erfahrung.` },
+                        { question: `Welche Schädlinge bekämpfen Sie in ${cityData.name}?`, answer: `Wir bekämpfen alle gängigen Schädlinge wie Ratten, Mäuse, Wespen, Bettwanzen, Kakerlaken und Ameisen im gesamten Stadtgebiet von ${cityData.name}.` }
+                    ]} 
+                />
+            </div>
 
             <Footer />
             <ChatBot />

@@ -8,6 +8,7 @@ import UnserProzess from '@/components/sections/UnserProzess';
 import LeadWizard from '@/components/interactive/LeadWizard';
 import Footer from '@/components/layout/Footer';
 import ChatBot from '@/components/interactive/ChatBot';
+import FAQ from '@/components/sections/FAQ';
 
 export const metadata: Metadata = {
     title: 'Kammerjäger Structon – Schädlingsbekämpfung in ganz Deutschland',
@@ -43,6 +44,11 @@ export default function Home() {
             <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
                 <ReviewSlider />
             </section>
+
+            {/* ── FAQ ── */}
+            <div className="w-full px-4 mt-20 md:mt-28 mb-20 md:mb-28">
+                <FAQ />
+            </div>
 
             {/* Footer / Подвал сайта */}
             <Footer />

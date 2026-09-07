@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import FAQ from '@/components/sections/FAQ';
 
 // ─── Types & helpers ──────────────────────────────────────────────────────
 type PartnerTyp = '' | 'schaedlingsbekaempfer' | 'kooperation';
@@ -249,6 +250,20 @@ export default function PartnerPage() {
                         </a>
                     </div>
                 </section>
+                {/* ── FAQ ── */}
+                <div className="w-full bg-[#f4f6f8] pb-20 pt-10">
+                    <div className="w-full px-4 mb-20 md:mb-28">
+                        <FAQ 
+                            title="Häufige Fragen für Partner" 
+                            faqs={[
+                                { question: "Gibt es wirklich keine monatlichen Grundgebühren?", answer: "Ja, unser Modell ist 100% fair. Es gibt keine Abo-Kosten, keine Einrichtungsgebühr und keine versteckten Kosten. Sie zahlen nur eine Provision, wenn Sie einen Auftrag erfolgreich abgeschlossen haben." },
+                                { question: "Wie erhalte ich Aufträge in meiner Region?", answer: "Sie definieren in Ihrem Profil genau Ihren Einsatzradius (z.B. 30 km um Ihren Standort) und welche Leistungen Sie anbieten. Sie erhalten per E-Mail oder SMS sofort eine Benachrichtigung, wenn ein passender Auftrag in Ihrer Nähe verfügbar ist." },
+                                { question: "Muss ich jeden Auftrag annehmen?", answer: "Nein, Sie sind völlig frei in Ihrer Entscheidung. Wenn Sie keine Kapazitäten haben, ignorieren Sie die Anfrage einfach. Es gibt keine Annahmequote, die Sie erfüllen müssen." },
+                                { question: "Wie läuft die Bezahlung mit dem Kunden ab?", answer: "Sie rechnen direkt mit dem Kunden vor Ort ab – ganz so, wie Sie es gewohnt sind (Bar, EC-Karte, Rechnung). Anschließend erhalten wir unsere Vermittlungsprovision von Ihnen." }
+                            ]} 
+                        />
+                    </div>
+                </div>
 
             </main>
             <div style={{ marginTop: '-64px' }}>

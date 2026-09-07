@@ -9,6 +9,7 @@ import UnserProzess from '@/components/sections/UnserProzess';
 import LeadWizard from '@/components/interactive/LeadWizard';
 import Footer from '@/components/layout/Footer';
 import ChatBot from '@/components/interactive/ChatBot';
+import FAQ from '@/components/sections/FAQ';
 
 export async function generateStaticParams() {
     // Предгенерируем все комбинации Город x Услуга
@@ -63,6 +64,19 @@ export default function CityServicePage({ params }: { params: { city: string; se
             <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
                 <ReviewSlider />
             </section>
+
+            {/* ── FAQ ── */}
+            <div className="w-full px-4 mt-20 md:mt-28 mb-20 md:mb-28">
+                <FAQ 
+                    title={`Häufige Fragen: ${serviceData.shortName} in ${cityData.name}`} 
+                    faqs={[
+                        { question: `Wie läuft eine ${serviceData.shortName}-Bekämpfung in ${cityData.name} ab?`, answer: `Zunächst analysiert der Experte vor Ort in ${cityData.name} die Befallssituation. Danach wird die passende und umweltschonende Bekämpfungsmethode für ${serviceData.shortName} angewandt.` },
+                        { question: `Ist die ${serviceData.shortName}-Behandlung schädlich für Haustiere?`, answer: `Wir verwenden hochmoderne, zielgerichtete Präparate. Der Kammerjäger informiert Sie genau, worauf Sie bei Haustieren in ${cityData.name} achten müssen, in den meisten Fällen besteht keine Gefahr.` },
+                        { question: `Was kostet die Bekämpfung von ${serviceData.shortName} in ${cityData.name}?`, answer: `Nach der telefonischen Ersteinschätzung oder Besichtigung in ${cityData.name} erhalten Sie einen garantierten Festpreis. Es gibt keine versteckten Kosten.` },
+                        { question: `Wann kann ein Kammerjäger für ${serviceData.shortName} in ${cityData.name} bei mir sein?`, answer: `Unser lokales Netzwerk in ${cityData.name} ermöglicht meist eine schnelle Reaktionszeit. In Notfällen ist der Fachmann oft schon am selben Tag vor Ort.` }
+                    ]} 
+                />
+            </div>
 
             <Footer />
             <ChatBot />

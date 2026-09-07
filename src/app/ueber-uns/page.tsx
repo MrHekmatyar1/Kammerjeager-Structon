@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Image from 'next/image';
+import FAQ from '@/components/sections/FAQ';
 
 export default function UeberUnsPage() {
     return (
@@ -58,9 +59,21 @@ export default function UeberUnsPage() {
                             </div>
                         </div>
 
-
                     </div>
                 </section>
+
+                {/* ── FAQ ── */}
+                <div className="w-full bg-[#f4f6f8] py-20 px-4 mt-8">
+                    <FAQ 
+                        title="Fragen zu unserem Netzwerk"
+                        faqs={[
+                            { question: "Wer führt die Schädlingsbekämpfung vor Ort durch?", answer: "Wir arbeiten ausschließlich mit zertifizierten IHK-Schädlingsbekämpfern aus unserem deutschlandweiten Netzwerk zusammen. So garantieren wir höchste Qualität und schnelle Reaktionszeiten durch Experten aus Ihrer direkten Nähe." },
+                            { question: "Warum können Sie so günstige Preise anbieten?", answer: "Als modernes Netzwerk nutzen wir digitale und automatisierte Prozesse. Wir sparen uns teure Büroräume und einen aufgeblähten Verwaltungsapparat. Diesen Kostenvorteil geben wir 1:1 an Sie weiter." },
+                            { question: "Sind Sie im ganzen Bundesgebiet tätig?", answer: "Ja, wir haben unser Partnernetzwerk so aufgebaut, dass wir in nahezu jeder Region Deutschlands extrem schnell reagieren können." },
+                            { question: "Wie gewährleisten Sie die Diskretion?", answer: "Diskretion ist ein Kern unserer Philosophie. Unsere Partner kommen in der Regel in neutralen Fahrzeugen ohne auffällige Werbung für Schädlingsbekämpfung zu Ihnen, um Ihr Image und Ihre Privatsphäre zu schützen." }
+                        ]}
+                    />
+                </div>
             </main>
 
             <Footer />
