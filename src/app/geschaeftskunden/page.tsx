@@ -670,15 +670,16 @@ export default function GeschaeftskundenPage() {
                                     <path id="textCircle" d="M 50, 14.4 A 35.6,35.6 0 1,1 49.9,14.4" fill="none" />
                                     <text 
                                         style={{ 
-                                            fontSize: '6.8px', 
+                                            fontSize: '5.8px', 
                                             fontWeight: 800, 
                                             textTransform: 'uppercase',
-                                            fontFamily: 'system-ui, -apple-system, sans-serif'
+                                            fontFamily: 'system-ui, -apple-system, sans-serif',
+                                            letterSpacing: '0.1em'
                                         }} 
                                         fill="#1a1a1a"
                                     >
                                         <textPath href="#textCircle" startOffset="0%" textLength="224" lengthAdjust="spacing">
-                                            STRUCTON GARANTIE • STRUCTON GARANTIE • STRUCTON GARANTIE • STRUCTON GARANTIE • 
+                                            STRUCTON GARANTIE • STRUCTON GARANTIE • STRUCTON GARANTIE • 
                                         </textPath>
                                     </text>
                                 </g>
@@ -695,10 +696,10 @@ export default function GeschaeftskundenPage() {
                             <p className="text-[10px] md:text-[12px] font-bold uppercase text-[#888] mb-[8px] md:mb-[12px] tracking-[0.15em]">
                                 Die Structon Garantie
                             </p>
-                            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif" }} className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black text-[#1a1a1a] leading-[1.1] tracking-[-0.02em] mb-[12px] md:mb-[18px] uppercase">
+                            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif" }} className="text-lg sm:text-xl md:text-4xl lg:text-5xl font-black text-[#1a1a1a] leading-[1.1] tracking-[-0.02em] mb-[10px] md:mb-[18px] uppercase">
                                 Garantiert schädlingsfrei.<br />Ohne Wenn und Aber.
                             </h2>
-                            <p className="text-gray-600 text-[12px] sm:text-[13px] md:text-[16px] leading-relaxed font-medium">
+                            <p className="text-gray-600 text-[11px] sm:text-[13px] md:text-[16px] leading-relaxed font-medium">
                                 Wir setzen auf nachhaltige Prävention und effektive Lösungen. Sollte wider Erwarten innerhalb von 30 Tagen nach unserem Einsatz erneuter Handlungsbedarf bestehen, greift unsere <strong className="text-black">kostenfreie Nachbesserungsgarantie</strong>. Der Schutz Ihres Betriebs und Ihres guten Rufs hat für uns höchste Priorität.
                             </p>
                         </div>
