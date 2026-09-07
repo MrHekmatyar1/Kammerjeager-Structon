@@ -251,7 +251,7 @@ export default function PartnerPage() {
                     </div>
                 </section>
                 {/* ── FAQ ── */}
-                <div className="w-full">
+                <div className="w-full px-4 mb-20 md:mb-28">
                     <FAQ 
                         title="Häufige Fragen für Partner" 
                         faqs={[

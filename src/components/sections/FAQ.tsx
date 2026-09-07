@@ -54,8 +54,8 @@ export default function FAQ({ faqs = defaultFaqs, title = "Häufig gestellte Fra
     const rightFaqs = faqs.slice(mid);
 
     return (
-        <section className="bg-[#1a1a1a] text-white py-16 px-4 md:px-8 w-full">
-            <div className="max-w-6xl mx-auto">
+        <section className="w-full max-w-5xl mx-auto bg-[#1a1a1a] text-white py-12 px-6 md:py-16 md:px-12">
+            <div className="w-full">
                 <h2 className="text-3xl md:text-4xl font-black mb-10 tracking-tight">{title}</h2>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-0">
