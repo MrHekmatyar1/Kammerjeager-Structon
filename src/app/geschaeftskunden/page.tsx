@@ -712,11 +712,6 @@ export default function GeschaeftskundenPage() {
                     </div>
                 </section>
 
-                {/* ── FAQ ── */}
-                <div className="mt-20 md:mt-28 mb-20 md:mb-28">
-                    <FAQ />
-                </div>
-
             </main>
 
             <Footer />
