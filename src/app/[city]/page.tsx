@@ -57,7 +57,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
             </section>
 
             {/* ── FAQ ── */}
-            <div className="w-full px-4 mt-20 md:mt-28 mb-20 md:mb-28">
+            <div className="w-full mt-20 md:mt-28">
                 <FAQ 
                     title={`Häufige Fragen zu Kammerjägern in ${cityData.name}`} 
                     faqs={[
