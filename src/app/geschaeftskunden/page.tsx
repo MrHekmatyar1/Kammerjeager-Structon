@@ -651,10 +651,10 @@ export default function GeschaeftskundenPage() {
 
                 {/* ── Unsere Garantie (Orkin Style) ── */}
                 <section className="w-full bg-[#f4f4f4] py-20 px-6 flex justify-center border-t border-b border-gray-200">
-                    <div className="w-full max-w-[900px] flex flex-col md:flex-row items-center justify-center gap-10 md:gap-14">
+                    <div className="w-full max-w-[900px] flex flex-row items-center justify-center gap-4 md:gap-14">
                         
                         {/* Minimalist Badge with Logo */}
-                        <div className="shrink-0 relative flex items-center justify-center w-48 h-48 md:w-56 md:h-56 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+                        <div className="shrink-0 relative flex items-center justify-center w-28 h-28 sm:w-36 sm:h-36 md:w-56 md:h-56 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
                             
                             {/* Complete SVG for Rings and Text */}
                             <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none">
@@ -691,14 +691,14 @@ export default function GeschaeftskundenPage() {
                         </div>
 
                         {/* Content */}
-                        <div className="flex-1 border-l-[4px] md:border-l-[5px] border-[#4db8b8] pl-6 md:pl-10">
-                            <p style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#C8102E', marginBottom: '12px' }}>
+                        <div className="flex-1 border-l-[4px] md:border-l-[5px] border-[#4db8b8] pl-4 md:pl-10">
+                            <p className="text-[10px] md:text-[12px] font-bold uppercase text-[#C8102E] mb-[8px] md:mb-[12px] tracking-[0.15em]">
                                 Die Kammerjäger-Zentrale Garantie
                             </p>
-                            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 900, color: '#1a1a1a', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '18px' }}>
+                            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif" }} className="text-[clamp(1.25rem,4vw,2.75rem)] font-black text-[#1a1a1a] leading-[1.1] tracking-[-0.02em] mb-[12px] md:mb-[18px]">
                                 Garantiert schädlingsfrei.<br />Ohne Wenn und Aber.
                             </h2>
-                            <p className="text-gray-600 text-[16px] leading-relaxed font-medium">
+                            <p className="text-gray-600 text-[13px] md:text-[16px] leading-relaxed font-medium">
                                 Wir setzen auf nachhaltige Prävention und effektive Lösungen. Sollte wider Erwarten innerhalb von 30 Tagen nach unserem Einsatz erneuter Handlungsbedarf bestehen, greift unsere <strong className="text-black">kostenfreie Nachbesserungsgarantie</strong>. Der Schutz Ihres Betriebs und Ihres guten Rufs hat für uns höchste Priorität.
                             </p>
                         </div>
