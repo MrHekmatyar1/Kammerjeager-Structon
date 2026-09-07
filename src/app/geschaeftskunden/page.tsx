@@ -714,7 +714,17 @@ export default function GeschaeftskundenPage() {
 
                 {/* ── FAQ ── */}
                 <div className="w-full px-4 mt-20 md:mt-28 mb-20 md:mb-28">
-                    <FAQ />
+                    <FAQ 
+                        title="Häufige Fragen von Geschäftskunden" 
+                        faqs={[
+                            { question: "Wie schnell können Sie bei einem gewerblichen Notfall vor Ort sein?", answer: "Wir wissen, dass Ausfallzeiten bares Geld kosten. Unser Netzwerk ermöglicht es uns, in dringenden Fällen meist am selben Tag einen zertifizierten Kammerjäger zu Ihrem Betrieb zu senden." },
+                            { question: "Sind die eingesetzten Mittel sicher für unsere Mitarbeiter und Kunden?", answer: "Absolut. Unsere Partner verwenden moderne, branchengerechte und zugelassene Präparate. Wir beraten Sie vor Ort über nötige Sicherheitsmaßnahmen, sodass Ihr Betriebsablauf kaum gestört wird." },
+                            { question: "Bieten Sie Wartungsverträge für Unternehmen an?", answer: "Ja, wir bieten regelmäßige, dokumentierte Präventivmaßnahmen und Kontrollen an (z.B. nach HACCP), die speziell auf die Anforderungen von Gastronomie, Lebensmittelindustrie und anderen Gewerben zugeschnitten sind." },
+                            { question: "Wie diskret arbeiten Ihre Techniker im gewerblichen Umfeld?", answer: "Diskretion hat oberste Priorität. Unsere Techniker fahren in neutralen Fahrzeugen vor und treten diskret auf, um den Ruf Ihres Unternehmens bei Kunden und Nachbarn zu schützen." },
+                            { question: "Erhalten wir eine ordnungsgemäße Rechnung?", answer: "Selbstverständlich. Nach Abschluss der Arbeiten erhalten Sie eine detaillierte, steuerlich absetzbare Rechnung für Ihre Buchhaltung." },
+                            { question: "Was kostet ein gewerblicher Einsatz?", answer: "Die Kosten richten sich nach Art und Umfang des Befalls sowie der Größe Ihrer Betriebsfläche. Nach einer ersten Einschätzung erhalten Sie von uns immer einen transparenten Festpreis." }
+                        ]}
+                    />
                 </div>
 
             </main>

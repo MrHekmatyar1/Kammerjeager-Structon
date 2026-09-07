@@ -47,7 +47,7 @@ export default function Home() {
 
             {/* ── FAQ ── */}
             <div className="w-full px-4 mt-20 md:mt-28 mb-20 md:mb-28">
-                <FAQ />
+                <FAQ title="Häufige Fragen von Privatkunden" />
             </div>
 
             {/* Footer / Подвал сайта */}
