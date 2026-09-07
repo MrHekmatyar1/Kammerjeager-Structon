@@ -58,5 +58,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9, // Городские страницы имеют высочайший приоритет для локального SEO!
   }))
 
-  return [...staticPages, ...cityPages]
+  const branches = ['gastronomie', 'hotellerie', 'lager', 'oeffentlich'];
+  const branchPages = branches.map((branch) => ({
+      url: `${baseUrl}/geschaeftskunden/${branch}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+  }));
+
+  return [...staticPages, ...cityPages, ...branchPages]
 }

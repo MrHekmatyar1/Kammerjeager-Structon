@@ -62,8 +62,39 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'Kammerjäger Structon',
+        image: 'https://kammerjaeger-structon.de/og-image.png',
+        '@id': 'https://kammerjaeger-structon.de',
+        url: 'https://kammerjaeger-structon.de',
+        telephone: '+4916092376320',
+        priceRange: '€€',
+        address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'DE',
+        },
+        geo: {
+            '@type': 'GeoCoordinates',
+            latitude: 52.5200,
+            longitude: 13.4050,
+        },
+        areaServed: [
+            { '@type': 'City', name: 'Berlin' },
+            { '@type': 'City', name: 'Potsdam' },
+            { '@type': 'City', name: 'Hennigsdorf' }
+        ]
+    };
+
     return (
         <html lang="de">
+        <head>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+        </head>
         <body className="antialiased text-[#212121] bg-[#F8FAFC]">
             {/* Google Analytics — lädt nur wenn Tracking-ID gesetzt ist */}
             <GoogleAnalytics />
