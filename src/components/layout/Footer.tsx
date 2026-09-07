@@ -6,18 +6,13 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import FAQ from '@/components/sections/FAQ';
 
 export default function Footer() {
     const feedbackEmail = "ideen@kammerjaeger-structon.de";
     const feedbackSubject = encodeURIComponent("Ideen zur Website-Verbesserung");
 
     return (
-        <footer style={{ width: '100%', backgroundColor: '#1a1a1a', color: 'white', paddingTop: '0', paddingBottom: '24px', marginTop: '64px' }}>
-            <FAQ />
-            
-            <div style={{ width: '100%', height: '1px', backgroundColor: '#333', marginBottom: '40px' }}></div>
-
+        <footer style={{ width: '100%', backgroundColor: '#1a1a1a', color: 'white', paddingTop: '40px', paddingBottom: '24px', marginTop: '64px' }}>
             <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '28px' }}>
 
                 {/* Logo + Brand */}
