@@ -607,7 +607,7 @@ export default function GeschaeftskundenPage() {
                                 {
                                     title: 'Lager & Logistik',
                                     desc: 'Kontinuierliches Monitoring und proaktive Prävention zum Schutz von Waren, Lieferketten und Gebäudeinfrastruktur.',
-                                    img: '/b2b/b2b_warehouse.jpg',
+                                    img: '/b2b/b2b_warehouse.png',
                                     href: '/geschaeftskunden/lager',
                                     link: 'Mehr erfahren'
                                 },
