@@ -9,8 +9,8 @@ async function createAdmin() {
     console.log('Создаем аккаунт администратора...');
     
     const { data, error } = await supabase.auth.signUp({
-        email: 'asus017447@gmail.com',
-        password: 'gg192837465gg',
+        email: process.env.ADMIN_EMAIL || 'your-email@example.com',
+        password: process.env.ADMIN_PASSWORD || 'your-secure-password',
     });
 
     if (error) {
