@@ -588,7 +588,7 @@ export default function GeschaeftskundenPage() {
                             </h2>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+                        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12">
                             {[
                                 {
                                     title: 'Gastronomie & Lebensmittel',
@@ -620,28 +620,28 @@ export default function GeschaeftskundenPage() {
                                 }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex flex-col items-start group">
-                                    <div className="w-full aspect-[4/3] overflow-hidden mb-6 bg-slate-200">
+                                    <div className="w-full aspect-[4/3] overflow-hidden mb-3 md:mb-6 bg-slate-200">
                                         <img 
                                             src={item.img} 
                                             alt={item.title}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
                                     </div>
-                                    <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '26px', fontWeight: 800, textTransform: 'uppercase', color: '#1a1a1a', marginBottom: '12px', letterSpacing: '0.01em', lineHeight: 1.1 }}>
+                                    <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.01em' }} className="text-[15px] sm:text-[18px] md:text-[26px] font-[900] uppercase text-[#1a1a1a] mb-[6px] md:mb-[12px] leading-[1.1]">
                                         {item.title}
                                     </h3>
-                                    <p className="text-[#555] text-[15px] leading-relaxed mb-6 flex-grow font-medium" style={{ fontFamily: 'inherit' }}>
+                                    <p className="text-[#555] text-[10.5px] sm:text-[12px] md:text-[15px] leading-[1.4] md:leading-relaxed mb-4 md:mb-6 flex-grow font-medium" style={{ fontFamily: 'inherit' }}>
                                         {item.desc}
                                     </p>
                                     <a 
                                         href={item.href}
-                                        className="text-[#C8102E] font-bold text-[13px] flex items-center gap-1.5 transition-all mt-auto uppercase tracking-[0.08em] no-underline"
+                                        className="text-[#C8102E] font-bold text-[10px] md:text-[13px] flex items-center gap-1 md:gap-1.5 transition-all mt-auto uppercase tracking-[0.08em] no-underline"
                                         style={{ transition: 'gap 0.2s ease' }}
                                         onMouseEnter={e => (e.currentTarget.style.gap = '8px')}
-                                        onMouseLeave={e => (e.currentTarget.style.gap = '6px')}
+                                        onMouseLeave={e => (e.currentTarget.style.gap = '')}
                                     >
                                         {item.link} 
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                        <svg className="w-[10px] h-[10px] md:w-[14px] md:h-[14px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                                     </a>
                                 </div>
                             ))}
