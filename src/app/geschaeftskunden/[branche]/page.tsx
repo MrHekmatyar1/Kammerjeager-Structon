@@ -11,6 +11,7 @@ const BRANCHES: Record<string, {
     title: string;
     subtitle: string;
     heroImg: string;
+    heroImgPosition?: string;
     breadcrumb: string;
     label: string;
     intro: string;
@@ -24,6 +25,7 @@ const BRANCHES: Record<string, {
         title: 'Schädlingsbekämpfung\nfür Gastronomie &\nLebensmittel',
         subtitle: 'HACCP-konform · Diskret · Rechtssicher',
         heroImg: '/b2b/b2b_hero_gastronomie.jpg',
+        heroImgPosition: 'center',
         breadcrumb: 'Gastronomie & Lebensmittel',
         label: 'SCHÄDLINGSSCHUTZ FÜR GASTRONOMIEBETRIEBE',
         intro: 'Zuverlässiger Schutz für Ihren Betrieb und Ihren Ruf',
@@ -47,6 +49,7 @@ const BRANCHES: Record<string, {
         title: 'Schädlingsbekämpfung\nfür Hotels &\nGewerbe',
         subtitle: 'Diskret · Schnell · Für höchste Gästezufriedenheit',
         heroImg: '/b2b/b2b_hero_hotellerie.jpg',
+        heroImgPosition: 'center 20%',
         breadcrumb: 'Hotellerie & Gewerbe',
         label: 'SCHÄDLINGSSCHUTZ FÜR HOTELS UND GASTGEWERBE',
         intro: 'Schnelle und unauffällige Lösungen für höchste Gästezufriedenheit',
@@ -130,6 +133,7 @@ export default function BranchePage({ params }: { params: Promise<{ branche: str
                         src={data.heroImg}
                         alt={data.breadcrumb}
                         className="absolute inset-0 w-full h-full object-cover"
+                        style={{ objectPosition: data.heroImgPosition || 'center' }}
                     />
                     {/* Dark gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
