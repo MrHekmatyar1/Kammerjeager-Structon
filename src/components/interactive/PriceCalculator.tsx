@@ -96,9 +96,9 @@ function Chip({ label, active, onClick }: { label: string; active: boolean; onCl
             width: '100%',
             border: active ? '1.5px solid #1a1a1a' : '1px solid #d0d0d0',
             background: active ? '#1a1a1a' : '#fff',
-            color: active ? '#fff' : '#374151',
-            fontSize: '13px', fontWeight: 600,
-            cursor: 'pointer', fontFamily: 'inherit',
+            color: active ? '#fff' : '#444',
+            fontSize: '14px', fontWeight: active ? 600 : 400,
+            cursor: 'pointer', borderRadius: '8px', fontFamily: 'inherit',
             touchAction: 'manipulation',
             WebkitTapHighlightColor: 'transparent',
             transition: 'all 0.15s',
@@ -314,7 +314,7 @@ function PriceWizard({ onClose }: { onClose: () => void }) {
                         padding: '15px', fontWeight: 700, fontSize: '13px',
                         letterSpacing: '0.14em', textTransform: 'uppercase',
                         border: 'none', cursor: kombiSelected.length >= 2 ? 'pointer' : 'not-allowed',
-                        fontFamily: 'inherit', transition: 'background 0.2s',
+                        fontFamily: 'inherit', transition: 'background 0.2s', borderRadius: '8px',
                     }}
                 >
                     {kombiSelected.length < 2
@@ -382,7 +382,7 @@ function PriceWizard({ onClose }: { onClose: () => void }) {
                             style={{
                                 background: customFlaeche ? '#1a1a1a' : 'transparent',
                                 border: customFlaeche ? '1.5px solid #1a1a1a' : '1px solid #d0d0d0',
-                                borderRadius: '4px', padding: '4px 8px', cursor: 'pointer',
+                                borderRadius: '8px', padding: '4px 8px', cursor: 'pointer',
                                 display: 'inline-flex', alignItems: 'center', gap: '4px',
                                 fontSize: '11px', fontWeight: 600, color: customFlaeche ? '#fff' : '#888',
                                 letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '2px',
@@ -444,7 +444,7 @@ function PriceWizard({ onClose }: { onClose: () => void }) {
                         padding: '15px', fontWeight: 700, fontSize: '13px',
                         letterSpacing: '0.14em', textTransform: 'uppercase',
                         border: 'none', cursor: quizComplete ? 'pointer' : 'not-allowed', fontFamily: 'inherit',
-                        transition: 'background 0.2s',
+                        transition: 'background 0.2s', borderRadius: '8px',
                     }}
                 >
                     Preis berechnen →
@@ -504,14 +504,14 @@ function PriceWizard({ onClose }: { onClose: () => void }) {
                         type="button"
                         onClick={() => { onClose(); window.dispatchEvent(new Event('open-quiz-modal')); }}
                         className="btn-color-hover"
-                        style={{ width: '100%', backgroundColor: '#C8102E', color: '#fff', padding: '16px', fontWeight: 700, fontSize: '13px', letterSpacing: '0.14em', textTransform: 'uppercase', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
+                        style={{ width: '100%', backgroundColor: '#C8102E', color: '#fff', padding: '16px', fontWeight: 700, fontSize: '13px', letterSpacing: '0.14em', textTransform: 'uppercase', border: 'none', cursor: 'pointer', fontFamily: 'inherit', borderRadius: '8px' }}
                     >
                         Jetzt kostenloses Angebot anfordern
                     </button>
                     <button
                         type="button"
                         onClick={() => { setStep(1); setQuiz(QUIZ_INIT); setPest(null); setPrice(null); }}
-                        style={{ width: '100%', background: 'none', border: '1px solid #e5e7eb', color: '#64748b', padding: '13px', fontWeight: 600, fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'inherit' }}
+                        style={{ width: '100%', background: 'none', border: '1px solid #e5e7eb', color: '#64748b', padding: '13px', fontWeight: 600, fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'inherit', borderRadius: '8px' }}
                     >
                         Neu berechnen
                     </button>
