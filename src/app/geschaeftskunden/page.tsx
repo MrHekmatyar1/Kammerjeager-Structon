@@ -620,13 +620,13 @@ export default function GeschaeftskundenPage() {
                                 }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex flex-col items-start group">
-                                    <div className="w-full aspect-[4/3] overflow-hidden mb-3 md:mb-6 bg-slate-200">
+                                    <a href={item.href} className="w-full aspect-[4/3] overflow-hidden mb-3 md:mb-6 bg-slate-200 block">
                                         <img 
                                             src={item.img} 
                                             alt={item.title}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
-                                    </div>
+                                    </a>
                                     <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.01em' }} className="text-[15px] sm:text-[18px] md:text-[26px] font-[900] uppercase text-[#1a1a1a] mb-[6px] md:mb-[12px] leading-[1.1]">
                                         {item.title}
                                     </h3>
