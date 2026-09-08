@@ -198,16 +198,11 @@ export default function BranchePage({ params }: { params: Promise<{ branche: str
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
                             {data.benefits.map((b, i) => (
-                                <div key={i} className="flex gap-5 items-start">
-                                    <div className="w-8 h-8 rounded-full bg-[#C8102E] flex items-center justify-center shrink-0 mt-1">
-                                        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
-                                    </div>
-                                    <div>
-                                        <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: '20px', textTransform: 'uppercase', color: '#1a1a1a', marginBottom: '6px', letterSpacing: '0.01em' }}>
-                                            {b.title}
-                                        </h3>
-                                        <p className="text-[#666] text-[14px] leading-relaxed">{b.desc}</p>
-                                    </div>
+                                <div key={i}>
+                                    <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: '20px', textTransform: 'uppercase', color: '#1a1a1a', marginBottom: '6px', letterSpacing: '0.01em' }}>
+                                        {b.title}
+                                    </h3>
+                                    <p className="text-[#666] text-[14px] leading-relaxed">{b.desc}</p>
                                 </div>
                             ))}
                         </div>
