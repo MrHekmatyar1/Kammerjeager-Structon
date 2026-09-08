@@ -210,15 +210,12 @@ export default function BranchePage({ params }: { params: Promise<{ branche: str
                 </section>
 
                 {/* ── CTA Banner ── */}
-                <section className="w-full bg-[#1a1a1a] py-20 px-6 flex justify-center">
-                    <div className="w-full max-w-[900px] flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                <section className="w-full py-16 md:py-20 px-6 flex justify-center">
+                    <div className="w-full max-w-[1000px] bg-[#1a1a1a] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
                         <div className="flex-1">
-                            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: '#fff', textTransform: 'uppercase', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '12px' }}>
+                            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: '#fff', textTransform: 'uppercase', lineHeight: 1.1, letterSpacing: '-0.02em', margin: 0 }}>
                                 {data.ctaTitle}
                             </h2>
-                            <p className="text-white/60 text-[15px] leading-relaxed">
-                                Wir antworten innerhalb weniger Stunden — auch am Wochenende.
-                            </p>
                         </div>
                         <div className="flex flex-col gap-3 shrink-0 w-full md:w-auto">
                             <Link
