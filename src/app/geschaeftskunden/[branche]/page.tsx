@@ -213,18 +213,18 @@ export default function BranchePage({ params }: { params: Promise<{ branche: str
                 <section className="w-full py-16 md:py-20 px-6 flex justify-center">
                     <div className="w-full max-w-[1000px] bg-[#1a1a1a] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
                         <div className="flex-1">
-                            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: '#fff', textTransform: 'uppercase', lineHeight: 1.1, letterSpacing: '-0.02em', margin: 0 }}>
+                            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.5rem, 3.5vw, 2.2rem)', color: '#fff', textTransform: 'uppercase', lineHeight: 1.1, letterSpacing: '-0.02em', margin: 0 }}>
                                 {data.ctaTitle}
                             </h2>
                         </div>
                         <div className="flex flex-col gap-3 shrink-0 w-full md:w-auto">
                             <Link
                                 href="/geschaeftskunden#kontakt"
-                                className="bg-[#C8102E] text-white font-bold text-[14px] uppercase tracking-[0.1em] px-8 py-4 text-center no-underline transition-colors hover:bg-[#a50d25]"
+                                className="bg-[#C8102E] text-white font-bold text-[13px] uppercase tracking-[0.1em] px-6 py-3 text-center no-underline transition-colors hover:bg-[#a50d25]"
                             >
                                 Anfrage stellen
                             </Link>
-                            <a href="tel:016092376320" className="border border-white/30 text-white font-bold text-[14px] uppercase tracking-[0.1em] px-8 py-4 text-center no-underline transition-colors hover:border-white/60">
+                            <a href="tel:016092376320" className="border border-white/30 text-white font-bold text-[13px] uppercase tracking-[0.1em] px-6 py-3 text-center no-underline transition-colors hover:border-white/60">
                                 0160 92376320
                             </a>
                         </div>
