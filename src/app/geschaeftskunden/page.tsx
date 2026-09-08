@@ -692,14 +692,14 @@ export default function GeschaeftskundenPage() {
                         </div>
 
                         {/* Content */}
-                        <div className="flex-1 border-l-[4px] md:border-l-[5px] border-[#4db8b8] pl-4 md:pl-10">
-                            <p className="text-[10px] md:text-[12px] font-bold uppercase text-[#888] mb-[8px] md:mb-[12px] tracking-[0.15em]">
+                        <div className="flex-1 border-l-[3px] md:border-l-[5px] border-[#4db8b8] pl-3 md:pl-10">
+                            <p className="text-[9px] md:text-[12px] font-bold uppercase text-[#888] mb-[4px] md:mb-[12px] tracking-[0.15em]">
                                 Die Structon Garantie
                             </p>
-                            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif" }} className="text-lg sm:text-xl md:text-4xl lg:text-5xl font-black text-[#1a1a1a] leading-[1.1] tracking-[-0.02em] mb-[10px] md:mb-[18px] uppercase">
+                            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif" }} className="text-[16px] sm:text-[18px] md:text-4xl lg:text-5xl font-black text-[#1a1a1a] leading-[1.05] tracking-[-0.02em] mb-[6px] md:mb-[18px] uppercase">
                                 Garantiert schädlingsfrei.<br />Ohne Wenn und Aber.
                             </h2>
-                            <p className="text-gray-600 text-[11px] sm:text-[13px] md:text-[16px] leading-relaxed font-medium">
+                            <p className="text-gray-600 text-[10px] sm:text-[11px] md:text-[16px] leading-[1.4] md:leading-relaxed font-medium">
                                 Wir setzen auf nachhaltige Prävention und effektive Lösungen. Sollte wider Erwarten innerhalb von 30 Tagen nach unserem Einsatz erneuter Handlungsbedarf bestehen, greift unsere <strong className="text-black">kostenfreie Nachbesserungsgarantie</strong>. Der Schutz Ihres Betriebs und Ihres guten Rufs hat für uns höchste Priorität.
                             </p>
                         </div>
