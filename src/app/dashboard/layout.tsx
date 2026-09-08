@@ -27,13 +27,6 @@ function PlzSetupModal({ onSaved }: { onSaved: () => void }) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     service_plz: trimmed,
-                    billing_model: 'commission',
-                    is_active: true,
-                    pests_handled: [],
-                    firma: '',
-                    name: '',
-                    telefon: '',
-                    telegram_chat_id: '',
                 }),
             });
             if (res.ok) {

@@ -89,18 +89,19 @@ export async function POST(req: NextRequest) {
         }
 
         // Update existing settings
+        const updateData: any = {};
+        if (firma !== undefined) updateData.firma = firma || '';
+        if (name !== undefined) updateData.name = name || '';
+        if (telefon !== undefined) updateData.phone = telefon || '';
+        if (service_plz !== undefined) updateData.plz_bereiche = plzArray;
+        if (billing_model !== undefined) updateData.billing_model = billing_model || 'commission';
+        if (is_active !== undefined) updateData.is_active = is_active !== false;
+        if (telegram_chat_id !== undefined) updateData.telegram_chat_id = telegram_chat_id || '';
+        if (pests_handled !== undefined) updateData.pests_handled = Array.isArray(pests_handled) ? pests_handled : [];
+
         const { error: updateError } = await supabase
             .from('masters')
-            .update({
-                firma: firma || null,
-                name: name || null,
-                phone: telefon || null,
-                plz_bereiche: plzArray,
-                billing_model: billing_model || 'commission',
-                is_active: is_active !== false, // default true
-                telegram_chat_id: telegram_chat_id || null,
-                pests_handled: Array.isArray(pests_handled) ? pests_handled : []
-            })
+            .update(updateData)
             .eq('id', master.id);
 
         if (updateError) {
