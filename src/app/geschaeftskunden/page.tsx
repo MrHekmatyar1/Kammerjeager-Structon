@@ -536,44 +536,54 @@ export default function GeschaeftskundenPage() {
             <main style={{ paddingTop: '68px' }} className="min-h-screen bg-white flex flex-col items-center w-full overflow-x-hidden">
 
                 {/* ── Hero ── */}
-                <section className="w-full flex justify-center border-b border-gray-100 relative bg-[#000]"
+                <section className="w-full flex justify-center relative bg-[#000] overflow-hidden"
                     style={{ 
-                        padding: '120px 0 160px',
+                        padding: '100px 0 140px',
                         backgroundImage: 'url(/b2b/b2b_main_hero.jpg)',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center right',
                         backgroundRepeat: 'no-repeat'
                     }}
                 >
-                    {/* Optional gradient overlay if needed for extra text readability */}
-                    {/* <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div> */}
+                    {/* Optional subtle gradient overlay for text readability on mobile */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
                     
                     <div className="w-full max-w-[1200px] px-6 space-y-6 relative z-10">
                         <h1
                             className="text-5xl md:text-7xl font-black leading-[1.05] uppercase tracking-tight"
-                            style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900 }}
+                            style={{ 
+                                fontFamily: "'Barlow Condensed', sans-serif", 
+                                fontWeight: 900,
+                                textShadow: '0px 4px 20px rgba(0,0,0,0.9)'
+                            }}
                         >
                             <span className="block text-white">Für Unternehmen &amp; Gewerbe</span>
                             <span className="block text-white">Professionelle</span>
                             <span className="block text-white">Schädlings</span>
-                            <span className="block text-[#C8102E]">bekämpfung.</span>
+                            <span className="block text-[#C8102E]" style={{ textShadow: '0px 2px 10px rgba(0,0,0,0.8)' }}>bekämpfung.</span>
                         </h1>
 
-                        <p className="text-xl text-gray-200 max-w-xl font-medium" style={{ lineHeight: 1.6 }}>
+                        <p 
+                            className="text-xl text-white max-w-xl font-medium" 
+                            style={{ 
+                                lineHeight: 1.6,
+                                textShadow: '0px 2px 8px rgba(0,0,0,0.9), 0px 0px 3px rgba(0,0,0,0.5)'
+                            }}
+                        >
                             Maßgeschneiderte Lösungen für Gastronomie, Büros und Industrie.
                             Diskret, schnell und rechtssicher — täglich deutschlandweit.
                         </p>
 
-                        <div className="flex flex-row items-center gap-4 flex-wrap">
-                    <button
-                        className="bg-[#C8102E] btn-color-hover text-white rounded-none font-black shadow-xl shadow-red-100 uppercase whitespace-nowrap inline-flex items-center justify-center"
-                        style={{ fontSize: '14px', padding: '16px 42px', lineHeight: '1', border: 'none', cursor: 'pointer' }}
-                        onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
-                    >
-                        Jetzt anfragen
-                    </button>
+                        <div className="flex flex-row items-center gap-4 flex-wrap pt-4">
+                            <button
+                                className="bg-[#C8102E] btn-color-hover text-white rounded-none font-black uppercase whitespace-nowrap inline-flex items-center justify-center transition-all duration-200"
+                                style={{ fontSize: '14px', padding: '16px 42px', lineHeight: '1', border: 'none', cursor: 'pointer' }}
+                                onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
+                            >
+                                Jetzt anfragen
+                            </button>
                             <div className="flex items-center gap-3 pl-4 border-l border-white/20">
-                                <div className="text-center">
+                                <div className="text-center" style={{ textShadow: '0px 2px 10px rgba(0,0,0,0.8)' }}>
                                     <div className="font-black text-2xl text-white">24/7</div>
                                     <div className="text-[10px] text-gray-300 uppercase font-black tracking-widest">Service</div>
                                 </div>
