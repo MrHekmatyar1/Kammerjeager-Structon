@@ -49,11 +49,10 @@ const MENUS: Record<string, {
         title: 'Für Geschäftskunden',
         description: 'Maßgeschneiderte Lösungen für Unternehmen, Gastronomie und Industrie.',
         links: [
-            { label: 'Gastronomie & Hotels',      href: '/geschaeftskunden#kontakt' },
-            { label: 'Büros & Gebäude',           href: '/geschaeftskunden#kontakt' },
-            { label: 'Lager & Industrie',         href: '/geschaeftskunden#kontakt' },
-            { label: 'Einzelhandel',              href: '/geschaeftskunden#kontakt' },
-            { label: 'Öffentliche Einrichtungen', href: '/geschaeftskunden#kontakt' },
+            { label: 'Gastronomie & Lebensmittel', href: '/geschaeftskunden/gastronomie' },
+            { label: 'Hotellerie & Gewerbe',       href: '/geschaeftskunden/hotellerie' },
+            { label: 'Lager & Logistik',           href: '/geschaeftskunden/lager' },
+            { label: 'Öffentlicher Sektor',        href: '/geschaeftskunden/oeffentlich' },
         ],
         cta: 'Mehr erfahren',
         href: '/geschaeftskunden',
@@ -334,75 +333,7 @@ export default function Header() {
                             activeMenu ? 'max-h-[600px] opacity-100 pointer-events-auto' : 'max-h-0 opacity-0 pointer-events-none'
                         }`}
                     >
-                        {activeMenu === 'Geschäftskunden' ? (
-                            <div className="max-w-[1280px] mx-auto py-10 px-8">
-                                <h3 className="m-0 mb-6 text-[22px] font-black text-[#1E293B] uppercase tracking-[-0.01em]">
-                                    Fachgerechter Schutz für Ihre Branche
-                                </h3>
-                                <div className="grid grid-cols-4 gap-6">
-                                    {/* Card 1 */}
-                                    <Link href="/geschaeftskunden#kontakt" onClick={() => setActiveMenu(null)} className="group flex flex-col gap-3 no-underline">
-                                        <div className="w-full h-[140px] overflow-hidden">
-                                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80" alt="Gastronomie" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                                        </div>
-                                        <h4 className="m-0 text-[16px] font-black text-[#1E293B] uppercase leading-tight group-hover:text-[#C8102E] transition-colors">
-                                            Gastronomie &<br/>Lebensmittel
-                                        </h4>
-                                        <p className="m-0 text-[13px] text-slate-500 leading-[1.6]">
-                                            HACCP-konforme Maßnahmen und lückenlose Dokumentation. Diskrete Einsätze außerhalb der Öffnungszeiten zum Schutz Ihres Rufs.
-                                        </p>
-                                        <span className="mt-auto pt-2 text-[12px] font-bold text-[#C8102E] uppercase tracking-wider flex items-center gap-1">
-                                            Mehr erfahren <span className="transition-transform group-hover:translate-x-1">→</span>
-                                        </span>
-                                    </Link>
-                                    {/* Card 2 */}
-                                    <Link href="/geschaeftskunden#kontakt" onClick={() => setActiveMenu(null)} className="group flex flex-col gap-3 no-underline">
-                                        <div className="w-full h-[140px] overflow-hidden">
-                                            <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=400&q=80" alt="Hotellerie" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                                        </div>
-                                        <h4 className="m-0 text-[16px] font-black text-[#1E293B] uppercase leading-tight group-hover:text-[#C8102E] transition-colors">
-                                            Hotellerie &<br/>Gewerbe
-                                        </h4>
-                                        <p className="m-0 text-[13px] text-slate-500 leading-[1.6]">
-                                            Schnelle und unauffällige Lösungen für höchste Gästezufriedenheit. Unsere Techniker arbeiten diskret in neutraler Kleidung.
-                                        </p>
-                                        <span className="mt-auto pt-2 text-[12px] font-bold text-[#C8102E] uppercase tracking-wider flex items-center gap-1">
-                                            Mehr erfahren <span className="transition-transform group-hover:translate-x-1">→</span>
-                                        </span>
-                                    </Link>
-                                    {/* Card 3 */}
-                                    <Link href="/geschaeftskunden#kontakt" onClick={() => setActiveMenu(null)} className="group flex flex-col gap-3 no-underline">
-                                        <div className="w-full h-[140px] overflow-hidden">
-                                            <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7c50800?auto=format&fit=crop&w=400&q=80" alt="Logistik" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                                        </div>
-                                        <h4 className="m-0 text-[16px] font-black text-[#1E293B] uppercase leading-tight group-hover:text-[#C8102E] transition-colors">
-                                            Lager &<br/>Logistik
-                                        </h4>
-                                        <p className="m-0 text-[13px] text-slate-500 leading-[1.6]">
-                                            Kontinuierliches Monitoring und proaktive Prävention zum Schutz von Waren, Lieferketten und Gebäudeinfrastruktur.
-                                        </p>
-                                        <span className="mt-auto pt-2 text-[12px] font-bold text-[#C8102E] uppercase tracking-wider flex items-center gap-1">
-                                            Mehr erfahren <span className="transition-transform group-hover:translate-x-1">→</span>
-                                        </span>
-                                    </Link>
-                                    {/* Card 4 */}
-                                    <Link href="/geschaeftskunden#kontakt" onClick={() => setActiveMenu(null)} className="group flex flex-col gap-3 no-underline">
-                                        <div className="w-full h-[140px] overflow-hidden">
-                                            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=400&q=80" alt="Öffentlicher Sektor" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                                        </div>
-                                        <h4 className="m-0 text-[16px] font-black text-[#1E293B] uppercase leading-tight group-hover:text-[#C8102E] transition-colors">
-                                            Öffentlicher<br/>Sektor
-                                        </h4>
-                                        <p className="m-0 text-[13px] text-slate-500 leading-[1.6]">
-                                            Sichere, umweltfreundliche und giftfreie Methoden für sensible Bereiche wie Schulen, Krankenhäuser und Behörden.
-                                        </p>
-                                        <span className="mt-auto pt-2 text-[12px] font-bold text-[#C8102E] uppercase tracking-wider flex items-center gap-1">
-                                            Mehr erfahren <span className="transition-transform group-hover:translate-x-1">→</span>
-                                        </span>
-                                    </Link>
-                                </div>
-                            </div>
-                        ) : activeMenu && MENUS[activeMenu] ? (
+                        {activeMenu && MENUS[activeMenu] ? (
                             <div className="max-w-[1280px] mx-auto py-9 px-8 grid grid-cols-[280px_1fr] gap-12">
                                 <div className="flex flex-col gap-3">
                                     <h3 className="m-0 text-[20px] font-black text-[#1E293B] uppercase tracking-[-0.02em]">
