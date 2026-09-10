@@ -536,24 +536,30 @@ export default function GeschaeftskundenPage() {
             <main style={{ paddingTop: '68px' }} className="min-h-screen bg-white flex flex-col items-center w-full overflow-x-hidden">
 
                 {/* ── Hero ── */}
-                <section className="w-full flex justify-center border-b border-gray-100"
-                    style={{ padding: '4px 0 80px' }}
+                <section className="w-full flex justify-center border-b border-gray-100 relative bg-[#000]"
+                    style={{ 
+                        padding: '120px 0 160px',
+                        backgroundImage: 'url(/b2b/b2b_main_hero.jpg)',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center right',
+                        backgroundRepeat: 'no-repeat'
+                    }}
                 >
-                    <div className="w-full max-w-[1200px] px-6 space-y-6">
-
-
+                    {/* Optional gradient overlay if needed for extra text readability */}
+                    {/* <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div> */}
+                    
+                    <div className="w-full max-w-[1200px] px-6 space-y-6 relative z-10">
                         <h1
                             className="text-5xl md:text-7xl font-black leading-[1.05] uppercase tracking-tight"
                             style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900 }}
                         >
-                            <span className="block text-[#1E293B]">Für Unternehmen &amp; Gewerbe</span>
-                            <span className="block text-[#1E293B]">Professionelle</span>
-                            <span className="block text-[#1E293B]">Schädlings</span>
+                            <span className="block text-white">Für Unternehmen &amp; Gewerbe</span>
+                            <span className="block text-white">Professionelle</span>
+                            <span className="block text-white">Schädlings</span>
                             <span className="block text-[#C8102E]">bekämpfung.</span>
                         </h1>
 
-
-                        <p className="text-xl text-gray-500 max-w-xl font-medium" style={{ lineHeight: 1.6 }}>
+                        <p className="text-xl text-gray-200 max-w-xl font-medium" style={{ lineHeight: 1.6 }}>
                             Maßgeschneiderte Lösungen für Gastronomie, Büros und Industrie.
                             Diskret, schnell und rechtssicher — täglich deutschlandweit.
                         </p>
@@ -566,10 +572,10 @@ export default function GeschaeftskundenPage() {
                     >
                         Jetzt anfragen
                     </button>
-                            <div className="flex items-center gap-3 pl-4 border-l border-gray-200">
+                            <div className="flex items-center gap-3 pl-4 border-l border-white/20">
                                 <div className="text-center">
-                                    <div className="font-black text-2xl text-[#1E293B]">24/7</div>
-                                    <div className="text-[10px] text-gray-400 uppercase font-black tracking-widest">Service</div>
+                                    <div className="font-black text-2xl text-white">24/7</div>
+                                    <div className="text-[10px] text-gray-300 uppercase font-black tracking-widest">Service</div>
                                 </div>
                             </div>
                         </div>
