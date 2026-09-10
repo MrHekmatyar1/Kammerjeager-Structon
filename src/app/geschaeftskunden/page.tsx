@@ -564,11 +564,11 @@ export default function GeschaeftskundenPage() {
                         </h1>
 
                         <p 
-                            className="text-xl max-w-xl font-medium" 
+                            className="text-xl md:text-[22px] font-bold tracking-tight max-w-xl" 
                             style={{ 
                                 color: '#FFFFFF',
-                                lineHeight: 1.6,
-                                textShadow: '0px 2px 8px rgba(0,0,0,0.9), 0px 0px 3px rgba(0,0,0,0.5)'
+                                lineHeight: 1.4,
+                                textShadow: '0px 2px 4px rgba(0,0,0,0.8)'
                             }}
                         >
                             Maßgeschneiderte Lösungen für Gastronomie, Büros und Industrie.
