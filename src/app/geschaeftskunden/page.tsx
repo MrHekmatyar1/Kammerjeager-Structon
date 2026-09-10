@@ -564,7 +564,7 @@ export default function GeschaeftskundenPage() {
                         </h1>
 
                         <p 
-                            className="text-xl md:text-2xl font-black tracking-tighter max-w-xl" 
+                            className="text-xl md:text-[22px] font-bold tracking-tighter max-w-xl" 
                             style={{ 
                                 color: '#FFFFFF',
                                 lineHeight: 1.3
