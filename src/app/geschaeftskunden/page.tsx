@@ -533,15 +533,15 @@ export default function GeschaeftskundenPage() {
         <>
             <Header />
 
-            <main style={{ paddingTop: '68px' }} className="min-h-screen bg-white flex flex-col items-center w-full overflow-x-hidden">
+            <main className="min-h-screen bg-white flex flex-col items-center w-full overflow-x-hidden">
 
                 {/* ── Hero ── */}
                 <section className="w-full flex justify-center relative bg-[#000] overflow-hidden"
                     style={{ 
-                        padding: '100px 0 140px',
+                        padding: '168px 0 140px',
                         backgroundImage: 'url(/b2b/b2b_main_hero.jpg)',
                         backgroundSize: 'cover',
-                        backgroundPosition: 'center right',
+                        backgroundPosition: 'right center',
                         backgroundRepeat: 'no-repeat'
                     }}
                 >
