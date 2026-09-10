@@ -564,8 +564,9 @@ export default function GeschaeftskundenPage() {
                         </h1>
 
                         <p 
-                            className="text-xl text-white max-w-xl font-medium" 
+                            className="text-xl max-w-xl font-medium" 
                             style={{ 
+                                color: '#FFFFFF',
                                 lineHeight: 1.6,
                                 textShadow: '0px 2px 8px rgba(0,0,0,0.9), 0px 0px 3px rgba(0,0,0,0.5)'
                             }}
