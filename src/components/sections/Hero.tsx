@@ -14,7 +14,7 @@ const ROTATING_WORDS = [
     'Ameisen', 'Flöhe', 'Bettwanzen', 'Tauben',
 ];
 
-export default function Hero({ cityName, serviceName }: { cityName?: string; serviceName?: string }) {
+export default function Hero({ cityName, serviceName, heroSubtitle }: { cityName?: string; serviceName?: string; heroSubtitle?: string }) {
     const [wordIndex, setWordIndex] = useState(0);
     const [animKey, setAnimKey] = useState(0);
     const [isExiting, setIsExiting] = useState(false);
@@ -130,7 +130,7 @@ export default function Hero({ cityName, serviceName }: { cityName?: string; ser
                     </h1>
 
                     <p className="text-xl text-gray-500 max-w-xl font-medium mb-10 leading-relaxed">
-                        Vermeiden Sie lange Recherchen. Wir finden für Sie den qualifizierten Experten für jedes Schädlingsproblem.
+                        {heroSubtitle ?? 'Vermeiden Sie lange Recherchen. Wir finden für Sie den qualifizierten Experten für jedes Schädlingsproblem.'}
                     </p>
 
                     <div className="flex flex-row items-center gap-4 flex-wrap">
