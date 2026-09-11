@@ -9,6 +9,7 @@ import LeadWizard from '@/components/interactive/LeadWizard';
 import Footer from '@/components/layout/Footer';
 import ChatBot from '@/components/interactive/ChatBot';
 import FAQ from '@/components/sections/FAQ';
+import CityGrid from '@/components/sections/CityGrid';
 
 export const metadata: Metadata = {
     title: 'Kammerjäger Structon – Schädlingsbekämpfung in ganz Deutschland',
@@ -46,8 +47,15 @@ export default function Home() {
             </section>
 
             {/* ── FAQ ── */}
-            <div className="w-full px-4 mt-20 md:mt-28 mb-20 md:mb-28">
+            <div className="w-full px-4 mt-20 md:mt-28 mb-0">
                 <FAQ title="Häufige Fragen von Privatkunden" />
+            </div>
+
+            {/* ── Städte-Netz: Alle deutschen Großstädte + Berlin Bezirke ──
+                SEO-interne-Verlinkung: Links von der Homepage geben am meisten PageRank
+                an die Stadtseiten weiter → schnellere Indexierung durch Google */}
+            <div className="w-full px-4 mb-20 md:mb-28">
+                <CityGrid />
             </div>
 
             {/* Footer / Подвал сайта */}
@@ -58,4 +66,4 @@ export default function Home() {
 
         </main>
     );
-}
+}

@@ -21,6 +21,43 @@ export const CITIES: City[] = [
     { name: 'Potsdam', slug: 'potsdam' },
     { name: 'Hennigsdorf', slug: 'hennigsdorf' },
 
+    // ── Große Städte Deutschland ──────────────────────────────────────────────
+    { name: 'Hamburg', slug: 'hamburg' },
+    { name: 'München', slug: 'muenchen' },
+    { name: 'Köln', slug: 'koeln' },
+    { name: 'Frankfurt am Main', slug: 'frankfurt' },
+    { name: 'Stuttgart', slug: 'stuttgart' },
+    { name: 'Düsseldorf', slug: 'duesseldorf' },
+    { name: 'Leipzig', slug: 'leipzig' },
+    { name: 'Dortmund', slug: 'dortmund' },
+    { name: 'Essen', slug: 'essen' },
+    { name: 'Bremen', slug: 'bremen' },
+    { name: 'Dresden', slug: 'dresden' },
+    { name: 'Hannover', slug: 'hannover' },
+    { name: 'Nürnberg', slug: 'nuernberg' },
+    { name: 'Duisburg', slug: 'duisburg' },
+    { name: 'Bochum', slug: 'bochum' },
+    { name: 'Wuppertal', slug: 'wuppertal' },
+    { name: 'Bielefeld', slug: 'bielefeld' },
+    { name: 'Bonn', slug: 'bonn' },
+    { name: 'Münster', slug: 'muenster' },
+    { name: 'Karlsruhe', slug: 'karlsruhe' },
+    { name: 'Mannheim', slug: 'mannheim' },
+    { name: 'Augsburg', slug: 'augsburg' },
+    { name: 'Wiesbaden', slug: 'wiesbaden' },
+    { name: 'Gelsenkirchen', slug: 'gelsenkirchen' },
+    { name: 'Mönchengladbach', slug: 'moenchengladbach' },
+    { name: 'Braunschweig', slug: 'braunschweig' },
+    { name: 'Chemnitz', slug: 'chemnitz' },
+    { name: 'Kiel', slug: 'kiel' },
+    { name: 'Aachen', slug: 'aachen' },
+    { name: 'Halle (Saale)', slug: 'halle-saale' },
+    { name: 'Magdeburg', slug: 'magdeburg' },
+    { name: 'Freiburg im Breisgau', slug: 'freiburg' },
+    { name: 'Krefeld', slug: 'krefeld' },
+    { name: 'Lübeck', slug: 'luebeck' },
+    { name: 'Oberhausen', slug: 'oberhausen' },
+
     // ── Berlin Bezirke ────────────────────────────────────────────────────────
 
     {
@@ -218,3 +255,6 @@ export const CITIES: City[] = [
 
 // Helper: alle Berlin-Bezirke
 export const BERLIN_BEZIRKE = CITIES.filter(c => c.isBerlinBezirk);
+
+// Helper: alle deutschen Großstädte (ohne Berlin-Bezirke, nur Hauptstädte)
+export const GERMAN_CITIES = CITIES.filter(c => !c.isBerlinBezirk);

@@ -238,18 +238,6 @@ export default function PartnerPage() {
                     </div>
                 </section>
 
-                {/* 6 ─ DARK CTA STRIP */}
-                <section style={{ padding: '60px 24px', background: '#d1d5db', borderTop: '1px solid #c4c9d0' }}>
-                    <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
-                        <div>
-                            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', textTransform: 'uppercase', color: '#1E293B', marginBottom: '6px' }}>Bereit, loszulegen?</h2>
-                            <p style={{ fontSize: '14px', color: '#64748b', margin: 0 }}>Kostenlos · Kein Risiko · Unverbindlich</p>
-                        </div>
-                        <a href="#anmelden" style={{ backgroundColor: '#C8102E', color: '#fff', padding: '13px 36px', fontWeight: 700, fontSize: '14px', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block', flexShrink: 0 }}>
-                            Jetzt Partner werden
-                        </a>
-                    </div>
-                </section>
                 {/* ── FAQ ── */}
                 <div className="w-full px-4 mb-20 md:mb-28">
                     <FAQ 

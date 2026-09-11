@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { CITIES, BERLIN_BEZIRKE } from '@/lib/data/cities'
+import { CITIES, BERLIN_BEZIRKE, GERMAN_CITIES } from '@/lib/data/cities'
 import { SERVICES } from '@/lib/data/services'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -51,15 +51,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // ── Stadtseiten (nicht-Berlin) ─────────────────────────────────────────────
-  const cityPages: MetadataRoute.Sitemap = CITIES
-    .filter(c => !c.isBerlinBezirk)
-    .map(city => ({
-      url: `${baseUrl}/${city.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.85,
-    }))
+  // ── Alle deutschen Großstädte (Hamburg, München, Köln, etc.) ──────────────
+  // Priorität 0.85 — wichtige lokale SEO-Seiten
+  const cityPages: MetadataRoute.Sitemap = GERMAN_CITIES.map(city => ({
+    url: `${baseUrl}/${city.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }))
 
   // ── Berlin Bezirke (Übersichtsseiten) ─────────────────────────────────────
   // Priorität 0.9 — wichtigste lokale SEO-Seiten
