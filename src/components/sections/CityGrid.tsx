@@ -120,10 +120,10 @@ export default function CityGrid() {
                 {CITIES_WITH_DISTRICTS.map((city) => {
                     const isOpen = openCity === city.slug;
                     return (
-                        <div key={city.slug} className="mb-4">
+                        <div key={city.slug}>
                             <button
                                 onClick={() => toggle(city.slug)}
-                                className={`w-full flex items-center justify-between text-left py-4 px-2 md:px-4 transition-all duration-200
+                                className={`w-full flex items-center justify-between text-left py-3.5 px-2 md:px-4 transition-all duration-200
                                     ${isOpen
                                         ? 'border border-white/40'
                                         : 'border-b border-white/20 hover:border-white/50'
