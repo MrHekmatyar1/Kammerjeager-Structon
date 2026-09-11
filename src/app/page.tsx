@@ -47,11 +47,11 @@ export default function Home() {
             </section>
 
             {/* ── FAQ ── */}
-            <div className="w-full px-4 mt-20 md:mt-28 mb-0">
+            <div className="w-full px-4 mt-20 md:mt-28 mb-20 md:mb-28">
                 <FAQ title="Häufige Fragen von Privatkunden" />
             </div>
 
-            {/* ── Städte-Netz: Alle deutschen Großstädte + Berlin Bezirke ──
+            {/* ── Städte-Netz: Alle deutschen Großstädte + Berlin/Hamburg/München/Köln Bezirke ──
                 SEO-interne-Verlinkung: Links von der Homepage geben am meisten PageRank
                 an die Stadtseiten weiter → schnellere Indexierung durch Google */}
             <div className="w-full px-4 mb-20 md:mb-28">

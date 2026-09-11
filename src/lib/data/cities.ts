@@ -58,6 +58,33 @@ export const CITIES: City[] = [
     { name: 'Lübeck', slug: 'luebeck' },
     { name: 'Oberhausen', slug: 'oberhausen' },
 
+    // ── Hamburg Bezirke ───────────────────────────────────────────────────────
+    { name: 'Hamburg-Altona', slug: 'hamburg-altona' },
+    { name: 'Hamburg-Eimsbüttel', slug: 'hamburg-eimsbuettel' },
+    { name: 'Hamburg-Mitte', slug: 'hamburg-mitte' },
+    { name: 'Hamburg-Nord', slug: 'hamburg-nord' },
+    { name: 'Hamburg-Wandsbek', slug: 'hamburg-wandsbek' },
+    { name: 'Hamburg-Harburg', slug: 'hamburg-harburg' },
+    { name: 'Hamburg-Bergedorf', slug: 'hamburg-bergedorf' },
+
+    // ── München Stadtbezirke ──────────────────────────────────────────────────
+    { name: 'München-Schwabing', slug: 'muenchen-schwabing' },
+    { name: 'München-Maxvorstadt', slug: 'muenchen-maxvorstadt' },
+    { name: 'München-Neuhausen', slug: 'muenchen-neuhausen' },
+    { name: 'München-Sendling', slug: 'muenchen-sendling' },
+    { name: 'München-Bogenhausen', slug: 'muenchen-bogenhausen' },
+    { name: 'München-Au-Haidhausen', slug: 'muenchen-au-haidhausen' },
+    { name: 'München-Pasing', slug: 'muenchen-pasing' },
+    { name: 'München-Moosach', slug: 'muenchen-moosach' },
+
+    // ── Köln Stadtbezirke ─────────────────────────────────────────────────────
+    { name: 'Köln-Innenstadt', slug: 'koeln-innenstadt' },
+    { name: 'Köln-Ehrenfeld', slug: 'koeln-ehrenfeld' },
+    { name: 'Köln-Nippes', slug: 'koeln-nippes' },
+    { name: 'Köln-Porz', slug: 'koeln-porz' },
+    { name: 'Köln-Kalk', slug: 'koeln-kalk' },
+    { name: 'Köln-Lindenthal', slug: 'koeln-lindenthal' },
+
     // ── Berlin Bezirke ────────────────────────────────────────────────────────
 
     {
