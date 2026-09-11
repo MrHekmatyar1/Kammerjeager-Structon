@@ -170,15 +170,23 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     return;
                 }
 
-                const { data: master } = await supabase
-                    .from('masters')
-                    .select('credits, plz_bereiche')
-                    .or(`email.eq.${session.user.email},user_id.eq.${session.user.id}`)
-                    .maybeSingle();
-                setCredits(master?.credits || 0);
-                // Show PLZ modal if no PLZ has been set yet
-                const hasPlz = master?.plz_bereiche && master.plz_bereiche.length > 0 && master.plz_bereiche[0]?.trim();
-                if (!hasPlz) setShowPlzModal(true);
+                try {
+                    const res = await fetch('/api/partner/settings');
+                    if (res.ok) {
+                        const data = await res.json();
+                        const master = data.master;
+                        setCredits(master?.credits || 0);
+                        // Show PLZ modal if no PLZ has been set yet
+                        const hasPlz = master?.plz_bereiche && master.plz_bereiche.length > 0 && master.plz_bereiche[0]?.trim();
+                        if (!hasPlz) setShowPlzModal(true);
+                    } else {
+                        // Fallback if API fails
+                        setShowPlzModal(true);
+                    }
+                } catch (err) {
+                    console.error('Failed to fetch settings', err);
+                    setShowPlzModal(true);
+                }
             }
             setLoading(false);
         };

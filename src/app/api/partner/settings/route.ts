@@ -89,7 +89,7 @@ export async function POST(req: NextRequest) {
         }
 
         // Update existing settings
-        const updateData: any = {};
+        const updateData: any = { user_id: user.id };
         if (firma !== undefined) updateData.firma = firma || '';
         if (name !== undefined) updateData.name = name || '';
         if (telefon !== undefined) updateData.phone = telefon || '';
