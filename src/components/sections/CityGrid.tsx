@@ -67,9 +67,6 @@ const CITIES_WITH_DISTRICTS = [
 
 // Alle anderen Städte — einfache Links in Rasteransicht
 const OTHER_CITIES = [
-    { name: 'Frankfurt am Main', slug: 'frankfurt' },
-    { name: 'Stuttgart', slug: 'stuttgart' },
-    { name: 'Düsseldorf', slug: 'duesseldorf' },
     { name: 'Leipzig', slug: 'leipzig' },
     { name: 'Dortmund', slug: 'dortmund' },
     { name: 'Essen', slug: 'essen' },
@@ -129,7 +126,7 @@ export default function CityGrid() {
                                         : 'border-b border-white/20 hover:border-white/50'
                                     }`}
                             >
-                                <span className="font-semibold text-sm md:text-base">
+                                <span className="font-medium text-sm md:text-base">
                                     {city.name}
                                 </span>
                                 <div className="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors">
@@ -181,6 +178,29 @@ export default function CityGrid() {
                     );
                 })}
             </div>
+
+            {/* ── Andere große Städte ohne Bezirke (einfache Links, gleicher Stil) ── */}
+            {[
+                { name: 'Frankfurt am Main', slug: 'frankfurt' },
+                { name: 'Stuttgart', slug: 'stuttgart' },
+                { name: 'Düsseldorf', slug: 'duesseldorf' },
+            ].map((city) => (
+                <Link
+                    key={city.slug}
+                    href={`/${city.slug}`}
+                    className="w-full flex items-center justify-between text-left py-3.5 px-2 md:px-4 border-b border-white/20 hover:border-white/50 transition-all duration-200 group/top"
+                >
+                    <span className="font-medium text-sm md:text-base">{city.name}</span>
+                    <svg
+                        className="opacity-0 group-hover/top:opacity-100 transition-opacity shrink-0 text-white/40"
+                        width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" strokeWidth="2.5"
+                        strokeLinecap="round" strokeLinejoin="round"
+                    >
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                </Link>
+            ))}
 
             {/* ── Alle anderen Städte ── */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-0">
