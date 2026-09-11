@@ -182,9 +182,6 @@ export default function CityGrid() {
                 })}
             </div>
 
-            {/* ── Divider ── */}
-            <div className="border-t border-white/10 my-6" />
-
             {/* ── Alle anderen Städte ── */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-0">
                 {OTHER_CITIES.map((city) => (
