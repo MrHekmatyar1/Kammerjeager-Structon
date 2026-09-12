@@ -179,13 +179,13 @@ export async function cancelScheduledEmail(emailId: string) {
 export async function sendAdminNotification(lead: any) {
     const isB2B = lead.kunde_typ === 'B2B' || lead.kunde_typ === 'Firmenkunde' || lead.kunde_typ === 'Öffentlicher Sektor' || !!lead.firma;
     const subject = isB2B
-        ? `B2B-ANFRAGE: ${lead.firma || lead.name} (${lead.schaedling || 'Gewerbe'}) in ${lead.plz}`
+        ? `🚨 GEWERBE-ANFRAGE (Sofort): ${lead.firma || lead.name} (${lead.schaedling || 'Gewerbe'}) in ${lead.plz}`
         : `NEUER LEAD: ${lead.schaedling || 'Schädlingsbekämpfung'} in ${lead.plz}`;
     
     const html = isB2B ? `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
             <div style="background: #1e293b; color: #ffffff; padding: 20px; text-align: center;">
-                <h2 style="margin: 0; font-size: 20px;">Neue B2B-Anfrage (Gewerbe / Firma / Cafe)</h2>
+                <h2 style="margin: 0; font-size: 20px;">🚨 Neue Gewerbe-Anfrage (Sofort Anrufen!)</h2>
             </div>
             <div style="padding: 24px;">
                 <p><strong>Firma / Betrieb:</strong> ${lead.firma || 'Nicht angegeben'}</p>

@@ -166,13 +166,13 @@ export async function POST(req: NextRequest) {
             const { sendTelegramMessage } = await import('@/lib/telegram');
             const isB2B = entry.kunde_typ === 'B2B' || entry.kunde_typ === 'Firmenkunde' || entry.kunde_typ === 'Öffentlicher Sektor';
             const masterName = isB2B
-                ? 'Direkt Admin (B2B)'
+                ? 'Direkt Admin (Gewerbe)'
                 : (entry.master_id ? 'Zugewiesen an Partner' : 'UNASSIGNED');
 
             let tgMessage = '';
             if (isB2B) {
                 tgMessage =
-                    `<b>Neue B2B-Anfrage (Gewerbe / Café / Firma)!</b>\n\n` +
+                    `<b>Neue Gewerbe-Anfrage!</b>\n\n` +
                     `<b>Unternehmen:</b> ${entry.firma || 'Nicht angegeben'}\n` +
                     `<b>Ansprechpartner:</b> ${entry.name}\n` +
                     `<b>Telefon:</b> <a href="tel:${entry.telefon}">${entry.telefon}</a>\n` +

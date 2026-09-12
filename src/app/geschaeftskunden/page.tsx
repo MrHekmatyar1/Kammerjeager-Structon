@@ -308,7 +308,7 @@ function KontaktForm() {
                 </h3>
                 <p style={{ color: '#64748b', fontSize: '14px', lineHeight: 1.6, maxWidth: '420px', margin: '0 auto' }}>
                     Ihre Anfrage für <strong>{form.unternehmen}</strong> wurde erfolgreich übermittelt.<br />
-                    Unser B2B-Team wird sich schnellstmöglich mit Ihnen in Verbindung setzen.
+                    Unser Gewerbe-Team wird sich schnellstmöglich mit Ihnen in Verbindung setzen.
                 </p>
             </div>
         );
@@ -327,7 +327,7 @@ function KontaktForm() {
         }}>
             <div style={{ marginBottom: '24px' }}>
                 <p style={{ fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#C8102E', marginBottom: '6px' }}>
-                    Gewerbekunden &amp; B2B
+                    Gewerbe
                 </p>
                 <h2 style={{
                     fontFamily: "'Barlow Condensed', sans-serif",

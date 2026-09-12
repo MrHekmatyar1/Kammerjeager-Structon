@@ -156,7 +156,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                             : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-50'
                     }`}
                 >
-                    B2B &amp; Gewerbe ({b2bCount})
+                    Gewerbe ({b2bCount})
                 </button>
                 <button
                     type="button"
@@ -207,7 +207,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                     {b2b ? (
                                                         <div>
                                                             <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200 uppercase tracking-wider mb-1">
-                                                                B2B / Gewerbe
+                                                                Gewerbe
                                                             </span>
                                                             <div className="font-bold text-slate-900 text-sm">
                                                                 {lead.firma || lead.name}
@@ -300,7 +300,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                             <div>
                                                 {b2b && (
                                                     <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200 uppercase tracking-wider mb-1">
-                                                        B2B / Gewerbe
+                                                        Gewerbe
                                                     </span>
                                                 )}
                                                 <div className="font-bold text-slate-900 text-base">{lead.firma || lead.name}</div>
