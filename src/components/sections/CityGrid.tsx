@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Millionenstädte mit Stadtbezirken — alle als identische Akkordeons
+// Großstädte mit Stadtbezirken — Akkordeons (unten)
 const CITIES_WITH_DISTRICTS = [
     {
         name: 'Berlin',
@@ -63,9 +63,48 @@ const CITIES_WITH_DISTRICTS = [
             { name: 'Lindenthal', slug: 'koeln-lindenthal' },
         ],
     },
+    {
+        name: 'Frankfurt am Main',
+        slug: 'frankfurt',
+        districts: [
+            { name: 'Innenstadt', slug: 'frankfurt-innenstadt' },
+            { name: 'Sachsenhausen', slug: 'frankfurt-sachsenhausen' },
+            { name: 'Bornheim', slug: 'frankfurt-bornheim' },
+            { name: 'Nordend', slug: 'frankfurt-nordend' },
+            { name: 'Westend', slug: 'frankfurt-westend' },
+            { name: 'Bockenheim', slug: 'frankfurt-bockenheim' },
+            { name: 'Höchst', slug: 'frankfurt-hoechst' },
+            { name: 'Gallus', slug: 'frankfurt-gallus' },
+        ],
+    },
+    {
+        name: 'Stuttgart',
+        slug: 'stuttgart',
+        districts: [
+            { name: 'Mitte', slug: 'stuttgart-mitte' },
+            { name: 'Nord', slug: 'stuttgart-nord' },
+            { name: 'Süd', slug: 'stuttgart-sued' },
+            { name: 'Ost', slug: 'stuttgart-ost' },
+            { name: 'West', slug: 'stuttgart-west' },
+            { name: 'Bad Cannstatt', slug: 'stuttgart-bad-cannstatt' },
+            { name: 'Zuffenhausen', slug: 'stuttgart-zuffenhausen' },
+        ],
+    },
+    {
+        name: 'Düsseldorf',
+        slug: 'duesseldorf',
+        districts: [
+            { name: 'Mitte', slug: 'duesseldorf-mitte' },
+            { name: 'Pempelfort', slug: 'duesseldorf-pempelfort' },
+            { name: 'Flingern', slug: 'duesseldorf-flingern' },
+            { name: 'Bilk', slug: 'duesseldorf-bilk' },
+            { name: 'Oberkassel', slug: 'duesseldorf-oberkassel' },
+            { name: 'Gerresheim', slug: 'duesseldorf-gerresheim' },
+        ],
+    },
 ];
 
-// Alle anderen Städte — einfache Links in Rasteransicht
+// Alle anderen Städte — einfache Links in Rasteransicht (oben)
 const OTHER_CITIES = [
     { name: 'Leipzig', slug: 'leipzig' },
     { name: 'Dortmund', slug: 'dortmund' },
@@ -99,7 +138,6 @@ const OTHER_CITIES = [
 ];
 
 export default function CityGrid() {
-    // null = keine offen; string = slug der offenen Stadt
     const [openCity, setOpenCity] = useState<string | null>(null);
 
     const toggle = (slug: string) => {
@@ -112,8 +150,29 @@ export default function CityGrid() {
                 Unsere Standorte in Deutschland
             </h2>
 
-            {/* ── Millionenstädte mit Bezirken (je ein Akkordeon) ── */}
-            <div className="flex flex-col mb-0">
+            {/* ── Andere Städte (Raster, oben) ── */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-0">
+                {OTHER_CITIES.map((city) => (
+                    <Link
+                        key={city.slug}
+                        href={`/${city.slug}`}
+                        className="flex items-center justify-between py-3.5 px-2 text-sm text-white/70 hover:text-white border-b border-white/10 hover:bg-white/5 transition-all duration-150 group/city"
+                    >
+                        <span className="font-medium">{city.name}</span>
+                        <svg
+                            className="opacity-0 group-hover/city:opacity-100 transition-opacity shrink-0"
+                            width="13" height="13" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" strokeWidth="2.5"
+                            strokeLinecap="round" strokeLinejoin="round"
+                        >
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </Link>
+                ))}
+            </div>
+
+            {/* ── Großstädte mit Bezirken (Akkordeons, unten) ── */}
+            <div className="flex flex-col">
                 {CITIES_WITH_DISTRICTS.map((city) => {
                     const isOpen = openCity === city.slug;
                     return (
@@ -129,7 +188,7 @@ export default function CityGrid() {
                                 <span className="font-medium text-sm md:text-base">
                                     {city.name}
                                 </span>
-                                <div className="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors">
+                                <div className="flex items-center text-white/40 hover:text-white/70 transition-colors">
                                     <motion.div
                                         animate={{ rotate: isOpen ? 180 : 0 }}
                                         transition={{ duration: 0.2 }}
@@ -177,50 +236,6 @@ export default function CityGrid() {
                         </div>
                     );
                 })}
-            </div>
-
-            {/* ── Andere große Städte ohne Bezirke (einfache Links, gleicher Stil) ── */}
-            {[
-                { name: 'Frankfurt am Main', slug: 'frankfurt' },
-                { name: 'Stuttgart', slug: 'stuttgart' },
-                { name: 'Düsseldorf', slug: 'duesseldorf' },
-            ].map((city) => (
-                <Link
-                    key={city.slug}
-                    href={`/${city.slug}`}
-                    className="w-full flex items-center justify-between text-left py-3.5 px-2 md:px-4 border-b border-white/20 hover:border-white/50 transition-all duration-200 group/top"
-                >
-                    <span className="font-medium text-sm md:text-base">{city.name}</span>
-                    <svg
-                        className="opacity-0 group-hover/top:opacity-100 transition-opacity shrink-0 text-white/40"
-                        width="13" height="13" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" strokeWidth="2.5"
-                        strokeLinecap="round" strokeLinejoin="round"
-                    >
-                        <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                </Link>
-            ))}
-
-            {/* ── Alle anderen Städte ── */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-0">
-                {OTHER_CITIES.map((city) => (
-                    <Link
-                        key={city.slug}
-                        href={`/${city.slug}`}
-                        className="flex items-center justify-between py-3.5 px-2 text-sm text-white/70 hover:text-white border-b border-white/10 hover:bg-white/5 transition-all duration-150 group/city"
-                    >
-                        <span className="font-medium">{city.name}</span>
-                        <svg
-                            className="opacity-0 group-hover/city:opacity-100 transition-opacity shrink-0"
-                            width="13" height="13" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" strokeWidth="2.5"
-                            strokeLinecap="round" strokeLinejoin="round"
-                        >
-                            <polyline points="9 18 15 12 9 6" />
-                        </svg>
-                    </Link>
-                ))}
             </div>
         </section>
     );

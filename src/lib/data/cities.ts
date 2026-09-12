@@ -85,6 +85,33 @@ export const CITIES: City[] = [
     { name: 'Köln-Kalk', slug: 'koeln-kalk' },
     { name: 'Köln-Lindenthal', slug: 'koeln-lindenthal' },
 
+    // ── Frankfurt Stadtteile ──────────────────────────────────────────────────
+    { name: 'Frankfurt-Innenstadt', slug: 'frankfurt-innenstadt' },
+    { name: 'Frankfurt-Sachsenhausen', slug: 'frankfurt-sachsenhausen' },
+    { name: 'Frankfurt-Bornheim', slug: 'frankfurt-bornheim' },
+    { name: 'Frankfurt-Nordend', slug: 'frankfurt-nordend' },
+    { name: 'Frankfurt-Westend', slug: 'frankfurt-westend' },
+    { name: 'Frankfurt-Bockenheim', slug: 'frankfurt-bockenheim' },
+    { name: 'Frankfurt-Höchst', slug: 'frankfurt-hoechst' },
+    { name: 'Frankfurt-Gallus', slug: 'frankfurt-gallus' },
+
+    // ── Stuttgart Stadtbezirke ────────────────────────────────────────────────
+    { name: 'Stuttgart-Mitte', slug: 'stuttgart-mitte' },
+    { name: 'Stuttgart-Nord', slug: 'stuttgart-nord' },
+    { name: 'Stuttgart-Süd', slug: 'stuttgart-sued' },
+    { name: 'Stuttgart-Ost', slug: 'stuttgart-ost' },
+    { name: 'Stuttgart-West', slug: 'stuttgart-west' },
+    { name: 'Stuttgart-Bad Cannstatt', slug: 'stuttgart-bad-cannstatt' },
+    { name: 'Stuttgart-Zuffenhausen', slug: 'stuttgart-zuffenhausen' },
+
+    // ── Düsseldorf Stadtbezirke ───────────────────────────────────────────────
+    { name: 'Düsseldorf-Mitte', slug: 'duesseldorf-mitte' },
+    { name: 'Düsseldorf-Pempelfort', slug: 'duesseldorf-pempelfort' },
+    { name: 'Düsseldorf-Flingern', slug: 'duesseldorf-flingern' },
+    { name: 'Düsseldorf-Bilk', slug: 'duesseldorf-bilk' },
+    { name: 'Düsseldorf-Oberkassel', slug: 'duesseldorf-oberkassel' },
+    { name: 'Düsseldorf-Gerresheim', slug: 'duesseldorf-gerresheim' },
+
     // ── Berlin Bezirke ────────────────────────────────────────────────────────
 
     {
