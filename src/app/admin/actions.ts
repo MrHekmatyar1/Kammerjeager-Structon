@@ -1,6 +1,7 @@
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
+import { supabaseAdmin } from '@/lib/supabase/admin';
 import { revalidatePath } from 'next/cache';
 
 const ADMIN_EMAIL = 'edorkalchuk@gmail.com';
@@ -13,7 +14,7 @@ export async function updateLeadStatus(id: number, status: string) {
         throw new Error('Unauthorized');
     }
 
-    const { error } = await supabase
+    const { error } = await supabaseAdmin
         .from('leads')
         .update({ status })
         .eq('id', id);
@@ -37,7 +38,7 @@ export async function getMasters() {
         throw new Error('Unauthorized');
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
         .from('masters')
         .select('id, name, firma, is_active')
         .order('name');
@@ -76,7 +77,7 @@ export async function assignLeadManually(
         updates.billing_override_value = null;
     }
 
-    const { error } = await supabase
+    const { error } = await supabaseAdmin
         .from('leads')
         .update(updates)
         .eq('id', leadId);

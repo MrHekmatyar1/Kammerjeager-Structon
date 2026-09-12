@@ -1,14 +1,12 @@
-import { createClient } from '@/lib/supabase/server';
+import { supabaseAdmin } from '@/lib/supabase/admin';
 import LeadsTable from '@/components/admin/LeadsTable';
 import { getMasters } from './actions';
 
 export const revalidate = 0; // Всегда свежие данные для админки
 
 export default async function AdminPage() {
-    const supabase = await createClient();
-
     // Получаем все лиды, сортируем по дате создания (новые сверху)
-    const { data: leads, error } = await supabase
+    const { data: leads, error } = await supabaseAdmin
         .from('leads')
         .select('*')
         .order('created_at', { ascending: false });
