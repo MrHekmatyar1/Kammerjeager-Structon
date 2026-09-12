@@ -46,6 +46,87 @@ export default function BezirkInfo({ city }: { city: City }) {
                     }}>
                         Schädlingsbekämpfung<br />in {city.name}
                     </h2>
+                </div>
+
+                {/* ── Services Grid (Interne Verlinkung) ── */}
+                <div style={{ marginBottom: '48px' }}>
+                    <h3 style={{
+                        fontFamily: "'Barlow Condensed', sans-serif",
+                        fontSize: '22px',
+                        fontWeight: 800,
+                        color: '#0f172a',
+                        textTransform: 'uppercase',
+                        marginBottom: '20px',
+                    }}>
+                        Unsere Leistungen in {city.name}
+                    </h3>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+                        gap: '12px',
+                    }}>
+                        {SERVICES.map(service => (
+                            <Link
+                                key={service.slug}
+                                href={`/${city.slug}/${service.slug}`}
+                                style={{
+                                    display: 'block',
+                                    padding: '14px 16px',
+                                    background: '#fff',
+                                    border: '1.5px solid #e2e8f0',
+                                    textDecoration: 'none',
+                                    transition: 'border-color 0.15s, background 0.15s',
+                                }}
+                                onMouseEnter={e => {
+                                    (e.currentTarget as HTMLElement).style.borderColor = '#C8102E';
+                                    (e.currentTarget as HTMLElement).style.background = '#fff5f5';
+                                }}
+                                onMouseLeave={e => {
+                                    (e.currentTarget as HTMLElement).style.borderColor = '#e2e8f0';
+                                    (e.currentTarget as HTMLElement).style.background = '#fff';
+                                }}
+                            >
+                                <div style={{
+                                    fontSize: '13px',
+                                    fontWeight: 700,
+                                    color: '#0f172a',
+                                    marginBottom: '4px',
+                                }}>
+                                    {service.shortName}
+                                </div>
+                                <div style={{
+                                    fontSize: '11px',
+                                    color: '#64748b',
+                                    lineHeight: 1.4,
+                                }}>
+                                    in {city.name} →
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+                <div style={{ marginBottom: '40px' }}>
+                    <div style={{
+                        fontSize: '11px',
+                        fontWeight: 700,
+                        letterSpacing: '0.14em',
+                        textTransform: 'uppercase',
+                        color: '#C8102E',
+                        marginBottom: '10px',
+                    }}>
+                        Kammerjäger in {city.name}
+                    </div>
+                    <h2 style={{
+                        fontFamily: "'Barlow Condensed', sans-serif",
+                        fontSize: 'clamp(28px, 5vw, 48px)',
+                        fontWeight: 900,
+                        color: '#0f172a',
+                        textTransform: 'uppercase',
+                        lineHeight: 1.05,
+                        margin: '0 0 20px',
+                    }}>
+                        Schädlingsbekämpfung<br />in {city.name}
+                    </h2>
                     <p style={{
                         fontSize: '16px',
                         color: '#475569',
@@ -123,63 +204,7 @@ export default function BezirkInfo({ city }: { city: City }) {
                     </div>
                 </div>
 
-                {/* ── Services Grid (Interne Verlinkung) ── */}
-                <div>
-                    <h3 style={{
-                        fontFamily: "'Barlow Condensed', sans-serif",
-                        fontSize: '22px',
-                        fontWeight: 800,
-                        color: '#0f172a',
-                        textTransform: 'uppercase',
-                        marginBottom: '20px',
-                    }}>
-                        Unsere Leistungen in {city.name}
-                    </h3>
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-                        gap: '12px',
-                    }}>
-                        {SERVICES.map(service => (
-                            <Link
-                                key={service.slug}
-                                href={`/${city.slug}/${service.slug}`}
-                                style={{
-                                    display: 'block',
-                                    padding: '14px 16px',
-                                    background: '#fff',
-                                    border: '1.5px solid #e2e8f0',
-                                    textDecoration: 'none',
-                                    transition: 'border-color 0.15s, background 0.15s',
-                                }}
-                                onMouseEnter={e => {
-                                    (e.currentTarget as HTMLElement).style.borderColor = '#C8102E';
-                                    (e.currentTarget as HTMLElement).style.background = '#fff5f5';
-                                }}
-                                onMouseLeave={e => {
-                                    (e.currentTarget as HTMLElement).style.borderColor = '#e2e8f0';
-                                    (e.currentTarget as HTMLElement).style.background = '#fff';
-                                }}
-                            >
-                                <div style={{
-                                    fontSize: '13px',
-                                    fontWeight: 700,
-                                    color: '#0f172a',
-                                    marginBottom: '4px',
-                                }}>
-                                    {service.shortName}
-                                </div>
-                                <div style={{
-                                    fontSize: '11px',
-                                    color: '#64748b',
-                                    lineHeight: 1.4,
-                                }}>
-                                    in {city.name} →
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
+
 
             </div>
         </section>
