@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Großstädte mit Stadtbezirken — Akkordeons (unten)
+// Großstädte mit Stadtbezirken — Akkordeons (oben)
 const CITIES_WITH_DISTRICTS = [
     {
         name: 'Berlin',
@@ -104,7 +104,7 @@ const CITIES_WITH_DISTRICTS = [
     },
 ];
 
-// Alle anderen Städte — einfache Links in Rasteransicht (oben)
+// Alle anderen Städte — einfache Links in Rasteransicht (unten)
 const OTHER_CITIES = [
     { name: 'Leipzig', slug: 'leipzig' },
     { name: 'Dortmund', slug: 'dortmund' },
@@ -138,105 +138,145 @@ const OTHER_CITIES = [
 ];
 
 export default function CityGrid() {
+    // Главный аккордеон — вся секция открыта/закрыта
+    const [sectionOpen, setSectionOpen] = useState(false);
+    // Какой город-с-районами раскрыт
     const [openCity, setOpenCity] = useState<string | null>(null);
 
-    const toggle = (slug: string) => {
+    const toggleCity = (slug: string) => {
         setOpenCity(prev => (prev === slug ? null : slug));
     };
 
     return (
-        <section className="w-full max-w-5xl mx-auto bg-[#1a1a1a] text-white py-12 px-6 md:py-16 md:px-12">
-            <h2 className="text-3xl md:text-4xl font-black mb-10 tracking-tight">
-                Unsere Standorte in Deutschland
-            </h2>
+        <section className="w-full max-w-5xl mx-auto bg-[#1a1a1a] text-white">
 
-            {/* ── Andere Städte (Raster, oben) ── */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-0">
-                {OTHER_CITIES.map((city) => (
-                    <Link
-                        key={city.slug}
-                        href={`/${city.slug}`}
-                        className="flex items-center justify-between py-3.5 px-2 text-sm text-white/70 hover:text-white border-b border-white/10 hover:bg-white/5 transition-all duration-150 group/city"
+            {/* ── Заголовок-кнопка — клик раскрывает всю секцию ── */}
+            <button
+                onClick={() => { setSectionOpen(v => !v); if (sectionOpen) setOpenCity(null); }}
+                className="w-full flex items-center justify-between px-6 md:px-12 py-8 md:py-10 text-left group"
+            >
+                <h2 className="text-3xl md:text-4xl font-black tracking-tight">
+                    Unsere Standorte in Deutschland
+                </h2>
+                <motion.div
+                    animate={{ rotate: sectionOpen ? 180 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="shrink-0 ml-4 text-white/50 group-hover:text-white transition-colors"
+                >
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" strokeWidth="2"
+                        strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                </motion.div>
+            </button>
+
+            {/* ── Содержимое секции — выезжает при клике ── */}
+            <AnimatePresence>
+                {sectionOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className="overflow-hidden"
                     >
-                        <span className="font-medium">{city.name}</span>
-                        <svg
-                            className="opacity-0 group-hover/city:opacity-100 transition-opacity shrink-0"
-                            width="13" height="13" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" strokeWidth="2.5"
-                            strokeLinecap="round" strokeLinejoin="round"
-                        >
-                            <polyline points="9 18 15 12 9 6" />
-                        </svg>
-                    </Link>
-                ))}
-            </div>
+                        <div className="px-6 md:px-12 pb-10">
 
-            {/* ── Großstädte mit Bezirken (Akkordeons, unten) ── */}
-            <div className="flex flex-col">
-                {CITIES_WITH_DISTRICTS.map((city) => {
-                    const isOpen = openCity === city.slug;
-                    return (
-                        <div key={city.slug}>
-                            <button
-                                onClick={() => toggle(city.slug)}
-                                className={`w-full flex items-center justify-between text-left py-3.5 px-2 md:px-4 transition-all duration-200
-                                    ${isOpen
-                                        ? 'border border-white/40'
-                                        : 'border-b border-white/20 hover:border-white/50'
-                                    }`}
-                            >
-                                <span className="font-medium text-sm md:text-base">
-                                    {city.name}
-                                </span>
-                                <div className="flex items-center text-white/40 hover:text-white/70 transition-colors">
-                                    <motion.div
-                                        animate={{ rotate: isOpen ? 180 : 0 }}
-                                        transition={{ duration: 0.2 }}
-                                    >
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <polyline points="6 9 12 15 18 9" />
-                                        </svg>
-                                    </motion.div>
-                                </div>
-                            </button>
+                            {/* Großstädte mit Bezirken (oben) */}
+                            <div className="flex flex-col">
+                                {CITIES_WITH_DISTRICTS.map((city) => {
+                                    const isOpen = openCity === city.slug;
+                                    return (
+                                        <div key={city.slug}>
+                                            <button
+                                                onClick={() => toggleCity(city.slug)}
+                                                className={`w-full flex items-center justify-between text-left py-3.5 px-2 transition-all duration-200
+                                                    ${isOpen
+                                                        ? 'border border-white/40'
+                                                        : 'border-b border-white/20 hover:border-white/50'
+                                                    }`}
+                                            >
+                                                <span className="font-medium text-sm md:text-base">
+                                                    {city.name}
+                                                </span>
+                                                <motion.div
+                                                    animate={{ rotate: isOpen ? 180 : 0 }}
+                                                    transition={{ duration: 0.2 }}
+                                                    className="text-white/40 hover:text-white/70 transition-colors"
+                                                >
+                                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" strokeWidth="2"
+                                                        strokeLinecap="round" strokeLinejoin="round">
+                                                        <polyline points="6 9 12 15 18 9" />
+                                                    </svg>
+                                                </motion.div>
+                                            </button>
 
-                            <AnimatePresence>
-                                {isOpen && (
-                                    <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: 'auto', opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.22 }}
-                                        className="overflow-hidden"
-                                    >
-                                        <div className="px-2 md:px-4 pt-4 pb-5 border border-white/10 border-t-0">
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-0">
-                                                {city.districts.map((d) => (
-                                                    <Link
-                                                        key={d.slug}
-                                                        href={`/${d.slug}`}
-                                                        className="flex items-center justify-between py-2.5 px-2 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-all duration-150 group/item"
+                                            <AnimatePresence>
+                                                {isOpen && (
+                                                    <motion.div
+                                                        initial={{ height: 0, opacity: 0 }}
+                                                        animate={{ height: 'auto', opacity: 1 }}
+                                                        exit={{ height: 0, opacity: 0 }}
+                                                        transition={{ duration: 0.22 }}
+                                                        className="overflow-hidden"
                                                     >
-                                                        <span>{d.name}</span>
-                                                        <svg
-                                                            className="opacity-0 group-hover/item:opacity-100 transition-opacity shrink-0"
-                                                            width="13" height="13" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" strokeWidth="2.5"
-                                                            strokeLinecap="round" strokeLinejoin="round"
-                                                        >
-                                                            <polyline points="9 18 15 12 9 6" />
-                                                        </svg>
-                                                    </Link>
-                                                ))}
-                                            </div>
+                                                        <div className="px-2 pt-3 pb-4 border border-white/10 border-t-0">
+                                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4">
+                                                                {city.districts.map((d) => (
+                                                                    <Link
+                                                                        key={d.slug}
+                                                                        href={`/${d.slug}`}
+                                                                        className="flex items-center justify-between py-2.5 px-2 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-all duration-150 group/item"
+                                                                    >
+                                                                        <span>{d.name}</span>
+                                                                        <svg
+                                                                            className="opacity-0 group-hover/item:opacity-100 transition-opacity shrink-0"
+                                                                            width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                                                            stroke="currentColor" strokeWidth="2.5"
+                                                                            strokeLinecap="round" strokeLinejoin="round"
+                                                                        >
+                                                                            <polyline points="9 18 15 12 9 6" />
+                                                                        </svg>
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
                                         </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Andere Städte — Raster (unten) */}
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 mt-0">
+                                {OTHER_CITIES.map((city) => (
+                                    <Link
+                                        key={city.slug}
+                                        href={`/${city.slug}`}
+                                        className="flex items-center justify-between py-3.5 px-2 text-sm text-white/70 hover:text-white border-b border-white/10 hover:bg-white/5 transition-all duration-150 group/city"
+                                    >
+                                        <span className="font-medium">{city.name}</span>
+                                        <svg
+                                            className="opacity-0 group-hover/city:opacity-100 transition-opacity shrink-0"
+                                            width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" strokeWidth="2.5"
+                                            strokeLinecap="round" strokeLinejoin="round"
+                                        >
+                                            <polyline points="9 18 15 12 9 6" />
+                                        </svg>
+                                    </Link>
+                                ))}
+                            </div>
+
                         </div>
-                    );
-                })}
-            </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
         </section>
     );
 }
