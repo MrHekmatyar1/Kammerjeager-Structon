@@ -198,6 +198,52 @@ export async function updateKundeProfile(id: string, updates: { name?: string, e
     return { success: true };
 }
 
+export async function deleteLead(id: number) {
+    const supabase = await createClient();
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session || session.user.email !== ADMIN_EMAIL) throw new Error('Unauthorized');
+
+    const { error } = await supabaseAdmin.from('leads').delete().eq('id', id);
+    if (error) {
+        console.error('[Admin] Error deleting lead:', error);
+        throw new Error('Failed to delete lead');
+    }
+
+    revalidatePath('/admin');
+    return { success: true };
+}
+
+export async function deleteMaster(id: number) {
+    const supabase = await createClient();
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session || session.user.email !== ADMIN_EMAIL) throw new Error('Unauthorized');
+
+    const { error } = await supabaseAdmin.from('masters').delete().eq('id', id);
+    if (error) {
+        console.error('[Admin] Error deleting master:', error);
+        throw new Error('Failed to delete master');
+    }
+
+    revalidatePath('/admin/masters');
+    return { success: true };
+}
+
+export async function deleteKunde(id: string) {
+    const supabase = await createClient();
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session || session.user.email !== ADMIN_EMAIL) throw new Error('Unauthorized');
+
+    const { error } = await supabaseAdmin.auth.admin.deleteUser(id);
+    if (error) {
+        console.error('[Admin] Error deleting kunde:', error);
+        throw new Error('Failed to delete kunde');
+    }
+
+    revalidatePath('/admin/kunden');
+    return { success: true };
+}
+
+
 export async function updateLeadProfile(id: number, updates: any) {
     const supabase = await createClient();
     const { data: { session } } = await supabase.auth.getSession();

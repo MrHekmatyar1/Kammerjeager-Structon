@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useTransition } from 'react';
-import { updateLeadStatus, assignLeadManually, updateLeadProfile } from '@/app/admin/actions';
-import { Pencil, Save, X } from 'lucide-react';
+import { updateLeadStatus, assignLeadManually, updateLeadProfile, deleteLead } from '@/app/admin/actions';
+import { Pencil, Save, X, Trash2 } from 'lucide-react';
 
 export type Lead = {
     id: number;
@@ -127,6 +127,19 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
         });
     };
 
+
+    const handleDeleteLead = async (id: number) => {
+        if (!window.confirm('Möchten Sie diesen Lead wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.')) return;
+        startTransition(async () => {
+            try {
+                await deleteLead(id);
+                setLeads(prev => prev.filter(l => l.id !== id));
+            } catch (err) {
+                console.error(err);
+                alert('Fehler beim Löschen des Leads.');
+            }
+        });
+    };
     const handleAssign = async () => {
         if (!selectedLeadForAssign || !assignMasterId) return;
         setIsAssigning(true);
@@ -306,12 +319,21 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333] text-right">
-                                                    <button
-                                                        onClick={() => setSelectedLeadForAssign(lead)}
-                                                        className="px-3 py-1.5 bg-[#222222] hover:bg-[#2a2a2a] text-slate-300 text-xs font-bold rounded-lg transition-colors border border-[#2a2a2a]"
-                                                    >
-                                                        Zuweisen
-                                                    </button>
+                                                    <div className="flex items-center justify-end gap-2">
+                                                        <button
+                                                            onClick={() => setSelectedLeadForAssign(lead)}
+                                                            className="px-3 py-1.5 bg-[#222222] hover:bg-[#2a2a2a] text-slate-300 text-xs font-bold rounded-lg transition-colors border border-[#2a2a2a]"
+                                                        >
+                                                            Zuweisen
+                                                        </button>
+                                                        <button
+                                                            onClick={() => handleDeleteLead(lead.id)}
+                                                            className="p-1.5 bg-[#111111] hover:bg-red-900/30 text-slate-500 hover:text-red-500 rounded-lg transition-colors border border-[#2a2a2a]"
+                                                            title="Löschen"
+                                                        >
+                                                            <Trash2 size={16} />
+                                                        </button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         );

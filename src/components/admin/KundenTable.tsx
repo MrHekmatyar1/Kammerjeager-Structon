@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { updateKundeProfile } from '@/app/admin/actions';
-import { Pencil, Save, X } from 'lucide-react';
+import { Pencil, Save, X, Trash2 } from 'lucide-react';
 
 export default function KundenTable({ initialKunden }: { initialKunden: any[] }) {
     const [kunden, setKunden] = useState(initialKunden);

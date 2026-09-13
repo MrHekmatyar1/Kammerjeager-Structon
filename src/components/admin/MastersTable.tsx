@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { updateMasterProfile, setFreeLeads } from '../../app/admin/actions';
-import { CheckCircle, XCircle, Gift, Pencil, Save, X } from 'lucide-react';
+import { updateMasterProfile, setFreeLeads, deleteMaster } from '../../app/admin/actions';
+import { CheckCircle, XCircle, Gift, Pencil, Save, X, Trash2 } from 'lucide-react';
 
 export default function MastersTable({ initialMasters }: { initialMasters: any[] }) {
     const [masters, setMasters] = useState(initialMasters);
@@ -23,6 +23,17 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
     const handleCancelEdit = () => {
         setEditingId(null);
         setEditForm({});
+    };
+
+    const handleDeleteMaster = async (id: number) => {
+        if (!window.confirm('Möchten Sie diesen Meister wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.')) return;
+        try {
+            await deleteMaster(id);
+            setMasters(prev => prev.filter(m => m.id !== id));
+        } catch (err) {
+            console.error(err);
+            alert('Fehler beim Löschen des Meisters.');
+        }
     };
 
     const handleSaveEdit = async () => {
@@ -142,6 +153,13 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                                     title="Bearbeiten"
                                                 >
                                                     {isEditing ? <X size={16} /> : <Pencil size={16} />}
+                                                </button>
+                                                <button
+                                                    onClick={() => handleDeleteMaster(m.id)}
+                                                    className="p-1.5 rounded-lg transition-colors border bg-[#111111] text-slate-500 hover:text-red-500 hover:bg-red-900/30 border-[#2a2a2a]"
+                                                    title="Löschen"
+                                                >
+                                                    <Trash2 size={16} />
                                                 </button>
                                             </div>
                                     </td>
