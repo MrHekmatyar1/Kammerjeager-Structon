@@ -58,8 +58,8 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                             const isEditing = editingId === k.id;
                             
                             return (
-                                <tr key={k.id} className="bg-white hover:bg-slate-50 transition-colors shadow-sm group">
-                                    <td className="px-6 py-4 border-y border-l border-slate-200 rounded-l-xl group-hover:border-slate-300">
+                                <tr key={k.id} className="bg-white hover:bg-slate-50 transition-colors shadow-md group">
+                                    <td className="px-6 py-4 border-y border-l border-slate-300 rounded-l-xl group-hover:border-slate-400">
                                         {isEditing ? (
                                             <div className="flex flex-col gap-2">
                                                 <input 
@@ -84,13 +84,13 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                                             </>
                                         )}
                                     </td>
-                                    <td className="px-6 py-4 text-sm text-slate-700 border-y border-slate-200 group-hover:border-slate-300">
+                                    <td className="px-6 py-4 text-sm text-slate-700 border-y border-slate-300 group-hover:border-slate-400">
                                         {new Date(k.created_at).toLocaleDateString('de-DE')}
                                     </td>
-                                    <td className="px-6 py-4 text-sm text-slate-700 border-y border-slate-200 group-hover:border-slate-300">
+                                    <td className="px-6 py-4 text-sm text-slate-700 border-y border-slate-300 group-hover:border-slate-400">
                                         {k.last_sign_in_at ? new Date(k.last_sign_in_at).toLocaleString('de-DE') : 'Nie'}
                                     </td>
-                                    <td className="px-6 py-4 text-right border-y border-r border-slate-200 rounded-r-xl group-hover:border-slate-300">
+                                    <td className="px-6 py-4 text-right border-y border-r border-slate-300 rounded-r-xl group-hover:border-slate-400">
                                         {isEditing ? (
                                             <div className="flex items-center justify-end gap-2">
                                                 <button onClick={() => handleSave(k.id)} disabled={saving} className="p-2 text-green-600 hover:bg-green-50 rounded-full transition-colors" title="Speichern">

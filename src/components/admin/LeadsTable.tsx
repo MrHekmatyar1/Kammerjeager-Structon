@@ -196,14 +196,14 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                     {filteredLeads.map((lead) => {
                                         const b2b = isB2BLead(lead);
                                         return (
-                                            <tr key={lead.id} className="bg-white hover:bg-slate-50 transition-colors shadow-sm group">
-                                                <td className="px-6 py-4 whitespace-nowrap text-xs text-slate-500 border-y border-l border-slate-200 rounded-l-xl group-hover:border-slate-300">
+                                            <tr key={lead.id} className="bg-white hover:bg-slate-50 transition-colors shadow-md group">
+                                                <td className="px-6 py-4 whitespace-nowrap text-xs text-slate-500 border-y border-l border-slate-300 rounded-l-xl group-hover:border-slate-400">
                                                     {new Date(lead.created_at || lead.erstellt_am || new Date()).toLocaleDateString('de-DE', {
                                                         day: '2-digit', month: '2-digit', year: 'numeric',
                                                         hour: '2-digit', minute: '2-digit'
                                                     })}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-slate-200 group-hover:border-slate-300">
+                                                <td className="px-6 py-4 border-y border-slate-300 group-hover:border-slate-400">
                                                     {b2b ? (
                                                         <div>
                                                             <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200 uppercase tracking-wider mb-1">
@@ -223,7 +223,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         </div>
                                                     )}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-slate-200 group-hover:border-slate-300">
+                                                <td className="px-6 py-4 border-y border-slate-300 group-hover:border-slate-400">
                                                     <a href={`tel:${lead.telefon}`} className="font-semibold text-slate-800 hover:text-[#C8102E] transition-colors block">
                                                         {lead.telefon}
                                                     </a>
@@ -231,13 +231,13 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         {lead.email}
                                                     </a>
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-slate-200 group-hover:border-slate-300">
+                                                <td className="px-6 py-4 border-y border-slate-300 group-hover:border-slate-400">
                                                     <div className="font-medium text-slate-800">
                                                         {lead.plz} {lead.strasse || ''} {lead.hausnummer || ''}
                                                     </div>
                                                     {lead.etage && <div className="text-xs text-slate-400 mt-0.5">Etage: {lead.etage}</div>}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-slate-200 group-hover:border-slate-300">
+                                                <td className="px-6 py-4 border-y border-slate-300 group-hover:border-slate-400">
                                                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-red-50 text-[#C8102E] font-medium text-xs border border-red-100 mb-1">
                                                         {lead.schaedling || 'Unbekannt'}
                                                     </div>
@@ -256,7 +256,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         </div>
                                                     )}
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap border-y border-r border-slate-200 rounded-r-xl group-hover:border-slate-300">
+                                                <td className="px-6 py-4 whitespace-nowrap border-y border-r border-slate-300 rounded-r-xl group-hover:border-slate-400">
                                                     <div className="relative">
                                                         <select
                                                             value={lead.status}
@@ -275,7 +275,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-r border-slate-200 rounded-r-xl group-hover:border-slate-300 text-right">
+                                                <td className="px-6 py-4 border-y border-r border-slate-300 rounded-r-xl group-hover:border-slate-400 text-right">
                                                     <button
                                                         onClick={() => setSelectedLeadForAssign(lead)}
                                                         className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition-colors border border-slate-200"
