@@ -47,9 +47,9 @@ export default function ServicePage({ params }: { params: { service: string } })
                 </div>
             </section>
 
-            <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
+            {/* <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
                 <ReviewSlider />
-            </section>
+            </section> */}
 
             <Footer />
             <ChatBot />
