@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useTransition } from 'react';
-import { updateLeadStatus, assignLeadManually } from '@/app/admin/actions';
+import React, { useState, useTransition } from 'react';
+import { updateLeadStatus, assignLeadManually, updateLeadProfile } from '@/app/admin/actions';
+import { Pencil, Save, X } from 'lucide-react';
 
 export type Lead = {
     id: number;
@@ -55,6 +56,35 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
     const [leads, setLeads] = useState<Lead[]>(initialLeads);
     const [filter, setFilter] = useState<'all' | 'b2b' | 'privat'>('all');
     const [isPending, startTransition] = useTransition();
+
+    // Edit state
+    const [expandedRowId, setExpandedRowId] = useState<number | null>(null);
+    const [editForm, setEditForm] = useState<Partial<Lead>>({});
+    const [isSaving, setIsSaving] = useState(false);
+
+    const handleEdit = (lead: Lead) => {
+        setExpandedRowId(lead.id);
+        setEditForm(lead);
+    };
+
+    const handleCancelEdit = () => {
+        setExpandedRowId(null);
+        setEditForm({});
+    };
+
+    const handleSaveEdit = async () => {
+        if (!expandedRowId) return;
+        setIsSaving(true);
+        try {
+            await updateLeadProfile(expandedRowId, editForm);
+            setLeads(current => current.map(l => l.id === expandedRowId ? { ...l, ...editForm } as Lead : l));
+            setExpandedRowId(null);
+        } catch (e: any) {
+            alert('Fehler beim Speichern: ' + e.message);
+        } finally {
+            setIsSaving(false);
+        }
+    };
 
     // Modal state
     const [selectedLeadForAssign, setSelectedLeadForAssign] = useState<Lead | null>(null);

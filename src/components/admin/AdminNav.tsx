@@ -18,7 +18,7 @@ export default function AdminNav() {
             {/* Back to Dashboard Button */}
             <Link 
                 href="/dashboard" 
-                className="mb-4 flex items-center gap-2 text-slate-500 hover:text-[#C8102E] transition-colors font-medium text-sm px-4 md:px-0"
+                className="mb-4 flex items-center gap-2 text-slate-400 hover:text-white transition-colors font-medium text-sm px-4 md:px-0"
             >
                 <ArrowLeft size={18} />
                 Zurück zum Dashboard
@@ -34,8 +34,8 @@ export default function AdminNav() {
                         href={item.href} 
                         className={`flex items-center gap-2 md:gap-3 px-4 py-2 md:py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-colors ${
                             isActive 
-                                ? 'bg-red-50 text-[#C8102E]' 
-                                : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                                ? 'bg-[#2a2a2a] text-white' 
+                                : 'text-slate-400 hover:bg-[#222222] hover:text-white'
                         }`}
                     >
                         <Icon size={20} />
@@ -44,7 +44,7 @@ export default function AdminNav() {
                 );
             })}
             
-            <div className="flex items-center gap-2 md:gap-3 px-4 py-2 md:py-3 text-slate-400 font-medium text-sm cursor-not-allowed whitespace-nowrap mt-4 border-t border-slate-100">
+            <div className="flex items-center gap-2 md:gap-3 px-4 py-2 md:py-3 text-slate-500 font-medium text-sm cursor-not-allowed whitespace-nowrap mt-4 border-t border-[#2a2a2a]">
                 <BarChart3 size={20} />
                 Statistik (Bald)
             </div>

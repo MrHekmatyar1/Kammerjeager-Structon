@@ -26,15 +26,15 @@ export default async function AdminPage() {
         <div className="space-y-6">
             <header className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
                 <div>
-                    <h1 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight">Leads Übersicht</h1>
-                    <p className="text-slate-500 font-medium mt-1">Verwalten Sie hier alle eingehenden Kundenanfragen.</p>
+                    <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Leads Übersicht</h1>
+                    <p className="text-slate-400 font-medium mt-1">Verwalten Sie hier alle eingehenden Kundenanfragen.</p>
                 </div>
-                <div className="bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm flex items-center gap-2">
+                <div className="bg-[#1e1e1e] px-4 py-2 rounded-lg border border-[#333] shadow-sm flex items-center gap-2">
                     <span className="flex h-2 w-2 relative">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
-                    <span className="text-sm font-bold text-slate-700">{leads?.length || 0} Leads gesamt</span>
+                    <span className="text-sm font-bold text-white">{leads?.length || 0} Leads gesamt</span>
                 </div>
             </header>
 

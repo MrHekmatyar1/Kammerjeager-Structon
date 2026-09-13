@@ -197,3 +197,25 @@ export async function updateKundeProfile(id: string, updates: { name?: string, e
     revalidatePath('/admin/kunden');
     return { success: true };
 }
+
+export async function updateLeadProfile(id: number, updates: any) {
+    const supabase = await createClient();
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (!session || session.user.email !== ADMIN_EMAIL) {
+        throw new Error('Unauthorized');
+    }
+
+    const { error } = await supabaseAdmin
+        .from('leads')
+        .update(updates)
+        .eq('id', id);
+
+    if (error) {
+        console.error('[Admin] Error updating lead profile:', error);
+        throw new Error('Failed to update lead profile');
+    }
+
+    revalidatePath('/admin');
+    return { success: true };
+}
