@@ -89,13 +89,13 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                 {...(cityData.bezirkInfo?.heroSubtitle ? { heroSubtitle: cityData.bezirkInfo.heroSubtitle } : {})}
             />
 
+            <UnserProzess />
+
             <section className="w-full flex flex-col items-center bg-white px-6 pt-[80px] pb-[120px]" style={{ background: isBezirk ? '#f1f4f8' : undefined }}>
                 <div className="w-full max-w-[850px]">
                     <LeadWizard />
                 </div>
             </section>
-
-            <UnserProzess />
 
             {/* Уникальный блок про район — только для берлинских Bezirke */}
             {isBezirk && <BezirkInfo city={cityData} />}

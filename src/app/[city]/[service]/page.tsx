@@ -97,13 +97,13 @@ export default async function CityServicePage({ params }: { params: Promise<{ ci
                 {...(isBezirk && info ? { heroSubtitle: `${serviceData.name} in ${cityData.name} – professionell, schnell und zum Festpreis.` } : {})}
             />
 
+            <UnserProzess />
+
             <section className="w-full flex flex-col items-center bg-white px-6 pt-[80px] pb-[120px]" style={{ background: '#f1f4f8' }}>
                 <div className="w-full max-w-[850px]">
                     <LeadWizard />
                 </div>
             </section>
-
-            <UnserProzess />
 
             {/* Уникальный информационный блок для Berlin-районов */}
             {isBezirk && info && (

@@ -48,63 +48,7 @@ export default function BezirkInfo({ city }: { city: City }) {
                     </h2>
                 </div>
 
-                {/* ── Services Grid (Interne Verlinkung) ── */}
-                <div style={{ marginBottom: '48px' }}>
-                    <h3 style={{
-                        fontFamily: "'Barlow Condensed', sans-serif",
-                        fontSize: '22px',
-                        fontWeight: 800,
-                        color: '#0f172a',
-                        textTransform: 'uppercase',
-                        marginBottom: '20px',
-                    }}>
-                        Unsere Leistungen in {city.name}
-                    </h3>
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-                        gap: '12px',
-                    }}>
-                        {SERVICES.map(service => (
-                            <Link
-                                key={service.slug}
-                                href={`/${city.slug}/${service.slug}`}
-                                style={{
-                                    display: 'block',
-                                    padding: '14px 16px',
-                                    background: '#fff',
-                                    border: '1.5px solid #e2e8f0',
-                                    textDecoration: 'none',
-                                    transition: 'border-color 0.15s, background 0.15s',
-                                }}
-                                onMouseEnter={e => {
-                                    (e.currentTarget as HTMLElement).style.borderColor = '#C8102E';
-                                    (e.currentTarget as HTMLElement).style.background = '#fff5f5';
-                                }}
-                                onMouseLeave={e => {
-                                    (e.currentTarget as HTMLElement).style.borderColor = '#e2e8f0';
-                                    (e.currentTarget as HTMLElement).style.background = '#fff';
-                                }}
-                            >
-                                <div style={{
-                                    fontSize: '13px',
-                                    fontWeight: 700,
-                                    color: '#0f172a',
-                                    marginBottom: '4px',
-                                }}>
-                                    {service.shortName}
-                                </div>
-                                <div style={{
-                                    fontSize: '11px',
-                                    color: '#64748b',
-                                    lineHeight: 1.4,
-                                }}>
-                                    in {city.name} →
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
+                {/* ── Heading ── */}
                 <div style={{ marginBottom: '40px' }}>
                     <div style={{
                         fontSize: '11px',
@@ -204,7 +148,63 @@ export default function BezirkInfo({ city }: { city: City }) {
                     </div>
                 </div>
 
-
+                {/* ── Services Grid (Interne Verlinkung) ── */}
+                <div>
+                    <h3 style={{
+                        fontFamily: "'Barlow Condensed', sans-serif",
+                        fontSize: '22px',
+                        fontWeight: 800,
+                        color: '#0f172a',
+                        textTransform: 'uppercase',
+                        marginBottom: '20px',
+                    }}>
+                        Unsere Leistungen in {city.name}
+                    </h3>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+                        gap: '12px',
+                    }}>
+                        {SERVICES.map(service => (
+                            <Link
+                                key={service.slug}
+                                href={`/${city.slug}/${service.slug}`}
+                                style={{
+                                    display: 'block',
+                                    padding: '14px 16px',
+                                    background: '#fff',
+                                    border: '1.5px solid #e2e8f0',
+                                    textDecoration: 'none',
+                                    transition: 'border-color 0.15s, background 0.15s',
+                                }}
+                                onMouseEnter={e => {
+                                    (e.currentTarget as HTMLElement).style.borderColor = '#C8102E';
+                                    (e.currentTarget as HTMLElement).style.background = '#fff5f5';
+                                }}
+                                onMouseLeave={e => {
+                                    (e.currentTarget as HTMLElement).style.borderColor = '#e2e8f0';
+                                    (e.currentTarget as HTMLElement).style.background = '#fff';
+                                }}
+                            >
+                                <div style={{
+                                    fontSize: '13px',
+                                    fontWeight: 700,
+                                    color: '#0f172a',
+                                    marginBottom: '4px',
+                                }}>
+                                    {service.shortName}
+                                </div>
+                                <div style={{
+                                    fontSize: '11px',
+                                    color: '#64748b',
+                                    lineHeight: 1.4,
+                                }}>
+                                    in {city.name} →
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
 
             </div>
         </section>
