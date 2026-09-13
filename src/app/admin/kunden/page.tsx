@@ -11,7 +11,7 @@ export default async function AdminKundenPage() {
             <header className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
                 <div>
                     <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Kunden Übersicht</h1>
-                    <p className="text-slate-400 font-medium mt-1">Verwalten Sie hier alle registrierten Kunden (Privat & Gewerbe).</p>
+
                 </div>
                 <div className="bg-[#1e1e1e] px-4 py-2 rounded-lg border border-[#333] shadow-sm flex items-center gap-2">
                     <span className="flex h-2 w-2 relative">
