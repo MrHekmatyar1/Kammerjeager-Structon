@@ -11,6 +11,7 @@ import Footer from '@/components/layout/Footer';
 import ChatBot from '@/components/interactive/ChatBot';
 import FAQ from '@/components/sections/FAQ';
 import BezirkInfo from '@/components/sections/BezirkInfo';
+import CityGrid from '@/components/sections/CityGrid';
 
 // Предгенерируем все страницы районов/городов
 export async function generateStaticParams() {
@@ -110,6 +111,10 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                     title={`Häufige Fragen zu Kammerjägern in ${cityData.name}`}
                     faqs={faqs}
                 />
+            </div>
+
+            <div className="w-full px-4 mb-20 md:mb-28">
+                <CityGrid />
             </div>
 
             <Footer />

@@ -11,6 +11,7 @@ import Footer from '@/components/layout/Footer';
 import ChatBot from '@/components/interactive/ChatBot';
 import FAQ from '@/components/sections/FAQ';
 import Link from 'next/link';
+import CityGrid from '@/components/sections/CityGrid';
 
 export async function generateStaticParams() {
     const params: { city: string; service: string }[] = [];
@@ -182,6 +183,10 @@ export default async function CityServicePage({ params }: { params: Promise<{ ci
                     title={`Fragen zur ${serviceData.shortName}-Bekämpfung in ${cityData.name}`}
                     faqs={faqs}
                 />
+            </div>
+
+            <div className="w-full px-4 mb-20 md:mb-28">
+                <CityGrid />
             </div>
 
             <Footer />
