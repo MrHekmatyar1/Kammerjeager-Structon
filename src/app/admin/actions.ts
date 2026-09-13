@@ -40,7 +40,7 @@ export async function getMasters() {
 
     const { data, error } = await supabaseAdmin
         .from('masters')
-        .select('id, name, firma, is_active')
+        .select('*')
         .order('name');
 
     if (error) {
@@ -92,4 +92,83 @@ export async function assignLeadManually(
 
     revalidatePath('/admin');
     return { success: true };
+}
+
+export async function updateMasterProfile(id: number, updates: any) {
+    const supabase = await createClient();
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (!session || session.user.email !== ADMIN_EMAIL) {
+        throw new Error('Unauthorized');
+    }
+
+    const { error } = await supabaseAdmin
+        .from('masters')
+        .update(updates)
+        .eq('id', id);
+
+    if (error) {
+        console.error('[Admin] Error updating master:', error);
+        throw new Error('Failed to update master profile');
+    }
+
+    revalidatePath('/admin/masters');
+    return { success: true };
+}
+
+export async function setFreeLeads(id: number, days: number) {
+    const supabase = await createClient();
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (!session || session.user.email !== ADMIN_EMAIL) {
+        throw new Error('Unauthorized');
+    }
+
+    let free_leads_until = null;
+    if (days > 0) {
+        const date = new Date();
+        date.setDate(date.getDate() + days);
+        free_leads_until = date.toISOString();
+    }
+
+    const { error } = await supabaseAdmin
+        .from('masters')
+        .update({ free_leads_until })
+        .eq('id', id);
+
+    if (error) {
+        console.error('[Admin] Error setting free leads:', error);
+        throw new Error('Failed to set free leads');
+    }
+
+    revalidatePath('/admin/masters');
+    return { success: true };
+}
+
+export async function getKundenUsers() {
+    const supabase = await createClient();
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (!session || session.user.email !== ADMIN_EMAIL) {
+        throw new Error('Unauthorized');
+    }
+
+    // Retrieve users from auth using supabaseAdmin
+    const { data, error } = await supabaseAdmin.auth.admin.listUsers();
+    
+    if (error) {
+        console.error('[Admin] Error fetching users:', error);
+        throw new Error('Failed to fetch kunden users');
+    }
+
+    // Filter by role 'kunden'
+    const kunden = data.users.filter(u => u.user_metadata?.role === 'kunden');
+    
+    return kunden.map(u => ({
+        id: u.id,
+        email: u.email,
+        name: u.user_metadata?.name || '',
+        created_at: u.created_at,
+        last_sign_in_at: u.last_sign_in_at,
+    }));
 }

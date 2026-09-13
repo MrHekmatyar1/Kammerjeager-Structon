@@ -207,7 +207,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     ];
 
     if (user?.email?.toLowerCase() === 'edorkalchuk@gmail.com') {
-        navItems.push({ name: 'Admin CRM', href: '/admin' });
+        navItems.push({ name: 'Admin: Leads', href: '/admin' });
+        navItems.push({ name: 'Admin: Meister', href: '/admin/masters' });
+        navItems.push({ name: 'Admin: Kunden', href: '/admin/kunden' });
     }
 
     const NavLinks = () => (
