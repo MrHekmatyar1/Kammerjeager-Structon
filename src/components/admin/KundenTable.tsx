@@ -188,20 +188,20 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                             </button>
                         </div>
                         <div className="p-6">
-                            <p className="text-sm text-slate-300 mb-6">
+                            <p className="text-sm text-slate-400 mb-6">
                                 Möchten Sie diesen Kunden wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.
                             </p>
-                            <div className="flex gap-3">
+                            <div className="flex justify-end gap-3">
                                 <button 
                                     onClick={() => setDeletingId(null)}
-                                    className="flex-1 px-4 py-2 bg-[#222222] border border-[#2a2a2a] hover:bg-[#2a2a2a] text-slate-300 rounded-lg font-semibold transition-colors"
+                                    className="px-4 py-2 bg-[#222222] border border-[#2a2a2a] hover:bg-[#2a2a2a] text-slate-300 rounded-md text-sm font-medium transition-colors"
                                 >
                                     Abbrechen
                                 </button>
                                 <button 
                                     onClick={confirmDelete}
                                     disabled={saving}
-                                    className="flex-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
+                                    className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition-colors disabled:opacity-50"
                                 >
                                     {saving ? 'Lösche...' : 'Unwiderruflich löschen'}
                                 </button>
