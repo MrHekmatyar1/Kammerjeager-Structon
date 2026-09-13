@@ -1,13 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { updateKundeProfile } from '@/app/admin/actions';
+import { updateKundeProfile, deleteKunde } from '@/app/admin/actions';
 import { Pencil, Save, X, Trash2 } from 'lucide-react';
 
 export default function KundenTable({ initialKunden }: { initialKunden: any[] }) {
     const [kunden, setKunden] = useState(initialKunden);
     const [editingId, setEditingId] = useState<string | null>(null);
     const [editForm, setEditForm] = useState<{name?: string, email?: string}>({});
+    const [deletingId, setDeletingId] = useState<string | null>(null);
     const [saving, setSaving] = useState(false);
 
     const handleEdit = (k: any) => {
@@ -18,6 +19,25 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
     const handleCancel = () => {
         setEditingId(null);
         setEditForm({});
+    };
+
+    const handleDeleteKunde = (id: string) => {
+        setDeletingId(id);
+    };
+
+    const confirmDelete = async () => {
+        if (!deletingId) return;
+        setSaving(true);
+        try {
+            await deleteKunde(deletingId);
+            setKunden(prev => prev.filter(k => k.id !== deletingId));
+            setDeletingId(null);
+        } catch (err: any) {
+            console.error(err);
+            alert('Fehler beim Löschen des Kunden.');
+        } finally {
+            setSaving(false);
+        }
     };
 
     const handleSave = async (id: string) => {
@@ -81,6 +101,15 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                                             >
                                                 {isEditing ? <X size={16} /> : <Pencil size={16} />}
                                             </button>
+                                            {!isEditing && (
+                                                <button
+                                                    onClick={() => handleDeleteKunde(k.id)}
+                                                    className="p-1.5 rounded-lg bg-[#111111] border border-[#2a2a2a] text-red-500/70 hover:text-red-500 hover:bg-[#1a1111] transition-colors"
+                                                    title="Löschen"
+                                                >
+                                                    <Trash2 size={16} />
+                                                </button>
+                                            )}
                                         </div>
                                     </td>
                                 </tr>
@@ -131,6 +160,40 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                     </tbody>
                 </table>
             </div>
+
+            {/* Delete Confirmation Modal */}
+            {deletingId && (
+                <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+                    <div className="bg-[#161616] rounded-xl shadow-xl w-full max-w-md overflow-hidden border border-[#2a2a2a]">
+                        <div className="p-5 border-b border-[#2a2a2a] flex justify-between items-center bg-[#111111]">
+                            <h3 className="font-bold text-white">Löschen bestätigen</h3>
+                            <button onClick={() => setDeletingId(null)} className="text-slate-500 hover:text-slate-300">
+                                <X size={20} />
+                            </button>
+                        </div>
+                        <div className="p-6">
+                            <p className="text-sm text-slate-300 mb-6">
+                                Möchten Sie diesen Kunden wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.
+                            </p>
+                            <div className="flex gap-3">
+                                <button 
+                                    onClick={() => setDeletingId(null)}
+                                    className="flex-1 px-4 py-2 bg-[#222222] border border-[#2a2a2a] hover:bg-[#2a2a2a] text-slate-300 rounded-lg font-semibold transition-colors"
+                                >
+                                    Abbrechen
+                                </button>
+                                <button 
+                                    onClick={confirmDelete}
+                                    disabled={saving}
+                                    className="flex-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
+                                >
+                                    {saving ? 'Lösche...' : 'Unwiderruflich löschen'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

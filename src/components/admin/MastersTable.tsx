@@ -8,6 +8,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
     const [masters, setMasters] = useState(initialMasters);
     const [editingId, setEditingId] = useState<number | null>(null);
     const [editForm, setEditForm] = useState<any>({});
+    const [deletingId, setDeletingId] = useState<number | null>(null);
     
     // Modal state for free leads
     const [showFreeLeadsModal, setShowFreeLeadsModal] = useState(false);
@@ -25,14 +26,22 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
         setEditForm({});
     };
 
-    const handleDeleteMaster = async (id: number) => {
-        if (!window.confirm('Möchten Sie diesen Meister wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.')) return;
+    const handleDeleteMaster = (id: number) => {
+        setDeletingId(id);
+    };
+
+    const confirmDelete = async () => {
+        if (!deletingId) return;
+        setSaving(true);
         try {
-            await deleteMaster(id);
-            setMasters(prev => prev.filter(m => m.id !== id));
+            await deleteMaster(deletingId);
+            setMasters(prev => prev.filter(m => m.id !== deletingId));
+            setDeletingId(null);
         } catch (err) {
             console.error(err);
             alert('Fehler beim Löschen des Meisters.');
+        } finally {
+            setSaving(false);
         }
     };
 
@@ -289,6 +298,40 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                     className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
                                 >
                                     {saving ? 'Speichern...' : 'Bestätigen'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Delete Confirmation Modal */}
+            {deletingId && (
+                <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+                    <div className="bg-[#161616] rounded-xl shadow-xl w-full max-w-md overflow-hidden border border-[#2a2a2a]">
+                        <div className="p-5 border-b border-[#2a2a2a] flex justify-between items-center bg-[#111111]">
+                            <h3 className="font-bold text-white">Löschen bestätigen</h3>
+                            <button onClick={() => setDeletingId(null)} className="text-slate-500 hover:text-slate-300">
+                                <X size={20} />
+                            </button>
+                        </div>
+                        <div className="p-6">
+                            <p className="text-sm text-slate-300 mb-6">
+                                Möchten Sie diesen Meister wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.
+                            </p>
+                            <div className="flex gap-3">
+                                <button 
+                                    onClick={() => setDeletingId(null)}
+                                    className="flex-1 px-4 py-2 bg-[#222222] border border-[#2a2a2a] hover:bg-[#2a2a2a] text-slate-300 rounded-lg font-semibold transition-colors"
+                                >
+                                    Abbrechen
+                                </button>
+                                <button 
+                                    onClick={confirmDelete}
+                                    disabled={saving}
+                                    className="flex-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
+                                >
+                                    {saving ? 'Lösche...' : 'Unwiderruflich löschen'}
                                 </button>
                             </div>
                         </div>

@@ -88,6 +88,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
 
     // Modal state
     const [selectedLeadForAssign, setSelectedLeadForAssign] = useState<Lead | null>(null);
+    const [deletingId, setDeletingId] = useState<number | null>(null);
     const [assignMasterId, setAssignMasterId] = useState<string>('');
     const [priceType, setPriceType] = useState<string>('default');
     const [priceValue, setPriceValue] = useState<string>('');
@@ -128,12 +129,17 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
     };
 
 
-    const handleDeleteLead = async (id: number) => {
-        if (!window.confirm('Möchten Sie diesen Lead wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.')) return;
+    const handleDeleteLead = (id: number) => {
+        setDeletingId(id);
+    };
+
+    const confirmDelete = async () => {
+        if (!deletingId) return;
         startTransition(async () => {
             try {
-                await deleteLead(id);
-                setLeads(prev => prev.filter(l => l.id !== id));
+                await deleteLead(deletingId);
+                setLeads(prev => prev.filter(l => l.id !== deletingId));
+                setDeletingId(null);
             } catch (err) {
                 console.error(err);
                 alert('Fehler beim Löschen des Leads.');
@@ -515,6 +521,40 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                     className="px-5 py-2.5 rounded-lg font-bold text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
                                 >
                                     {isAssigning ? 'Weist zu...' : 'Jetzt zuweisen'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Delete Confirmation Modal */}
+            {deletingId && (
+                <div className="fixed inset-0 z-[1000] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+                    <div className="bg-[#161616] rounded-xl shadow-xl w-full max-w-md overflow-hidden border border-[#2a2a2a]">
+                        <div className="p-5 border-b border-[#2a2a2a] flex justify-between items-center bg-[#111111]">
+                            <h3 className="font-bold text-white">Löschen bestätigen</h3>
+                            <button onClick={() => setDeletingId(null)} className="text-slate-500 hover:text-slate-300">
+                                <X size={20} />
+                            </button>
+                        </div>
+                        <div className="p-6">
+                            <p className="text-sm text-slate-300 mb-6">
+                                Möchten Sie diesen Lead wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.
+                            </p>
+                            <div className="flex gap-3">
+                                <button 
+                                    onClick={() => setDeletingId(null)}
+                                    className="flex-1 px-4 py-2 bg-[#222222] border border-[#2a2a2a] hover:bg-[#2a2a2a] text-slate-300 rounded-lg font-semibold transition-colors"
+                                >
+                                    Abbrechen
+                                </button>
+                                <button 
+                                    onClick={confirmDelete}
+                                    disabled={isPending}
+                                    className="flex-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
+                                >
+                                    {isPending ? 'Lösche...' : 'Unwiderruflich löschen'}
                                 </button>
                             </div>
                         </div>
