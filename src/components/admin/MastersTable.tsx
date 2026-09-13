@@ -69,11 +69,11 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
     };
 
     return (
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-            <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse">
-                    <thead>
-                        <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase tracking-wider">
+        <div className="">
+            <div className="overflow-x-auto pb-4">
+                <table className="w-full text-sm text-left text-slate-600" style={{ borderCollapse: 'separate', borderSpacing: '0 12px' }}>
+                    <thead className="text-xs text-slate-500 uppercase bg-transparent">
+                        <tr>
                             <th className="px-6 py-4 font-semibold">Firma / Name</th>
                             <th className="px-6 py-4 font-semibold">Kontakt</th>
                             <th className="px-6 py-4 font-semibold text-center">Status</th>
@@ -81,14 +81,14 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                             <th className="px-6 py-4 font-semibold text-right">Aktionen</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100">
+                    <tbody>
                         {masters.map(m => {
                             const isEditing = editingId === m.id;
                             const hasFreeLeads = m.free_leads_until && new Date(m.free_leads_until) > new Date();
 
                             return (
-                                <tr key={m.id} className="hover:bg-slate-50/50 transition-colors">
-                                    <td className="px-6 py-4">
+                                <tr key={m.id} className="bg-white hover:bg-slate-50 transition-colors shadow-sm group">
+                                    <td className="px-6 py-4 border-y border-l border-slate-200 rounded-l-xl group-hover:border-slate-300">
                                         {isEditing ? (
                                             <div className="flex flex-col gap-2">
                                                 <input 
@@ -114,7 +114,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                         )}
                                     </td>
                                     
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 border-y border-slate-200 group-hover:border-slate-300">
                                         {isEditing ? (
                                             <input 
                                                 type="text" 
@@ -129,7 +129,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                         <div className="text-xs text-slate-400 mt-1">{m.email}</div>
                                     </td>
                                     
-                                    <td className="px-6 py-4 text-center">
+                                    <td className="px-6 py-4 border-y border-slate-200 group-hover:border-slate-300 text-center">
                                         {isEditing ? (
                                             <label className="flex items-center justify-center gap-2 cursor-pointer">
                                                 <input 
@@ -151,7 +151,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                         )}
                                     </td>
                                     
-                                    <td className="px-6 py-4 text-center">
+                                    <td className="px-6 py-4 border-y border-slate-200 group-hover:border-slate-300 text-center">
                                         {hasFreeLeads ? (
                                             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
                                                 <Gift size={14} /> {new Date(m.free_leads_until).toLocaleDateString('de-DE')}
@@ -161,7 +161,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                         )}
                                     </td>
 
-                                    <td className="px-6 py-4 text-right">
+                                    <td className="px-6 py-4 border-y border-r border-slate-200 rounded-r-xl group-hover:border-slate-300 text-right">
                                         {isEditing ? (
                                             <div className="flex items-center justify-end gap-2">
                                                 <button onClick={handleSaveEdit} disabled={saving} className="p-2 text-green-600 hover:bg-green-50 rounded-full transition-colors" title="Speichern">
