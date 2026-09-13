@@ -459,7 +459,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                 <select 
                                     value={assignMasterId} 
                                     onChange={(e) => setAssignMasterId(e.target.value)}
-                                    className="w-full bg-[#111111] text-white border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                    className="w-full bg-[#111111] text-white border border-[#2a2a2a] rounded-lg p-2.5 pr-10 text-sm font-medium focus:ring-2 focus:ring-slate-600 focus:outline-none appearance-none bg-no-repeat bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20stroke%3D%22%236b7280%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%20d%3D%22m6%208%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[position:right_1rem_center] bg-[length:1.2em_1.2em]"
                                 >
                                     <option value="" className="text-slate-400">-- Bitte wählen --</option>
                                     {masters?.filter(m => m.is_active).map(m => (
@@ -478,7 +478,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                         setPriceType(e.target.value);
                                         if (e.target.value === 'free' || e.target.value === 'default') setPriceValue('');
                                     }}
-                                    className="w-full bg-[#111111] text-white border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                    className="w-full bg-[#111111] text-white border border-[#2a2a2a] rounded-lg p-2.5 pr-10 text-sm font-medium focus:ring-2 focus:ring-slate-600 focus:outline-none appearance-none bg-no-repeat bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20stroke%3D%22%236b7280%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%20d%3D%22m6%208%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[position:right_1rem_center] bg-[length:1.2em_1.2em]"
                                 >
                                     <option value="default">Standard (laut Schädling/Vertrag)</option>
                                     <option value="free">Kostenlos (0 €)</option>
@@ -497,7 +497,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                         value={priceValue}
                                         onChange={(e) => setPriceValue(e.target.value)}
                                         placeholder={priceType === 'fixed' ? 'z.B. 25' : 'z.B. 15'}
-                                        className="w-full bg-[#111111] text-white border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none placeholder:text-slate-500"
+                                        className="w-full bg-[#111111] text-white border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-slate-600 focus:outline-none placeholder:text-slate-500"
                                     />
                                 </div>
                             )}
