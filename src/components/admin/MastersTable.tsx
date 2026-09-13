@@ -76,7 +76,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
     return (
         <div className="">
             <div className="overflow-x-auto pb-4">
-                <table className="w-full text-sm text-left text-slate-600" style={{ borderCollapse: 'separate', borderSpacing: '0 12px' }}>
+                <table className="w-full text-sm text-left text-slate-300" style={{ borderCollapse: 'separate', borderSpacing: '0 12px' }}>
                     <thead className="text-xs text-slate-500 uppercase bg-transparent">
                         <tr>
                             <th className="px-6 py-4 font-semibold">Firma / Name</th>
@@ -93,42 +93,42 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
 
                             return (
                                 <React.Fragment key={m.id}>
-                                <tr className="bg-white hover:bg-slate-50 transition-colors shadow-md group">
-                                    <td className="px-6 py-4 border-y border-l border-slate-300 rounded-l-xl group-hover:border-slate-400">
+                                <tr className="bg-[#161616] hover:bg-[#1e1e1e] transition-colors shadow-md group">
+                                    <td className="px-6 py-4 border-y border-l border-[#2a2a2a] rounded-l-xl group-hover:border-[#333333]">
                                         <div>
-                                            <div className="font-bold text-slate-900">{m.firma || '-'}</div>
+                                            <div className="font-bold text-white">{m.firma || '-'}</div>
                                             <div className="text-sm text-slate-500">{m.name || '-'}</div>
                                         </div>
                                     </td>
                                     
-                                    <td className="px-6 py-4 border-y border-slate-300 group-hover:border-slate-400">
-                                        <div className="text-sm text-slate-700">{m.telefon || '-'}</div>
-                                        <div className="text-xs text-slate-400 mt-1">{m.email}</div>
+                                    <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
+                                        <div className="text-sm text-slate-300">{m.telefon || '-'}</div>
+                                        <div className="text-xs text-slate-500 mt-1">{m.email}</div>
                                     </td>
                                     
-                                    <td className="px-6 py-4 border-y border-slate-300 group-hover:border-slate-400 text-center">
+                                    <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] text-center">
                                         {m.is_active ? 
                                                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
                                                     <CheckCircle size={14} /> Aktiv
                                                 </span> 
                                             : 
-                                                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">
+                                                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#222222] text-slate-300">
                                                     <XCircle size={14} /> Inaktiv
                                                 </span>
                                         }
                                     </td>
                                     
-                                    <td className="px-6 py-4 border-y border-slate-300 group-hover:border-slate-400 text-center">
+                                    <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] text-center">
                                         {hasFreeLeads ? (
                                             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
                                                 <Gift size={14} /> {new Date(m.free_leads_until).toLocaleDateString('de-DE')}
                                             </span>
                                         ) : (
-                                            <span className="text-slate-400">-</span>
+                                            <span className="text-slate-500">-</span>
                                         )}
                                     </td>
 
-                                    <td className="px-6 py-4 border-y border-r border-slate-300 rounded-r-xl group-hover:border-slate-400 text-right">
+                                    <td className="px-6 py-4 border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333] text-right">
                                             <div className="flex items-center justify-end gap-2">
                                                 <button 
                                                     onClick={() => handleOpenFreeLeads(m)}
@@ -138,7 +138,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                                 </button>
                                                 <button 
                                                     onClick={() => isEditing ? handleCancelEdit() : handleEditClick(m)} 
-                                                    className={`p-1.5 rounded-lg transition-colors border ${isEditing ? 'bg-red-50 text-red-600 border-red-200' : 'bg-slate-50 text-slate-500 hover:text-slate-700 border-slate-200 hover:bg-slate-100'}`}
+                                                    className={`p-1.5 rounded-lg transition-colors border ${isEditing ? 'bg-red-50 text-red-600 border-red-200' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#222222]'}`}
                                                     title="Bearbeiten"
                                                 >
                                                     {isEditing ? <X size={16} /> : <Pencil size={16} />}
@@ -148,15 +148,15 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                 </tr>
                                 {isEditing && (
                                     <tr>
-                                        <td colSpan={5} className="p-0 border-b border-slate-300">
-                                            <div className="bg-slate-50 p-6 border-x border-slate-300 shadow-inner">
+                                        <td colSpan={5} className="p-0 border-b border-[#2a2a2a]">
+                                            <div className="bg-[#111111] p-6 border-x border-[#2a2a2a] shadow-inner">
                                                 <div className="flex justify-between items-center mb-4">
-                                                    <h4 className="font-bold text-slate-800 flex items-center gap-2">
+                                                    <h4 className="font-bold text-white flex items-center gap-2">
                                                         <Pencil size={18} className="text-blue-500" />
                                                         Meister #{m.id} bearbeiten
                                                     </h4>
                                                     <div className="flex gap-2">
-                                                        <button onClick={handleCancelEdit} disabled={saving} className="px-4 py-2 bg-white border border-slate-300 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Abbrechen</button>
+                                                        <button onClick={handleCancelEdit} disabled={saving} className="px-4 py-2 bg-[#161616] border border-[#2a2a2a] rounded-lg text-sm font-medium text-slate-300 hover:bg-[#1e1e1e] transition-colors">Abbrechen</button>
                                                         <button onClick={handleSaveEdit} disabled={saving} className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm">
                                                             <Save size={16} /> Speichern
                                                         </button>
@@ -167,17 +167,17 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                                     <div className="space-y-4">
                                                         <h5 className="font-semibold text-xs text-slate-500 uppercase tracking-wider">Allgemein</h5>
                                                         <div>
-                                                            <label className="block text-xs font-medium text-slate-700 mb-1">Name</label>
-                                                            <input type="text" value={editForm.name || ''} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                                                            <label className="block text-xs font-medium text-slate-300 mb-1">Name</label>
+                                                            <input type="text" value={editForm.name || ''} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full border border-[#2a2a2a] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
                                                         </div>
                                                         <div>
-                                                            <label className="block text-xs font-medium text-slate-700 mb-1">Firma</label>
-                                                            <input type="text" value={editForm.firma || ''} onChange={e => setEditForm({...editForm, firma: e.target.value})} className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                                                            <label className="block text-xs font-medium text-slate-300 mb-1">Firma</label>
+                                                            <input type="text" value={editForm.firma || ''} onChange={e => setEditForm({...editForm, firma: e.target.value})} className="w-full border border-[#2a2a2a] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
                                                         </div>
                                                         <div>
                                                             <label className="flex items-center gap-2 cursor-pointer mt-4">
-                                                                <input type="checkbox" checked={editForm.is_active || false} onChange={e => setEditForm({...editForm, is_active: e.target.checked})} className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500" />
-                                                                <span className="text-sm font-medium text-slate-700">Account ist aktiv</span>
+                                                                <input type="checkbox" checked={editForm.is_active || false} onChange={e => setEditForm({...editForm, is_active: e.target.checked})} className="w-4 h-4 text-blue-600 border-[#2a2a2a] rounded focus:ring-red-500" />
+                                                                <span className="text-sm font-medium text-slate-300">Account ist aktiv</span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -185,24 +185,24 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                                     <div className="space-y-4">
                                                         <h5 className="font-semibold text-xs text-slate-500 uppercase tracking-wider">Kontakt</h5>
                                                         <div>
-                                                            <label className="block text-xs font-medium text-slate-700 mb-1">E-Mail</label>
-                                                            <input type="email" value={editForm.email || ''} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                                                            <label className="block text-xs font-medium text-slate-300 mb-1">E-Mail</label>
+                                                            <input type="email" value={editForm.email || ''} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full border border-[#2a2a2a] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
                                                         </div>
                                                         <div>
-                                                            <label className="block text-xs font-medium text-slate-700 mb-1">Telefon / Phone</label>
-                                                            <input type="text" value={editForm.phone || editForm.telefon || ''} onChange={e => setEditForm({...editForm, phone: e.target.value, telefon: e.target.value})} className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                                                            <label className="block text-xs font-medium text-slate-300 mb-1">Telefon / Phone</label>
+                                                            <input type="text" value={editForm.phone || editForm.telefon || ''} onChange={e => setEditForm({...editForm, phone: e.target.value, telefon: e.target.value})} className="w-full border border-[#2a2a2a] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
                                                         </div>
                                                         <div>
-                                                            <label className="block text-xs font-medium text-slate-700 mb-1">Telegram Chat ID</label>
-                                                            <input type="text" value={editForm.telegram_chat_id || ''} onChange={e => setEditForm({...editForm, telegram_chat_id: e.target.value})} className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                                                            <label className="block text-xs font-medium text-slate-300 mb-1">Telegram Chat ID</label>
+                                                            <input type="text" value={editForm.telegram_chat_id || ''} onChange={e => setEditForm({...editForm, telegram_chat_id: e.target.value})} className="w-full border border-[#2a2a2a] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
                                                         </div>
                                                     </div>
                                                     
                                                     <div className="space-y-4">
                                                         <h5 className="font-semibold text-xs text-slate-500 uppercase tracking-wider">Einstellungen</h5>
                                                         <div>
-                                                            <label className="block text-xs font-medium text-slate-700 mb-1">Abrechnungsmodell (Billing)</label>
-                                                            <select value={editForm.billing_model || 'pay_per_lead'} onChange={e => setEditForm({...editForm, billing_model: e.target.value})} className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                                            <label className="block text-xs font-medium text-slate-300 mb-1">Abrechnungsmodell (Billing)</label>
+                                                            <select value={editForm.billing_model || 'pay_per_lead'} onChange={e => setEditForm({...editForm, billing_model: e.target.value})} className="w-full border border-[#2a2a2a] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none">
                                                                 <option value="pay_per_lead">Pay Per Lead</option>
                                                                 <option value="commission">Commission</option>
                                                                 <option value="flat_rate">Flat Rate</option>
@@ -210,12 +210,12 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                                             </select>
                                                         </div>
                                                         <div>
-                                                            <label className="block text-xs font-medium text-slate-700 mb-1">PLZ Bereiche (durch Komma getrennt)</label>
-                                                            <input type="text" value={Array.isArray(editForm.plz_bereiche) ? editForm.plz_bereiche.join(', ') : (editForm.plz_bereiche || '')} onChange={e => setEditForm({...editForm, plz_bereiche: e.target.value.split(',').map((s: string) => s.trim()).filter(Boolean)})} className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="10115, 10117" />
+                                                            <label className="block text-xs font-medium text-slate-300 mb-1">PLZ Bereiche (durch Komma getrennt)</label>
+                                                            <input type="text" value={Array.isArray(editForm.plz_bereiche) ? editForm.plz_bereiche.join(', ') : (editForm.plz_bereiche || '')} onChange={e => setEditForm({...editForm, plz_bereiche: e.target.value.split(',').map((s: string) => s.trim()).filter(Boolean)})} className="w-full border border-[#2a2a2a] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="10115, 10117" />
                                                         </div>
                                                         <div>
-                                                            <label className="block text-xs font-medium text-slate-700 mb-1">Schädlinge (durch Komma getrennt)</label>
-                                                            <input type="text" value={Array.isArray(editForm.pests_handled) ? editForm.pests_handled.join(', ') : (editForm.pests_handled || '')} onChange={e => setEditForm({...editForm, pests_handled: e.target.value.split(',').map((s: string) => s.trim()).filter(Boolean)})} className="w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Mäuse & Ratten, Wespen" />
+                                                            <label className="block text-xs font-medium text-slate-300 mb-1">Schädlinge (durch Komma getrennt)</label>
+                                                            <input type="text" value={Array.isArray(editForm.pests_handled) ? editForm.pests_handled.join(', ') : (editForm.pests_handled || '')} onChange={e => setEditForm({...editForm, pests_handled: e.target.value.split(',').map((s: string) => s.trim()).filter(Boolean)})} className="w-full border border-[#2a2a2a] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" placeholder="Mäuse & Ratten, Wespen" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -233,23 +233,23 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
             {/* Free Leads Modal */}
             {showFreeLeadsModal && (
                 <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-                    <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden">
-                        <div className="p-5 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-                            <h3 className="font-bold text-slate-800 flex items-center gap-2">
+                    <div className="bg-[#161616] rounded-xl shadow-xl w-full max-w-md overflow-hidden">
+                        <div className="p-5 border-b border-[#2a2a2a] flex justify-between items-center bg-[#111111]">
+                            <h3 className="font-bold text-white flex items-center gap-2">
                                 <Gift className="text-blue-500" size={18} /> Free Leads für {selectedMaster?.firma || selectedMaster?.name}
                             </h3>
-                            <button onClick={() => setShowFreeLeadsModal(false)} className="text-slate-400 hover:text-slate-600">
+                            <button onClick={() => setShowFreeLeadsModal(false)} className="text-slate-500 hover:text-slate-300">
                                 <X size={20} />
                             </button>
                         </div>
                         <div className="p-6">
-                            <p className="text-sm text-slate-600 mb-4">
+                            <p className="text-sm text-slate-300 mb-4">
                                 Wie viele Tage sollen die Leads für diesen Partner kostenlos sein?
                             </p>
                             <select 
                                 value={freeLeadsDays} 
                                 onChange={e => setFreeLeadsDays(Number(e.target.value))}
-                                className="w-full border border-slate-200 rounded-lg px-4 py-2 text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                                className="w-full border border-[#2a2a2a] rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-red-500"
                             >
                                 <option value={3}>3 Tage</option>
                                 <option value={7}>7 Tage</option>
@@ -261,7 +261,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                             <div className="mt-6 flex gap-3">
                                 <button 
                                     onClick={() => setShowFreeLeadsModal(false)}
-                                    className="flex-1 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-semibold transition-colors"
+                                    className="flex-1 px-4 py-2 bg-[#222222] hover:bg-[#2a2a2a] text-slate-300 rounded-lg font-semibold transition-colors"
                                 >
                                     Abbrechen
                                 </button>

@@ -143,12 +143,29 @@ export default function Header() {
         window.addEventListener('touchstart', onTouch, { once: true, passive: true });
         return () => window.removeEventListener('touchstart', onTouch);
     }, []);
-
     useEffect(() => {
         setMobileOpen(false);
         setProfileSheetOpen(false);
         setActiveMenu(null);
     }, [pathname]);
+    const isAdminPage = pathname?.startsWith('/admin') || false;
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            setAtTop(currentScrollY < 10);
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Check if device supports touch (for hover states)
+    useEffect(() => {
+        setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    }, []);
+
+    const isSolid = !atTop || activeMenu || mobileOpen;
 
     const handleEnter = (key: string) => {
         if (isTouch) return;
@@ -161,12 +178,10 @@ export default function Header() {
         closeTimer.current = setTimeout(() => setActiveMenu(null), 100);
     };
 
-    const isSolid = atTop || activeMenu || hoveredMenu;
-
     return (
         <>
-            {/* Backdrop overlay for desktop dropdown / Затемнение за выпадающим меню на ПК */}
-            {!isTouch && (
+            {/* Desktop Overlay / Затемнение фона на ПК при открытом меню */}
+            {activeMenu && !isTouch && (
                 <div
                     onClick={() => setActiveMenu(null)}
                     className={`fixed inset-0 bg-black/45 z-[9997] transition-opacity duration-200 ${
@@ -175,14 +190,15 @@ export default function Header() {
                 />
             )}
 
-            {/* Main header container / Главный контейнер шапки */}
             <header className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
-                isSolid 
-                    ? 'bg-white shadow-none' 
-                    : 'bg-white/45 backdrop-blur-[8px] shadow-[0_4px_30px_rgba(0,0,0,0.05)]'
+                isAdminPage 
+                    ? (isSolid ? 'bg-[#161616] shadow-none border-b border-[#2a2a2a]' : 'bg-[#161616]/45 backdrop-blur-[8px]')
+                    : (isSolid ? 'bg-white shadow-none' : 'bg-white/45 backdrop-blur-[8px] shadow-[0_4px_30px_rgba(0,0,0,0.05)]')
             }`}
             style={{
-                borderBottom: (isSolid && !mobileOpen) ? '2px solid #C8102E' : '1px solid rgba(255, 255, 255, 0.2)'
+                borderBottom: (isSolid && !mobileOpen) 
+                    ? (isAdminPage ? '1px solid #2a2a2a' : '2px solid #C8102E') 
+                    : (isAdminPage ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(255, 255, 255, 0.2)')
             }}>
                 
                 <div className="max-w-[1280px] mx-auto px-5 h-[68px] flex items-center justify-between gap-4">
@@ -197,7 +213,7 @@ export default function Header() {
                             className="object-contain [clip-path:circle(31%_at_50%_50%)]" 
                         />
                         <div className="flex flex-col leading-none">
-                            <span className="font-black text-[19px] text-[#1E293B] tracking-[-0.03em] uppercase">Kammerjäger</span>
+                            <span className={`font-black text-[19px] tracking-[-0.03em] uppercase ${isAdminPage ? 'text-white' : 'text-[#1E293B]'}`}>Kammerjäger</span>
                             <span className="font-bold text-[10px] text-slate-400 uppercase tracking-[0.18em]">Structon</span>
                         </div>
                     </Link>
@@ -216,7 +232,7 @@ export default function Header() {
                                     className={`flex items-center h-full px-[18px] text-[15px] font-medium whitespace-nowrap transition-colors border-b-[3px] duration-150 ${
                                         hoveredMenu === key 
                                             ? 'text-[#C8102E] border-[#C8102E]' 
-                                            : 'text-slate-600 border-transparent'
+                                            : (isAdminPage ? 'text-slate-300 hover:text-white border-transparent' : 'text-slate-600 border-transparent')
                                     }`}
                                 >
                                     {key}

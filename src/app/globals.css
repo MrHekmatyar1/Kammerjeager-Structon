@@ -178,7 +178,7 @@ p {
 .admin-dotted-bg {
     background-color: #121212;
     background-image: radial-gradient(circle, #333333 1px, transparent 1px);
-    background-size: 24px 24px;
+    background-size: 16px 16px;
 }
 
 .segment-item {

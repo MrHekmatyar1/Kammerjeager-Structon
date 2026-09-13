@@ -42,7 +42,7 @@ const STATUS_COLORS: Record<string, string> = {
     'neu': 'bg-green-100 text-green-800 border-green-200',
     'in_bearbeitung': 'bg-yellow-100 text-yellow-800 border-yellow-200',
     'abgeschlossen': 'bg-blue-100 text-blue-800 border-blue-200',
-    'storniert': 'bg-slate-100 text-slate-600 border-slate-200',
+    'storniert': 'bg-[#222222] text-slate-300 border-[#2a2a2a]',
 };
 
 const STATUS_LABELS: Record<string, string> = {
@@ -156,7 +156,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
 
     if (leads.length === 0) {
         return (
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-12 text-center">
+            <div className="bg-[#161616] rounded-xl shadow-sm border border-[#2a2a2a] p-12 text-center">
                 <p className="text-slate-500 font-medium">Noch keine Leads vorhanden.</p>
             </div>
         );
@@ -172,7 +172,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                     className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
                         filter === 'all'
                             ? 'bg-slate-800 text-white'
-                            : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
+                            : 'bg-[#161616] text-slate-300 border border-[#2a2a2a] hover:bg-[#222222]'
                     }`}
                 >
                     Alle ({leads.length})
@@ -183,7 +183,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                     className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 ${
                         filter === 'b2b'
                             ? 'bg-blue-600 text-white'
-                            : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-50'
+                            : 'bg-[#161616] text-blue-700 border border-blue-200 hover:bg-blue-50'
                     }`}
                 >
                     Gewerbe ({b2bCount})
@@ -194,7 +194,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                     className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
                         filter === 'privat'
                             ? 'bg-slate-800 text-white'
-                            : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
+                            : 'bg-[#161616] text-slate-300 border border-[#2a2a2a] hover:bg-[#222222]'
                     }`}
                 >
                     Privatkunden ({privatCount})
@@ -203,14 +203,14 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
 
             <div className="">
                 {filteredLeads.length === 0 ? (
-                    <div className="p-8 text-center text-slate-500 text-sm bg-white rounded-xl shadow-sm border border-slate-200">
+                    <div className="p-8 text-center text-slate-500 text-sm bg-[#161616] rounded-xl shadow-sm border border-[#2a2a2a]">
                         Keine Leads in dieser Kategorie gefunden.
                     </div>
                 ) : (
                     <>
                         {/* Desktop View */}
                         <div className="hidden md:block overflow-x-auto pb-4">
-                            <table className="w-full text-sm text-left text-slate-600" style={{ borderCollapse: 'separate', borderSpacing: '0 12px' }}>
+                            <table className="w-full text-sm text-left text-slate-300" style={{ borderCollapse: 'separate', borderSpacing: '0 12px' }}>
                                 <thead className="text-xs text-slate-500 uppercase bg-transparent">
                                     <tr>
                                         <th className="px-6 py-4 font-semibold">Datum</th>
@@ -226,20 +226,20 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                     {filteredLeads.map((lead) => {
                                         const b2b = isB2BLead(lead);
                                         return (
-                                            <tr key={lead.id} className="bg-white hover:bg-slate-50 transition-colors shadow-md group">
-                                                <td className="px-6 py-4 whitespace-nowrap text-xs text-slate-500 border-y border-l border-slate-300 rounded-l-xl group-hover:border-slate-400">
+                                            <tr key={lead.id} className="bg-[#161616] hover:bg-[#1e1e1e] transition-colors shadow-md group">
+                                                <td className="px-6 py-4 whitespace-nowrap text-xs text-slate-500 border-y border-l border-[#2a2a2a] rounded-l-xl group-hover:border-[#333333]">
                                                     {new Date(lead.created_at || lead.erstellt_am || new Date()).toLocaleDateString('de-DE', {
                                                         day: '2-digit', month: '2-digit', year: 'numeric',
                                                         hour: '2-digit', minute: '2-digit'
                                                     })}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-slate-300 group-hover:border-slate-400">
+                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
                                                     {b2b ? (
                                                         <div>
                                                             <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200 uppercase tracking-wider mb-1">
                                                                 Gewerbe
                                                             </span>
-                                                            <div className="font-bold text-slate-900 text-sm">
+                                                            <div className="font-bold text-white text-sm">
                                                                 {lead.firma || lead.name}
                                                             </div>
                                                             <div className="text-xs text-slate-500 mt-0.5">
@@ -248,45 +248,45 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         </div>
                                                     ) : (
                                                         <div>
-                                                            <div className="font-bold text-slate-800">{lead.name}</div>
-                                                            {lead.firma && <div className="text-xs text-slate-400 mt-0.5">{lead.firma}</div>}
+                                                            <div className="font-bold text-white">{lead.name}</div>
+                                                            {lead.firma && <div className="text-xs text-slate-500 mt-0.5">{lead.firma}</div>}
                                                         </div>
                                                     )}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-slate-300 group-hover:border-slate-400">
-                                                    <a href={`tel:${lead.telefon}`} className="font-semibold text-slate-800 hover:text-[#C8102E] transition-colors block">
+                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
+                                                    <a href={`tel:${lead.telefon}`} className="font-semibold text-white hover:text-[#C8102E] transition-colors block">
                                                         {lead.telefon}
                                                     </a>
-                                                    <a href={`mailto:${lead.email}`} className="text-xs text-slate-500 hover:text-slate-800 transition-colors block mt-0.5">
+                                                    <a href={`mailto:${lead.email}`} className="text-xs text-slate-500 hover:text-white transition-colors block mt-0.5">
                                                         {lead.email}
                                                     </a>
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-slate-300 group-hover:border-slate-400">
-                                                    <div className="font-medium text-slate-800">
+                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
+                                                    <div className="font-medium text-white">
                                                         {lead.plz} {lead.strasse || ''} {lead.hausnummer || ''}
                                                     </div>
-                                                    {lead.etage && <div className="text-xs text-slate-400 mt-0.5">Etage: {lead.etage}</div>}
+                                                    {lead.etage && <div className="text-xs text-slate-500 mt-0.5">Etage: {lead.etage}</div>}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-slate-300 group-hover:border-slate-400">
+                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
                                                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-red-50 text-[#C8102E] font-medium text-xs border border-red-100 mb-1">
                                                         {lead.schaedling || 'Unbekannt'}
                                                     </div>
-                                                    <div className="text-xs text-slate-600 font-medium">
+                                                    <div className="text-xs text-slate-300 font-medium">
                                                         {lead.objekt_typ ? `${lead.objekt_typ}` : (lead.kunde_typ || 'Typ unbekannt')}
                                                     </div>
                                                     {lead.zugang_beschreibung && (
-                                                        <div className="text-xs text-slate-700 bg-slate-50 p-2.5 rounded-md border border-slate-200 mt-1.5 max-w-[320px] whitespace-normal break-words">
+                                                        <div className="text-xs text-slate-300 bg-[#111111] p-2.5 rounded-md border border-[#2a2a2a] mt-1.5 max-w-[320px] whitespace-normal break-words">
                                                             <span className="font-bold text-[10px] text-slate-500 uppercase block mb-0.5">Nachricht / Anliegen:</span>
                                                             {lead.zugang_beschreibung}
                                                         </div>
                                                     )}
                                                     {(lead.befall || lead.raeume || lead.flaeche) && (
-                                                        <div className="text-xs text-slate-400 mt-1">
+                                                        <div className="text-xs text-slate-500 mt-1">
                                                             {lead.befall ? `${lead.befall}, ` : ''}{lead.raeume ? `${lead.raeume} Räume, ` : ''}{lead.flaeche || ''}
                                                         </div>
                                                     )}
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap border-y border-r border-slate-300 rounded-r-xl group-hover:border-slate-400">
+                                                <td className="px-6 py-4 whitespace-nowrap border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333]">
                                                     <div className="relative">
                                                         <select
                                                             value={lead.status}
@@ -295,7 +295,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                             className={`appearance-none cursor-pointer border pl-3 pr-8 py-1.5 rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors ${STATUS_COLORS[lead.status] || STATUS_COLORS['neu']}`}
                                                         >
                                                             {Object.entries(STATUS_LABELS).map(([val, label]) => (
-                                                                <option key={val} value={val} className="bg-white text-slate-800 font-medium">
+                                                                <option key={val} value={val} className="bg-[#161616] text-white font-medium">
                                                                     {label}
                                                                 </option>
                                                             ))}
@@ -305,10 +305,10 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-r border-slate-300 rounded-r-xl group-hover:border-slate-400 text-right">
+                                                <td className="px-6 py-4 border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333] text-right">
                                                     <button
                                                         onClick={() => setSelectedLeadForAssign(lead)}
-                                                        className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition-colors border border-slate-200"
+                                                        className="px-3 py-1.5 bg-[#222222] hover:bg-[#2a2a2a] text-slate-300 text-xs font-bold rounded-lg transition-colors border border-[#2a2a2a]"
                                                     >
                                                         Zuweisen
                                                     </button>
@@ -325,7 +325,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                             {filteredLeads.map((lead) => {
                                 const b2b = isB2BLead(lead);
                                 return (
-                                    <div key={`mob-${lead.id}`} className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col gap-4">
+                                    <div key={`mob-${lead.id}`} className="bg-[#161616] rounded-xl shadow-sm border border-[#2a2a2a] p-4 sm:p-5 flex flex-col gap-4">
                                         <div className="flex justify-between items-start gap-2">
                                             <div>
                                                 {b2b && (
@@ -333,7 +333,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         Gewerbe
                                                     </span>
                                                 )}
-                                                <div className="font-bold text-slate-900 text-base">{lead.firma || lead.name}</div>
+                                                <div className="font-bold text-white text-base">{lead.firma || lead.name}</div>
                                                 {b2b && lead.firma && (
                                                     <div className="text-xs text-slate-500 mt-0.5">Ansprechpartner: {lead.name}</div>
                                                 )}
@@ -341,53 +341,53 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                     <div className="text-sm text-slate-500 mt-0.5">{lead.firma}</div>
                                                 )}
                                             </div>
-                                            <div className="text-right text-xs text-slate-400 font-medium whitespace-nowrap">
+                                            <div className="text-right text-xs text-slate-500 font-medium whitespace-nowrap">
                                                 {new Date(lead.created_at || lead.erstellt_am || new Date()).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}<br/>
                                                 {new Date(lead.created_at || lead.erstellt_am || new Date()).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
                                             </div>
                                         </div>
 
-                                        <div className="grid grid-cols-2 gap-3 text-sm bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                        <div className="grid grid-cols-2 gap-3 text-sm bg-[#111111] p-3 rounded-lg border border-[#2a2a2a]">
                                             <div>
-                                                <span className="text-slate-400 text-xs block mb-0.5">Kontakt</span>
-                                                <a href={`tel:${lead.telefon}`} className="font-semibold text-slate-700 hover:text-[#C8102E] block">
+                                                <span className="text-slate-500 text-xs block mb-0.5">Kontakt</span>
+                                                <a href={`tel:${lead.telefon}`} className="font-semibold text-slate-300 hover:text-[#C8102E] block">
                                                     {lead.telefon}
                                                 </a>
-                                                <a href={`mailto:${lead.email}`} className="text-slate-500 text-xs break-all hover:text-slate-800 block mt-0.5">
+                                                <a href={`mailto:${lead.email}`} className="text-slate-500 text-xs break-all hover:text-white block mt-0.5">
                                                     {lead.email}
                                                 </a>
                                             </div>
                                             <div>
-                                                <span className="text-slate-400 text-xs block mb-0.5">Ort / PLZ</span>
-                                                <span className="font-semibold text-slate-700">{lead.plz} {lead.strasse || ''} {lead.hausnummer || ''}</span>
+                                                <span className="text-slate-500 text-xs block mb-0.5">Ort / PLZ</span>
+                                                <span className="font-semibold text-slate-300">{lead.plz} {lead.strasse || ''} {lead.hausnummer || ''}</span>
                                                 {lead.etage && <span className="text-slate-500 text-xs block mt-0.5">Etage: {lead.etage}</span>}
                                             </div>
                                         </div>
 
                                         <div>
-                                            <span className="text-slate-400 text-xs block mb-1.5">Problem &amp; Details</span>
+                                            <span className="text-slate-500 text-xs block mb-1.5">Problem &amp; Details</span>
                                             <div className="flex flex-wrap items-center gap-2 mb-1.5">
                                                 <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-red-50 text-[#C8102E] font-medium text-xs border border-red-100">
                                                     {lead.schaedling || 'Unbekannt'}
                                                 </div>
-                                                <span className="text-xs text-slate-600 font-medium bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                                                <span className="text-xs text-slate-300 font-medium bg-[#222222] px-2 py-0.5 rounded border border-[#2a2a2a]">
                                                     {lead.objekt_typ ? `${lead.objekt_typ}` : (lead.kunde_typ || 'Typ unbekannt')}
                                                 </span>
                                             </div>
                                             {lead.zugang_beschreibung && (
-                                                <div className="text-xs text-slate-700 bg-white rounded p-2.5 border border-slate-200 mt-2">
+                                                <div className="text-xs text-slate-300 bg-[#161616] rounded p-2.5 border border-[#2a2a2a] mt-2">
                                                     <span className="font-bold text-[10px] text-slate-500 uppercase block mb-0.5">Nachricht / Anliegen:</span>
                                                     {lead.zugang_beschreibung}
                                                 </div>
                                             )}
                                             {(lead.befall || lead.raeume || lead.flaeche) && (
-                                                <div className="text-xs text-slate-500 leading-relaxed bg-white rounded p-2 border border-slate-100 italic mt-1.5">
+                                                <div className="text-xs text-slate-500 leading-relaxed bg-[#161616] rounded p-2 border border-[#2a2a2a] italic mt-1.5">
                                                     {lead.befall ? `${lead.befall}, ` : ''}{lead.raeume ? `${lead.raeume} Räume, ` : ''}{lead.flaeche || ''}
                                                 </div>
                                             )}
                                         </div>
 
-                                        <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                                        <div className="pt-3 border-t border-[#2a2a2a] flex items-center justify-between">
                                             <span className="text-slate-500 text-sm font-medium">Status:</span>
                                             <div className="relative">
                                                 <select
@@ -397,7 +397,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                     className={`appearance-none cursor-pointer border pl-3 pr-8 py-1.5 rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors ${STATUS_COLORS[lead.status] || STATUS_COLORS['neu']}`}
                                                 >
                                                     {Object.entries(STATUS_LABELS).map(([val, label]) => (
-                                                        <option key={val} value={val} className="bg-white text-slate-800 font-medium">
+                                                        <option key={val} value={val} className="bg-[#161616] text-white font-medium">
                                                             {label}
                                                         </option>
                                                     ))}
@@ -407,10 +407,10 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="pt-3 border-t border-slate-100 text-right">
+                                        <div className="pt-3 border-t border-[#2a2a2a] text-right">
                                             <button
                                                 onClick={() => setSelectedLeadForAssign(lead)}
-                                                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition-colors border border-slate-200 w-full"
+                                                className="px-4 py-2 bg-[#222222] hover:bg-[#2a2a2a] text-slate-300 text-xs font-bold rounded-lg transition-colors border border-[#2a2a2a] w-full"
                                             >
                                                 Zuweisen (Manuell)
                                             </button>
@@ -437,7 +437,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                 <select 
                                     value={assignMasterId} 
                                     onChange={(e) => setAssignMasterId(e.target.value)}
-                                    className="w-full border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                    className="w-full border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none"
                                 >
                                     <option value="">-- Bitte wählen --</option>
                                     {masters?.filter(m => m.is_active).map(m => (
@@ -456,7 +456,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                         setPriceType(e.target.value);
                                         if (e.target.value === 'free' || e.target.value === 'default') setPriceValue('');
                                     }}
-                                    className="w-full border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                    className="w-full border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none"
                                 >
                                     <option value="default">Standard (laut Schädling/Vertrag)</option>
                                     <option value="free">Kostenlos (0 €)</option>
@@ -475,7 +475,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                         value={priceValue}
                                         onChange={(e) => setPriceValue(e.target.value)}
                                         placeholder={priceType === 'fixed' ? 'z.B. 25' : 'z.B. 15'}
-                                        className="w-full border border-slate-300 rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                        className="w-full border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none"
                                     />
                                 </div>
                             )}
@@ -483,7 +483,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                             <div className="flex gap-3 justify-end mt-8">
                                 <button
                                     onClick={() => setSelectedLeadForAssign(null)}
-                                    className="px-5 py-2.5 rounded-lg font-bold text-sm bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 transition-colors"
+                                    className="px-5 py-2.5 rounded-lg font-bold text-sm bg-[#161616] border border-[#2a2a2a] text-slate-300 hover:bg-[#1e1e1e] transition-colors"
                                 >
                                     Abbrechen
                                 </button>
