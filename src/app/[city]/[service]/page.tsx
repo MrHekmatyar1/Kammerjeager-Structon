@@ -159,17 +159,24 @@ export default async function CityServicePage({ params }: { params: Promise<{ ci
                                         key={s.slug}
                                         href={`/${cityData.slug}/${s.slug}`}
                                         style={{
-                                            padding: '6px 14px',
+                                            padding: '8px 14px',
                                             border: '1.5px solid #e2e8f0',
+                                            borderRadius: '12px',
                                             fontSize: '13px',
                                             fontWeight: 600,
                                             color: '#334155',
                                             textDecoration: 'none',
                                             background: '#fff',
                                             transition: 'border-color 0.15s, color 0.15s',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '6px',
                                         }}
                                     >
-                                        {s.shortName} →
+                                        {s.shortName}
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#94a3b8' }}>
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
                                     </Link>
                                 ))}
                             </div>
