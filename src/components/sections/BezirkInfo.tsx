@@ -169,40 +169,12 @@ export default function BezirkInfo({ city }: { city: City }) {
                             <Link
                                 key={service.slug}
                                 href={`/${city.slug}/${service.slug}`}
-                                style={{
-                                    display: 'block',
-                                    padding: '14px 16px',
-                                    background: '#fff',
-                                    border: '1.5px solid #e2e8f0',
-                                    borderRadius: '12px',
-                                    textDecoration: 'none',
-                                    transition: 'border-color 0.15s, background 0.15s',
-                                }}
-                                onMouseEnter={e => {
-                                    (e.currentTarget as HTMLElement).style.borderColor = '#C8102E';
-                                    (e.currentTarget as HTMLElement).style.background = '#fff5f5';
-                                }}
-                                onMouseLeave={e => {
-                                    (e.currentTarget as HTMLElement).style.borderColor = '#e2e8f0';
-                                    (e.currentTarget as HTMLElement).style.background = '#fff';
-                                }}
+                                className="group block px-[16px] py-[14px] bg-white border-[1.5px] border-[#e2e8f0] rounded-xl no-underline transition-colors hover:border-[#C8102E] hover:bg-[#fff5f5]"
                             >
-                                <div style={{
-                                    fontSize: '13px',
-                                    fontWeight: 700,
-                                    color: '#0f172a',
-                                    marginBottom: '4px',
-                                }}>
+                                <div className="text-[13px] font-bold text-[#0f172a] mb-[4px] group-hover:text-[#C8102E] transition-colors">
                                     {service.shortName}
                                 </div>
-                                <div style={{
-                                    fontSize: '11px',
-                                    color: '#64748b',
-                                    lineHeight: 1.4,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '4px',
-                                }}>
+                                <div className="text-[11px] text-[#64748b] leading-[1.4] flex items-center gap-[4px] group-hover:text-[#C8102E] transition-colors">
                                     in {city.name}
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                         <polyline points="9 18 15 12 9 6"></polyline>

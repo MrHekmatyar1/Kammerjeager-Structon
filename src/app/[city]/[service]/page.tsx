@@ -158,23 +158,10 @@ export default async function CityServicePage({ params }: { params: Promise<{ ci
                                     <Link
                                         key={s.slug}
                                         href={`/${cityData.slug}/${s.slug}`}
-                                        style={{
-                                            padding: '8px 14px',
-                                            border: '1.5px solid #e2e8f0',
-                                            borderRadius: '12px',
-                                            fontSize: '13px',
-                                            fontWeight: 600,
-                                            color: '#334155',
-                                            textDecoration: 'none',
-                                            background: '#fff',
-                                            transition: 'border-color 0.15s, color 0.15s',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '6px',
-                                        }}
+                                        className="group flex items-center gap-[6px] px-[14px] py-[8px] border-[1.5px] border-[#e2e8f0] rounded-xl text-[13px] font-semibold text-[#334155] bg-white no-underline transition-colors hover:border-[#C8102E] hover:text-[#C8102E] hover:bg-[#fff5f5]"
                                     >
                                         {s.shortName}
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#94a3b8' }}>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#94a3b8] group-hover:text-[#C8102E] transition-colors">
                                             <polyline points="9 18 15 12 9 6"></polyline>
                                         </svg>
                                     </Link>
