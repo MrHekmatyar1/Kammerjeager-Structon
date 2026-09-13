@@ -87,7 +87,7 @@ export default function BezirkInfo({ city }: { city: City }) {
                     background: '#f8fafc',
                     border: '1px solid #e2e8f0',
                     borderLeft: '4px solid #C8102E',
-                    borderRadius: '12px',
+                    borderRadius: '4px',
                     padding: '20px 24px',
                     marginBottom: '48px',
                 }}>
@@ -141,7 +141,6 @@ export default function BezirkInfo({ city }: { city: City }) {
                                 fontWeight: 700,
                                 letterSpacing: '0.04em',
                                 textTransform: 'uppercase',
-                                borderRadius: '12px',
                             }}>
                                 {pest}
                             </span>
@@ -225,7 +224,6 @@ function StatCard({ label, value }: { label: string; value: string }) {
             padding: '16px 20px',
             background: '#f8fafc',
             border: '1px solid #e2e8f0',
-            borderRadius: '12px',
         }}>
             <div style={{
                 fontSize: '10px',
