@@ -87,6 +87,7 @@ export default function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isTouch, setIsTouch] = useState(false);
     const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const [lastCityPath, setLastCityPath] = useState('/');
     
     // Auth state
     const [user, setUser] = useState<User | null>(null);
@@ -95,6 +96,17 @@ export default function Header() {
     const supabase = createClient();
     const router = useRouter();
     const pathname = usePathname();
+
+    useEffect(() => {
+        const isSpecialRoute = /^\/(geschaeftskunden|ueber-uns|kunden|dashboard|fuer-schaedlingsbekaempfer|auth|api|favicon\.ico|robots\.txt|sitemap\.xml)(\/|$)/.test(pathname);
+        if (!isSpecialRoute) {
+            setLastCityPath(pathname);
+            sessionStorage.setItem('lastCityPath', pathname);
+        } else {
+            const stored = sessionStorage.getItem('lastCityPath');
+            if (stored) setLastCityPath(stored);
+        }
+    }, [pathname]);
 
     const isAdmin = user?.email?.toLowerCase() === 'edorkalchuk@gmail.com';
     const isKunde = user?.user_metadata?.role === 'kunden';
@@ -200,7 +212,7 @@ export default function Header() {
                                 className="relative h-full flex items-center"
                             >
                                 <Link
-                                    href={MENUS[key]!.href}
+                                    href={key === 'Privatkunden' ? lastCityPath : MENUS[key]!.href}
                                     className={`flex items-center h-full px-[18px] text-[15px] font-medium whitespace-nowrap transition-colors border-b-[3px] duration-150 ${
                                         hoveredMenu === key 
                                             ? 'text-[#C8102E] border-[#C8102E]' 
@@ -342,7 +354,7 @@ export default function Header() {
                                     <p className="m-0 text-[14px] text-slate-500 leading-[1.6]">
                                         {MENUS[activeMenu].description}
                                     </p>
-                                    <Link href={MENUS[activeMenu].href} className="mt-2 inline-flex items-center gap-1.5 text-[14px] font-bold text-[#C8102E]">
+                                    <Link href={activeMenu === 'Privatkunden' ? lastCityPath : MENUS[activeMenu].href} className="mt-2 inline-flex items-center gap-1.5 text-[14px] font-bold text-[#C8102E]">
                                         {MENUS[activeMenu].cta} →
                                     </Link>
                                 </div>
@@ -350,7 +362,7 @@ export default function Header() {
                                     {MENUS[activeMenu].links.map((link) => (
                                         <Link
                                             key={link.label}
-                                            href={link.href}
+                                            href={activeMenu === 'Privatkunden' && link.href.startsWith('/#') ? `${lastCityPath}${link.href.substring(1)}` : link.href}
                                             className="text-[14px] text-slate-700 font-medium py-1 transition-colors hover:text-[#C8102E]"
                                             onClick={() => setActiveMenu(null)}
                                         >
@@ -389,7 +401,7 @@ export default function Header() {
                     {NAV_LINKS.map(({ label, href }) => (
                         <Link
                             key={label}
-                            href={href}
+                            href={label === 'Privatkunden' ? lastCityPath : href}
                             onClick={() => setMobileOpen(false)}
                             className="flex items-center justify-between py-[15px] text-[17px] font-semibold text-[#1E293B] border-b border-slate-100 no-underline"
                         >
