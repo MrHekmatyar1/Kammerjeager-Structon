@@ -172,3 +172,28 @@ export async function getKundenUsers() {
         last_sign_in_at: u.last_sign_in_at,
     }));
 }
+
+export async function updateKundeProfile(id: string, updates: { name?: string, email?: string }) {
+    const supabase = await createClient();
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (!session || session.user.email !== ADMIN_EMAIL) {
+        throw new Error('Unauthorized');
+    }
+
+    const adminUpdates: any = {};
+    if (updates.email) adminUpdates.email = updates.email;
+    if (updates.name !== undefined) {
+        adminUpdates.user_metadata = { name: updates.name };
+    }
+
+    const { error } = await supabaseAdmin.auth.admin.updateUserById(id, adminUpdates);
+
+    if (error) {
+        console.error('[Admin] Error updating kunde:', error);
+        throw new Error('Failed to update kunde profile');
+    }
+
+    revalidatePath('/admin/kunden');
+    return { success: true };
+}
