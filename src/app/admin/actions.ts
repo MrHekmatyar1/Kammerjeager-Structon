@@ -168,12 +168,14 @@ export async function getKundenUsers() {
         id: u.id,
         email: u.email,
         name: u.user_metadata?.name || '',
+        telefon: u.user_metadata?.telefon || '',
+        firma: u.user_metadata?.firma || '',
         created_at: u.created_at,
         last_sign_in_at: u.last_sign_in_at,
     }));
 }
 
-export async function updateKundeProfile(id: string, updates: { name?: string, email?: string }) {
+export async function updateKundeProfile(id: string, updates: { name?: string, email?: string, password?: string, telefon?: string, firma?: string }) {
     const supabase = await createClient();
     const { data: { session } } = await supabase.auth.getSession();
 
@@ -183,8 +185,16 @@ export async function updateKundeProfile(id: string, updates: { name?: string, e
 
     const adminUpdates: any = {};
     if (updates.email) adminUpdates.email = updates.email;
-    if (updates.name !== undefined) {
-        adminUpdates.user_metadata = { name: updates.name };
+    if (updates.password) adminUpdates.password = updates.password;
+    if (updates.name !== undefined || updates.telefon !== undefined || updates.firma !== undefined) {
+        // Fetch existing metadata to preserve role and other fields
+        const { data: userData } = await supabaseAdmin.auth.admin.getUserById(id);
+        const existingMeta = userData.user?.user_metadata || {};
+        
+        adminUpdates.user_metadata = { ...existingMeta };
+        if (updates.name !== undefined) adminUpdates.user_metadata.name = updates.name;
+        if (updates.telefon !== undefined) adminUpdates.user_metadata.telefon = updates.telefon;
+        if (updates.firma !== undefined) adminUpdates.user_metadata.firma = updates.firma;
     }
 
     const { error } = await supabaseAdmin.auth.admin.updateUserById(id, adminUpdates);

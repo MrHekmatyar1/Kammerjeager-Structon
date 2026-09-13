@@ -7,13 +7,13 @@ import { Pencil, Save, X, Trash2 } from 'lucide-react';
 export default function KundenTable({ initialKunden }: { initialKunden: any[] }) {
     const [kunden, setKunden] = useState(initialKunden);
     const [editingId, setEditingId] = useState<string | null>(null);
-    const [editForm, setEditForm] = useState<{name?: string, email?: string}>({});
+    const [editForm, setEditForm] = useState<{name?: string, email?: string, password?: string, telefon?: string, firma?: string}>({});
     const [deletingId, setDeletingId] = useState<string | null>(null);
     const [saving, setSaving] = useState(false);
 
     const handleEdit = (k: any) => {
         setEditingId(k.id);
-        setEditForm({ name: k.name, email: k.email });
+        setEditForm({ name: k.name, email: k.email, telefon: k.telefon, firma: k.firma });
     };
 
     const handleCancel = () => {
@@ -48,7 +48,7 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
             // Update local state
             setKunden(kunden.map(k => {
                 if (k.id === id) {
-                    return { ...k, name: editForm.name, email: editForm.email };
+                    return { ...k, name: editForm.name, email: editForm.email, telefon: editForm.telefon, firma: editForm.firma };
                 }
                 return k;
             }));
@@ -135,11 +135,27 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                                                         <h5 className="font-semibold text-xs text-slate-500 uppercase tracking-wider">Profil</h5>
                                                         <div>
                                                             <label className="block text-xs font-medium text-slate-300 mb-1">Name</label>
-                                                            <input type="text" value={editForm.name || ''} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full border border-[#2a2a2a] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
+                                                            <input type="text" value={editForm.name || ''} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full bg-[#161616] border border-[#2a2a2a] text-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
                                                         </div>
                                                         <div>
                                                             <label className="block text-xs font-medium text-slate-300 mb-1">E-Mail</label>
-                                                            <input type="email" value={editForm.email || ''} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full border border-[#2a2a2a] rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
+                                                            <input type="email" value={editForm.email || ''} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full bg-[#161616] border border-[#2a2a2a] text-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
+                                                        </div>
+                                                        <div>
+                                                            <label className="block text-xs font-medium text-slate-300 mb-1">Passwort (optional)</label>
+                                                            <input type="password" placeholder="Neues Passwort..." value={editForm.password || ''} onChange={e => setEditForm({...editForm, password: e.target.value})} className="w-full bg-[#161616] border border-[#2a2a2a] text-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
+                                                            <p className="text-[10px] text-slate-500 mt-1">Nur ausfüllen, um das Passwort zu ändern.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="space-y-4">
+                                                        <h5 className="font-semibold text-xs text-slate-500 uppercase tracking-wider">Kontaktdaten (Optional)</h5>
+                                                        <div>
+                                                            <label className="block text-xs font-medium text-slate-300 mb-1">Telefon</label>
+                                                            <input type="text" value={editForm.telefon || ''} onChange={e => setEditForm({...editForm, telefon: e.target.value})} className="w-full bg-[#161616] border border-[#2a2a2a] text-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
+                                                        </div>
+                                                        <div>
+                                                            <label className="block text-xs font-medium text-slate-300 mb-1">Firma</label>
+                                                            <input type="text" value={editForm.firma || ''} onChange={e => setEditForm({...editForm, firma: e.target.value})} className="w-full bg-[#161616] border border-[#2a2a2a] text-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none" />
                                                         </div>
                                                     </div>
                                                 </div>
