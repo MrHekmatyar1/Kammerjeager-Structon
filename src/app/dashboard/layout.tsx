@@ -211,34 +211,24 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     }
 
     const NavLinks = () => (
-        <nav style={{ display: 'flex', flexDirection: 'column' }}>
+        <nav className="flex flex-col">
             {navItems.map(item => {
                 const active = pathname === item.href;
                 return (
-                    <Link key={item.name} href={item.href} style={{
-                        display: 'block',
-                        padding: '13px 18px',
-                        color: active ? '#C8102E' : '#475569',
-                        fontWeight: active ? 700 : 500,
-                        textDecoration: 'none',
-                        fontSize: '15px',
-                        whiteSpace: 'nowrap',
-                        background: active ? 'rgba(200,16,46,0.08)' : 'transparent',
-                        borderBottom: '1px solid #cbd5e1',
-                    }}>
+                    <Link key={item.name} href={item.href} className={`
+                        block px-[18px] py-[13px] text-[15px] whitespace-nowrap border-b transition-colors
+                        ${active 
+                            ? 'text-[#C8102E] font-bold bg-[#C8102E]/10 border-slate-300 dark:border-[#2a2a2a]' 
+                            : 'text-slate-600 dark:text-slate-400 font-medium border-slate-300 dark:border-[#2a2a2a] hover:bg-slate-100 dark:hover:bg-[#1a1a1a]'
+                        }
+                    `}>
                         {item.name}
                     </Link>
                 );
             })}
             <button
                 onClick={async () => { await supabase.auth.signOut(); router.push('/'); }}
-                style={{
-                    display: 'block', textAlign: 'left', padding: '13px 18px',
-                    background: 'none', border: 'none',
-                    color: '#94a3b8', fontWeight: 500, fontSize: '14px',
-                    cursor: 'pointer', fontFamily: 'inherit', marginTop: '4px',
-                    whiteSpace: 'nowrap',
-                }}
+                className="block text-left px-[18px] py-[13px] bg-transparent border-none text-slate-400 font-medium text-[14px] cursor-pointer mt-1 whitespace-nowrap hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
             >
                 Abmelden
             </button>
@@ -246,7 +236,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     );
 
     return (
-        <div style={{ minHeight: 'calc(100vh - 70px)', background: '#f1f5f9' }}>
+        <div className="min-h-[calc(100vh-70px)] bg-slate-100 dark:bg-[#161616] transition-colors">
 
             {/* PLZ Setup Modal — shown when partner has no PLZ set */}
             {showPlzModal && <PlzSetupModal onSaved={() => setShowPlzModal(false)} />}
@@ -259,31 +249,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <button
                     onClick={() => setDrawerOpen(o => !o)}
                     aria-label="Menü"
-                    className="dashboard-drawer-toggle"
-                    style={{
-                        position: 'fixed',
-                        top: '68px',
-                        left: '20px',
-                        zIndex: 9998,
-                        width: '44px',
-                        height: '38px',
-                        background: '#fff',
-                        border: '1px solid #e2e8f0',
-                        borderTop: 'none',
-                        borderRadius: '0 0 22px 22px',
-                        cursor: 'pointer',
-                        padding: 0,
-                        boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        paddingBottom: '4px',
-                        transition: 'opacity 0.2s, background 0.2s',
-                        opacity: drawerOpen ? 0 : 1,
-                        pointerEvents: drawerOpen ? 'none' : 'auto',
-                    }}
+                    className={`
+                        dashboard-drawer-toggle fixed top-[68px] left-[20px] z-[9998] w-[44px] h-[38px] flex items-center justify-center pb-1
+                        bg-white dark:bg-[#111111] border border-t-0 border-slate-200 dark:border-[#2a2a2a] rounded-b-[22px] cursor-pointer
+                        shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] transition-all duration-200
+                        ${drawerOpen ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'}
+                    `}
                 >
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#475569" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transform: drawerOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" className="text-slate-600 dark:text-slate-300 stroke-[2.5px] stroke-linecap-round stroke-linejoin-round transition-transform duration-200" style={{ transform: drawerOpen ? 'rotate(180deg)' : 'none' }}>
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </button>
@@ -300,32 +273,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     }}
                 />
 
-                <div style={{
-                    position: 'fixed',
-                    top: '68px',
-                    left: 0,
-                    width: 'fit-content',
-                    minWidth: '205px',
-                    maxWidth: 'calc(100vw - 32px)',
-                    zIndex: 9997,
-                    background: '#fff',
-                    borderRight: '1px solid #e2e8f0',
-                    borderBottom: '1px solid #e2e8f0',
-                    borderRadius: '0 0 16px 0',
-                    boxShadow: '4px 8px 24px rgba(0,0,0,0.15)',
-                    transform: drawerOpen ? 'translateY(0)' : 'translateY(-120%)',
-                    transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-                }}>
-                    <div style={{ padding: '18px 18px 12px', borderBottom: '1px solid #f1f5f9' }}>
-                        <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '4px' }}>Partner-Portal</div>
-                        <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a', whiteSpace: 'nowrap' }}>{user.email}</div>
+                <div className={`
+                    fixed top-[68px] left-0 w-max min-w-[205px] max-w-[calc(100vw-32px)] z-[9997]
+                    bg-white dark:bg-[#111111] border-r border-b border-slate-200 dark:border-[#2a2a2a] rounded-br-[16px]
+                    shadow-[4px_8px_24px_rgba(0,0,0,0.15)] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+                    ${drawerOpen ? 'translate-y-0' : '-translate-y-[120%]'}
+                `}>
+                    <div className="px-[18px] py-[18px] pb-[12px] border-b border-slate-100 dark:border-[#1a1a1a]">
+                        <div className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.08em] mb-1">Partner-Portal</div>
+                        <div className="text-[14px] font-bold text-slate-900 dark:text-white whitespace-nowrap">{user.email}</div>
                     </div>
-                    <div style={{ paddingBottom: '12px' }}>
+                    <div className="pb-[12px]">
                         <NavLinks />
                     </div>
                 </div>
 
-                <main style={{ padding: '40px 16px 40px' }}>
+                <main className="pt-[40px] px-[16px] pb-[40px]">
                     {children}
                 </main>
             </div>
@@ -334,22 +297,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 DESKTOP: classic sidebar layout
             ══════════════════════════════════════ */}
             <div className="hidden md:flex">
-                <aside style={{
-                    width: '250px',
-                    background: '#fff',
-                    borderRight: '1px solid #cbd5e1',
-                    padding: '24px 0',
-                    minHeight: 'calc(100vh - 70px)',
-                    flexShrink: 0,
-                }}>
-                    <div style={{ padding: '0 24px', marginBottom: '24px' }}>
-                        <div style={{ fontSize: '13px', color: '#64748b', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>Partner-Portal</div>
-                        <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', wordBreak: 'break-all', marginBottom: '4px' }}>{user.email}</div>
+                <aside className="w-[250px] bg-white dark:bg-[#111111] border-r border-slate-300 dark:border-[#2a2a2a] py-[24px] min-h-[calc(100vh-70px)] shrink-0 transition-colors">
+                    <div className="px-[24px] mb-[24px]">
+                        <div className="text-[13px] text-slate-500 font-semibold uppercase tracking-[0.05em] mb-[8px]">Partner-Portal</div>
+                        <div className="text-[15px] font-bold text-slate-900 dark:text-white break-all mb-[4px]">{user.email}</div>
                     </div>
                     <NavLinks />
                 </aside>
-                <main style={{ flex: 1, padding: '32px', minWidth: 0 }}>
-                    <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+                <main className="flex-1 p-[32px] min-w-0">
+                    <div className="max-w-[1000px] mx-auto">
                         {children}
                     </div>
                 </main>

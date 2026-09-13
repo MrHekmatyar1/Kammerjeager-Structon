@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { updateMasterProfile, deleteMaster, updateMasterFreeLeads } from '@/app/admin/actions';
+import { updateMasterProfile, deleteMaster, setFreeLeads } from '@/app/admin/actions';
 import { CheckCircle, XCircle, Gift, Settings, Save, X, Trash2 } from 'lucide-react';
 
 export default function MastersTable({ initialMasters }: { initialMasters: any[] }) {

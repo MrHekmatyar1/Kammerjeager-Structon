@@ -153,15 +153,15 @@ export default function DashboardMarketplace() {
     // ─── Loading State ─────────────────────────────────────────────────────
     if (loading) return (
         <div>
-            <h1 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2.5rem', fontWeight: 900, textTransform: 'uppercase', marginBottom: '8px', color: '#0f172a', lineHeight: 1 }}>
+            <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark:text-white leading-none">
                 Neue Aufträge
             </h1>
-            <p style={{ color: '#64748b', fontSize: '15px', marginBottom: '32px' }}>Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
-            <div style={{ display: 'grid', gap: '16px' }}>
+            <p className="text-slate-500 dark:text-slate-400 text-[15px] mb-[32px]">Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
+            <div className="grid gap-[16px]">
                 {[1, 2].map(i => (
-                    <div key={i} className="animate-pulse" style={{ background: '#fff', border: '1px solid #cbd5e1', borderRadius: '12px', padding: '24px', height: '100px' }}>
-                        <div style={{ background: '#e2e8f0', height: '16px', width: '60%', borderRadius: '4px', marginBottom: '12px' }} />
-                        <div style={{ background: '#e2e8f0', height: '12px', width: '40%', borderRadius: '4px' }} />
+                    <div key={i} className="animate-pulse bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[24px] h-[100px]">
+                        <div className="bg-slate-200 dark:bg-[#2a2a2a] h-[16px] w-[60%] rounded-[4px] mb-[12px]" />
+                        <div className="bg-slate-200 dark:bg-[#2a2a2a] h-[12px] w-[40%] rounded-[4px]" />
                     </div>
                 ))}
             </div>
@@ -171,24 +171,24 @@ export default function DashboardMarketplace() {
     return (
         <div>
             {/* Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px', flexWrap: 'wrap', gap: '12px' }}>
+            <div className="flex justify-between items-start mb-[32px] flex-wrap gap-[12px]">
                 <div>
-                    <h1 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2.5rem', fontWeight: 900, textTransform: 'uppercase', marginBottom: '8px', color: '#0f172a', lineHeight: 1 }}>
+                    <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark:text-white leading-none">
                         Neue Aufträge
                     </h1>
-                    <p style={{ color: '#64748b', fontSize: '15px', margin: 0 }}>
+                    <p className="text-slate-500 dark:text-slate-400 text-[15px] m-0">
                         Verfügbare Aufträge in Ihrem Einsatzgebiet.
                     </p>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div className="flex items-center gap-[12px]">
                     {leads.length > 0 && (
-                        <span style={{ background: '#C8102E', border: 'none', color: '#fff', fontSize: '13px', fontWeight: 700, padding: '5px 13px', borderRadius: '20px' }}>
+                        <span className="bg-[#C8102E] border-none text-white text-[13px] font-bold py-[5px] px-[13px] rounded-[20px]">
                             {leads.length} Neu
                         </span>
                     )}
                     <button
                         onClick={loadLeads}
-                        className="bg-slate-600 text-white border border-transparent hover:bg-white hover:text-slate-600 hover:border-slate-600 px-[17px] py-[9px] rounded-lg text-[13px] font-semibold transition-colors"
+                        className="bg-slate-600 dark:bg-slate-700 text-white border border-transparent hover:bg-slate-100 dark:hover:bg-[#2a2a2a] hover:text-slate-600 dark:hover:text-white px-[17px] py-[9px] rounded-lg text-[13px] font-semibold transition-colors"
                     >
                         ↻ Aktualisieren
                     </button>
@@ -197,18 +197,18 @@ export default function DashboardMarketplace() {
 
             {/* Error */}
             {error && (
-                <div style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', padding: '12px 16px', borderRadius: '8px', marginBottom: '24px', fontSize: '14px' }}>
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-400 px-[16px] py-[12px] rounded-[8px] mb-[24px] text-[14px]">
                     {error}
                 </div>
             )}
 
             {/* Empty state */}
             {!error && leads.length === 0 && (
-                <div style={{ background: '#fff', border: '1px solid #cbd5e1', borderRadius: '16px', padding: '64px 32px', textAlign: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-                    <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '22px', fontWeight: 900, textTransform: 'uppercase', color: '#0f172a', marginBottom: '8px' }}>
+                <div className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[16px] px-[32px] py-[64px] text-center shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                    <h3 className="font-heading text-[22px] font-black uppercase text-slate-900 dark:text-white mb-[8px]">
                         Keine neuen Aufträge
                     </h3>
-                    <p style={{ color: '#64748b', fontSize: '14px', margin: 0 }}>
+                    <p className="text-slate-500 dark:text-slate-400 text-[14px] m-0">
                         Aktuell liegen keine neuen Aufträge in Ihrem Einsatzgebiet vor.<br />
                         Sie werden per E-Mail & Telegram benachrichtigt, sobald ein neuer Auftrag eingeht.
                     </p>
@@ -216,31 +216,25 @@ export default function DashboardMarketplace() {
             )}
 
             {/* Lead cards */}
-            <div style={{ display: 'grid', gap: '16px' }}>
+            <div className="grid gap-[16px]">
                 {leads.map(lead => (
-                    <div key={lead.id} style={{
-                        background: '#fff', border: '1px solid #94a3b8', borderRadius: '12px', padding: '20px',
-                        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                        boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
-                        transition: 'box-shadow 0.2s',
-                        flexWrap: 'wrap', gap: '16px'
-                    }}>
-                        <div style={{ flex: 1, minWidth: '220px' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
-                                <span style={{ background: '#C8102E', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '3px 9px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Neu</span>
-                                <span style={{ color: getUrgencyColor(lead.created_at), fontSize: '12px', fontWeight: 600 }}>
+                    <div key={lead.id} className="bg-white dark:bg-[#111111] border border-slate-400 dark:border-[#2a2a2a] rounded-[12px] p-[20px] flex items-center justify-between shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-shadow flex-wrap gap-[16px]">
+                        <div className="flex-1 min-w-[220px]">
+                            <div className="flex items-center gap-[8px] mb-[6px] flex-wrap">
+                                <span className="bg-[#C8102E] text-white text-[11px] font-bold py-[3px] px-[9px] rounded-[4px] uppercase tracking-[0.05em]">Neu</span>
+                                <span className="text-[12px] font-semibold" style={{ color: getUrgencyColor(lead.created_at) }}>
                                     {timeAgo(lead.created_at)}
                                 </span>
                                 {lead.kunde_typ && (
-                                    <span style={{ background: '#475569', color: '#fff', fontSize: '11px', fontWeight: 600, padding: '3px 9px', borderRadius: '4px' }}>
+                                    <span className="bg-slate-600 text-white text-[11px] font-semibold py-[3px] px-[9px] rounded-[4px]">
                                         {lead.kunde_typ}
                                     </span>
                                 )}
                             </div>
-                            <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginBottom: '4px' }}>
+                            <h3 className="text-[18px] font-bold text-slate-900 dark:text-white mb-[4px]">
                                 {lead.schaedling || 'Schädling unbekannt'} · {lead.plz}
                             </h3>
-                            <div style={{ color: '#64748b', fontSize: '13px', display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+                            <div className="text-slate-500 dark:text-slate-400 text-[13px] flex gap-[8px] flex-wrap items-center">
                                 {lead.objekt_typ && <span>{lead.objekt_typ}</span>}
                                 {lead.objekt_typ && lead.raeume && <span>·</span>}
                                 {lead.raeume && <span>{lead.raeume} Räume</span>}
@@ -265,23 +259,23 @@ export default function DashboardMarketplace() {
 
             {/* ── Modal: Lead Detail / Accept ──────────────────────────────── */}
             {selectedLead && !showRejectModal && (
-                <div style={{ position: 'fixed', top: '68px', left: 0, right: 0, bottom: 0, height: 'calc(100dvh - 68px)', background: 'rgba(15,23,42,0.28)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', zIndex: 1000, padding: '12px 16px 36px', boxSizing: 'border-box' }}>
-                    <div className="no-scrollbar" style={{ background: '#fff', width: '100%', maxWidth: '540px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 24px 60px rgba(0,0,0,0.25)', maxHeight: 'calc(100dvh - 68px - 48px)', overflowY: 'auto', scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
+                <div className="fixed top-[68px] inset-x-0 bottom-0 h-[calc(100dvh-68px)] bg-slate-900/30 dark:bg-black/50 flex items-start justify-center z-[1000] px-[16px] pt-[12px] pb-[36px] box-border backdrop-blur-sm">
+                    <div className="no-scrollbar bg-white dark:bg-[#111111] w-full max-w-[540px] rounded-[16px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.25)] max-h-[calc(100dvh-68px-48px)] overflow-y-auto border border-transparent dark:border-[#2a2a2a]">
 
                         {/* Modal Header */}
-                        <div style={{ padding: '16px 20px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div className="px-[20px] py-[16px] border-b border-slate-200 dark:border-[#2a2a2a] flex justify-between items-center bg-white dark:bg-[#111111]">
                             <div>
-                                <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#0f172a', margin: 0 }}>Auftragsdetails</h2>
-                                <p style={{ color: '#64748b', fontSize: '13px', margin: '4px 0 0' }}>
+                                <h2 className="text-[18px] font-extrabold text-slate-900 dark:text-white m-0">Auftragsdetails</h2>
+                                <p className="text-slate-500 dark:text-slate-400 text-[13px] mt-[4px] mb-0">
                                     {selectedLead.schaedling} · PLZ {selectedLead.plz} · {timeAgo(selectedLead.created_at)}
                                 </p>
                             </div>
-                            <button onClick={() => setSelectedLead(null)} style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer', color: '#94a3b8', lineHeight: 1, padding: '4px' }}>×</button>
+                            <button onClick={() => setSelectedLead(null)} className="bg-transparent border-none text-[24px] cursor-pointer text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 leading-none p-[4px]">×</button>
                         </div>
 
                         {/* Lead Details */}
-                        <div style={{ padding: '16px 20px', background: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                        <div className="px-[20px] py-[16px] bg-slate-50 dark:bg-[#161616] border-b border-slate-200 dark:border-[#2a2a2a]">
+                            <div className="grid grid-cols-2 gap-[10px]">
                                 {[
                                     { label: 'Schädling', value: selectedLead.schaedling },
                                     { label: 'PLZ', value: selectedLead.plz },
@@ -292,48 +286,48 @@ export default function DashboardMarketplace() {
                                     { label: 'Fläche', value: selectedLead.flaeche },
                                     { label: 'Zugang', value: selectedLead.zugang },
                                 ].filter(f => f.value).map(f => (
-                                    <div key={f.label} style={{ background: '#fff', border: '1px solid #cbd5e1', borderRadius: '8px', padding: '9px 12px' }}>
-                                        <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2px' }}>{f.label}</div>
-                                        <div style={{ fontSize: '14px', color: '#0f172a', fontWeight: 600 }}>{f.value}</div>
+                                    <div key={f.label} className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[8px] px-[12px] py-[9px]">
+                                        <div className="text-[11px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-[0.05em] mb-[2px]">{f.label}</div>
+                                        <div className="text-[14px] text-slate-900 dark:text-slate-300 font-semibold">{f.value}</div>
                                     </div>
                                 ))}
                             </div>
                             {selectedLead.zugang_beschreibung && (
-                                <div style={{ marginTop: '10px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '8px', padding: '9px 12px' }}>
-                                    <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', marginBottom: '2px' }}>Zugangsbeschreibung</div>
-                                    <div style={{ fontSize: '14px', color: '#0f172a' }}>{selectedLead.zugang_beschreibung}</div>
+                                <div className="mt-[10px] bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[8px] px-[12px] py-[9px]">
+                                    <div className="text-[11px] text-slate-400 dark:text-slate-500 font-bold uppercase mb-[2px]">Zugangsbeschreibung</div>
+                                    <div className="text-[14px] text-slate-900 dark:text-slate-300">{selectedLead.zugang_beschreibung}</div>
                                 </div>
                             )}
                         </div>
 
                         {/* Legal agreement */}
-                        <div style={{ padding: '16px 20px', borderBottom: '1px solid #e2e8f0' }}>
-                            <div style={{ background: '#fff', border: '1px solid #cbd5e1', borderRadius: '8px', padding: '12px 14px', marginBottom: '14px' }}>
-                                <div style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', marginBottom: '4px' }}>Rechtliche Vereinbarung</div>
-                                <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.55, margin: 0 }}>
+                        <div className="px-[20px] py-[16px] border-b border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#111111]">
+                            <div className="bg-white dark:bg-[#161616] border border-slate-300 dark:border-[#2a2a2a] rounded-[8px] px-[14px] py-[12px] mb-[14px]">
+                                <div className="text-[13px] font-bold text-slate-900 dark:text-white mb-[4px]">Rechtliche Vereinbarung</div>
+                                <p className="text-[13px] text-slate-600 dark:text-slate-400 leading-[1.55] m-0">
                                     Durch Annahme verpflichten Sie sich, im Falle einer prozentualen Provision die Abrechnung zwingend über die <strong>Stripe-Zahlungsfunktion</strong> des Portals abzuwickeln, damit unsere Provision automatisch einbehalten wird.
-                                    Bei Barzahlungen unter Umgehung des Systems oder Falschangaben wird eine <strong style={{ color: '#b91c1c' }}>Vertragsstrafe von 280 € + entgangene Provision</strong> fällig.
+                                    Bei Barzahlungen unter Umgehung des Systems oder Falschangaben wird eine <strong className="text-red-700 dark:text-red-500">Vertragsstrafe von 280 € + entgangene Provision</strong> fällig.
                                 </p>
                             </div>
-                            <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer' }}>
+                            <label className="flex items-start gap-[10px] cursor-pointer">
                                 <input
                                     type="checkbox"
                                     checked={agreed}
                                     onChange={e => setAgreed(e.target.checked)}
-                                    style={{ marginTop: '2px', width: '16px', height: '16px', accentColor: '#C8102E', flexShrink: 0 }}
+                                    className="mt-[2px] w-[16px] h-[16px] accent-[#C8102E] shrink-0"
                                 />
-                                <span style={{ fontSize: '13px', color: '#0f172a', fontWeight: 500, lineHeight: 1.45 }}>
+                                <span className="text-[13px] text-slate-900 dark:text-slate-300 font-medium leading-[1.45]">
                                     Ich akzeptiere die Bedingungen und bestätige, Provisions-Leads korrekt über Stripe abzurechnen.
                                 </span>
                             </label>
                         </div>
 
                         {/* Action buttons */}
-                        <div style={{ padding: '16px 20px', display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
+                        <div className="px-[20px] py-[16px] flex gap-[12px] justify-end bg-white dark:bg-[#111111]">
                             <button
                                 onClick={() => setShowRejectModal(true)}
                                 disabled={actionLoading}
-                                className="bg-white text-slate-500 border border-slate-200 hover:bg-slate-500 hover:text-white hover:border-slate-500 px-[20px] py-[10px] rounded-lg text-[14px] font-semibold transition-all duration-300 ease-in-out cursor-pointer"
+                                className="bg-white dark:bg-[#161616] text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-500 dark:hover:bg-slate-700 hover:text-white dark:hover:text-white hover:border-slate-500 px-[20px] py-[10px] rounded-lg text-[14px] font-semibold transition-all duration-300 ease-in-out cursor-pointer"
                             >
                                 Ablehnen
                             </button>
@@ -351,19 +345,19 @@ export default function DashboardMarketplace() {
 
             {/* ── Modal: Reject Reason ─────────────────────────────────────── */}
             {selectedLead && showRejectModal && (
-                <div style={{ position: 'fixed', top: '68px', left: 0, right: 0, bottom: 0, height: 'calc(100dvh - 68px)', background: 'rgba(15,23,42,0.28)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', zIndex: 1001, padding: '12px 16px 36px', boxSizing: 'border-box' }}>
-                    <div className="no-scrollbar" style={{ background: '#fff', width: '100%', maxWidth: '420px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 24px 60px rgba(0,0,0,0.25)', maxHeight: 'calc(100dvh - 68px - 48px)', overflowY: 'auto', scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
-                        <div style={{ padding: '16px 20px', borderBottom: '1px solid #e2e8f0' }}>
-                            <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#0f172a', margin: 0 }}>Auftrag ablehnen</h2>
+                <div className="fixed top-[68px] inset-x-0 bottom-0 h-[calc(100dvh-68px)] bg-slate-900/30 dark:bg-black/50 flex items-start justify-center z-[1001] px-[16px] pt-[12px] pb-[36px] box-border backdrop-blur-sm">
+                    <div className="no-scrollbar bg-white dark:bg-[#111111] w-full max-w-[420px] rounded-[16px] overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.25)] max-h-[calc(100dvh-68px-48px)] overflow-y-auto border border-transparent dark:border-[#2a2a2a]">
+                        <div className="px-[20px] py-[16px] border-b border-slate-200 dark:border-[#2a2a2a]">
+                            <h2 className="text-[18px] font-extrabold text-slate-900 dark:text-white m-0">Auftrag ablehnen</h2>
                         </div>
-                        <div style={{ padding: '16px 20px' }}>
-                            <label style={{ display: 'block', fontSize: '13px', color: '#475569', fontWeight: 600, marginBottom: '8px' }}>
+                        <div className="px-[20px] py-[16px]">
+                            <label className="block text-[13px] text-slate-600 dark:text-slate-400 font-semibold mb-[8px]">
                                 Grund (optional)
                             </label>
                             <select
                                 value={rejectReason}
                                 onChange={e => setRejectReason(e.target.value)}
-                                style={{ width: '100%', padding: '10px 14px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '14px', fontFamily: 'inherit', outline: 'none', marginBottom: '20px' }}
+                                className="w-full px-[14px] py-[10px] border border-slate-300 dark:border-[#2a2a2a] rounded-[8px] text-[14px] font-sans outline-none mb-[20px] bg-white dark:bg-[#161616] text-slate-900 dark:text-white focus:border-slate-400 dark:focus:border-slate-500"
                             >
                                 <option value="">Kein Grund angeben</option>
                                 <option value="Keine Kapazität">Keine Kapazität</option>
@@ -371,18 +365,18 @@ export default function DashboardMarketplace() {
                                 <option value="Nicht meine Spezialisierung">Nicht meine Spezialisierung</option>
                                 <option value="Urlaub / Krankheit">Urlaub / Krankheit</option>
                             </select>
-                            <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
+                            <div className="flex gap-[12px] justify-end">
                                 <button
                                     onClick={() => setShowRejectModal(false)}
                                     disabled={actionLoading}
-                                    className="bg-white text-slate-500 border border-slate-200 hover:bg-slate-500 hover:text-white hover:border-slate-500 px-[20px] py-[10px] rounded-lg text-[14px] font-semibold transition-all duration-300 ease-in-out cursor-pointer"
+                                    className="bg-white dark:bg-[#161616] text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-500 dark:hover:bg-slate-700 hover:text-white dark:hover:text-white hover:border-slate-500 px-[20px] py-[10px] rounded-lg text-[14px] font-semibold transition-all duration-300 ease-in-out cursor-pointer"
                                 >
                                     Zurück
                                 </button>
                                 <button
                                     onClick={handleReject}
                                     disabled={actionLoading}
-                                    className="bg-slate-900 text-white border border-transparent hover:bg-white hover:text-slate-900 hover:border-slate-900 px-[24px] py-[10px] rounded-lg text-[14px] font-bold transition-all duration-300 ease-in-out cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="bg-slate-900 dark:bg-slate-700 text-white border border-transparent hover:bg-slate-800 dark:hover:bg-slate-600 px-[24px] py-[10px] rounded-lg text-[14px] font-bold transition-all duration-300 ease-in-out cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {actionLoading ? 'Wird verarbeitet...' : 'Ablehnen bestätigen'}
                                 </button>

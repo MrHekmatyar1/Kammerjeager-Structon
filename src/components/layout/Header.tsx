@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { createClient } from '@/lib/supabase/client';
 import type { User } from '@supabase/supabase-js';
 import { useRouter, usePathname } from 'next/navigation';
+import { Sun, Moon } from 'lucide-react';
 
 // Configuration: navigation menus and pest list
 // Конфигурация: меню навигации и список вредителей
@@ -96,6 +97,27 @@ export default function Header() {
     const supabase = createClient();
     const router = useRouter();
     const pathname = usePathname();
+    const isDashboard = pathname.startsWith('/dashboard');
+
+    const [isDark, setIsDark] = useState(false);
+    useEffect(() => {
+        if (localStorage.getItem('partner-theme') === 'dark' || document.documentElement.classList.contains('dark')) {
+            setIsDark(true);
+            document.documentElement.classList.add('dark');
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        const next = !isDark;
+        setIsDark(next);
+        if (next) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('partner-theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('partner-theme', 'light');
+        }
+    };
 
     useEffect(() => {
         const isSpecialRoute = /^\/(geschaeftskunden|ueber-uns|kunden|dashboard|fuer-schaedlingsbekaempfer|auth|api|favicon\.ico|robots\.txt|sitemap\.xml)(\/|$)/.test(pathname);
@@ -253,6 +275,16 @@ export default function Header() {
                             0160 92376320
                         </a>
                         
+                        {isDashboard && (
+                            <button
+                                onClick={toggleTheme}
+                                className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden bg-white hover:bg-slate-50 dark:bg-[#111111] dark:border-[#2a2a2a] cursor-pointer transition-colors"
+                                aria-label="Toggle Dark Mode"
+                            >
+                                {isDark ? <Sun className="text-yellow-400" size={18} /> : <Moon className="text-slate-600" size={18} />}
+                            </button>
+                        )}
+
                         <div className="relative">
                             {user ? (
                                 <button
@@ -412,7 +444,42 @@ export default function Header() {
                     <div className="w-10 h-1 bg-slate-200 rounded-full" />
                 </div>
 
+                <button
+                    onClick={() => setMobileOpen(false)}
+                    className="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 bg-transparent border-none cursor-pointer"
+                >
+                    <svg width="24" height="24" fill="none" stroke="#64748b" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                {/* Drag handle / Ручка */}
+                <div className="flex justify-center pt-3 pb-1">
+                    <div className="w-10 h-1 bg-slate-200 rounded-full" />
+                </div>
+
                 <div className="px-5 pt-2 pb-8">
+                    {isDashboard && (
+                        <div className="mt-8 pb-4 border-b border-slate-100">
+                            <button
+                                onClick={toggleTheme}
+                                className="flex items-center gap-3 w-full py-2 bg-transparent border-none text-[17px] font-semibold text-[#1E293B] cursor-pointer"
+                            >
+                                {isDark ? (
+                                    <>
+                                        <Sun className="text-yellow-400" size={20} />
+                                        <span>Hell-Modus</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Moon className="text-slate-600" size={20} />
+                                        <span>Dunkel-Modus</span>
+                                    </>
+                                )}
+                            </button>
+                        </div>
+                    )}
+
                     {/* Nav links / Навигационные ссылки */}
                     {NAV_LINKS.map(({ label, href }) => (
                         <Link

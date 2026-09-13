@@ -61,71 +61,62 @@ export default function DashboardBilling() {
 
     return (
         <div>
-            <h1 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2.5rem', fontWeight: 900, textTransform: 'uppercase', marginBottom: '8px', color: '#0f172a', lineHeight: 1 }}>
+            <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark:text-white leading-none">
                 Abrechnung
             </h1>
-            <p style={{ color: '#64748b', fontSize: '15px', marginBottom: '32px' }}>
+            <p className="text-slate-500 dark:text-slate-400 text-[15px] mb-[32px]">
                 Verwalten Sie Ihre Zahlungsmethoden und Rechnungen über Stripe Connect.
             </p>
 
             {error && (
-                <div style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', padding: '16px', borderRadius: '12px', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-400 p-[16px] rounded-[12px] mb-[24px] flex items-center gap-[8px]">
                     <AlertCircle className="w-5 h-5" />
-                    <span style={{ fontSize: '14px', fontWeight: 500 }}>{error}</span>
+                    <span className="text-[14px] font-medium">{error}</span>
                 </div>
             )}
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '40px' }}>
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[24px] mb-[40px]">
                 {/* Stripe Status */}
-                <div style={{ background: '#fff', border: '1px solid #cbd5e1', borderRadius: '12px', padding: '24px', display: 'flex', flexDirection: 'column', minHeight: '320px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                        <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(99, 91, 255, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#635BFF" strokeWidth="2">
+                <div className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[24px] flex flex-col min-h-[320px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
+                    <div className="flex items-center gap-[12px] mb-[16px]">
+                        <div className="w-[48px] h-[48px] rounded-full bg-[#635BFF]/10 dark:bg-[#635BFF]/20 flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#635BFF" strokeWidth="2" className="dark:stroke-[#807bf6]">
                                 <rect x="2" y="5" width="20" height="14" rx="2" />
                                 <path d="M2 10h20" />
                             </svg>
                         </div>
                         <div>
-                            <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', margin: 0 }}>Stripe Account</h3>
-                            <div style={{ fontSize: '13px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '2px' }}>
-                                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444' }}></span>
+                            <h3 className="text-[16px] font-bold text-slate-900 dark:text-white m-0">Stripe Account</h3>
+                            <div className="text-[13px] text-slate-500 dark:text-slate-400 flex items-center gap-[4px] mt-[2px]">
+                                <span className="w-[8px] h-[8px] rounded-full bg-red-500"></span>
                                 Nicht verbunden
                             </div>
                         </div>
                     </div>
 
-                    <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.5, marginBottom: '20px', flex: 1 }}>
+                    <p className="text-[14px] text-slate-600 dark:text-slate-400 leading-[1.5] mb-[20px] flex-1">
                         Um Leads auf Provisionsbasis zu erhalten, müssen Sie Ihr Bankkonto oder eine Kreditkarte über Stripe hinterlegen.
                         Es fallen nur Gebühren an, wenn Sie einen Auftrag erfolgreich abschließen.
                     </p>
 
-                    <button className="btn-color-hover" style={{
-                        width: '100%', background: '#635BFF', color: '#fff', border: 'none', padding: '12px',
-                        borderRadius: '8px', fontSize: '14px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
-                    }}>
+                    <button className="btn-color-hover w-full bg-[#635BFF] dark:bg-[#5249ea] text-white border-none p-[12px] rounded-[8px] text-[14px] font-semibold cursor-pointer">
                         Mit Stripe verbinden
                     </button>
                 </div>
 
                 {/* Balance */}
-                <div style={{ background: '#fff', border: '1px solid #cbd5e1', borderRadius: '12px', padding: '24px', display: 'flex', flexDirection: 'column', minHeight: '320px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-                    <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>Plattform-Guthaben</h3>
-                    <div style={{ fontSize: '28px', fontWeight: 900, color: '#0f172a', marginBottom: '8px', lineHeight: 1 }}>
-                        {credits !== null ? credits.toFixed(2).replace('.', ',') : '0,00'} <span style={{ fontSize: '16px', color: '#94a3b8' }}>€</span>
+                <div className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[24px] flex flex-col min-h-[320px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
+                    <h3 className="text-[16px] font-bold text-slate-900 dark:text-white mb-[16px]">Plattform-Guthaben</h3>
+                    <div className="text-[28px] font-black text-slate-900 dark:text-white mb-[8px] leading-none">
+                        {credits !== null ? credits.toFixed(2).replace('.', ',') : '0,00'} <span className="text-[16px] text-slate-400">€</span>
                     </div>
-                    <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '24px', flex: 1 }}>
+                    <p className="text-[13px] text-slate-500 dark:text-slate-400 mb-[24px] flex-1">
                         Alternativ können Sie Guthaben aufladen, um Leads zum Festpreis (CPL) zu kaufen, anstatt Provision zu zahlen.
                     </p>
 
                     <button
                         onClick={() => setIsModalOpen(true)}
-                        style={{
-                            width: '100%', background: '#fff', color: '#0f172a', border: '1px solid #cbd5e1', padding: '12px',
-                            borderRadius: '8px', fontSize: '14px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s'
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.background = '#f8fafc'}
-                        onMouseLeave={e => e.currentTarget.style.background = '#fff'}
+                        className="w-full bg-white dark:bg-[#161616] text-slate-900 dark:text-white border border-slate-300 dark:border-[#2a2a2a] p-[12px] rounded-[8px] text-[14px] font-semibold cursor-pointer flex items-center justify-center gap-[8px] hover:bg-slate-50 dark:hover:bg-[#222222] transition-colors duration-200"
                     >
                         <CreditCard className="w-4 h-4" />
                         Jetzt aufladen
@@ -135,8 +126,8 @@ export default function DashboardBilling() {
 
 
 
-            <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>Vergangene Rechnungen</h3>
-            <div style={{ background: '#fff', border: '1px solid #cbd5e1', borderRadius: '12px', padding: '32px', textAlign: 'center', color: '#94a3b8', fontSize: '14px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
+            <h3 className="text-[18px] font-bold text-slate-900 dark:text-white mb-[16px]">Vergangene Rechnungen</h3>
+            <div className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[32px] text-center text-slate-400 dark:text-slate-500 text-[14px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
                 Sie haben noch keine Rechnungen erhalten.
             </div>
 
@@ -146,50 +137,48 @@ export default function DashboardBilling() {
                         @keyframes am-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
                         @keyframes am-card-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
                     `}</style>
-                    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.60)', zIndex: 99999, animation: 'am-backdrop-in 0.18s ease forwards', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }} onClick={() => setIsModalOpen(false)}>
-                        <div style={{ position: 'relative', width: '100%', maxWidth: '360px', animation: 'am-card-in 0.22s ease forwards' }} onClick={e => e.stopPropagation()}>
+                    <div className="fixed inset-0 bg-black/60 z-[99999] animate-[am-backdrop-in_0.18s_ease_forwards] flex items-center justify-center p-[16px]" onClick={() => setIsModalOpen(false)}>
+                        <div className="relative w-full max-w-[360px] animate-[am-card-in_0.22s_ease_forwards]" onClick={e => e.stopPropagation()}>
                             {/* Peeking Roach - Right Side */}
-                            <img src="/pests/roach_runner.png" alt="Roach" style={{ position: 'absolute', top: '40px', right: '-40px', width: '75px', height: 'auto', transform: 'rotate(70deg)', zIndex: 0 }} />
+                            <img src="/pests/roach_runner.png" alt="Roach" className="absolute top-[40px] right-[-40px] w-[75px] h-auto rotate-[70deg] z-0" />
 
-                            <div style={{ background: '#fff', width: '100%', position: 'relative', zIndex: 10, borderRadius: '16px', border: '2px solid #f0f0f0', boxShadow: '0 12px 48px rgba(0,0,0,0.12)', padding: '32px' }}>
+                            <div className="bg-white dark:bg-[#111111] w-full relative z-10 rounded-[16px] border-[2px] border-[#f0f0f0] dark:border-[#2a2a2a] shadow-[0_12px_48px_rgba(0,0,0,0.12)] p-[32px]">
 
-                            <button onClick={() => setIsModalOpen(false)} style={{ position: 'absolute', top: '12px', right: '12px', width: '28px', height: '28px', border: '1px solid #edf0f4', background: '#fff', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748b' }}>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6 6 18M6 6l12 12" /></svg>
-                            </button>
-
-                            <h2 style={{ fontSize: '20px', fontWeight: 900, color: '#0f172a', marginBottom: '6px', textAlign: 'center', fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>Guthaben aufladen</h2>
-                            <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '24px', textAlign: 'center' }}>Geben Sie den gewünschten Betrag ein. Der Mindestbetrag ist 10 €.</p>
-                            
-                            <div style={{ position: 'relative', marginBottom: '20px' }}>
-                                <input 
-                                    type="number" min="10" 
-                                    value={customAmount} onChange={e => setCustomAmount(e.target.value === '' ? '' : Number(e.target.value))}
-                                    style={{ width: '100%', padding: '12px 32px 12px 16px', fontSize: '14px', fontWeight: 600, color: '#0f172a', border: '1px solid #94a3b8', borderRadius: '8px', outline: 'none', transition: 'border-color 0.2s, box-shadow 0.2s' }}
-                                    placeholder="Betrag eingeben"
-                                    onFocus={e => { e.currentTarget.style.borderColor = '#0f172a'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(15,23,42,0.1)'; }}
-                                    onBlur={e => { e.currentTarget.style.borderColor = '#94a3b8'; e.currentTarget.style.boxShadow = 'none'; }}
-                                />
-                                <span style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', fontSize: '14px', fontWeight: 600, color: '#94a3b8' }}>€</span>
-                            </div>
-
-                            {error && <div style={{ color: '#ef4444', fontSize: '12px', marginBottom: '12px', textAlign: 'center' }}>{error}</div>}
-
-                            <div style={{ position: 'relative', zIndex: 20 }}>
-                                {/* Peeking Roach - Under Confirm Button (Left Side) */}
-                                <img src="/pests/roach_runner.png" alt="Roach" style={{ position: 'absolute', bottom: '-15px', left: '-40px', width: '65px', height: 'auto', transform: 'rotate(-120deg)', zIndex: 0 }} />
-                                
-                                <button
-                                    onClick={() => {
-                                        if (customAmount && customAmount >= 10) handleBuy(Number(customAmount));
-                                        else setError('Bitte geben Sie einen gültigen Betrag (min. 10 €) ein.');
-                                    }}
-                                    disabled={buying || !customAmount || customAmount < 10}
-                                    style={{ position: 'relative', zIndex: 10, width: '100%', background: (buying || !customAmount || customAmount < 10) ? '#94a3b8' : '#0f172a', color: '#fff', padding: '12px', borderRadius: '8px', fontSize: '14px', fontWeight: 600, cursor: (buying || !customAmount || customAmount < 10) ? 'not-allowed' : 'pointer', border: 'none', transition: 'all 0.2s', opacity: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
-                                >
-                                    <CreditCard className="w-4 h-4" />
-                                    {buying ? 'Lädt...' : 'Jetzt aufladen'}
+                                <button onClick={() => setIsModalOpen(false)} className="absolute top-[12px] right-[12px] w-[28px] h-[28px] border border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#161616] rounded-full cursor-pointer flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-[#222222] transition-colors">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6 6 18M6 6l12 12" /></svg>
                                 </button>
-                            </div>
+
+                                <h2 className="text-[20px] font-black text-slate-900 dark:text-white mb-[6px] text-center font-heading uppercase">Guthaben aufladen</h2>
+                                <p className="text-[13px] text-slate-500 dark:text-slate-400 mb-[24px] text-center">Geben Sie den gewünschten Betrag ein. Der Mindestbetrag ist 10 €.</p>
+                                
+                                <div className="relative mb-[20px]">
+                                    <input 
+                                        type="number" min="10" 
+                                        value={customAmount} onChange={e => setCustomAmount(e.target.value === '' ? '' : Number(e.target.value))}
+                                        className="w-full py-[12px] pr-[32px] pl-[16px] text-[14px] font-bold text-slate-900 dark:text-white border border-slate-400 dark:border-[#2a2a2a] rounded-[8px] outline-none transition-colors duration-200 bg-white dark:bg-[#161616] focus:border-slate-900 dark:focus:border-slate-500 focus:shadow-[0_0_0_3px_rgba(15,23,42,0.1)] dark:focus:shadow-none"
+                                        placeholder="Betrag eingeben"
+                                    />
+                                    <span className="absolute right-[12px] top-1/2 -translate-y-1/2 text-[14px] font-bold text-slate-400">€</span>
+                                </div>
+
+                                {error && <div className="text-red-500 text-[12px] mb-[12px] text-center">{error}</div>}
+
+                                <div className="relative z-20">
+                                    {/* Peeking Roach - Under Confirm Button (Left Side) */}
+                                    <img src="/pests/roach_runner.png" alt="Roach" className="absolute bottom-[-15px] left-[-40px] w-[65px] h-auto -rotate-[120deg] z-0" />
+                                    
+                                    <button
+                                        onClick={() => {
+                                            if (customAmount && customAmount >= 10) handleBuy(Number(customAmount));
+                                            else setError('Bitte geben Sie einen gültigen Betrag (min. 10 €) ein.');
+                                        }}
+                                        disabled={buying || !customAmount || customAmount < 10}
+                                        className={`relative z-10 w-full text-white p-[12px] rounded-[8px] text-[14px] font-bold border-none transition-all duration-200 flex items-center justify-center gap-[8px] ${(buying || !customAmount || customAmount < 10) ? 'bg-slate-400 dark:bg-slate-600 cursor-not-allowed' : 'bg-slate-900 dark:bg-[#161616] dark:border dark:border-[#2a2a2a] cursor-pointer hover:bg-slate-800 dark:hover:bg-[#222222]'}`}
+                                    >
+                                        <CreditCard className="w-4 h-4" />
+                                        {buying ? 'Lädt...' : 'Jetzt aufladen'}
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -82,7 +82,7 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                                 <tr className="bg-[#161616] hover:bg-[#1e1e1e] transition-colors shadow-md group">
                                     <td className="px-6 py-4 border-y border-l border-[#2a2a2a] rounded-l-xl group-hover:border-[#333333]">
                                         <>
-                                            <div className="font-bold text-white">{k.email}</div>
+                                            <div className="font-bold text-[#64748b]">{k.email}</div>
                                             <div className="text-sm text-slate-500">{k.name || '-'}</div>
                                         </>
                                     </td>

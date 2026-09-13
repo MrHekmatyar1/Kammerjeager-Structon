@@ -149,15 +149,15 @@ export default function DashboardOrders() {
     // ─── Loading ────────────────────────────────────────────────────────────
     if (loading) return (
         <div>
-            <h1 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2.5rem', fontWeight: 900, textTransform: 'uppercase', marginBottom: '8px', color: '#0f172a', lineHeight: 1 }}>
+            <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark:text-white leading-none">
                 Meine Aufträge
             </h1>
-            <p style={{ color: '#64748b', fontSize: '15px', marginBottom: '32px' }}>Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
-            <div style={{ display: 'grid', gap: '20px' }}>
+            <p className="text-slate-500 dark:text-slate-400 text-[15px] mb-[32px]">Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
+            <div className="grid gap-[20px]">
                 {[1, 2].map(i => (
-                    <div key={i} className="animate-pulse" style={{ background: '#fff', border: '1px solid #cbd5e1', borderRadius: '12px', padding: '24px', height: '120px' }}>
-                        <div style={{ background: '#e2e8f0', height: '16px', width: '50%', borderRadius: '4px', marginBottom: '12px' }} />
-                        <div style={{ background: '#e2e8f0', height: '12px', width: '35%', borderRadius: '4px' }} />
+                    <div key={i} className="animate-pulse bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[24px] h-[120px]">
+                        <div className="bg-slate-200 dark:bg-[#2a2a2a] h-[16px] w-[50%] rounded-[4px] mb-[12px]" />
+                        <div className="bg-slate-200 dark:bg-[#2a2a2a] h-[12px] w-[35%] rounded-[4px]" />
                     </div>
                 ))}
             </div>
@@ -167,29 +167,29 @@ export default function DashboardOrders() {
     return (
         <div>
             {/* Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '28px', flexWrap: 'wrap', gap: '12px' }}>
+            <div className="flex justify-between items-start mb-[28px] flex-wrap gap-[12px]">
                 <div>
-                    <h1 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2.5rem', fontWeight: 900, textTransform: 'uppercase', marginBottom: '6px', color: '#0f172a', lineHeight: 1 }}>
+                    <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[6px] text-slate-900 dark:text-white leading-none">
                         Meine Aufträge
                     </h1>
-                    <p style={{ color: '#64748b', fontSize: '15px', margin: 0 }}>Verwalten Sie Ihre übernommenen Aufträge.</p>
+                    <p className="text-slate-500 dark:text-slate-400 text-[15px] m-0">Verwalten Sie Ihre übernommenen Aufträge.</p>
                 </div>
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <div className="flex gap-[8px] flex-wrap">
                     <button
                         onClick={() => setFilterStatus('active')}
-                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'active' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-900 hover:text-white hover:border-slate-900'}`}
+                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'active' ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white' : 'bg-white dark:bg-[#161616] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-900 dark:hover:bg-slate-700 hover:text-white hover:border-slate-900'}`}
                     >
                         Aktiv
                     </button>
                     <button
                         onClick={() => setFilterStatus('all')}
-                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'all' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-900 hover:text-white hover:border-slate-900'}`}
+                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'all' ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white' : 'bg-white dark:bg-[#161616] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-900 dark:hover:bg-slate-700 hover:text-white hover:border-slate-900'}`}
                     >
                         Alle
                     </button>
                     <button
                         onClick={loadOrders}
-                        className="px-[14px] py-[8px] rounded-lg border border-slate-200 text-[13px] font-semibold bg-slate-50 text-slate-600 hover:bg-slate-200 transition-all duration-300 ease-in-out cursor-pointer"
+                        className="px-[14px] py-[8px] rounded-lg border border-slate-200 dark:border-[#2a2a2a] text-[13px] font-semibold bg-slate-50 dark:bg-[#111111] text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-[#1a1a1a] transition-all duration-300 ease-in-out cursor-pointer"
                     >
                         ↻
                     </button>
@@ -198,25 +198,25 @@ export default function DashboardOrders() {
 
             {/* Error */}
             {error && (
-                <div style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', padding: '12px 16px', borderRadius: '8px', marginBottom: '20px', fontSize: '14px' }}>
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-400 px-[16px] py-[12px] rounded-[8px] mb-[20px] text-[14px]">
                     {error}
                 </div>
             )}
 
             {/* Empty state */}
             {!error && orders.length === 0 && (
-                <div style={{ background: '#fff', border: '1px solid #cbd5e1', borderRadius: '16px', padding: '64px 32px', textAlign: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-                    <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '22px', fontWeight: 900, textTransform: 'uppercase', color: '#0f172a', marginBottom: '8px' }}>
+                <div className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[16px] px-[32px] py-[64px] text-center shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                    <h3 className="font-heading text-[22px] font-black uppercase text-slate-900 dark:text-white mb-[8px]">
                         Noch keine Aufträge
                     </h3>
-                    <p style={{ color: '#64748b', fontSize: '14px', margin: 0 }}>
-                        Nehmen Sie Aufträge aus <strong>Neue Aufträge</strong> an, um sie hier zu verwalten.
+                    <p className="text-slate-500 dark:text-slate-400 text-[14px] m-0">
+                        Nehmen Sie Aufträge aus <strong className="text-slate-900 dark:text-slate-300">Neue Aufträge</strong> an, um sie hier zu verwalten.
                     </p>
                 </div>
             )}
 
             {/* Order cards */}
-            <div style={{ display: 'grid', gap: '20px' }}>
+            <div className="grid gap-[20px]">
                 {orders.map(order => {
                     const cfg = STATUS_CONFIG[order.status] || STATUS_CONFIG['angenommen']!;
                     const isCompleted = order.status === 'abgeschlossen';
@@ -225,7 +225,7 @@ export default function DashboardOrders() {
                     const canEdit = UPDATABLE_STATUSES.includes(order.status);
 
                     return (
-                        <div key={order.id} style={{ background: '#fff', border: '1px solid #94a3b8', borderRadius: '14px', overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
+                        <div key={order.id} className="bg-white dark:bg-[#111111] border border-slate-400 dark:border-[#2a2a2a] rounded-[14px] overflow-hidden shadow-[0_1px_4px_rgba(0,0,0,0.04)]">
 
                             {/* Card header */}
                             <div style={{ padding: '16px 20px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#f8fafc', flexWrap: 'wrap', gap: '12px' }}>
@@ -258,69 +258,74 @@ export default function DashboardOrders() {
                                         </svg>
                                     </div>
                                 ) : (
-                                    <span style={{ padding: '6px 14px', borderRadius: '20px', border: '1px solid transparent', background: cfg.color, color: '#fff', fontWeight: 700, fontSize: '12px' }}>
+                                    <span className="px-[14px] py-[6px] rounded-[20px] border border-transparent text-white font-bold text-[12px]" style={{ background: cfg.color }}>
                                         {cfg.label}
                                     </span>
                                 )}
                             </div>
 
                             {/* Card body */}
-                            <div style={{ padding: '20px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px' }}>
+                            <div className="p-[20px] grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-[24px]">
 
                                 {/* Kundendaten */}
                                 <div>
-                                    <div style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>Kundendaten</div>
-                                    <div style={{ fontSize: '14px', marginBottom: '6px' }}><strong>Name:</strong> {order.name}</div>
-                                    {order.firma && <div style={{ fontSize: '14px', marginBottom: '6px' }}><strong>Firma:</strong> {order.firma}</div>}
-                                    <div style={{ fontSize: '14px', marginBottom: '6px' }}>
-                                        <strong>Telefon:</strong>{' '}
-                                        <a href={`tel:${order.telefon}`} style={{ color: '#C8102E', textDecoration: 'none', fontWeight: 600 }}>{order.telefon}</a>
+                                    <div className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.08em] mb-[12px]">Kundendaten</div>
+                                    <div className="text-[14px] mb-[6px] text-slate-900 dark:text-slate-300"><strong className="text-slate-900 dark:text-white">Name:</strong> {order.name}</div>
+                                    {order.firma && <div className="text-[14px] mb-[6px] text-slate-900 dark:text-slate-300"><strong className="text-slate-900 dark:text-white">Firma:</strong> {order.firma}</div>}
+                                    <div className="text-[14px] mb-[6px] text-slate-900 dark:text-slate-300">
+                                        <strong className="text-slate-900 dark:text-white">Telefon:</strong>{' '}
+                                        <a href={`tel:${order.telefon}`} className="text-[#C8102E] no-underline font-semibold">{order.telefon}</a>
                                     </div>
                                     {order.email && (
-                                        <div style={{ fontSize: '13px', color: '#64748b' }}>
-                                            <a href={`mailto:${order.email}`} style={{ color: '#3b82f6', textDecoration: 'none' }}>{order.email}</a>
+                                        <div className="text-[13px] text-slate-500 dark:text-slate-400">
+                                            <a href={`mailto:${order.email}`} className="text-blue-500 no-underline">{order.email}</a>
                                         </div>
                                     )}
-                                    {order.etage && <div style={{ fontSize: '13px', color: '#64748b', marginTop: '4px' }}>Etage: {order.etage}</div>}
+                                    {order.etage && <div className="text-[13px] text-slate-500 dark:text-slate-400 mt-[4px]">Etage: {order.etage}</div>}
                                 </div>
 
                                 {/* Abschluss */}
                                 <div>
-                                    <div style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>Abschluss & Abrechnung</div>
+                                    <div className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.08em] mb-[12px]">Abschluss & Abrechnung</div>
 
                                     {isCompleted ? (
-                                        <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', padding: '16px' }}>
-                                            <div style={{ color: '#166534', fontWeight: 700, marginBottom: '6px' }}>Auftrag abgeschlossen</div>
+                                        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-[10px] p-[16px]">
+                                            <div className="text-green-800 dark:text-green-400 font-bold mb-[6px]">Auftrag abgeschlossen</div>
                                             {getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).type !== 'percentage' ? (
-                                                <div style={{ color: '#15803d', fontSize: '14px', marginBottom: '4px' }}>
-                                                    Leadgebühr ({getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).label}): <strong>{getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value}</strong>
+                                                <div className="text-green-700 dark:text-green-500 text-[14px] mb-[4px]">
+                                                    Leadgebühr ({getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).label}): <strong className="text-green-800 dark:text-green-400">{getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value}</strong>
                                                 </div>
                                             ) : (
                                                 <>
-                                                    <div style={{ color: '#15803d', fontSize: '14px', marginBottom: '4px' }}>
+                                                    <div className="text-green-700 dark:text-green-500 text-[14px] mb-[4px]">
                                                         Rechnung: <strong>{order.invoice_amount?.toFixed(2)} €</strong>
                                                     </div>
                                                     <div style={{ color: '#15803d', fontSize: '13px' }}>
                                                         Provision (20%): <strong>{order.commission_amount?.toFixed(2)} €</strong>
+                                                        Rechnung: <strong className="text-green-800 dark:text-green-400">{order.invoice_amount?.toFixed(2)} €</strong>
+                                                    </div>
+                                                    <div className="text-green-700 dark:text-green-500 text-[13px]">
+                                                        Leadgebühr ({getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).label}): <strong className="text-green-800 dark:text-green-400">{getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value}</strong>
                                                     </div>
                                                 </>
                                             )}
                                             {order.completed_at && (
-                                                <div style={{ color: '#4ade80', fontSize: '12px', marginTop: '6px' }}>
+                                                <div className="text-green-600 dark:text-green-400 text-[12px] mt-[6px]">
                                                     {new Date(order.completed_at).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                                                 </div>
                                             )}
                                         </div>
                                     ) : isCancelled ? (
-                                        <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '16px', color: '#94a3b8', fontSize: '14px' }}>
-                                            Storniert
+                                        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900 rounded-[10px] p-[16px]">
+                                            <div className="text-red-700 dark:text-red-400 font-bold mb-[4px]">Auftrag storniert</div>
+                                            <div className="text-red-600 dark:text-red-500 text-[14px]">Keine Leadgebühr fällig.</div>
                                         </div>
                                     ) : isClosing ? (
                                         <div>
                                             {getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).type === 'percentage' ? (
-                                                <div style={{ marginBottom: '10px' }}>
-                                                    <label style={{ display: 'block', fontSize: '12px', color: '#475569', fontWeight: 600, marginBottom: '6px' }}>Finaler Rechnungsbetrag (€)</label>
-                                                    <div style={{ display: 'flex', gap: '8px' }}>
+                                                <div className="mb-[10px]">
+                                                    <label className="block text-[12px] text-slate-600 font-semibold mb-[6px]">Finaler Rechnungsbetrag (€)</label>
+                                                    <div className="flex gap-[8px]">
                                                         <input
                                                             type="number"
                                                             min="0"
@@ -328,7 +333,7 @@ export default function DashboardOrders() {
                                                             placeholder="z.B. 350"
                                                             value={invoiceInput[order.id] || ''}
                                                             onChange={e => setInvoiceInput(prev => ({ ...prev, [order.id]: e.target.value }))}
-                                                            style={{ flex: 1, padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '15px', outline: 'none', fontFamily: 'inherit' }}
+                                                            className="flex-1 px-[12px] py-[8px] border border-slate-300 rounded-[6px] text-[15px] outline-none font-inherit"
                                                         />
                                                         <button
                                                             onClick={() => handleCompleteIntent(order.id)}
@@ -339,14 +344,14 @@ export default function DashboardOrders() {
                                                         </button>
                                                     </div>
                                                     {invoiceInput[order.id] && !isNaN(Number(invoiceInput[order.id])) && Number(invoiceInput[order.id]) > 0 && (
-                                                        <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px' }}>
+                                                        <div className="text-[12px] text-slate-500 mt-[6px]">
                                                             Provision ({getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value}): <strong>{(Number(invoiceInput[order.id]) * getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).numericValue).toFixed(2)} €</strong>
                                                         </div>
                                                     )}
                                                 </div>
                                             ) : (
-                                                <div style={{ marginBottom: '10px' }}>
-                                                    <div style={{ fontSize: '13px', color: '#475569', marginBottom: '8px' }}>
+                                                <div className="mb-[10px]">
+                                                    <div className="text-[13px] text-slate-600 mb-[8px]">
                                                         Dieser Auftrag läuft über: {getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).label} ({getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value}). Bitte schließen Sie den Auftrag ab.
                                                     </div>
                                                     <button
@@ -358,28 +363,36 @@ export default function DashboardOrders() {
                                                     </button>
                                                 </div>
                                             )}
-                                            <button onClick={() => setClosingId(null)} style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '13px', cursor: 'pointer', padding: 0, fontFamily: 'inherit' }}>
+                                            <button onClick={() => setClosingId(null)} className="bg-transparent border-none text-slate-400 text-[13px] cursor-pointer p-0 font-inherit">
                                                 Abbrechen
                                             </button>
                                         </div>
                                     ) : (
-                                        <div>
-                                            <p style={{ fontSize: '13px', color: '#94a3b8', marginBottom: '12px', lineHeight: 1.5 }}>
-                                                {getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).type !== 'percentage'
-                                                    ? `Kosten: ${getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value} (${getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).label}) pro Lead.`
-                                                    : `Nach Abschluss der Arbeiten tragen Sie den Rechnungsbetrag ein.\nProvision: ${getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value} des Endpreises.`
-                                                }
-                                            </p>
-                                            <button
-                                                onClick={() => setClosingId(order.id)}
-                                                className="bg-slate-900 text-white border border-transparent hover:bg-white hover:text-slate-900 hover:border-slate-900 px-[20px] py-[9px] rounded-lg text-[13px] font-bold transition-all duration-300 ease-in-out cursor-pointer"
-                                            >
-                                                Auftrag abschließen
-                                            </button>
+                                        <div className="bg-slate-50 dark:bg-[#161616] border border-slate-200 dark:border-[#2a2a2a] rounded-[10px] p-[16px]">
+                                            <div className="text-[13px] text-slate-500 dark:text-slate-400 font-semibold mb-[4px]">Aktueller Status</div>
+                                            <div className="text-[14px] text-slate-900 dark:text-white font-bold mb-[12px]">{cfg.label}</div>
+                                            <div className="text-[12px] text-slate-500 dark:text-slate-400 mb-[4px]">
+                                                {getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).type === 'percentage'
+                                                    ? 'Bei Abschluss wird die Rechnung hochgeladen.'
+                                                    : 'Bei Abschluss wird die Fixgebühr berechnet.'}
+                                            </div>
                                         </div>
                                     )}
                                 </div>
                             </div>
+
+                            {/* Action bar */}
+                            {canEdit && !isClosing && (
+                                <div className="px-[20px] py-[14px] border-t border-slate-200 dark:border-[#2a2a2a] bg-slate-50 dark:bg-[#161616] flex justify-end">
+                                    <button
+                                        onClick={() => setClosingId(order.id)}
+                                        disabled={actionLoading === order.id}
+                                        className="bg-green-600 text-white border border-transparent hover:bg-green-700 px-[16px] py-[8px] rounded-lg text-[13px] font-bold transition-all duration-300 ease-in-out cursor-pointer shadow-[0_2px_4px_rgba(22,163,74,0.2)] disabled:opacity-50 disabled:cursor-not-allowed"
+                                    >
+                                        Auftrag abschließen
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     );
                 })}
@@ -387,50 +400,50 @@ export default function DashboardOrders() {
 
             {/* Custom Confirm Modal */}
             {confirmModalData && (
-                <div style={{ position: 'fixed', inset: 0, zIndex: 99999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+                <div className="fixed inset-0 z-[99999] flex items-center justify-center p-[16px]">
                     {/* Blurred Backdrop */}
-                    <div style={{ position: 'absolute', inset: 0, background: 'rgba(15, 23, 42, 0.4)', backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }} />
+                    <div className="absolute inset-0 bg-slate-900/40 dark:bg-black/50 backdrop-blur-sm" />
                     
                     {/* Modal Content */}
-                    <div style={{ position: 'relative', background: '#fff', borderRadius: '16px', width: '100%', maxWidth: '420px', overflow: 'hidden', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}>
-                        <div style={{ background: '#0f172a', padding: '20px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <div style={{ color: '#94a3b8', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                    <div className="relative bg-white dark:bg-[#111111] rounded-[16px] w-full max-w-[420px] overflow-hidden shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] border border-transparent dark:border-[#2a2a2a]">
+                        <div className="bg-slate-900 dark:bg-[#161616] px-[24px] py-[20px] flex justify-between items-center border-b border-transparent dark:border-[#2a2a2a]">
+                            <div className="text-slate-400 text-[11px] font-bold tracking-[0.1em] uppercase">
                                 Kammerjäger Structon · Partner-Portal
                             </div>
-                            <button onClick={() => setConfirmModalData(null)} style={{ background: 'none', border: 'none', color: '#64748b', cursor: 'pointer', padding: '4px', margin: '-4px' }}>
+                            <button onClick={() => setConfirmModalData(null)} className="bg-transparent border-none text-slate-500 hover:text-white cursor-pointer p-[4px] m-[-4px]">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                     <line x1="18" y1="6" x2="6" y2="18"></line>
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
                                 </svg>
                             </button>
                         </div>
-                        <div style={{ padding: '24px' }}>
-                            <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '28px', fontWeight: 900, textTransform: 'uppercase', color: '#0f172a', marginBottom: '16px', lineHeight: 1 }}>
+                        <div className="p-[24px]">
+                            <h3 className="font-heading text-[28px] font-black uppercase text-slate-900 dark:text-white mb-[16px] leading-none">
                                 Auftrag abschließen
                             </h3>
                             
-                            <div style={{ color: '#475569', fontSize: '15px', lineHeight: 1.6, marginBottom: '24px' }}>
+                            <div className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.6] mb-[24px]">
                                 {!confirmModalData.isFixed ? (
                                     <>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                                        <div className="flex justify-between mb-[8px]">
                                             <span>Rechnungsbetrag:</span>
-                                            <strong style={{ color: '#0f172a' }}>{Number(confirmModalData.amount).toFixed(2)} €</strong>
+                                            <strong className="text-slate-900 dark:text-white">{Number(confirmModalData.amount).toFixed(2)} €</strong>
                                         </div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '16px', borderBottom: '1px solid #e2e8f0' }}>
+                                        <div className="flex justify-between pb-[16px] border-b border-slate-200 dark:border-[#2a2a2a]">
                                             <span>Provision ({confirmModalData.pricing.value}):</span>
-                                            <strong style={{ color: '#C8102E' }}>{(Number(confirmModalData.amount) * confirmModalData.pricing.numericValue).toFixed(2)} €</strong>
+                                            <strong className="text-[#C8102E]">{(Number(confirmModalData.amount) * confirmModalData.pricing.numericValue).toFixed(2)} €</strong>
                                         </div>
-                                        <div style={{ marginTop: '16px', fontWeight: 600, color: '#0f172a' }}>
+                                        <div className="mt-[16px] font-semibold text-slate-900 dark:text-white">
                                             Möchten Sie diesen Auftrag jetzt endgültig abschließen?
                                         </div>
                                     </>
                                 ) : (
                                     <>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '16px', borderBottom: '1px solid #e2e8f0' }}>
+                                        <div className="flex justify-between pb-[16px] border-b border-slate-200 dark:border-[#2a2a2a]">
                                             <span>Leadgebühr:</span>
-                                            <strong style={{ color: '#0f172a' }}>{confirmModalData.pricing.value}</strong>
+                                            <strong className="text-slate-900 dark:text-white">{confirmModalData.pricing.value}</strong>
                                         </div>
-                                        <div style={{ marginTop: '16px', fontWeight: 600, color: '#0f172a' }}>
+                                        <div className="mt-[16px] font-semibold text-slate-900 dark:text-white">
                                             Möchten Sie diesen Auftrag jetzt endgültig abschließen?
                                         </div>
                                     </>
@@ -440,14 +453,15 @@ export default function DashboardOrders() {
                             <button 
                                 onClick={executeComplete}
                                 disabled={actionLoading !== null}
-                                className="w-full bg-[#cbd5e1] text-white hover:bg-[#94a3b8] transition-colors py-[14px] rounded-lg font-bold text-[14px] uppercase tracking-wider"
-                                style={{
-                                    background: actionLoading !== null ? '#94a3b8' : '#cbd5e1', // Using the light blueish-grey from the PLZ modal
-                                    color: '#ffffff'
-                                }}
+                                className={`w-full text-white transition-colors py-[14px] rounded-lg font-bold text-[14px] uppercase tracking-wider ${actionLoading !== null ? 'bg-slate-400 dark:bg-slate-600' : 'bg-slate-300 hover:bg-slate-400 dark:bg-[#161616] dark:border dark:border-[#2a2a2a] dark:hover:bg-[#2a2a2a]'}`}
                             >
-                                {actionLoading !== null ? 'Wird abgeschlossen...' : 'Auftrag abschließen →'}
+                                {actionLoading !== null ? 'Wird verarbeitet...' : 'Auftrag endgültig abschließen'}
                             </button>
+                            <div className="mt-[12px] text-center">
+                                <button onClick={() => setConfirmModalData(null)} className="bg-transparent border-none text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 text-[13px] font-semibold cursor-pointer underline underline-offset-2">
+                                    Abbrechen
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
