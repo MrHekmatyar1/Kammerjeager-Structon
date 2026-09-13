@@ -425,11 +425,11 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
 
             {/* Modal for Manual Assignment */}
             {selectedLeadForAssign && (
-                <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, height: '100dvh', background: 'rgba(15,23,42,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '16px', boxSizing: 'border-box', backdropFilter: 'blur(2px)' }}>
-                    <div style={{ background: '#fff', width: '100%', maxWidth: '500px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 24px 60px rgba(0,0,0,0.25)' }}>
-                        <div style={{ padding: '20px 24px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#0f172a', margin: 0 }}>Lead manuell zuweisen</h2>
-                            <button onClick={() => setSelectedLeadForAssign(null)} style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer', color: '#94a3b8', lineHeight: 1, padding: '4px' }}>×</button>
+                <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, height: '100dvh', background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '16px', boxSizing: 'border-box', backdropFilter: 'blur(4px)' }}>
+                    <div style={{ background: '#161616', width: '100%', maxWidth: '500px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 24px 60px rgba(0,0,0,0.5)', border: '1px solid #2a2a2a' }}>
+                        <div style={{ padding: '20px 24px', borderBottom: '1px solid #2a2a2a', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#ffffff', margin: 0 }}>Lead manuell zuweisen</h2>
+                            <button onClick={() => setSelectedLeadForAssign(null)} style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer', color: '#64748b', lineHeight: 1, padding: '4px' }} className="hover:text-white transition-colors">×</button>
                         </div>
                         <div style={{ padding: '20px 24px' }}>
                             <div className="mb-4">
@@ -437,11 +437,11 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                 <select 
                                     value={assignMasterId} 
                                     onChange={(e) => setAssignMasterId(e.target.value)}
-                                    className="w-full border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                    className="w-full bg-[#111111] text-white border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none"
                                 >
-                                    <option value="">-- Bitte wählen --</option>
+                                    <option value="" className="text-slate-400">-- Bitte wählen --</option>
                                     {masters?.filter(m => m.is_active).map(m => (
-                                        <option key={m.id} value={m.id}>
+                                        <option key={m.id} value={m.id} className="text-white">
                                             {m.name} {m.firma ? `(${m.firma})` : ''}
                                         </option>
                                     ))}
@@ -456,7 +456,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                         setPriceType(e.target.value);
                                         if (e.target.value === 'free' || e.target.value === 'default') setPriceValue('');
                                     }}
-                                    className="w-full border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                    className="w-full bg-[#111111] text-white border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none"
                                 >
                                     <option value="default">Standard (laut Schädling/Vertrag)</option>
                                     <option value="free">Kostenlos (0 €)</option>
@@ -475,7 +475,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                         value={priceValue}
                                         onChange={(e) => setPriceValue(e.target.value)}
                                         placeholder={priceType === 'fixed' ? 'z.B. 25' : 'z.B. 15'}
-                                        className="w-full border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                        className="w-full bg-[#111111] text-white border border-[#2a2a2a] rounded-lg p-2.5 text-sm font-medium focus:ring-2 focus:ring-red-500 focus:outline-none placeholder:text-slate-500"
                                     />
                                 </div>
                             )}
