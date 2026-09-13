@@ -23,30 +23,7 @@ export default function BezirkInfo({ city }: { city: City }) {
         }}>
             <div style={{ width: '100%', maxWidth: '860px' }}>
 
-                {/* ── Heading ── */}
-                <div style={{ marginBottom: '40px' }}>
-                    <div style={{
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        letterSpacing: '0.14em',
-                        textTransform: 'uppercase',
-                        color: '#C8102E',
-                        marginBottom: '10px',
-                    }}>
-                        Kammerjäger in {city.name}
-                    </div>
-                    <h2 style={{
-                        fontFamily: "'Barlow Condensed', sans-serif",
-                        fontSize: 'clamp(28px, 5vw, 48px)',
-                        fontWeight: 900,
-                        color: '#0f172a',
-                        textTransform: 'uppercase',
-                        lineHeight: 1.05,
-                        margin: '0 0 20px',
-                    }}>
-                        Schädlingsbekämpfung<br />in {city.name}
-                    </h2>
-                </div>
+
 
                 {/* ── Heading ── */}
                 <div style={{ marginBottom: '40px' }}>
