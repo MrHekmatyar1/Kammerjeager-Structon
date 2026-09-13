@@ -39,9 +39,9 @@ export type Master = {
 
 // Цвета для бейджиков статуса
 const STATUS_COLORS: Record<string, string> = {
-    'neu': 'bg-green-100 text-green-800 border-green-200',
-    'in_bearbeitung': 'bg-yellow-100 text-yellow-800 border-yellow-200',
-    'abgeschlossen': 'bg-blue-100 text-blue-800 border-blue-200',
+    'neu': 'bg-[#161616] text-green-400 border-[#2a2a2a]',
+    'in_bearbeitung': 'bg-[#161616] text-yellow-400 border-[#2a2a2a]',
+    'abgeschlossen': 'bg-[#161616] text-blue-400 border-[#2a2a2a]',
     'storniert': 'bg-[#222222] text-slate-300 border-[#2a2a2a]',
 };
 
@@ -183,7 +183,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                     className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 ${
                         filter === 'b2b'
                             ? 'bg-blue-600 text-white'
-                            : 'bg-[#161616] text-blue-700 border border-blue-200 hover:bg-blue-50'
+                            : 'bg-[#161616] text-blue-400 border border-[#2a2a2a] hover:bg-[#222222]'
                     }`}
                 >
                     Gewerbe ({b2bCount})
@@ -236,7 +236,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                 <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
                                                     {b2b ? (
                                                         <div>
-                                                            <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200 uppercase tracking-wider mb-1">
+                                                            <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#161616] text-blue-400 border border-[#2a2a2a] uppercase tracking-wider mb-1">
                                                                 Gewerbe
                                                             </span>
                                                             <div className="font-bold text-white text-sm">
@@ -268,7 +268,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                     {lead.etage && <div className="text-xs text-slate-500 mt-0.5">Etage: {lead.etage}</div>}
                                                 </td>
                                                 <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
-                                                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-red-50 text-[#C8102E] font-medium text-xs border border-red-100 mb-1">
+                                                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#161616] text-red-400 font-medium text-xs border border-[#2a2a2a] mb-1">
                                                         {lead.schaedling || 'Unbekannt'}
                                                     </div>
                                                     <div className="text-xs text-slate-300 font-medium">
@@ -329,7 +329,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                         <div className="flex justify-between items-start gap-2">
                                             <div>
                                                 {b2b && (
-                                                    <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200 uppercase tracking-wider mb-1">
+                                                    <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#161616] text-blue-400 border border-[#2a2a2a] uppercase tracking-wider mb-1">
                                                         Gewerbe
                                                     </span>
                                                 )}
@@ -367,7 +367,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                         <div>
                                             <span className="text-slate-500 text-xs block mb-1.5">Problem &amp; Details</span>
                                             <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                                                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-red-50 text-[#C8102E] font-medium text-xs border border-red-100">
+                                                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#161616] text-red-400 font-medium text-xs border border-[#2a2a2a]">
                                                     {lead.schaedling || 'Unbekannt'}
                                                 </div>
                                                 <span className="text-xs text-slate-300 font-medium bg-[#222222] px-2 py-0.5 rounded border border-[#2a2a2a]">

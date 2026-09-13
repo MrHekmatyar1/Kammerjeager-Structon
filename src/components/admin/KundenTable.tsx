@@ -76,7 +76,7 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                                         <div className="flex items-center justify-end gap-2">
                                             <button 
                                                 onClick={() => isEditing ? handleCancel() : handleEdit(k)} 
-                                                className={`p-1.5 rounded-lg transition-colors border ${isEditing ? 'bg-red-50 text-red-600 border-red-200' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#222222]'}`}
+                                                className={`p-1.5 rounded-lg transition-colors border ${isEditing ? 'bg-[#161616] text-red-400 border-[#2a2a2a]' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#222222]'}`}
                                                 title="Bearbeiten"
                                             >
                                                 {isEditing ? <X size={16} /> : <Pencil size={16} />}

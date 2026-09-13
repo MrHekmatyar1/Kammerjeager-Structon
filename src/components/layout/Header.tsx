@@ -192,7 +192,7 @@ export default function Header() {
 
             <header className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
                 isAdminPage 
-                    ? (isSolid ? 'bg-[#161616] shadow-none border-b border-[#2a2a2a]' : 'bg-[#161616]/45 backdrop-blur-[8px]')
+                    ? 'bg-[#161616] shadow-none border-b border-[#2a2a2a]'
                     : (isSolid ? 'bg-white shadow-none' : 'bg-white/45 backdrop-blur-[8px] shadow-[0_4px_30px_rgba(0,0,0,0.05)]')
             }`}
             style={{

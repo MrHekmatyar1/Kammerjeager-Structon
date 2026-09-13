@@ -108,7 +108,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                     
                                     <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] text-center">
                                         {m.is_active ? 
-                                                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
+                                                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#161616] text-green-400 border border-[#2a2a2a]">
                                                     <CheckCircle size={14} /> Aktiv
                                                 </span> 
                                             : 
@@ -120,7 +120,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                     
                                     <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] text-center">
                                         {hasFreeLeads ? (
-                                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
+                                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#161616] text-blue-400 border border-[#2a2a2a]">
                                                 <Gift size={14} /> {new Date(m.free_leads_until).toLocaleDateString('de-DE')}
                                             </span>
                                         ) : (
@@ -138,7 +138,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                                 </button>
                                                 <button 
                                                     onClick={() => isEditing ? handleCancelEdit() : handleEditClick(m)} 
-                                                    className={`p-1.5 rounded-lg transition-colors border ${isEditing ? 'bg-red-50 text-red-600 border-red-200' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#222222]'}`}
+                                                    className={`p-1.5 rounded-lg transition-colors border ${isEditing ? 'bg-[#161616] text-red-400 border-[#2a2a2a]' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#222222]'}`}
                                                     title="Bearbeiten"
                                                 >
                                                     {isEditing ? <X size={16} /> : <Pencil size={16} />}
