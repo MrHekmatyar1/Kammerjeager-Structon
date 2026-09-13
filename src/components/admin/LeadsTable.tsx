@@ -2,7 +2,7 @@
 
 import React, { useState, useTransition } from 'react';
 import { updateLeadStatus, assignLeadManually, updateLeadProfile, deleteLead } from '@/app/admin/actions';
-import { Pencil, Save, X, Trash2 } from 'lucide-react';
+import { Settings, Pencil, Save, X, Trash2 } from 'lucide-react';
 
 export type Lead = {
     id: number;
@@ -328,9 +328,10 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                     <div className="flex items-center justify-end gap-2">
                                                         <button
                                                             onClick={() => setSelectedLeadForAssign(lead)}
-                                                            className="px-3 py-1.5 bg-[#222222] hover:bg-[#2a2a2a] text-slate-300 text-xs font-bold rounded-lg transition-colors border border-[#2a2a2a]"
+                                                            className="p-1.5 rounded-lg bg-[#111111] border border-[#2a2a2a] text-slate-500 hover:text-slate-300 hover:bg-[#1a1a1a] transition-colors"
+                                                            title="Zuweisen / Bearbeiten"
                                                         >
-                                                            Zuweisen
+                                                            <Settings size={16} />
                                                         </button>
                                                         <button
                                                             onClick={() => handleDeleteLead(lead.id)}
@@ -435,12 +436,20 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="pt-3 border-t border-[#2a2a2a] text-right">
+                                        <div className="pt-3 border-t border-[#2a2a2a] flex items-center justify-end gap-2">
                                             <button
                                                 onClick={() => setSelectedLeadForAssign(lead)}
-                                                className="px-4 py-2 bg-[#222222] hover:bg-[#2a2a2a] text-slate-300 text-xs font-bold rounded-lg transition-colors border border-[#2a2a2a] w-full"
+                                                className="p-1.5 rounded-lg bg-[#111111] border border-[#2a2a2a] text-slate-500 hover:text-slate-300 hover:bg-[#1a1a1a] transition-colors"
+                                                title="Zuweisen / Bearbeiten"
                                             >
-                                                Zuweisen (Manuell)
+                                                <Settings size={16} />
+                                            </button>
+                                            <button
+                                                onClick={() => handleDeleteLead(lead.id)}
+                                                className="p-1.5 rounded-lg bg-[#111111] border border-[#2a2a2a] text-red-500/70 hover:text-red-500 hover:bg-[#1a1111] transition-colors"
+                                                title="Löschen"
+                                            >
+                                                <Trash2 size={16} />
                                             </button>
                                         </div>
                                     </div>

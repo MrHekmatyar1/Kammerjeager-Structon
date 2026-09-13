@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { updateMasterProfile, setFreeLeads, deleteMaster } from '../../app/admin/actions';
-import { CheckCircle, XCircle, Gift, Pencil, Save, X, Trash2 } from 'lucide-react';
+import { updateMasterProfile, deleteMaster, updateMasterFreeLeads } from '@/app/admin/actions';
+import { CheckCircle, XCircle, Gift, Settings, Save, X, Trash2 } from 'lucide-react';
 
 export default function MastersTable({ initialMasters }: { initialMasters: any[] }) {
     const [masters, setMasters] = useState(initialMasters);
@@ -151,25 +151,21 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                     <td className="px-6 py-4 border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333] text-right">
                                             <div className="flex items-center justify-end gap-2">
                                                 <button 
-                                                    onClick={() => handleOpenFreeLeads(m)}
-                                                    className="flex items-center gap-1 px-2 py-1 text-blue-600 hover:bg-blue-50 text-xs font-semibold rounded-md border border-blue-200 transition-colors"
-                                                >
-                                                    <Gift size={14} /> Free Leads
-                                                </button>
-                                                <button 
                                                     onClick={() => isEditing ? handleCancelEdit() : handleEditClick(m)} 
-                                                    className={`p-1.5 rounded-lg transition-colors border ${isEditing ? 'bg-[#161616] text-red-400 border-[#2a2a2a]' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#222222]'}`}
+                                                    className={`p-1.5 rounded-lg transition-colors border ${isEditing ? 'bg-[#161616] text-red-400 border-[#2a2a2a]' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#1a1a1a]'}`}
                                                     title="Bearbeiten"
                                                 >
-                                                    {isEditing ? <X size={16} /> : <Pencil size={16} />}
+                                                    {isEditing ? <X size={16} /> : <Settings size={16} />}
                                                 </button>
-                                                <button
-                                                    onClick={() => handleDeleteMaster(m.id)}
-                                                    className="p-1.5 rounded-lg transition-colors border bg-[#111111] text-slate-500 hover:text-red-500 hover:bg-red-900/30 border-[#2a2a2a]"
-                                                    title="Löschen"
-                                                >
-                                                    <Trash2 size={16} />
-                                                </button>
+                                                {!isEditing && (
+                                                    <button
+                                                        onClick={() => handleDeleteMaster(m.id)}
+                                                        className="p-1.5 rounded-lg transition-colors border bg-[#111111] text-slate-500 hover:text-red-500 hover:bg-[#1a1111] border-[#2a2a2a]"
+                                                        title="Löschen"
+                                                    >
+                                                        <Trash2 size={16} />
+                                                    </button>
+                                                )}
                                             </div>
                                     </td>
                                 </tr>
@@ -179,14 +175,23 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                             <div className="bg-[#111111] p-6 border-x border-[#2a2a2a] shadow-inner">
                                                 <div className="flex justify-between items-center mb-4">
                                                     <h4 className="font-bold text-white flex items-center gap-2">
-                                                        <Pencil size={18} className="text-blue-500" />
+                                                        <Settings size={18} className="text-blue-500" />
                                                         Meister #{m.id} bearbeiten
                                                     </h4>
-                                                    <div className="flex gap-2">
-                                                        <button onClick={handleCancelEdit} disabled={saving} className="px-4 py-2 bg-[#161616] border border-[#2a2a2a] rounded-lg text-sm font-medium text-slate-300 hover:bg-[#1e1e1e] transition-colors">Abbrechen</button>
-                                                        <button onClick={handleSaveEdit} disabled={saving} className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm">
-                                                            <Save size={16} /> Speichern
+                                                    <div className="flex items-center gap-4">
+                                                        <button 
+                                                            onClick={() => handleOpenFreeLeads(m)}
+                                                            className="flex items-center gap-2 px-3 py-1.5 text-blue-400 hover:text-blue-300 hover:bg-[#161616] text-sm font-medium rounded-md border border-[#2a2a2a] transition-colors"
+                                                        >
+                                                            <Gift size={14} /> Free Leads
                                                         </button>
+                                                        <div className="w-px h-6 bg-[#2a2a2a]"></div>
+                                                        <div className="flex gap-2">
+                                                            <button onClick={handleCancelEdit} disabled={saving} className="px-4 py-2 bg-[#161616] border border-[#2a2a2a] rounded-lg text-sm font-medium text-slate-300 hover:bg-[#1e1e1e] transition-colors">Abbrechen</button>
+                                                            <button onClick={handleSaveEdit} disabled={saving} className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm">
+                                                                <Save size={16} /> Speichern
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 

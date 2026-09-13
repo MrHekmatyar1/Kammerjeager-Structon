@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { updateKundeProfile, deleteKunde } from '@/app/admin/actions';
-import { Pencil, Save, X, Trash2 } from 'lucide-react';
+import { Settings, Save, X, Trash2 } from 'lucide-react';
 
 export default function KundenTable({ initialKunden }: { initialKunden: any[] }) {
     const [kunden, setKunden] = useState(initialKunden);
@@ -94,13 +94,13 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                                     </td>
                                     <td className="px-6 py-4 text-right border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333]">
                                         <div className="flex items-center justify-end gap-2">
-                                            <button 
-                                                onClick={() => isEditing ? handleCancel() : handleEdit(k)} 
-                                                className={`p-1.5 rounded-lg transition-colors border ${isEditing ? 'bg-[#161616] text-red-400 border-[#2a2a2a]' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#222222]'}`}
-                                                title="Bearbeiten"
-                                            >
-                                                {isEditing ? <X size={16} /> : <Pencil size={16} />}
-                                            </button>
+                                                <button 
+                                                    onClick={() => isEditing ? handleCancel() : handleEdit(k)} 
+                                                    className={`p-1.5 rounded-lg transition-colors border ${isEditing ? 'bg-[#161616] text-red-400 border-[#2a2a2a]' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#1a1a1a]'}`}
+                                                    title="Bearbeiten"
+                                                >
+                                                    {isEditing ? <X size={16} /> : <Settings size={16} />}
+                                                </button>
                                             {!isEditing && (
                                                 <button
                                                     onClick={() => handleDeleteKunde(k.id)}
@@ -119,7 +119,7 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                                             <div className="bg-[#111111] p-6 border-x border-[#2a2a2a] shadow-inner">
                                                 <div className="flex justify-between items-center mb-4">
                                                     <h4 className="font-bold text-white flex items-center gap-2">
-                                                        <Pencil size={18} className="text-blue-500" />
+                                                        <Settings size={18} className="text-blue-500" />
                                                         Kunde {k.email} bearbeiten
                                                     </h4>
                                                     <div className="flex gap-2">
