@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { updateMasterProfile, deleteMaster, setFreeLeads } from '@/app/admin/actions';
-import { CheckCircle, XCircle, Gift, Settings, Save, X, Trash2 } from 'lucide-react';
+import { CheckCircle, XCircle, Gift, Pencil, Save, X, Trash2 } from 'lucide-react';
 
 export default function MastersTable({ initialMasters }: { initialMasters: any[] }) {
     const [masters, setMasters] = useState(initialMasters);
@@ -155,7 +155,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                                     className={`p-1.5 rounded-lg transition-colors border ${isEditing ? 'bg-[#161616] text-red-400 border-[#2a2a2a]' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#1a1a1a]'}`}
                                                     title="Bearbeiten"
                                                 >
-                                                    {isEditing ? <X size={16} /> : <Settings size={16} />}
+                                                    {isEditing ? <X size={16} /> : <Pencil size={16} />}
                                                 </button>
                                                 {!isEditing && (
                                                     <button
@@ -175,7 +175,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                             <div className="bg-[#111111] p-6 border-x border-[#2a2a2a] shadow-inner">
                                                 <div className="flex justify-between items-center mb-4">
                                                     <h4 className="font-bold text-white flex items-center gap-2">
-                                                        <Settings size={18} className="text-blue-500" />
+                                                        <Pencil size={18} className="text-blue-500" />
                                                         Meister #{m.id} bearbeiten
                                                     </h4>
                                                     <div className="flex items-center gap-4">

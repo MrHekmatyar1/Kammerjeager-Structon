@@ -2,7 +2,7 @@
 
 import React, { useState, useTransition } from 'react';
 import { updateLeadStatus, assignLeadManually, updateLeadProfile, deleteLead } from '@/app/admin/actions';
-import { Settings, Pencil, Save, X, Trash2 } from 'lucide-react';
+import { Pencil, Save, X, Trash2 } from 'lucide-react';
 
 export type Lead = {
     id: number;
@@ -331,7 +331,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                             className="p-1.5 rounded-lg bg-[#111111] border border-[#2a2a2a] text-slate-500 hover:text-slate-300 hover:bg-[#1a1a1a] transition-colors"
                                                             title="Zuweisen / Bearbeiten"
                                                         >
-                                                            <Settings size={16} />
+                                                            <Pencil size={16} />
                                                         </button>
                                                         <button
                                                             onClick={() => handleDeleteLead(lead.id)}
@@ -442,7 +442,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                 className="p-1.5 rounded-lg bg-[#111111] border border-[#2a2a2a] text-slate-500 hover:text-slate-300 hover:bg-[#1a1a1a] transition-colors"
                                                 title="Zuweisen / Bearbeiten"
                                             >
-                                                <Settings size={16} />
+                                                <Pencil size={16} />
                                             </button>
                                             <button
                                                 onClick={() => handleDeleteLead(lead.id)}
