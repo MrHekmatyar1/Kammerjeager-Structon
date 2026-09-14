@@ -2,7 +2,7 @@
 
 import React, { useState, useTransition } from 'react';
 import { updateLeadStatus, assignLeadManually, updateLeadProfile, deleteLead } from '@/app/admin/actions';
-import { Pencil, Save, X, Trash2 } from 'lucide-react';
+import { Pencil, Save, X, Trash2, Settings, ChevronDown, ChevronUp } from 'lucide-react';
 
 export type Lead = {
     id: number;
@@ -245,14 +245,15 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                     {filteredLeads.map((lead) => {
                                         const b2b = isB2BLead(lead);
                                         return (
-                                            <tr key={lead.id} className="bg-[#161616] hover:bg-[#1e1e1e] transition-colors shadow-md group">
-                                                <td className="px-6 py-4 whitespace-nowrap text-xs text-slate-500 border-y border-l border-[#2a2a2a] rounded-l-xl group-hover:border-[#333333]">
+                                            <React.Fragment key={lead.id}>
+                                            <tr className="group shadow-md rounded-xl">
+                                                <td className="px-6 py-4 whitespace-nowrap text-xs text-slate-500 border-y border-l border-[#2a2a2a] rounded-l-xl group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     {new Date(lead.created_at || lead.erstellt_am || new Date()).toLocaleDateString('de-DE', {
                                                         day: '2-digit', month: '2-digit', year: 'numeric',
                                                         hour: '2-digit', minute: '2-digit'
                                                     })}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
+                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     {b2b ? (
                                                         <div>
                                                             <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#161616] text-blue-400 border border-[#2a2a2a] uppercase tracking-wider mb-1">
@@ -272,7 +273,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         </div>
                                                     )}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
+                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     <a href={`tel:${lead.telefon}`} className="font-semibold text-white hover:text-[#C8102E] transition-colors block">
                                                         {lead.telefon}
                                                     </a>
@@ -280,13 +281,13 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         {lead.email}
                                                     </a>
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
+                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     <div className="font-medium text-white">
                                                         {lead.plz} {lead.strasse || ''} {lead.hausnummer || ''}
                                                     </div>
                                                     {lead.etage && <div className="text-xs text-slate-500 mt-0.5">Etage: {lead.etage}</div>}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
+                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#161616] text-red-400 font-medium text-xs border border-[#2a2a2a] mb-1">
                                                         {lead.schaedling || 'Unbekannt'}
                                                     </div>
@@ -305,7 +306,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         </div>
                                                     )}
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333]">
+                                                <td className="px-6 py-4 whitespace-nowrap border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     <div className="relative">
                                                         <select
                                                             value={lead.status}
@@ -324,14 +325,21 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333] text-right">
-                                                    <div className="flex items-center justify-end gap-2">
+                                                <td className="px-3 py-2 align-middle border-none bg-transparent">
+                                                    <div className="flex flex-col items-center justify-center gap-1.5">
+                                                        <button 
+                                                            onClick={() => expandedRowId === lead.id ? handleCancelEdit() : handleEdit(lead)} 
+                                                            className={`p-1.5 rounded-lg transition-colors border ${expandedRowId === lead.id ? 'bg-[#161616] text-red-400 border-[#2a2a2a]' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#1a1a1a]'}`}
+                                                            title="Bearbeiten"
+                                                        >
+                                                            {expandedRowId === lead.id ? <X size={16} /> : <Pencil size={16} />}
+                                                        </button>
                                                         <button
                                                             onClick={() => setSelectedLeadForAssign(lead)}
                                                             className="p-1.5 rounded-lg bg-[#111111] border border-[#2a2a2a] text-slate-500 hover:text-slate-300 hover:bg-[#1a1a1a] transition-colors"
-                                                            title="Zuweisen / Bearbeiten"
+                                                            title="Zuweisen / Status"
                                                         >
-                                                            <Pencil size={16} />
+                                                            <Settings size={16} />
                                                         </button>
                                                         <button
                                                             onClick={() => handleDeleteLead(lead.id)}
@@ -343,6 +351,95 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                     </div>
                                                 </td>
                                             </tr>
+                                            {expandedRowId === lead.id && (
+                                                <tr>
+                                                    <td colSpan={6} className="p-0 border-b border-[#2a2a2a]">
+                                                        <div className="bg-[#111111] p-6 border-x border-[#2a2a2a] shadow-inner">
+                                                            <div className="flex justify-between items-center mb-4">
+                                                                <h4 className="font-bold text-white flex items-center gap-2">
+                                                                    <Pencil size={18} className="text-blue-500" />
+                                                                    Lead #{lead.id} bearbeiten
+                                                                </h4>
+                                                                <div className="flex gap-2">
+                                                                    <button onClick={handleCancelEdit} disabled={isSaving} className="px-4 py-2 bg-[#161616] border border-[#2a2a2a] rounded-lg text-sm font-medium text-slate-300 hover:bg-[#1e1e1e] transition-colors">Abbrechen</button>
+                                                                    <button onClick={handleSaveEdit} disabled={isSaving} className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm">
+                                                                        <Save size={16} /> Speichern
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                                                <div className="space-y-4">
+                                                                    <h5 className="font-semibold text-xs text-slate-500 uppercase tracking-wider">Kunde & Kontakt</h5>
+                                                                    
+                                                                    <div>
+                                                                        <label className="block text-xs text-slate-400 mb-1">Name</label>
+                                                                        <input type="text" value={editForm.name || ''} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                                    </div>
+                                                                    <div>
+                                                                        <label className="block text-xs text-slate-400 mb-1">Firma</label>
+                                                                        <input type="text" value={editForm.firma || ''} onChange={e => setEditForm({...editForm, firma: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                                    </div>
+                                                                    <div>
+                                                                        <label className="block text-xs text-slate-400 mb-1">E-Mail</label>
+                                                                        <input type="email" value={editForm.email || ''} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                                    </div>
+                                                                    <div>
+                                                                        <label className="block text-xs text-slate-400 mb-1">Telefon</label>
+                                                                        <input type="text" value={editForm.telefon || ''} onChange={e => setEditForm({...editForm, telefon: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div className="space-y-4">
+                                                                    <h5 className="font-semibold text-xs text-slate-500 uppercase tracking-wider">Adresse</h5>
+                                                                    
+                                                                    <div className="grid grid-cols-2 gap-3">
+                                                                        <div className="col-span-2">
+                                                                            <label className="block text-xs text-slate-400 mb-1">PLZ & Ort</label>
+                                                                            <input type="text" value={editForm.plz || ''} onChange={e => setEditForm({...editForm, plz: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                                        </div>
+                                                                        <div>
+                                                                            <label className="block text-xs text-slate-400 mb-1">Straße</label>
+                                                                            <input type="text" value={editForm.strasse || ''} onChange={e => setEditForm({...editForm, strasse: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                                        </div>
+                                                                        <div>
+                                                                            <label className="block text-xs text-slate-400 mb-1">Nr.</label>
+                                                                            <input type="text" value={editForm.hausnummer || ''} onChange={e => setEditForm({...editForm, hausnummer: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                                        </div>
+                                                                        <div className="col-span-2">
+                                                                            <label className="block text-xs text-slate-400 mb-1">Etage</label>
+                                                                            <input type="text" value={editForm.etage || ''} onChange={e => setEditForm({...editForm, etage: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div className="space-y-4">
+                                                                    <h5 className="font-semibold text-xs text-slate-500 uppercase tracking-wider">Details & Typ</h5>
+                                                                    
+                                                                    <div>
+                                                                        <label className="block text-xs text-slate-400 mb-1">Schädling</label>
+                                                                        <input type="text" value={editForm.schaedling || ''} onChange={e => setEditForm({...editForm, schaedling: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                                    </div>
+                                                                    <div>
+                                                                        <label className="block text-xs text-slate-400 mb-1">Kunden Typ</label>
+                                                                        <select value={editForm.kunde_typ || ''} onChange={e => setEditForm({...editForm, kunde_typ: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white">
+                                                                            <option value="Privatkunde">Privatkunde</option>
+                                                                            <option value="B2B">B2B / Firma</option>
+                                                                            <option value="Öffentlicher Sektor">Öffentlicher Sektor</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label className="block text-xs text-slate-400 mb-1">Nachricht</label>
+                                                                        <textarea value={editForm.zugang_beschreibung || ''} onChange={e => setEditForm({...editForm, zugang_beschreibung: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white min-h-[60px]" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td className="bg-transparent border-none"></td>
+                                                </tr>
+                                            )}
+                                            </React.Fragment>
                                         );
                                     })}
                                 </tbody>
@@ -354,7 +451,8 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                             {filteredLeads.map((lead) => {
                                 const b2b = isB2BLead(lead);
                                 return (
-                                    <div key={`mob-${lead.id}`} className="bg-[#161616] rounded-xl shadow-sm border border-[#2a2a2a] p-4 sm:p-5 flex flex-col gap-4">
+                                    <React.Fragment key={lead.id}>
+                                    <div className="bg-[#161616] rounded-xl shadow-sm border border-[#2a2a2a] p-4 sm:p-5 flex flex-col gap-4 relative pr-14">
                                         <div className="flex justify-between items-start gap-2">
                                             <div>
                                                 {b2b && (
@@ -436,13 +534,20 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="pt-3 border-t border-[#2a2a2a] flex items-center justify-end gap-2">
+                                        <div className="absolute top-4 right-4 flex flex-col items-end gap-1.5">
+                                            <button 
+                                                onClick={() => expandedRowId === lead.id ? handleCancelEdit() : handleEdit(lead)} 
+                                                className={`p-1.5 rounded-lg transition-colors border ${expandedRowId === lead.id ? 'bg-[#161616] text-red-400 border-[#2a2a2a]' : 'bg-[#111111] text-slate-500 hover:text-slate-300 border-[#2a2a2a] hover:bg-[#1a1a1a]'}`}
+                                                title="Bearbeiten"
+                                            >
+                                                {expandedRowId === lead.id ? <X size={16} /> : <Pencil size={16} />}
+                                            </button>
                                             <button
                                                 onClick={() => setSelectedLeadForAssign(lead)}
                                                 className="p-1.5 rounded-lg bg-[#111111] border border-[#2a2a2a] text-slate-500 hover:text-slate-300 hover:bg-[#1a1a1a] transition-colors"
-                                                title="Zuweisen / Bearbeiten"
+                                                title="Zuweisen / Status"
                                             >
-                                                <Pencil size={16} />
+                                                <Settings size={16} />
                                             </button>
                                             <button
                                                 onClick={() => handleDeleteLead(lead.id)}
@@ -453,6 +558,69 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                             </button>
                                         </div>
                                     </div>
+                                    {expandedRowId === lead.id && (
+                                        <div className="mt-3 p-4 bg-[#111111] rounded-xl border border-[#2a2a2a] shadow-inner">
+                                            <div className="flex justify-between items-center mb-4">
+                                                <h4 className="font-bold text-white flex items-center gap-2">
+                                                    <Pencil size={18} className="text-blue-500" />
+                                                    Lead bearbeiten
+                                                </h4>
+                                            </div>
+                                            <div className="space-y-4">
+                                                <div>
+                                                    <label className="block text-xs text-slate-400 mb-1">Name</label>
+                                                    <input type="text" value={editForm.name || ''} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-slate-400 mb-1">Firma</label>
+                                                    <input type="text" value={editForm.firma || ''} onChange={e => setEditForm({...editForm, firma: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-slate-400 mb-1">E-Mail</label>
+                                                    <input type="email" value={editForm.email || ''} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-slate-400 mb-1">Telefon</label>
+                                                    <input type="text" value={editForm.telefon || ''} onChange={e => setEditForm({...editForm, telefon: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-slate-400 mb-1">PLZ & Ort</label>
+                                                    <input type="text" value={editForm.plz || ''} onChange={e => setEditForm({...editForm, plz: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                </div>
+                                                <div className="grid grid-cols-2 gap-3">
+                                                    <div>
+                                                        <label className="block text-xs text-slate-400 mb-1">Straße</label>
+                                                        <input type="text" value={editForm.strasse || ''} onChange={e => setEditForm({...editForm, strasse: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-xs text-slate-400 mb-1">Nr.</label>
+                                                        <input type="text" value={editForm.hausnummer || ''} onChange={e => setEditForm({...editForm, hausnummer: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                    </div>
+                                                </div>
+                                                
+                                                <div>
+                                                    <label className="block text-xs text-slate-400 mb-1">Schädling</label>
+                                                    <input type="text" value={editForm.schaedling || ''} onChange={e => setEditForm({...editForm, schaedling: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-slate-400 mb-1">Kunden Typ</label>
+                                                    <select value={editForm.kunde_typ || ''} onChange={e => setEditForm({...editForm, kunde_typ: e.target.value})} className="w-full bg-[#1a1a1a] border border-[#333] rounded px-3 py-1.5 text-sm text-white">
+                                                        <option value="Privatkunde">Privatkunde</option>
+                                                        <option value="B2B">B2B / Firma</option>
+                                                        <option value="Öffentlicher Sektor">Öffentlicher Sektor</option>
+                                                    </select>
+                                                </div>
+                                                
+                                                <div className="flex gap-2 pt-2 border-t border-[#2a2a2a]">
+                                                    <button onClick={handleCancelEdit} disabled={isSaving} className="flex-1 py-2 bg-[#161616] border border-[#2a2a2a] rounded-lg text-sm font-medium text-slate-300 hover:bg-[#1e1e1e] transition-colors">Abbrechen</button>
+                                                    <button onClick={handleSaveEdit} disabled={isSaving} className="flex-1 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm flex items-center justify-center gap-2">
+                                                        <Save size={16} /> Speichern
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                    </React.Fragment>
                                 );
                             })}
                         </div>
