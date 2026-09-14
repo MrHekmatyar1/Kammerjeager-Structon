@@ -710,26 +710,26 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                 <div className="fixed inset-0 z-[1000] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
                     <div className="bg-[#161616] rounded-xl shadow-xl w-full max-w-md overflow-hidden border border-[#2a2a2a]">
                         <div className="p-5 border-b border-[#2a2a2a] flex justify-between items-center bg-[#111111]">
-                            <h3 className="font-bold text-white">Löschen bestätigen</h3>
-                            <button onClick={() => setDeletingId(null)} className="text-slate-500 hover:text-slate-300">
-                                <X size={20} />
+                            <h3 className="font-bold text-[15px] text-white">Löschen bestätigen</h3>
+                            <button onClick={() => setDeletingId(null)} className="text-slate-500 hover:text-white transition-colors">
+                                <X size={16} />
                             </button>
                         </div>
                         <div className="p-6">
-                            <p className="text-sm text-slate-200 mb-6 text-center">
+                            <p className="text-[15px] font-medium text-white mb-6 text-center">
                                 Möchten Sie diesen Lead wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.
                             </p>
                             <div className="flex justify-center gap-3">
                                 <button 
                                     onClick={() => setDeletingId(null)}
-                                    className="px-3 py-1.5 bg-[#222222] border border-[#2a2a2a] hover:bg-[#2a2a2a] text-slate-300 rounded-md text-sm font-medium transition-colors"
+                                    className="px-3 py-1 bg-[#222222] border border-[#2a2a2a] hover:bg-[#2a2a2a] text-slate-300 rounded-md text-[13px] font-medium transition-colors"
                                 >
                                     Abbrechen
                                 </button>
                                 <button 
                                     onClick={confirmDelete}
                                     disabled={isPending}
-                                    className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition-colors disabled:opacity-50"
+                                    className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-md text-[13px] font-medium transition-colors disabled:opacity-50"
                                 >
                                     {isPending ? 'Lösche...' : 'Unwiderruflich löschen'}
                                 </button>
