@@ -105,17 +105,10 @@ export default function Header() {
     const [isDark, setIsDark] = useState(false);
     useEffect(() => {
         const storedTheme = localStorage.getItem('partner-theme');
-        if (isPortal) {
-            // В CRM по умолчанию тёмная тема, если только юзер явно не выбрал светлую
-            if (storedTheme === 'light') {
-                setIsDark(false);
-                document.documentElement.classList.remove('dark');
-            } else {
-                setIsDark(true);
-                document.documentElement.classList.add('dark');
-            }
+        if (isPortal && storedTheme === 'dark') {
+            setIsDark(true);
+            document.documentElement.classList.add('dark');
         } else {
-            // На всех публичных страницах всегда светлая тема (белый режим)
             setIsDark(false);
             document.documentElement.classList.remove('dark');
         }
