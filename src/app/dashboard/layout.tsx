@@ -236,7 +236,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     );
 
     return (
-        <div className="min-h-[calc(100vh-70px)] bg-slate-100 dark:bg-[#161616] transition-colors">
+        <div className="min-h-[calc(100vh-70px)] bg-slate-100 dark:bg-[#121212] dark-dotted-bg transition-colors">
 
             {/* PLZ Setup Modal — shown when partner has no PLZ set */}
             {showPlzModal && <PlzSetupModal onSaved={() => setShowPlzModal(false)} />}

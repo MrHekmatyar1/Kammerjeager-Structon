@@ -181,6 +181,11 @@ p {
     background-size: 16px 16px;
 }
 
+.dark .dark-dotted-bg {
+    background-image: radial-gradient(circle, #333333 1px, transparent 1px);
+    background-size: 16px 16px;
+}
+
 .segment-item {
     flex: 1;
     display: flex;
