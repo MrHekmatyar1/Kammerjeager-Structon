@@ -101,11 +101,22 @@ export default function Header() {
 
     const [isDark, setIsDark] = useState(false);
     useEffect(() => {
-        if (localStorage.getItem('partner-theme') === 'dark' || document.documentElement.classList.contains('dark')) {
-            setIsDark(true);
-            document.documentElement.classList.add('dark');
+        const storedTheme = localStorage.getItem('partner-theme');
+        if (isDashboard || isAdminPage) {
+            // В CRM по умолчанию тёмная тема, если только юзер явно не выбрал светлую
+            if (storedTheme === 'light') {
+                setIsDark(false);
+                document.documentElement.classList.remove('dark');
+            } else {
+                setIsDark(true);
+                document.documentElement.classList.add('dark');
+            }
+        } else {
+            // На всех публичных страницах всегда светлая тема (белый режим)
+            setIsDark(false);
+            document.documentElement.classList.remove('dark');
         }
-    }, []);
+    }, [isDashboard, isAdminPage]);
 
     const toggleTheme = () => {
         const next = !isDark;
@@ -275,16 +286,6 @@ export default function Header() {
                             0160 92376320
                         </a>
                         
-                        {isDashboard && (
-                            <button
-                                onClick={toggleTheme}
-                                className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden bg-white hover:bg-slate-50 dark:bg-[#111111] dark:border-[#2a2a2a] cursor-pointer transition-colors"
-                                aria-label="Toggle Dark Mode"
-                            >
-                                {isDark ? <Sun className="text-yellow-400" size={18} /> : <Moon className="text-slate-600" size={18} />}
-                            </button>
-                        )}
-
                         <div className="relative">
                             {user ? (
                                 <button
@@ -332,6 +333,16 @@ export default function Header() {
                         >
                             Online Termin buchen
                         </button>
+                        
+                        {(isDashboard || isAdminPage) && (
+                            <button
+                                onClick={toggleTheme}
+                                className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-slate-200 shadow-sm overflow-hidden bg-white hover:bg-slate-50 dark:bg-[#111111] dark:border-[#2a2a2a] cursor-pointer transition-colors"
+                                aria-label="Toggle Dark Mode"
+                            >
+                                {isDark ? <Sun className="text-yellow-400" size={18} /> : <Moon className="text-slate-600" size={18} />}
+                            </button>
+                        )}
                     </div>
 
                     {/* Mobile action buttons: phone & hamburger / Кнопки на мобильных: звонок и бургер */}
