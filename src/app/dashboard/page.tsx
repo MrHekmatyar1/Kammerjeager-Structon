@@ -156,7 +156,7 @@ export default function DashboardMarketplace() {
             <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark:text-white leading-none">
                 Neue Aufträge
             </h1>
-            <p className="text-slate-500 dark:text-slate-400 text-[15px] mb-[32px]">Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
+            <p className="text-slate-500 dark:text-slate-300 text-[15px] mb-[32px]">Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
             <div className="grid gap-[16px]">
                 {[1, 2].map(i => (
                     <div key={i} className="animate-pulse bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[24px] h-[100px]">
@@ -234,7 +234,7 @@ export default function DashboardMarketplace() {
                             <h3 className="text-[18px] font-bold text-slate-900 dark:text-white mb-[4px]">
                                 {lead.schaedling || 'Schädling unbekannt'} · {lead.plz}
                             </h3>
-                            <div className="text-slate-500 dark:text-slate-400 text-[13px] flex gap-[8px] flex-wrap items-center">
+                            <div className="text-slate-500 dark:text-slate-300 text-[13px] flex gap-[8px] flex-wrap items-center">
                                 {lead.objekt_typ && <span>{lead.objekt_typ}</span>}
                                 {lead.objekt_typ && lead.raeume && <span>·</span>}
                                 {lead.raeume && <span>{lead.raeume} Räume</span>}
@@ -266,7 +266,7 @@ export default function DashboardMarketplace() {
                         <div className="px-[20px] py-[16px] border-b border-slate-200 dark:border-[#2a2a2a] flex justify-between items-center bg-white dark:bg-[#111111]">
                             <div>
                                 <h2 className="text-[18px] font-extrabold text-slate-900 dark:text-white m-0">Auftragsdetails</h2>
-                                <p className="text-slate-500 dark:text-slate-400 text-[13px] mt-[4px] mb-0">
+                                <p className="text-slate-500 dark:text-slate-300 text-[13px] mt-[4px] mb-0">
                                     {selectedLead.schaedling} · PLZ {selectedLead.plz} · {timeAgo(selectedLead.created_at)}
                                 </p>
                             </div>
@@ -287,14 +287,14 @@ export default function DashboardMarketplace() {
                                     { label: 'Zugang', value: selectedLead.zugang },
                                 ].filter(f => f.value).map(f => (
                                     <div key={f.label} className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[8px] px-[12px] py-[9px]">
-                                        <div className="text-[11px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-[0.05em] mb-[2px]">{f.label}</div>
+                                        <div className="text-[11px] text-slate-400 dark:text-slate-400 font-bold uppercase tracking-[0.05em] mb-[2px]">{f.label}</div>
                                         <div className="text-[14px] text-slate-900 dark:text-slate-300 font-semibold">{f.value}</div>
                                     </div>
                                 ))}
                             </div>
                             {selectedLead.zugang_beschreibung && (
                                 <div className="mt-[10px] bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[8px] px-[12px] py-[9px]">
-                                    <div className="text-[11px] text-slate-400 dark:text-slate-500 font-bold uppercase mb-[2px]">Zugangsbeschreibung</div>
+                                    <div className="text-[11px] text-slate-400 dark:text-slate-400 font-bold uppercase mb-[2px]">Zugangsbeschreibung</div>
                                     <div className="text-[14px] text-slate-900 dark:text-slate-300">{selectedLead.zugang_beschreibung}</div>
                                 </div>
                             )}
@@ -304,7 +304,7 @@ export default function DashboardMarketplace() {
                         <div className="px-[20px] py-[16px] border-b border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#111111]">
                             <div className="bg-white dark:bg-[#161616] border border-slate-300 dark:border-[#2a2a2a] rounded-[8px] px-[14px] py-[12px] mb-[14px]">
                                 <div className="text-[13px] font-bold text-slate-900 dark:text-white mb-[4px]">Rechtliche Vereinbarung</div>
-                                <p className="text-[13px] text-slate-600 dark:text-slate-400 leading-[1.55] m-0">
+                                <p className="text-[13px] text-slate-600 dark:text-slate-300 leading-[1.55] m-0">
                                     Durch Annahme verpflichten Sie sich, im Falle einer prozentualen Provision die Abrechnung zwingend über die <strong>Stripe-Zahlungsfunktion</strong> des Portals abzuwickeln, damit unsere Provision automatisch einbehalten wird.
                                     Bei Barzahlungen unter Umgehung des Systems oder Falschangaben wird eine <strong className="text-red-700 dark:text-red-500">Vertragsstrafe von 280 € + entgangene Provision</strong> fällig.
                                 </p>
@@ -327,7 +327,7 @@ export default function DashboardMarketplace() {
                             <button
                                 onClick={() => setShowRejectModal(true)}
                                 disabled={actionLoading}
-                                className="bg-white dark:bg-[#161616] text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-500 dark:hover:bg-slate-700 hover:text-white dark:hover:text-white hover:border-slate-500 px-[20px] py-[10px] rounded-lg text-[14px] font-semibold transition-all duration-300 ease-in-out cursor-pointer"
+                                className="bg-white dark:bg-[#161616] text-slate-500 dark:text-slate-300 border border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-500 dark:hover:bg-slate-700 hover:text-white dark:hover:text-white hover:border-slate-500 px-[20px] py-[10px] rounded-lg text-[14px] font-semibold transition-all duration-300 ease-in-out cursor-pointer"
                             >
                                 Ablehnen
                             </button>
@@ -351,7 +351,7 @@ export default function DashboardMarketplace() {
                             <h2 className="text-[18px] font-extrabold text-slate-900 dark:text-white m-0">Auftrag ablehnen</h2>
                         </div>
                         <div className="px-[20px] py-[16px]">
-                            <label className="block text-[13px] text-slate-600 dark:text-slate-400 font-semibold mb-[8px]">
+                            <label className="block text-[13px] text-slate-600 dark:text-slate-300 font-semibold mb-[8px]">
                                 Grund (optional)
                             </label>
                             <select
@@ -369,7 +369,7 @@ export default function DashboardMarketplace() {
                                 <button
                                     onClick={() => setShowRejectModal(false)}
                                     disabled={actionLoading}
-                                    className="bg-white dark:bg-[#161616] text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-500 dark:hover:bg-slate-700 hover:text-white dark:hover:text-white hover:border-slate-500 px-[20px] py-[10px] rounded-lg text-[14px] font-semibold transition-all duration-300 ease-in-out cursor-pointer"
+                                    className="bg-white dark:bg-[#161616] text-slate-500 dark:text-slate-300 border border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-500 dark:hover:bg-slate-700 hover:text-white dark:hover:text-white hover:border-slate-500 px-[20px] py-[10px] rounded-lg text-[14px] font-semibold transition-all duration-300 ease-in-out cursor-pointer"
                                 >
                                     Zurück
                                 </button>

@@ -64,7 +64,7 @@ export default function DashboardBilling() {
             <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark:text-white leading-none">
                 Abrechnung
             </h1>
-            <p className="text-slate-500 dark:text-slate-400 text-[15px] mb-[32px]">
+            <p className="text-slate-500 dark:text-slate-300 text-[15px] mb-[32px]">
                 Verwalten Sie Ihre Zahlungsmethoden und Rechnungen über Stripe Connect.
             </p>
 
@@ -87,14 +87,14 @@ export default function DashboardBilling() {
                         </div>
                         <div>
                             <h3 className="text-[16px] font-bold text-slate-900 dark:text-white m-0">Stripe Account</h3>
-                            <div className="text-[13px] text-slate-500 dark:text-slate-400 flex items-center gap-[4px] mt-[2px]">
+                            <div className="text-[13px] text-slate-500 dark:text-slate-300 flex items-center gap-[4px] mt-[2px]">
                                 <span className="w-[8px] h-[8px] rounded-full bg-red-500"></span>
                                 Nicht verbunden
                             </div>
                         </div>
                     </div>
 
-                    <p className="text-[14px] text-slate-600 dark:text-slate-400 leading-[1.5] mb-[20px] flex-1">
+                    <p className="text-[14px] text-slate-600 dark:text-slate-300 leading-[1.5] mb-[20px] flex-1">
                         Um Leads auf Provisionsbasis zu erhalten, müssen Sie Ihr Bankkonto oder eine Kreditkarte über Stripe hinterlegen.
                         Es fallen nur Gebühren an, wenn Sie einen Auftrag erfolgreich abschließen.
                     </p>
@@ -110,7 +110,7 @@ export default function DashboardBilling() {
                     <div className="text-[28px] font-black text-slate-900 dark:text-white mb-[8px] leading-none">
                         {credits !== null ? credits.toFixed(2).replace('.', ',') : '0,00'} <span className="text-[16px] text-slate-400">€</span>
                     </div>
-                    <p className="text-[13px] text-slate-500 dark:text-slate-400 mb-[24px] flex-1">
+                    <p className="text-[13px] text-slate-500 dark:text-slate-300 mb-[24px] flex-1">
                         Alternativ können Sie Guthaben aufladen, um Leads zum Festpreis (CPL) zu kaufen, anstatt Provision zu zahlen.
                     </p>
 
@@ -127,7 +127,7 @@ export default function DashboardBilling() {
 
 
             <h3 className="text-[18px] font-bold text-slate-900 dark:text-white mb-[16px]">Vergangene Rechnungen</h3>
-            <div className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[32px] text-center text-slate-400 dark:text-slate-500 text-[14px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
+            <div className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[32px] text-center text-slate-400 dark:text-slate-400 text-[14px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
                 Sie haben noch keine Rechnungen erhalten.
             </div>
 
@@ -144,12 +144,12 @@ export default function DashboardBilling() {
 
                             <div className="bg-white dark:bg-[#111111] w-full relative z-10 rounded-[16px] border-[2px] border-[#f0f0f0] dark:border-[#2a2a2a] shadow-[0_12px_48px_rgba(0,0,0,0.12)] p-[32px]">
 
-                                <button onClick={() => setIsModalOpen(false)} className="absolute top-[12px] right-[12px] w-[28px] h-[28px] border border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#161616] rounded-full cursor-pointer flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-[#222222] transition-colors">
+                                <button onClick={() => setIsModalOpen(false)} className="absolute top-[12px] right-[12px] w-[28px] h-[28px] border border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#161616] rounded-full cursor-pointer flex items-center justify-center text-slate-500 dark:text-slate-300 hover:text-slate-700 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-[#222222] transition-colors">
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6 6 18M6 6l12 12" /></svg>
                                 </button>
 
                                 <h2 className="text-[20px] font-black text-slate-900 dark:text-white mb-[6px] text-center font-heading uppercase">Guthaben aufladen</h2>
-                                <p className="text-[13px] text-slate-500 dark:text-slate-400 mb-[24px] text-center">Geben Sie den gewünschten Betrag ein. Der Mindestbetrag ist 10 €.</p>
+                                <p className="text-[13px] text-slate-500 dark:text-slate-300 mb-[24px] text-center">Geben Sie den gewünschten Betrag ein. Der Mindestbetrag ist 10 €.</p>
                                 
                                 <div className="relative mb-[20px]">
                                     <input 

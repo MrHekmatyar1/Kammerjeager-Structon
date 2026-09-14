@@ -219,7 +219,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         block px-[18px] py-[13px] text-[15px] whitespace-nowrap border-b transition-colors
                         ${active 
                             ? 'text-[#C8102E] font-bold bg-[#C8102E]/10 border-slate-300 dark:border-[#2a2a2a]' 
-                            : 'text-slate-600 dark:text-slate-400 font-medium border-slate-300 dark:border-[#2a2a2a] hover:bg-slate-100 dark:hover:bg-[#1a1a1a]'
+                            : 'text-slate-600 dark:text-slate-300 font-medium border-slate-300 dark:border-[#2a2a2a] hover:bg-slate-100 dark:hover:bg-[#1a1a1a]'
                         }
                     `}>
                         {item.name}

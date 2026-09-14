@@ -152,7 +152,7 @@ export default function DashboardOrders() {
             <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark:text-white leading-none">
                 Meine Aufträge
             </h1>
-            <p className="text-slate-500 dark:text-slate-400 text-[15px] mb-[32px]">Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
+            <p className="text-slate-500 dark:text-slate-300 text-[15px] mb-[32px]">Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
             <div className="grid gap-[20px]">
                 {[1, 2].map(i => (
                     <div key={i} className="animate-pulse bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[24px] h-[120px]">
@@ -269,7 +269,7 @@ export default function DashboardOrders() {
 
                                 {/* Kundendaten */}
                                 <div>
-                                    <div className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.08em] mb-[12px]">Kundendaten</div>
+                                    <div className="text-[11px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-[0.08em] mb-[12px]">Kundendaten</div>
                                     <div className="text-[14px] mb-[6px] text-slate-900 dark:text-slate-300"><strong className="text-slate-900 dark:text-white">Name:</strong> {order.name}</div>
                                     {order.firma && <div className="text-[14px] mb-[6px] text-slate-900 dark:text-slate-300"><strong className="text-slate-900 dark:text-white">Firma:</strong> {order.firma}</div>}
                                     <div className="text-[14px] mb-[6px] text-slate-900 dark:text-slate-300">
@@ -277,16 +277,16 @@ export default function DashboardOrders() {
                                         <a href={`tel:${order.telefon}`} className="text-[#C8102E] no-underline font-semibold">{order.telefon}</a>
                                     </div>
                                     {order.email && (
-                                        <div className="text-[13px] text-slate-500 dark:text-slate-400">
+                                        <div className="text-[13px] text-slate-500 dark:text-slate-300">
                                             <a href={`mailto:${order.email}`} className="text-blue-500 no-underline">{order.email}</a>
                                         </div>
                                     )}
-                                    {order.etage && <div className="text-[13px] text-slate-500 dark:text-slate-400 mt-[4px]">Etage: {order.etage}</div>}
+                                    {order.etage && <div className="text-[13px] text-slate-500 dark:text-slate-300 mt-[4px]">Etage: {order.etage}</div>}
                                 </div>
 
                                 {/* Abschluss */}
                                 <div>
-                                    <div className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.08em] mb-[12px]">Abschluss & Abrechnung</div>
+                                    <div className="text-[11px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-[0.08em] mb-[12px]">Abschluss & Abrechnung</div>
 
                                     {isCompleted ? (
                                         <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-[10px] p-[16px]">
@@ -369,9 +369,9 @@ export default function DashboardOrders() {
                                         </div>
                                     ) : (
                                         <div className="bg-slate-50 dark:bg-[#161616] border border-slate-200 dark:border-[#2a2a2a] rounded-[10px] p-[16px]">
-                                            <div className="text-[13px] text-slate-500 dark:text-slate-400 font-semibold mb-[4px]">Aktueller Status</div>
+                                            <div className="text-[13px] text-slate-500 dark:text-slate-300 font-semibold mb-[4px]">Aktueller Status</div>
                                             <div className="text-[14px] text-slate-900 dark:text-white font-bold mb-[12px]">{cfg.label}</div>
-                                            <div className="text-[12px] text-slate-500 dark:text-slate-400 mb-[4px]">
+                                            <div className="text-[12px] text-slate-500 dark:text-slate-300 mb-[4px]">
                                                 {getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).type === 'percentage'
                                                     ? 'Bei Abschluss wird die Rechnung hochgeladen.'
                                                     : 'Bei Abschluss wird die Fixgebühr berechnet.'}
@@ -422,7 +422,7 @@ export default function DashboardOrders() {
                                 Auftrag abschließen
                             </h3>
                             
-                            <div className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.6] mb-[24px]">
+                            <div className="text-slate-600 dark:text-slate-300 text-[15px] leading-[1.6] mb-[24px]">
                                 {!confirmModalData.isFixed ? (
                                     <>
                                         <div className="flex justify-between mb-[8px]">
