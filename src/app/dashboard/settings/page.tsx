@@ -281,7 +281,7 @@ export default function SettingsPage() {
                     <div className="p-[24px] grid gap-[16px]">
                         
                         {/* Option 1: Commission (Default) */}
-                        <label className={`flex items-start gap-[16px] p-[16px] border-[2px] rounded-[8px] cursor-pointer transition-all duration-200 ${form.billing_model === 'commission' ? 'border-[#C8102E] bg-red-50 dark:bg-[#C8102E]/10' : 'border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#111111]'}`}>
+                        <label className={`flex items-start gap-[16px] p-[16px] border-[2px] rounded-[8px] cursor-pointer transition-all duration-200 hover:shadow-md ${form.billing_model === 'commission' ? 'border-[#C8102E] bg-red-50 dark:bg-[#C8102E]/10' : 'border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#111111] hover:border-slate-300 dark:hover:border-slate-600'}`}>
                             <input 
                                 type="radio" 
                                 name="billing_model" 
@@ -299,14 +299,14 @@ export default function SettingsPage() {
                         </label>
 
                         {/* Option 2: Pay-Per-Lead */}
-                        <label className={`flex items-start gap-[16px] p-[16px] border-[2px] rounded-[8px] cursor-pointer transition-all duration-200 ${form.billing_model === 'pay_per_lead' ? 'border-slate-900 dark:border-white bg-slate-50 dark:bg-[#161616]' : 'border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#111111]'}`}>
+                        <label className={`flex items-start gap-[16px] p-[16px] border-[2px] rounded-[8px] cursor-pointer transition-all duration-200 hover:shadow-md ${form.billing_model === 'pay_per_lead' ? 'border-slate-900 dark:border-slate-500 bg-slate-50 dark:bg-[#161616]' : 'border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#111111] hover:border-slate-300 dark:hover:border-slate-600'}`}>
                             <input 
                                 type="radio" 
                                 name="billing_model" 
                                 value="pay_per_lead"
                                 checked={form.billing_model === 'pay_per_lead'}
                                 onChange={() => setForm({ ...form, billing_model: 'pay_per_lead' })}
-                                className="mt-[4px] w-[18px] h-[18px] accent-slate-900 dark:accent-white"
+                                className="mt-[4px] w-[18px] h-[18px] accent-slate-900 dark:accent-slate-400"
                             />
                             <div>
                                 <div className="text-[15px] font-bold text-slate-900 dark:text-white mb-[4px]">Fixpreis pro Lead kaufen</div>
