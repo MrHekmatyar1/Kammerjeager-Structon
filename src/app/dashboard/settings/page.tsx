@@ -190,12 +190,12 @@ export default function SettingsPage() {
                 </div>
 
                 {/* 2. Einsatzgebiet */}
-                <div style={{ background: '#fff', border: '1px solid #cbd5e1', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-                    <div style={{ background: '#f8fafc', padding: '16px 24px', borderBottom: '1px solid #cbd5e1' }}>
-                        <h2 style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', margin: 0 }}>Einsatzgebiete (PLZ)</h2>
+                <div className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                    <div className="bg-slate-50 dark:bg-[#161616] px-[24px] py-[16px] border-b border-slate-300 dark:border-[#2a2a2a]">
+                        <h2 className="text-[16px] font-bold text-slate-900 dark:text-white m-0">Einsatzgebiete (PLZ)</h2>
                     </div>
-                    <div style={{ padding: '24px' }}>
-                        <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '16px' }}>
+                    <div className="p-[24px]">
+                        <p className="text-[13px] text-slate-500 dark:text-slate-400 mb-[16px]">
                             Geben Sie hier die Postleitzahlen ein, in denen Sie Aufträge annehmen möchten. 
                             Trennen Sie mehrere Postleitzahlen mit einem Komma (z.B. 10115, 10117, 10119).
                         </p>
