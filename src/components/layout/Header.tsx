@@ -229,7 +229,19 @@ export default function Header() {
                     : (isAdminPage ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(255, 255, 255, 0.2)')
             }}>
                 
-                <div className="max-w-[1280px] mx-auto px-5 h-[68px] flex items-center justify-between gap-4">
+                {isPortal && (
+                    <div className="hidden lg:flex absolute right-[20px] xl:right-[30px] top-1/2 -translate-y-1/2 z-[10000]">
+                        <button
+                            onClick={toggleTheme}
+                            className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-slate-200 shadow-sm overflow-hidden bg-white hover:bg-slate-50 dark:bg-[#111111] dark:border-[#2a2a2a] cursor-pointer transition-colors"
+                            aria-label="Toggle Dark Mode"
+                        >
+                            {isDark ? <Sun className="text-yellow-400" size={18} /> : <Moon className="text-slate-600" size={18} />}
+                        </button>
+                    </div>
+                )}
+
+                <div className={`max-w-[1280px] mx-auto px-5 h-[68px] flex items-center justify-between gap-4 ${isPortal ? 'pr-[80px] xl:pr-5' : ''}`}>
                     
                     {/* Brand logo / Логотип */}
                     <Link href="/" className="flex items-center gap-3 no-underline shrink-0">
@@ -328,16 +340,6 @@ export default function Header() {
                         >
                             Online Termin buchen
                         </button>
-                        
-                        {isPortal && (
-                            <button
-                                onClick={toggleTheme}
-                                className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-slate-200 shadow-sm overflow-hidden bg-white hover:bg-slate-50 dark:bg-[#111111] dark:border-[#2a2a2a] cursor-pointer transition-colors"
-                                aria-label="Toggle Dark Mode"
-                            >
-                                {isDark ? <Sun className="text-yellow-400" size={18} /> : <Moon className="text-slate-600" size={18} />}
-                            </button>
-                        )}
                     </div>
 
                     {/* Mobile action buttons: phone & hamburger / Кнопки на мобильных: звонок и бургер */}
