@@ -99,11 +99,11 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                 <table className="w-full text-sm text-left text-slate-300" style={{ borderCollapse: 'separate', borderSpacing: '0 12px' }}>
                     <thead className="text-xs text-slate-500 uppercase bg-transparent">
                         <tr>
-                            <th className="px-6 py-4 font-semibold">Firma / Name</th>
-                            <th className="px-6 py-4 font-semibold">Kontakt</th>
-                            <th className="px-6 py-4 font-semibold text-center">Status</th>
-                            <th className="px-6 py-4 font-semibold text-center">Free Leads Bis</th>
-                            <th className="px-6 py-4 font-semibold text-right">Aktionen</th>
+                            <th className="px-5 py-3 font-semibold">Firma / Name</th>
+                            <th className="px-5 py-3 font-semibold">Kontakt</th>
+                            <th className="px-5 py-3 font-semibold text-center">Status</th>
+                            <th className="px-5 py-3 font-semibold text-center">Free Leads Bis</th>
+                            <th className="px-5 py-3 font-semibold text-right">Aktionen</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -114,19 +114,19 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                             return (
                                 <React.Fragment key={m.id}>
                                 <tr className="bg-[#161616] hover:bg-[#1e1e1e] transition-colors shadow-md group">
-                                    <td className="px-6 py-4 border-y border-l border-[#2a2a2a] rounded-l-xl group-hover:border-[#333333]">
+                                    <td className="px-5 py-3 border-y border-l border-[#2a2a2a] rounded-l-xl group-hover:border-[#333333]">
                                         <div>
                                             <div className="font-bold text-white">{m.firma || '-'}</div>
                                             <div className="text-sm text-slate-500">{m.name || '-'}</div>
                                         </div>
                                     </td>
                                     
-                                    <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333]">
+                                    <td className="px-5 py-3 border-y border-[#2a2a2a] group-hover:border-[#333333]">
                                         <div className="text-sm text-slate-300">{m.telefon || '-'}</div>
                                         <div className="text-xs text-slate-500 mt-1">{m.email}</div>
                                     </td>
                                     
-                                    <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] text-center">
+                                    <td className="px-5 py-3 border-y border-[#2a2a2a] group-hover:border-[#333333] text-center">
                                         {m.is_active ? 
                                                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#161616] text-green-400 border border-[#2a2a2a]">
                                                     <CheckCircle size={14} /> Aktiv
@@ -138,7 +138,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                         }
                                     </td>
                                     
-                                    <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] text-center">
+                                    <td className="px-5 py-3 border-y border-[#2a2a2a] group-hover:border-[#333333] text-center">
                                         {hasFreeLeads ? (
                                             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#161616] text-blue-400 border border-[#2a2a2a]">
                                                 <Gift size={14} /> {new Date(m.free_leads_until).toLocaleDateString('de-DE')}
@@ -148,7 +148,7 @@ export default function MastersTable({ initialMasters }: { initialMasters: any[]
                                         )}
                                     </td>
 
-                                    <td className="px-6 py-4 border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333] text-right">
+                                    <td className="px-5 py-3 border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333] text-right">
                                             <div className="flex items-center justify-end gap-2">
                                                 <button 
                                                     onClick={() => isEditing ? handleCancelEdit() : handleEditClick(m)} 

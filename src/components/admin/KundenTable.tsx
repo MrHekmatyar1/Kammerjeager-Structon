@@ -67,10 +67,10 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                 <table className="w-full text-sm text-left text-slate-300" style={{ borderCollapse: 'separate', borderSpacing: '0 12px' }}>
                     <thead className="text-xs text-slate-500 uppercase bg-transparent">
                         <tr>
-                            <th className="px-6 py-4 font-semibold">Email / Name</th>
-                            <th className="px-6 py-4 font-semibold">Registriert am</th>
-                            <th className="px-6 py-4 font-semibold">Letzter Login</th>
-                            <th className="px-6 py-4 font-semibold text-right">Aktionen</th>
+                            <th className="px-5 py-3 font-semibold">Email / Name</th>
+                            <th className="px-5 py-3 font-semibold">Registriert am</th>
+                            <th className="px-5 py-3 font-semibold">Letzter Login</th>
+                            <th className="px-5 py-3 font-semibold text-right">Aktionen</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,19 +80,19 @@ export default function KundenTable({ initialKunden }: { initialKunden: any[] })
                             return (
                                 <React.Fragment key={k.id}>
                                 <tr className="bg-[#161616] hover:bg-[#1e1e1e] transition-colors shadow-md group">
-                                    <td className="px-6 py-4 border-y border-l border-[#2a2a2a] rounded-l-xl group-hover:border-[#333333]">
+                                    <td className="px-5 py-3 border-y border-l border-[#2a2a2a] rounded-l-xl group-hover:border-[#333333]">
                                         <>
                                             <div className="font-bold text-[#64748b]">{k.email}</div>
                                             <div className="text-sm text-slate-500">{k.name || '-'}</div>
                                         </>
                                     </td>
-                                    <td className="px-6 py-4 text-sm text-slate-300 border-y border-[#2a2a2a] group-hover:border-[#333333]">
+                                    <td className="px-5 py-3 text-sm text-slate-300 border-y border-[#2a2a2a] group-hover:border-[#333333]">
                                         {new Date(k.created_at).toLocaleDateString('de-DE')}
                                     </td>
-                                    <td className="px-6 py-4 text-sm text-slate-300 border-y border-[#2a2a2a] group-hover:border-[#333333]">
+                                    <td className="px-5 py-3 text-sm text-slate-300 border-y border-[#2a2a2a] group-hover:border-[#333333]">
                                         {k.last_sign_in_at ? new Date(k.last_sign_in_at).toLocaleString('de-DE') : 'Nie'}
                                     </td>
-                                    <td className="px-6 py-4 text-right border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333]">
+                                    <td className="px-5 py-3 text-right border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333]">
                                         <div className="flex items-center justify-end gap-2">
                                                 <button 
                                                     onClick={() => isEditing ? handleCancel() : handleEdit(k)} 

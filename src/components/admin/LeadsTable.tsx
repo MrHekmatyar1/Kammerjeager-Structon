@@ -232,13 +232,13 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                             <table className="w-full text-sm text-left text-slate-300" style={{ borderCollapse: 'separate', borderSpacing: '0 12px' }}>
                                 <thead className="text-xs text-slate-500 uppercase bg-transparent">
                                     <tr>
-                                        <th className="px-6 py-4 font-semibold">Datum</th>
-                                        <th className="px-6 py-4 font-semibold">Kunde / Firma</th>
-                                        <th className="px-6 py-4 font-semibold">Kontakt</th>
-                                        <th className="px-6 py-4 font-semibold">Ort / PLZ</th>
-                                        <th className="px-6 py-4 font-semibold">Schädling &amp; Details</th>
-                                        <th className="px-6 py-4 font-semibold">Status</th>
-                                        <th className="px-6 py-4 font-semibold text-right">Aktionen</th>
+                                        <th className="px-5 py-3 font-semibold">Datum</th>
+                                        <th className="px-5 py-3 font-semibold">Kunde / Firma</th>
+                                        <th className="px-5 py-3 font-semibold">Kontakt</th>
+                                        <th className="px-5 py-3 font-semibold">Ort / PLZ</th>
+                                        <th className="px-5 py-3 font-semibold">Schädling &amp; Details</th>
+                                        <th className="px-5 py-3 font-semibold">Status</th>
+                                        <th className="px-5 py-3 font-semibold text-right">Aktionen</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -247,13 +247,13 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                         return (
                                             <React.Fragment key={lead.id}>
                                             <tr className="group shadow-md rounded-xl">
-                                                <td className="px-6 py-4 whitespace-nowrap text-xs text-slate-500 border-y border-l border-[#2a2a2a] rounded-l-xl group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
+                                                <td className="px-5 py-3 whitespace-nowrap text-xs text-slate-500 border-y border-l border-[#2a2a2a] rounded-l-xl group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     {new Date(lead.created_at || lead.erstellt_am || new Date()).toLocaleDateString('de-DE', {
                                                         day: '2-digit', month: '2-digit', year: 'numeric',
                                                         hour: '2-digit', minute: '2-digit'
                                                     })}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
+                                                <td className="px-5 py-3 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     {b2b ? (
                                                         <div>
                                                             <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#161616] text-blue-400 border border-[#2a2a2a] uppercase tracking-wider mb-1">
@@ -273,7 +273,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         </div>
                                                     )}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
+                                                <td className="px-5 py-3 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     <a href={`tel:${lead.telefon}`} className="font-semibold text-white hover:text-[#C8102E] transition-colors block">
                                                         {lead.telefon}
                                                     </a>
@@ -281,13 +281,13 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         {lead.email}
                                                     </a>
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
+                                                <td className="px-5 py-3 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     <div className="font-medium text-white">
                                                         {lead.plz} {lead.strasse || ''} {lead.hausnummer || ''}
                                                     </div>
                                                     {lead.etage && <div className="text-xs text-slate-500 mt-0.5">Etage: {lead.etage}</div>}
                                                 </td>
-                                                <td className="px-6 py-4 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
+                                                <td className="px-5 py-3 border-y border-[#2a2a2a] group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#161616] text-red-400 font-medium text-xs border border-[#2a2a2a] mb-1">
                                                         {lead.schaedling || 'Unbekannt'}
                                                     </div>
@@ -306,7 +306,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                                         </div>
                                                     )}
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
+                                                <td className="px-5 py-3 whitespace-nowrap border-y border-r border-[#2a2a2a] rounded-r-xl group-hover:border-[#333333] bg-[#161616] group-hover:bg-[#1e1e1e] transition-colors">
                                                     <div className="relative">
                                                         <select
                                                             value={lead.status}
@@ -452,7 +452,7 @@ export default function LeadsTable({ initialLeads, masters }: { initialLeads: Le
                                 const b2b = isB2BLead(lead);
                                 return (
                                     <React.Fragment key={lead.id}>
-                                    <div className="bg-[#161616] rounded-xl shadow-sm border border-[#2a2a2a] p-4 sm:p-5 flex flex-col gap-4 relative pr-14">
+                                    <div className="bg-[#161616] rounded-xl shadow-sm border border-[#2a2a2a] p-3 sm:p-4 flex flex-col gap-4 relative pr-14">
                                         <div className="flex justify-between items-start gap-2">
                                             <div>
                                                 {b2b && (
