@@ -97,12 +97,15 @@ export default function Header() {
     const supabase = createClient();
     const router = useRouter();
     const pathname = usePathname();
-    const isDashboard = pathname.startsWith('/dashboard');
+    const isDashboard = pathname?.startsWith('/dashboard') || false;
+    const isAdminPage = pathname?.startsWith('/admin') || false;
+    const isKundenPage = pathname?.startsWith('/kunden') || false;
+    const isPortal = isDashboard || isAdminPage || isKundenPage;
 
     const [isDark, setIsDark] = useState(false);
     useEffect(() => {
         const storedTheme = localStorage.getItem('partner-theme');
-        if (isDashboard || isAdminPage) {
+        if (isPortal) {
             // В CRM по умолчанию тёмная тема, если только юзер явно не выбрал светлую
             if (storedTheme === 'light') {
                 setIsDark(false);
@@ -116,7 +119,7 @@ export default function Header() {
             setIsDark(false);
             document.documentElement.classList.remove('dark');
         }
-    }, [isDashboard, isAdminPage]);
+    }, [isPortal]);
 
     const toggleTheme = () => {
         const next = !isDark;
@@ -181,7 +184,6 @@ export default function Header() {
         setProfileSheetOpen(false);
         setActiveMenu(null);
     }, [pathname]);
-    const isAdminPage = pathname?.startsWith('/admin') || false;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -334,7 +336,7 @@ export default function Header() {
                             Online Termin buchen
                         </button>
                         
-                        {(isDashboard || isAdminPage) && (
+                        {isPortal && (
                             <button
                                 onClick={toggleTheme}
                                 className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-slate-200 shadow-sm overflow-hidden bg-white hover:bg-slate-50 dark:bg-[#111111] dark:border-[#2a2a2a] cursor-pointer transition-colors"
