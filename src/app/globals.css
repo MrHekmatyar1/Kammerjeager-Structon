@@ -186,6 +186,17 @@ p {
     background-size: 16px 16px;
 }
 
+.dark .dark-header-bg {
+    background-color: #161616 !important;
+}
+.dark .dark-header-border {
+    border-color: #2a2a2a !important;
+    border-bottom-width: 1px !important;
+}
+.dark .dark-header-text {
+    color: #ffffff !important;
+}
+
 .segment-item {
     flex: 1;
     display: flex;

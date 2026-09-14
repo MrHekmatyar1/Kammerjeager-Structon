@@ -222,11 +222,11 @@ export default function Header() {
                 isAdminPage 
                     ? 'bg-[#161616] shadow-none border-[#2a2a2a]'
                     : (isSolid 
-                        ? 'bg-white dark:bg-[#161616] shadow-none border-[#C8102E] dark:border-[#2a2a2a] border-b-2 dark:border-b-[1px]' 
+                        ? 'bg-white dark-header-bg shadow-none border-[#C8102E] dark-header-border border-b-2' 
                         : 'bg-white/45 dark:bg-[#161616]/80 backdrop-blur-[8px] shadow-[0_4px_30px_rgba(0,0,0,0.05)] border-white/20 dark:border-white/5')
             }`}>
                 
-                {isPortal && (
+                {isPortal && !isAdminPage && (
                     <div className="hidden lg:flex absolute right-[20px] xl:right-[30px] top-1/2 -translate-y-1/2 z-[10000]">
                         <button
                             onClick={toggleTheme}
@@ -250,7 +250,7 @@ export default function Header() {
                             className="object-contain [clip-path:circle(31%_at_50%_50%)]" 
                         />
                         <div className="flex flex-col leading-none">
-                            <span className={`font-black text-[19px] tracking-[-0.03em] uppercase ${isAdminPage ? 'text-white' : 'text-[#1E293B] dark:text-white'}`}>Kammerjäger</span>
+                            <span className={`font-black text-[19px] tracking-[-0.03em] uppercase ${isAdminPage ? 'text-white' : 'text-[#1E293B] dark-header-text'}`}>Kammerjäger</span>
                             <span className="font-bold text-[10px] text-slate-400 uppercase tracking-[0.18em]">Structon</span>
                         </div>
                     </Link>
@@ -269,7 +269,7 @@ export default function Header() {
                                     className={`flex items-center h-full px-[18px] text-[15px] font-medium whitespace-nowrap transition-colors border-b-[3px] duration-150 ${
                                         hoveredMenu === key 
                                             ? 'text-[#C8102E] border-[#C8102E]' 
-                                            : (isAdminPage ? 'text-slate-300 hover:text-white border-transparent' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border-transparent')
+                                            : (isAdminPage ? 'text-slate-300 hover:text-white border-transparent' : 'text-slate-600 dark-header-text hover:text-slate-900 border-transparent')
                                     }`}
                                 >
                                     {key}

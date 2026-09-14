@@ -24,7 +24,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                 <div className="p-4 md:p-6 border-b border-[#2a2a2a] flex justify-between items-center md:block">
                     <div>
                         <h2 className="text-xl font-black text-white uppercase tracking-tight">Super<span className="text-[#C8102E]">Admin</span></h2>
-                        <p className="text-xs font-medium text-slate-400 mt-1">{session.user.email}</p>
+                        <p className="text-xs font-medium text-white mt-1" style={{ color: '#ffffff' }}>{session.user.email}</p>
                     </div>
                     {/* Logout button for mobile (header) */}
                     <form action="/auth/signout" method="post" className="md:hidden">
