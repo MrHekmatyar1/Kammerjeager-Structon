@@ -219,7 +219,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         block px-[18px] py-[13px] text-[15px] whitespace-nowrap border-b transition-colors
                         ${active 
                             ? 'text-[#C8102E] font-bold bg-[#C8102E]/10 border-slate-300 dark:border-[#2a2a2a]' 
-                            : 'text-slate-600 dark:text-slate-300 font-medium border-slate-300 dark:border-[#2a2a2a] hover:bg-slate-100 dark:hover:bg-[#1a1a1a]'
+                            : 'text-slate-600 dark-header-text font-medium border-slate-300 dark:border-[#2a2a2a] hover:bg-slate-100 dark:hover:bg-[#1a1a1a]'
                         }
                     `}>
                         {item.name}
@@ -256,7 +256,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         ${drawerOpen ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'}
                     `}
                 >
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" className="text-slate-600 dark:text-slate-300 stroke-[2.5px] stroke-linecap-round stroke-linejoin-round transition-transform duration-200" style={{ transform: drawerOpen ? 'rotate(180deg)' : 'none' }}>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" className="text-slate-600 dark-header-text stroke-[2.5px] stroke-linecap-round stroke-linejoin-round transition-transform duration-200" style={{ transform: drawerOpen ? 'rotate(180deg)' : 'none' }}>
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </button>
@@ -281,7 +281,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 `}>
                     <div className="px-[18px] py-[18px] pb-[12px] border-b border-slate-100 dark:border-[#1a1a1a]">
                         <div className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.08em] mb-1">Partner-Portal</div>
-                        <div className="text-[14px] font-bold text-slate-900 dark:text-white whitespace-nowrap">{user.email}</div>
+                        <div className="text-[14px] font-bold text-slate-900 dark-header-text whitespace-nowrap">{user.email}</div>
                     </div>
                     <div className="pb-[12px]">
                         <NavLinks />
@@ -300,7 +300,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <aside className="w-[250px] bg-white dark:bg-[#111111] border-r border-slate-300 dark:border-[#2a2a2a] py-[24px] min-h-[calc(100vh-70px)] shrink-0 transition-colors">
                     <div className="px-[24px] mb-[24px]">
                         <div className="text-[13px] text-slate-500 font-semibold uppercase tracking-[0.05em] mb-[8px]">Partner-Portal</div>
-                        <div className="text-[15px] font-bold text-slate-900 dark:text-white break-all mb-[4px]">{user.email}</div>
+                        <div className="text-[15px] font-bold text-slate-900 dark-header-text break-all mb-[4px]">{user.email}</div>
                     </div>
                     <NavLinks />
                 </aside>

@@ -149,10 +149,10 @@ export default function DashboardOrders() {
     // ─── Loading ────────────────────────────────────────────────────────────
     if (loading) return (
         <div>
-            <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark:text-white leading-none">
+            <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark-header-text leading-none">
                 Meine Aufträge
             </h1>
-            <p className="text-slate-500 dark:text-slate-300 text-[15px] mb-[32px]">Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
+            <p className="text-slate-500 dark-header-text text-[15px] mb-[32px]">Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
             <div className="grid gap-[20px]">
                 {[1, 2].map(i => (
                     <div key={i} className="animate-pulse bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[24px] h-[120px]">
@@ -169,7 +169,7 @@ export default function DashboardOrders() {
             {/* Header */}
             <div className="flex justify-between items-start mb-[28px] flex-wrap gap-[12px]">
                 <div>
-                    <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[6px] text-slate-900 dark:text-white leading-none">
+                    <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[6px] text-slate-900 dark-header-text leading-none">
                         Meine Aufträge
                     </h1>
                     <p className="text-slate-500 dark-header-text text-[15px] m-0">Verwalten Sie Ihre übernommenen Aufträge.</p>
@@ -177,19 +177,19 @@ export default function DashboardOrders() {
                 <div className="flex gap-[8px] flex-wrap">
                     <button
                         onClick={() => setFilterStatus('active')}
-                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'active' ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white' : 'bg-white dark:bg-[#161616] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-900 dark:hover:bg-slate-700 hover:text-white hover:border-slate-900'}`}
+                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'active' ? 'bg-slate-900 dark:bg-white text-white dark-header-text border-slate-900 dark:border-white' : 'bg-white dark:bg-[#161616] text-slate-600 dark-header-text border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-900 dark:hover:bg-slate-700 hover:text-white hover:border-slate-900'}`}
                     >
                         Aktiv
                     </button>
                     <button
                         onClick={() => setFilterStatus('all')}
-                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'all' ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white' : 'bg-white dark:bg-[#161616] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-900 dark:hover:bg-slate-700 hover:text-white hover:border-slate-900'}`}
+                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'all' ? 'bg-slate-900 dark:bg-white text-white dark-header-text border-slate-900 dark:border-white' : 'bg-white dark:bg-[#161616] text-slate-600 dark-header-text border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-900 dark:hover:bg-slate-700 hover:text-white hover:border-slate-900'}`}
                     >
                         Alle
                     </button>
                     <button
                         onClick={loadOrders}
-                        className="px-[14px] py-[8px] rounded-lg border border-slate-200 dark:border-[#2a2a2a] text-[13px] font-semibold bg-slate-50 dark:bg-[#111111] text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-[#1a1a1a] transition-all duration-300 ease-in-out cursor-pointer"
+                        className="px-[14px] py-[8px] rounded-lg border border-slate-200 dark:border-[#2a2a2a] text-[13px] font-semibold bg-slate-50 dark:bg-[#111111] text-slate-600 dark-header-text hover:bg-slate-200 dark:hover:bg-[#1a1a1a] transition-all duration-300 ease-in-out cursor-pointer"
                     >
                         ↻
                     </button>
@@ -206,7 +206,7 @@ export default function DashboardOrders() {
             {/* Empty state */}
             {!error && orders.length === 0 && (
                 <div className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[16px] px-[32px] py-[64px] text-center shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
-                    <h3 className="font-heading text-[22px] font-black uppercase text-slate-900 dark:text-white mb-[8px]">
+                    <h3 className="font-heading text-[22px] font-black uppercase text-slate-900 dark-header-text mb-[8px]">
                         Noch keine Aufträge
                     </h3>
                     <p className="text-slate-500 dark-header-text text-[14px] m-0">
@@ -269,24 +269,24 @@ export default function DashboardOrders() {
 
                                 {/* Kundendaten */}
                                 <div>
-                                    <div className="text-[11px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-[0.08em] mb-[12px]">Kundendaten</div>
-                                    <div className="text-[14px] mb-[6px] text-slate-900 dark:text-slate-300"><strong className="text-slate-900 dark:text-white">Name:</strong> {order.name}</div>
-                                    {order.firma && <div className="text-[14px] mb-[6px] text-slate-900 dark:text-slate-300"><strong className="text-slate-900 dark:text-white">Firma:</strong> {order.firma}</div>}
-                                    <div className="text-[14px] mb-[6px] text-slate-900 dark:text-slate-300">
-                                        <strong className="text-slate-900 dark:text-white">Telefon:</strong>{' '}
+                                    <div className="text-[11px] font-bold text-slate-400 dark-header-text uppercase tracking-[0.08em] mb-[12px]">Kundendaten</div>
+                                    <div className="text-[14px] mb-[6px] text-slate-900 dark-header-text"><strong className="text-slate-900 dark-header-text">Name:</strong> {order.name}</div>
+                                    {order.firma && <div className="text-[14px] mb-[6px] text-slate-900 dark-header-text"><strong className="text-slate-900 dark-header-text">Firma:</strong> {order.firma}</div>}
+                                    <div className="text-[14px] mb-[6px] text-slate-900 dark-header-text">
+                                        <strong className="text-slate-900 dark-header-text">Telefon:</strong>{' '}
                                         <a href={`tel:${order.telefon}`} className="text-[#C8102E] no-underline font-semibold">{order.telefon}</a>
                                     </div>
                                     {order.email && (
-                                        <div className="text-[13px] text-slate-500 dark:text-slate-300">
+                                        <div className="text-[13px] text-slate-500 dark-header-text">
                                             <a href={`mailto:${order.email}`} className="text-blue-500 no-underline">{order.email}</a>
                                         </div>
                                     )}
-                                    {order.etage && <div className="text-[13px] text-slate-500 dark:text-slate-300 mt-[4px]">Etage: {order.etage}</div>}
+                                    {order.etage && <div className="text-[13px] text-slate-500 dark-header-text mt-[4px]">Etage: {order.etage}</div>}
                                 </div>
 
                                 {/* Abschluss */}
                                 <div>
-                                    <div className="text-[11px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-[0.08em] mb-[12px]">Abschluss & Abrechnung</div>
+                                    <div className="text-[11px] font-bold text-slate-400 dark-header-text uppercase tracking-[0.08em] mb-[12px]">Abschluss & Abrechnung</div>
 
                                     {isCompleted ? (
                                         <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-[10px] p-[16px]">
@@ -369,9 +369,9 @@ export default function DashboardOrders() {
                                         </div>
                                     ) : (
                                         <div className="bg-slate-50 dark:bg-[#161616] border border-slate-200 dark:border-[#2a2a2a] rounded-[10px] p-[16px]">
-                                            <div className="text-[13px] text-slate-500 dark:text-slate-300 font-semibold mb-[4px]">Aktueller Status</div>
-                                            <div className="text-[14px] text-slate-900 dark:text-white font-bold mb-[12px]">{cfg.label}</div>
-                                            <div className="text-[12px] text-slate-500 dark:text-slate-300 mb-[4px]">
+                                            <div className="text-[13px] text-slate-500 dark-header-text font-semibold mb-[4px]">Aktueller Status</div>
+                                            <div className="text-[14px] text-slate-900 dark-header-text font-bold mb-[12px]">{cfg.label}</div>
+                                            <div className="text-[12px] text-slate-500 dark-header-text mb-[4px]">
                                                 {getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).type === 'percentage'
                                                     ? 'Bei Abschluss wird die Rechnung hochgeladen.'
                                                     : 'Bei Abschluss wird die Fixgebühr berechnet.'}
@@ -418,22 +418,22 @@ export default function DashboardOrders() {
                             </button>
                         </div>
                         <div className="p-[24px]">
-                            <h3 className="font-heading text-[28px] font-black uppercase text-slate-900 dark:text-white mb-[16px] leading-none">
+                            <h3 className="font-heading text-[28px] font-black uppercase text-slate-900 dark-header-text mb-[16px] leading-none">
                                 Auftrag abschließen
                             </h3>
                             
-                            <div className="text-slate-600 dark:text-slate-300 text-[15px] leading-[1.6] mb-[24px]">
+                            <div className="text-slate-600 dark-header-text text-[15px] leading-[1.6] mb-[24px]">
                                 {!confirmModalData.isFixed ? (
                                     <>
                                         <div className="flex justify-between mb-[8px]">
                                             <span>Rechnungsbetrag:</span>
-                                            <strong className="text-slate-900 dark:text-white">{Number(confirmModalData.amount).toFixed(2)} €</strong>
+                                            <strong className="text-slate-900 dark-header-text">{Number(confirmModalData.amount).toFixed(2)} €</strong>
                                         </div>
                                         <div className="flex justify-between pb-[16px] border-b border-slate-200 dark:border-[#2a2a2a]">
                                             <span>Provision ({confirmModalData.pricing.value}):</span>
                                             <strong className="text-[#C8102E]">{(Number(confirmModalData.amount) * confirmModalData.pricing.numericValue).toFixed(2)} €</strong>
                                         </div>
-                                        <div className="mt-[16px] font-semibold text-slate-900 dark:text-white">
+                                        <div className="mt-[16px] font-semibold text-slate-900 dark-header-text">
                                             Möchten Sie diesen Auftrag jetzt endgültig abschließen?
                                         </div>
                                     </>
@@ -441,9 +441,9 @@ export default function DashboardOrders() {
                                     <>
                                         <div className="flex justify-between pb-[16px] border-b border-slate-200 dark:border-[#2a2a2a]">
                                             <span>Leadgebühr:</span>
-                                            <strong className="text-slate-900 dark:text-white">{confirmModalData.pricing.value}</strong>
+                                            <strong className="text-slate-900 dark-header-text">{confirmModalData.pricing.value}</strong>
                                         </div>
-                                        <div className="mt-[16px] font-semibold text-slate-900 dark:text-white">
+                                        <div className="mt-[16px] font-semibold text-slate-900 dark-header-text">
                                             Möchten Sie diesen Auftrag jetzt endgültig abschließen?
                                         </div>
                                     </>
