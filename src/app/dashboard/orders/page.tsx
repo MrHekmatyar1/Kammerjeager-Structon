@@ -228,12 +228,12 @@ export default function DashboardOrders() {
                         <div key={order.id} className="bg-white dark:bg-[#111111] border border-slate-400 dark:border-[#2a2a2a] rounded-[14px] overflow-hidden shadow-[0_1px_4px_rgba(0,0,0,0.04)]">
 
                             {/* Card header */}
-                            <div style={{ padding: '16px 20px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#f8fafc', flexWrap: 'wrap', gap: '12px' }}>
+                            <div className="px-[20px] py-[16px] border-b border-slate-200 dark:border-[#2a2a2a] flex justify-between items-center bg-[#f8fafc] dark:bg-[#111111] flex-wrap gap-[12px]">
                                 <div>
-                                    <div style={{ fontSize: '12px', color: '#94a3b8', marginBottom: '3px' }}>
+                                    <div className="text-[12px] text-slate-400 dark-subtext mb-[3px]">
                                         Auftrag #{order.id} · {new Date(order.created_at).toLocaleDateString('de-DE')}
                                     </div>
-                                    <h3 style={{ fontSize: '17px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+                                    <h3 className="text-[17px] font-bold text-slate-900 dark-header-text m-0">
                                         {order.schaedling || 'Schädling'} · {order.plz}{order.strasse ? ` ${order.strasse} ${order.hausnummer || ''}` : ''}
                                     </h3>
                                 </div>
@@ -289,28 +289,27 @@ export default function DashboardOrders() {
                                     <div className="text-[11px] font-bold text-slate-400 dark-subtext uppercase tracking-[0.08em] mb-[12px]">Abschluss & Abrechnung</div>
 
                                     {isCompleted ? (
-                                        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-[10px] p-[16px]">
-                                            <div className="text-green-800 dark:text-green-400 font-bold mb-[6px]">Auftrag abgeschlossen</div>
+                                        <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900/50 rounded-[10px] p-[16px]">
+                                            <div className="text-green-800 dark:text-green-600 font-bold mb-[6px]">Auftrag abgeschlossen</div>
                                             {getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).type !== 'percentage' ? (
-                                                <div className="text-green-700 dark:text-green-500 text-[14px] mb-[4px]">
-                                                    Leadgebühr ({getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).label}): <strong className="text-green-800 dark:text-green-400">{getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value}</strong>
+                                                <div className="text-green-700 dark:text-green-600/80 text-[14px] mb-[4px]">
+                                                    Leadgebühr ({getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).label}): <strong className="text-green-800 dark:text-green-600">{getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value}</strong>
                                                 </div>
                                             ) : (
                                                 <>
-                                                    <div className="text-green-700 dark:text-green-500 text-[14px] mb-[4px]">
-                                                        Rechnung: <strong>{order.invoice_amount?.toFixed(2)} €</strong>
+                                                    <div className="text-green-700 dark:text-green-600/80 text-[14px] mb-[4px]">
+                                                        Rechnung: <strong className="text-green-800 dark:text-green-600">{order.invoice_amount?.toFixed(2)} €</strong>
                                                     </div>
-                                                    <div style={{ color: '#15803d', fontSize: '13px' }}>
-                                                        Provision (20%): <strong>{order.commission_amount?.toFixed(2)} €</strong>
-                                                        Rechnung: <strong className="text-green-800 dark:text-green-400">{order.invoice_amount?.toFixed(2)} €</strong>
+                                                    <div className="text-green-700 dark:text-green-600/80 text-[14px] mb-[4px]">
+                                                        Provision ({getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value}): <strong className="text-green-800 dark:text-green-600">{order.commission_amount?.toFixed(2)} €</strong>
                                                     </div>
-                                                    <div className="text-green-700 dark:text-green-500 text-[13px]">
-                                                        Leadgebühr ({getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).label}): <strong className="text-green-800 dark:text-green-400">{getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value}</strong>
+                                                    <div className="text-green-700 dark:text-green-600/80 text-[14px] mb-[4px]">
+                                                        Leadgebühr (Provision): <strong className="text-green-800 dark:text-green-600">{getLeadPricing(order.schaedling, billingModel, order.billing_override_type, order.billing_override_value).value}</strong>
                                                     </div>
                                                 </>
                                             )}
                                             {order.completed_at && (
-                                                <div className="text-green-600 dark:text-green-400 text-[12px] mt-[6px]">
+                                                <div className="text-green-600 dark:text-green-700 text-[12px] mt-[8px]">
                                                     {new Date(order.completed_at).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                                                 </div>
                                             )}
