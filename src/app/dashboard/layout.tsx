@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { LayoutDashboard, Briefcase, Settings, CreditCard, Shield, LogOut } from 'lucide-react';
 
 // ─── PLZ Setup Modal ──────────────────────────────────────────────────────────
 // Shown after Google OAuth when a partner hasn't set their home PLZ yet.
@@ -200,36 +201,39 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
 
     const navItems = [
-        { name: 'Neue Aufträge', href: '/dashboard' },
-        { name: 'Meine Aufträge', href: '/dashboard/orders' },
-        { name: 'Einstellungen', href: '/dashboard/settings' },
-        { name: 'Abrechnung', href: '/dashboard/billing' },
+        { name: 'Neue Aufträge', href: '/dashboard', icon: LayoutDashboard },
+        { name: 'Meine Aufträge', href: '/dashboard/orders', icon: Briefcase },
+        { name: 'Einstellungen', href: '/dashboard/settings', icon: Settings },
+        { name: 'Abrechnung', href: '/dashboard/billing', icon: CreditCard },
     ];
 
     if (user?.email?.toLowerCase() === 'edorkalchuk@gmail.com') {
-        navItems.push({ name: 'Admin CRM', href: '/admin' });
+        navItems.push({ name: 'Admin CRM', href: '/admin', icon: Shield });
     }
 
     const NavLinks = () => (
-        <nav className="flex flex-col">
+        <nav className="flex flex-col gap-2 px-4">
             {navItems.map(item => {
                 const active = pathname === item.href;
+                const Icon = item.icon;
                 return (
                     <Link key={item.name} href={item.href} className={`
-                        block px-[18px] py-[13px] text-[15px] whitespace-nowrap border-b transition-colors
+                        flex items-center gap-3 px-4 py-3 rounded-xl text-[14px] font-bold whitespace-nowrap transition-colors
                         ${active 
-                            ? 'text-[#C8102E] font-bold bg-[#C8102E]/10 border-slate-300 dark:border-[#2a2a2a]' 
-                            : 'text-slate-600 dark-header-text font-medium border-slate-300 dark:border-[#2a2a2a] hover:bg-slate-100 dark:hover:bg-[#1a1a1a]'
+                            ? 'bg-slate-200 dark:bg-[#2a2a2a] text-slate-900 dark:text-white' 
+                            : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#222222] hover:text-slate-900 dark:hover:text-white'
                         }
                     `}>
+                        <Icon size={20} />
                         {item.name}
                     </Link>
                 );
             })}
             <button
                 onClick={async () => { await supabase.auth.signOut(); router.push('/'); }}
-                className="block text-left px-[18px] py-[13px] bg-transparent border-none text-slate-400 font-medium text-[14px] cursor-pointer mt-1 whitespace-nowrap hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                className="flex items-center gap-3 px-4 py-3 rounded-xl text-[14px] font-bold text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#222222] hover:text-slate-900 dark:hover:text-white transition-colors bg-transparent border-none cursor-pointer mt-2 w-full text-left"
             >
+                <LogOut size={20} />
                 Abmelden
             </button>
         </nav>

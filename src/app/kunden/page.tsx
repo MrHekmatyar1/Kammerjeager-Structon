@@ -130,8 +130,7 @@ export default function KundenDashboard() {
     };
 
     return (
-        <div style={{ minHeight: 'calc(100vh - 70px)', background: '#f1f5f9', paddingTop: '100px', paddingBottom: '60px' }}>
-            <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 20px' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
                 <div style={{ marginBottom: '32px' }}>
                     <h1 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '2.5rem', fontWeight: 900, textTransform: 'uppercase', color: '#0f172a', marginBottom: '8px', lineHeight: 1 }}>
                         Mein Konto
