@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&display=swap');
 @import "tailwindcss";
 @config "../../tailwind.config.js";
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:is(.dark, .dark *));
 /* Для новых версий Next.js/Tailwind */
 /* @tailwind base; */
 /* @tailwind components; */
