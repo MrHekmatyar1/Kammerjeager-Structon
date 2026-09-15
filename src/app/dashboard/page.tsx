@@ -176,7 +176,7 @@ export default function DashboardMarketplace() {
                     <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark:text-white leading-none">
                         Neue Aufträge
                     </h1>
-                    <p className="text-slate-500 dark:text-slate-300 text-[15px] m-0">
+                    <p className="text-slate-500 dark:text-white text-[15px] m-0">
                         Verfügbare Aufträge in Ihrem Einsatzgebiet.
                     </p>
                 </div>
@@ -208,7 +208,7 @@ export default function DashboardMarketplace() {
                     <h3 className="font-heading text-[22px] font-black uppercase text-slate-900 dark:text-white mb-[8px]">
                         Keine neuen Aufträge
                     </h3>
-                    <p className="text-slate-500 dark:text-slate-300 text-[14px] m-0">
+                    <p className="text-slate-500 dark:text-white text-[14px] m-0">
                         Aktuell liegen keine neuen Aufträge in Ihrem Einsatzgebiet vor.<br />
                         Sie werden per E-Mail & Telegram benachrichtigt, sobald ein neuer Auftrag eingeht.
                     </p>
