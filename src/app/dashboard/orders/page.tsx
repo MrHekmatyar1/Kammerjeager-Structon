@@ -177,13 +177,13 @@ export default function DashboardOrders() {
                 <div className="flex gap-[8px] flex-wrap">
                     <button
                         onClick={() => setFilterStatus('active')}
-                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'active' ? 'bg-slate-900 dark:bg-white text-white dark-header-text border-slate-900 dark:border-white' : 'bg-white dark:bg-[#161616] text-slate-600 dark-header-text border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-900 dark:hover:bg-slate-700 hover:text-white hover:border-slate-900'}`}
+                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'active' ? 'bg-slate-900 text-white dark-header-text border-slate-900 dark:bg-slate-700 dark:border-slate-700' : 'bg-white dark:bg-[#161616] text-slate-600 dark-header-text border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-900 dark:hover:bg-slate-700 hover:text-white hover:border-slate-900'}`}
                     >
                         Aktiv
                     </button>
                     <button
                         onClick={() => setFilterStatus('all')}
-                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'all' ? 'bg-slate-900 dark:bg-white text-white dark-header-text border-slate-900 dark:border-white' : 'bg-white dark:bg-[#161616] text-slate-600 dark-header-text border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-900 dark:hover:bg-slate-700 hover:text-white hover:border-slate-900'}`}
+                        className={`px-[16px] py-[8px] rounded-lg border text-[13px] font-semibold transition-all duration-300 ease-in-out cursor-pointer ${filterStatus === 'all' ? 'bg-slate-900 text-white dark-header-text border-slate-900 dark:bg-slate-700 dark:border-slate-700' : 'bg-white dark:bg-[#161616] text-slate-600 dark-header-text border-slate-200 dark:border-[#2a2a2a] hover:bg-slate-900 dark:hover:bg-slate-700 hover:text-white hover:border-slate-900'}`}
                     >
                         Alle
                     </button>
