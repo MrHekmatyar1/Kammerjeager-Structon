@@ -64,7 +64,7 @@ export default function DashboardBilling() {
             <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark-header-text leading-none">
                 Abrechnung
             </h1>
-            <p className="text-slate-500 dark-header-text text-[15px] mb-[32px]">
+            <p className="text-slate-500 dark-subtext text-[15px] mb-[32px]">
                 Verwalten Sie Ihre Zahlungsmethoden und Rechnungen über Stripe Connect.
             </p>
 
@@ -87,14 +87,14 @@ export default function DashboardBilling() {
                         </div>
                         <div>
                             <h3 className="text-[16px] font-bold text-slate-900 dark-header-text m-0">Stripe Account</h3>
-                            <div className="text-[13px] text-slate-500 dark-header-text flex items-center gap-[4px] mt-[2px]">
+                            <div className="text-[13px] text-slate-500 dark-subtext flex items-center gap-[4px] mt-[2px]">
                                 <span className="w-[8px] h-[8px] rounded-full bg-red-500"></span>
                                 Nicht verbunden
                             </div>
                         </div>
                     </div>
 
-                    <p className="text-[14px] text-slate-600 dark-header-text leading-[1.5] mb-[20px] flex-1">
+                    <p className="text-[14px] text-slate-600 dark-subtext leading-[1.5] mb-[20px] flex-1">
                         Um Leads auf Provisionsbasis zu erhalten, müssen Sie Ihr Bankkonto oder eine Kreditkarte über Stripe hinterlegen.
                         Es fallen nur Gebühren an, wenn Sie einen Auftrag erfolgreich abschließen.
                     </p>
@@ -110,7 +110,7 @@ export default function DashboardBilling() {
                     <div className="text-[28px] font-black text-slate-900 dark-header-text mb-[8px] leading-none">
                         {credits !== null ? credits.toFixed(2).replace('.', ',') : '0,00'} <span className="text-[16px] text-slate-400">€</span>
                     </div>
-                    <p className="text-[13px] text-slate-500 dark-header-text mb-[24px] flex-1">
+                    <p className="text-[13px] text-slate-500 dark-subtext mb-[24px] flex-1">
                         Alternativ können Sie Guthaben aufladen, um Leads zum Festpreis (CPL) zu kaufen, anstatt Provision zu zahlen.
                     </p>
 
@@ -127,7 +127,7 @@ export default function DashboardBilling() {
 
 
             <h3 className="text-[18px] font-bold text-slate-900 dark-header-text mb-[16px]">Vergangene Rechnungen</h3>
-            <div className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[32px] text-center text-slate-400 dark-header-text text-[14px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
+            <div className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[32px] text-center text-slate-400 dark-subtext text-[14px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]">
                 Sie haben noch keine Rechnungen erhalten.
             </div>
 
@@ -149,7 +149,7 @@ export default function DashboardBilling() {
                                 </button>
 
                                 <h2 className="text-[20px] font-black text-slate-900 dark-header-text mb-[6px] text-center font-heading uppercase">Guthaben aufladen</h2>
-                                <p className="text-[13px] text-slate-500 dark-header-text mb-[24px] text-center">Geben Sie den gewünschten Betrag ein. Der Mindestbetrag ist 10 €.</p>
+                                <p className="text-[13px] text-slate-500 dark-subtext mb-[24px] text-center">Geben Sie den gewünschten Betrag ein. Der Mindestbetrag ist 10 €.</p>
                                 
                                 <div className="relative mb-[20px]">
                                     <input 

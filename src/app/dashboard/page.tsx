@@ -156,7 +156,7 @@ export default function DashboardMarketplace() {
             <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark-header-text leading-none">
                 Neue Aufträge
             </h1>
-            <p className="text-slate-500 dark-header-text text-[15px] mb-[32px]">Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
+            <p className="text-slate-500 dark-subtext text-[15px] mb-[32px]">Lädt Aufträge<span className="loading-dots"><span></span><span></span><span></span></span></p>
             <div className="grid gap-[16px]">
                 {[1, 2].map(i => (
                     <div key={i} className="animate-pulse bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[12px] p-[24px] h-[100px]">
@@ -176,7 +176,7 @@ export default function DashboardMarketplace() {
                     <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark-header-text leading-none">
                         Neue Aufträge
                     </h1>
-                    <p className="text-slate-500 dark-header-text text-[15px] m-0">
+                    <p className="text-slate-500 dark-subtext text-[15px] m-0">
                         Verfügbare Aufträge in Ihrem Einsatzgebiet.
                     </p>
                 </div>
@@ -208,7 +208,7 @@ export default function DashboardMarketplace() {
                     <h3 className="font-heading text-[22px] font-black uppercase text-slate-900 dark-header-text mb-[8px]">
                         Keine neuen Aufträge
                     </h3>
-                    <p className="text-slate-500 dark-header-text text-[14px] m-0">
+                    <p className="text-slate-500 dark-subtext text-[14px] m-0">
                         Aktuell liegen keine neuen Aufträge in Ihrem Einsatzgebiet vor.<br />
                         Sie werden per E-Mail & Telegram benachrichtigt, sobald ein neuer Auftrag eingeht.
                     </p>
@@ -234,7 +234,7 @@ export default function DashboardMarketplace() {
                             <h3 className="text-[18px] font-bold text-slate-900 dark-header-text mb-[4px]">
                                 {lead.schaedling || 'Schädling unbekannt'} · {lead.plz}
                             </h3>
-                            <div className="text-slate-500 dark-header-text text-[13px] flex gap-[8px] flex-wrap items-center">
+                            <div className="text-slate-500 dark-subtext text-[13px] flex gap-[8px] flex-wrap items-center">
                                 {lead.objekt_typ && <span>{lead.objekt_typ}</span>}
                                 {lead.objekt_typ && lead.raeume && <span>·</span>}
                                 {lead.raeume && <span>{lead.raeume} Räume</span>}
@@ -266,7 +266,7 @@ export default function DashboardMarketplace() {
                         <div className="px-[20px] py-[16px] border-b border-slate-200 dark:border-[#2a2a2a] flex justify-between items-center bg-white dark:bg-[#111111]">
                             <div>
                                 <h2 className="text-[18px] font-extrabold text-slate-900 dark-header-text m-0">Auftragsdetails</h2>
-                                <p className="text-slate-500 dark-header-text text-[13px] mt-[4px] mb-0">
+                                <p className="text-slate-500 dark-subtext text-[13px] mt-[4px] mb-0">
                                     {selectedLead.schaedling} · PLZ {selectedLead.plz} · {timeAgo(selectedLead.created_at)}
                                 </p>
                             </div>
@@ -287,14 +287,14 @@ export default function DashboardMarketplace() {
                                     { label: 'Zugang', value: selectedLead.zugang },
                                 ].filter(f => f.value).map(f => (
                                     <div key={f.label} className="bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[8px] px-[12px] py-[9px]">
-                                        <div className="text-[11px] text-slate-400 dark-header-text font-bold uppercase tracking-[0.05em] mb-[2px]">{f.label}</div>
+                                        <div className="text-[11px] text-slate-400 dark-subtext font-bold uppercase tracking-[0.05em] mb-[2px]">{f.label}</div>
                                         <div className="text-[14px] text-slate-900 dark-header-text font-semibold">{f.value}</div>
                                     </div>
                                 ))}
                             </div>
                             {selectedLead.zugang_beschreibung && (
                                 <div className="mt-[10px] bg-white dark:bg-[#111111] border border-slate-300 dark:border-[#2a2a2a] rounded-[8px] px-[12px] py-[9px]">
-                                    <div className="text-[11px] text-slate-400 dark-header-text font-bold uppercase mb-[2px]">Zugangsbeschreibung</div>
+                                    <div className="text-[11px] text-slate-400 dark-subtext font-bold uppercase mb-[2px]">Zugangsbeschreibung</div>
                                     <div className="text-[14px] text-slate-900 dark-header-text">{selectedLead.zugang_beschreibung}</div>
                                 </div>
                             )}
@@ -304,7 +304,7 @@ export default function DashboardMarketplace() {
                         <div className="px-[20px] py-[16px] border-b border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#111111]">
                             <div className="bg-white dark:bg-[#161616] border border-slate-300 dark:border-[#2a2a2a] rounded-[8px] px-[14px] py-[12px] mb-[14px]">
                                 <div className="text-[13px] font-bold text-slate-900 dark-header-text mb-[4px]">Rechtliche Vereinbarung</div>
-                                <p className="text-[13px] text-slate-600 dark-header-text leading-[1.55] m-0">
+                                <p className="text-[13px] text-slate-600 dark-subtext leading-[1.55] m-0">
                                     Durch Annahme verpflichten Sie sich, im Falle einer prozentualen Provision die Abrechnung zwingend über die <strong>Stripe-Zahlungsfunktion</strong> des Portals abzuwickeln, damit unsere Provision automatisch einbehalten wird.
                                     Bei Barzahlungen unter Umgehung des Systems oder Falschangaben wird eine <strong className="text-red-700 dark:text-red-500">Vertragsstrafe von 280 € + entgangene Provision</strong> fällig.
                                 </p>

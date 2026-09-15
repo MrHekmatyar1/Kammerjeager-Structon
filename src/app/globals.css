@@ -196,6 +196,9 @@ p {
 .dark .dark-header-text {
     color: #ffffff !important;
 }
+.dark .dark-subtext {
+    color: #cbd5e1 !important; /* text-slate-300 for slightly less bright/grayer text */
+}
 
 .segment-item {
     flex: 1;

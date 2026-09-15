@@ -92,7 +92,7 @@ export default function SettingsPage() {
             <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark-header-text leading-none">
                 Einstellungen
             </h1>
-            <p className="text-slate-500 dark-header-text text-[15px] mb-[32px]">Profil und Abrechnung verwalten.</p>
+            <p className="text-slate-500 dark-subtext text-[15px] mb-[32px]">Profil und Abrechnung verwalten.</p>
             <div className="bg-white dark:bg-[#111111] border border-slate-200 dark:border-[#2a2a2a] rounded-[12px] p-[24px] h-[300px] animate-pulse">
                 <div className="bg-slate-100 dark:bg-[#2a2a2a] h-[16px] w-[30%] rounded-[4px] mb-[24px]" />
                 <div className="bg-slate-100 dark:bg-[#2a2a2a] h-[40px] w-full rounded-[8px] mb-[16px]" />
@@ -106,7 +106,7 @@ export default function SettingsPage() {
             <h1 className="font-heading text-[2.5rem] font-black uppercase mb-[8px] text-slate-900 dark-header-text leading-none">
                 Einstellungen
             </h1>
-            <p className="text-slate-500 dark-header-text text-[15px] mb-[32px]">
+            <p className="text-slate-500 dark-subtext text-[15px] mb-[32px]">
                 Verwalten Sie Ihr Unternehmensprofil, Einsatzgebiete und Abrechnungsmodelle.
             </p>
 
@@ -123,7 +123,7 @@ export default function SettingsPage() {
                     <div className="px-[24px] py-[20px] flex items-center justify-between gap-[16px] flex-wrap">
                         <div>
                             <h2 className="text-[16px] font-bold text-slate-900 dark-header-text m-0 mb-[4px]">Auftragsannahme</h2>
-                            <p className="m-0 text-[13px] text-slate-500 dark-header-text">
+                            <p className="m-0 text-[13px] text-slate-500 dark-subtext">
                                 {form.is_active 
                                     ? 'Sie sind aktiv und erhalten Benachrichtigungen über neue Aufträge.' 
                                     : 'Sie sind pausiert (z.B. Urlaub) und erhalten derzeit keine neuen Anfragen.'}
@@ -195,7 +195,7 @@ export default function SettingsPage() {
                         <h2 className="text-[16px] font-bold text-slate-900 dark-header-text m-0">Einsatzgebiete (PLZ)</h2>
                     </div>
                     <div className="p-[24px]">
-                        <p className="text-[13px] text-slate-500 dark-header-text mb-[16px]">
+                        <p className="text-[13px] text-slate-500 dark-subtext mb-[16px]">
                             Geben Sie hier die Postleitzahlen ein, in denen Sie Aufträge annehmen möchten. 
                             Trennen Sie mehrere Postleitzahlen mit einem Komma (z.B. 10115, 10117, 10119).
                         </p>
@@ -215,7 +215,7 @@ export default function SettingsPage() {
                         <h2 className="text-[16px] font-bold text-slate-900 dark-header-text m-0">Spezialisierung</h2>
                     </div>
                     <div className="p-[24px]">
-                        <p className="text-[13px] text-slate-500 dark-header-text mb-[16px]">
+                        <p className="text-[13px] text-slate-500 dark-subtext mb-[16px]">
                             Wählen Sie aus, welche Schädlinge Sie bekämpfen. Sie erhalten nur Anfragen für diese Arten.
                         </p>
                         <div className="flex flex-wrap gap-[10px]">
@@ -253,7 +253,7 @@ export default function SettingsPage() {
                         <h2 className="text-[16px] font-bold text-slate-900 dark-header-text m-0">Benachrichtigungen (Telegram)</h2>
                     </div>
                     <div className="p-[24px]">
-                        <p className="text-[13px] text-slate-500 dark-header-text mb-[16px]">
+                        <p className="text-[13px] text-slate-500 dark-subtext mb-[16px]">
                             Um sofort über neue Aufträge informiert zu werden, verbinden Sie Ihren Account mit Telegram.
                             Geben Sie hier Ihre Telegram Chat-ID ein.
                         </p>
@@ -266,7 +266,7 @@ export default function SettingsPage() {
                                 placeholder="z.B. 123456789"
                                 className="w-full px-[14px] py-[10px] rounded-[8px] border border-slate-400 dark:border-[#2a2a2a] text-[14px] outline-none bg-white dark:bg-[#161616] text-slate-900 dark-header-text focus:border-slate-500"
                             />
-                            <div className="text-[12px] text-slate-400 dark-header-text mt-[4px]">
+                            <div className="text-[12px] text-slate-400 dark-subtext mt-[4px]">
                                 Tipp: Senden Sie eine Nachricht an den Bot <strong className="text-slate-900 dark-header-text">@userinfobot</strong> in Telegram, um Ihre ID herauszufinden.
                             </div>
                         </div>
@@ -292,7 +292,7 @@ export default function SettingsPage() {
                             />
                             <div>
                                 <div className="text-[15px] font-bold text-slate-900 dark-header-text mb-[4px]">Prozentuale Vermittlung (20%)</div>
-                                <div className="text-[13px] text-slate-600 dark-header-text leading-[1.5]">
+                                <div className="text-[13px] text-slate-600 dark-subtext leading-[1.5]">
                                     Sie zahlen keine fixen Gebühren. Wir erhalten lediglich 20% Provision vom finalen Rechnungsbetrag, nachdem Sie den Auftrag erfolgreich beim Kunden abgeschlossen haben.
                                 </div>
                             </div>
@@ -310,7 +310,7 @@ export default function SettingsPage() {
                             />
                             <div>
                                 <div className="text-[15px] font-bold text-slate-900 dark-header-text mb-[4px]">Fixpreis pro Lead kaufen</div>
-                                <div className="text-[13px] text-slate-600 dark-header-text leading-[1.5]">
+                                <div className="text-[13px] text-slate-600 dark-subtext leading-[1.5]">
                                     Sie kaufen Kundenanfragen (Leads) zu einem festen Preis. Die komplette Rechnungssumme bleibt bei Ihnen. Sie sind selbst für die Kontaktaufnahme und den Verkauf verantwortlich.
                                 </div>
                             </div>
