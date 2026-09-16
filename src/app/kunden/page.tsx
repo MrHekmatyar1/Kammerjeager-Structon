@@ -251,7 +251,6 @@ export default function KundenDashboard() {
                         })}
                     </div>
                 )}
-            </div>
 
             {/* Edit Modal */}
             {editingLead && (
