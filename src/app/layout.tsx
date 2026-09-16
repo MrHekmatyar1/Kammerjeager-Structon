@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         image: 'https://kammerjaeger-structon.de/og-image.png',
         '@id': 'https://kammerjaeger-structon.de',
         url: 'https://kammerjaeger-structon.de',
-        telephone: '+4916092376320',
+        telephone: '+4915112345678',
         priceRange: '€€',
         address: {
             '@type': 'PostalAddress',

@@ -280,14 +280,14 @@ export default function Header() {
 
                     {/* Desktop action buttons: phone & booking / Кнопки на ПК: звонок и бронь */}
                     <div className="hidden lg:flex items-center gap-3 shrink-0">
-                        <a href="tel:016092376320" className="flex items-center gap-1.5 text-[15px] font-medium text-[#C8102E] no-underline">
+                        <a href="tel:015112345678" className="flex items-center gap-1.5 text-[15px] font-medium text-[#C8102E] no-underline">
                             <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
                             Kontakt
                         </a>
-                        <a href="tel:016092376320" className="px-[18px] py-[7px] text-[15px] font-bold text-[#C8102E] whitespace-nowrap">
-                            0160 92376320
+                        <a href="tel:015112345678" className="px-[18px] py-[7px] text-[15px] font-bold text-[#C8102E] whitespace-nowrap">
+                            0151 12345678
                         </a>
                         
                         <div className="relative">
@@ -366,7 +366,7 @@ export default function Header() {
                                 </svg>
                             </button>
                         )}
-                        <a href="tel:016092376320" className="flex items-center justify-center w-10 h-10 text-[#C8102E]" aria-label="Anrufen">
+                        <a href="tel:015112345678" className="flex items-center justify-center w-10 h-10 text-[#C8102E]" aria-label="Anrufen">
                             <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
@@ -544,13 +544,13 @@ export default function Header() {
                     </button>
 
                     <a
-                        href="tel:016092376320"
+                        href="tel:015112345678"
                         className="mt-3 flex items-center justify-center gap-2 text-[16px] font-bold text-[#C8102E] py-2 no-underline"
                     >
                         <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
-                        0160 92376320
+                        0151 12345678
                     </a>
                 </div>
             </div>
@@ -608,13 +608,13 @@ export default function Header() {
                     </button>
 
                     <a
-                        href="tel:016092376320"
+                        href="tel:015112345678"
                         className="mt-3 flex items-center justify-center gap-2 text-[16px] font-bold text-[#C8102E] py-2 no-underline"
                     >
                         <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
-                        0160 92376320
+                        0151 12345678
                     </a>
                 </div>
             </div>

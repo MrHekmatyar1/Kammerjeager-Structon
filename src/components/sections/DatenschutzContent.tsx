@@ -51,7 +51,7 @@ export default function DatenschutzContent() {
                         Drakestr 30<br />
                         12205 Berlin<br />
                         <br />
-                        Telefon: 0160 92376320<br />
+                        Telefon: 0151 12345678<br />
                         E-Mail: kontakt@kammerjaeger-structon.de
                     </p>
                 </div>

@@ -344,8 +344,8 @@ function KontaktForm() {
                 <p style={{ fontSize: '13px', color: '#666', lineHeight: 1.5, margin: 0 }}>
                     Füllen Sie das folgende Formular aus und wir rufen Sie zeitnah für eine diskrete Beratung zurück.<br />
                     Oder rufen Sie uns direkt an unter:{' '}
-                    <a href="tel:016092376320" style={{ color: '#C8102E', fontWeight: 700, textDecoration: 'none' }}>
-                        0160 92376320
+                    <a href="tel:015112345678" style={{ color: '#C8102E', fontWeight: 700, textDecoration: 'none' }}>
+                        0151 12345678
                     </a>{' '}
                     (Mo – Fr, 9–18 Uhr)
                 </p>

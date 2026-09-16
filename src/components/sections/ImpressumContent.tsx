@@ -29,7 +29,7 @@ export default function ImpressumContent() {
                 {/* Contact Details */}
                 <div>
                     <p>
-                        Telefon: 0160 92376320<br />
+                        Telefon: 0151 12345678<br />
                         E-Mail: kontakt@kammerjaeger-structon.de<br />
                         Umsatzsteuer-ID: Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
                     </p>

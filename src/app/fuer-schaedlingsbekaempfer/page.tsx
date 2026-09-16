@@ -137,7 +137,7 @@ export default function PartnerPage() {
                             <a href="#anmelden" style={{ backgroundColor: '#C8102E', color: '#fff', padding: '13px 36px', fontWeight: 700, fontSize: '14px', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block', boxShadow: '0 4px 16px rgba(200,16,46,0.22)' }}>
                                 Jetzt anmelden
                             </a>
-                            <a href="tel:016092376320" style={{ fontSize: '15px', fontWeight: 600, color: '#1E293B', textDecoration: 'none' }}>0160 92376320</a>
+                            <a href="tel:015112345678" style={{ fontSize: '15px', fontWeight: 600, color: '#1E293B', textDecoration: 'none' }}>0151 12345678</a>
                         </div>
                     </div>
                 </section>

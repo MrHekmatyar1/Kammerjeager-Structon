@@ -224,8 +224,8 @@ export default function BranchePage({ params }: { params: Promise<{ branche: str
                             >
                                 Anfrage stellen
                             </Link>
-                            <a href="tel:016092376320" className="border border-white/30 text-white font-bold text-[13px] uppercase tracking-[0.1em] px-6 py-3 text-center no-underline transition-colors hover:border-white/60">
-                                0160 92376320
+                            <a href="tel:015112345678" className="border border-white/30 text-white font-bold text-[13px] uppercase tracking-[0.1em] px-6 py-3 text-center no-underline transition-colors hover:border-white/60">
+                                0151 12345678
                             </a>
                         </div>
                     </div>

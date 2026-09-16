@@ -23,6 +23,6 @@ export const SITE = {
     emailAdmin: 'edorkalchuk@gmail.com',
 
     /** Основной телефонный номер */
-    phone: '0160 92376320',
-    phoneTel: 'tel:016092376320',
+    phone: '0151 12345678',
+    phoneTel: 'tel:015112345678',
 } as const;
