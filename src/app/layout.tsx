@@ -88,11 +88,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     };
 
     return (
-        <html lang="de">
+        <html lang="de" suppressHydrationWarning>
         <head>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: `
+                        try {
+                            const isPortal = /^\\/(admin|kunden|dashboard)(\\/|$)/.test(window.location.pathname);
+                            if (isPortal && localStorage.getItem('partner-theme') === 'dark') {
+                                document.documentElement.classList.add('dark');
+                            }
+                        } catch (e) {}
+                    `,
+                }}
             />
         </head>
         <body className="antialiased text-[#212121] bg-[#F8FAFC]">
