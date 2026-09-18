@@ -222,8 +222,8 @@ export default function Header() {
                 isPortal 
                     ? 'bg-white dark:bg-[#111111] shadow-none border-slate-300 dark:border-[#2a2a2a]'
                     : (isSolid 
-                        ? 'bg-white dark-header-bg shadow-none border-gray-200 dark:border-[#2a2a2a]' 
-                        : 'bg-white/45 dark:bg-[#161616]/80 backdrop-blur-[8px] shadow-[0_4px_30px_rgba(0,0,0,0.05)] border-[#C8102E] dark:border-[#C8102E] border-b-2')
+                        ? 'bg-white/45 dark:bg-[#161616]/80 backdrop-blur-[8px] shadow-[0_4px_30px_rgba(0,0,0,0.05)] border-white/20 dark:border-white/5'
+                        : 'bg-white dark-header-bg shadow-none border-[#C8102E] dark-header-border border-b-2')
             }`}>
                 
                 {isPortal && !isAdminPage && (
