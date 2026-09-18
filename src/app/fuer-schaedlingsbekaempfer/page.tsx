@@ -123,25 +123,141 @@ export default function PartnerPage() {
             <Header />
             <main style={{ paddingTop: '68px' }} className="flex-grow w-full">
 
-                {/* 1 ─ HERO (full-width, left-aligned, moderate heading) */}
-                <section style={{ padding: '72px 0 80px', borderBottom: '1px solid #f1f5f9' }}>
-                    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-                        <p style={{ fontSize: '12px', fontWeight: 700, color: '#C8102E', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '16px' }}>Für Schädlingsbekämpfer</p>
-                        <h1 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(2.6rem, 5vw, 3.6rem)', lineHeight: 1.05, textTransform: 'uppercase', color: '#1E293B', marginBottom: '16px', maxWidth: '640px' }}>
-                            Jetzt Partner werden<br />
-                            <span style={{ color: '#C8102E' }}>Wir bringen die Kunden</span>
-                        </h1>
-                        <p style={{ fontSize: '17px', color: '#64748b', lineHeight: 1.75, maxWidth: '520px', marginBottom: '32px' }}>
-                            Mehr Kunden. Weniger Aufwand. Qualifizierte, regionale Aufträge — direkt an Sie. Kostenlos und absolut transparent.
-                        </p>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
-                            <a href="#anmelden" style={{ backgroundColor: '#C8102E', color: '#fff', padding: '13px 36px', fontWeight: 700, fontSize: '14px', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block', boxShadow: '0 4px 16px rgba(200,16,46,0.22)' }}>
-                                Jetzt anmelden
-                            </a>
-                            <a href="tel:015112345678" style={{ fontSize: '15px', fontWeight: 600, color: '#1E293B', textDecoration: 'none' }}>0151 12345678</a>
+
+                {/* 1 ─ STRIPE-STYLE HERO */}
+                <section style={{ padding: '64px 0 0', background: '#fff', overflow: 'hidden', position: 'relative' }}>
+                    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', alignItems: 'center', minHeight: '560px' }}>
+
+                        {/* LEFT: headline + body + buttons + partnership card */}
+                        <div style={{ paddingBottom: '80px' }}>
+                            {/* Big headline — Stripe style */}
+                            <h1 style={{ fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 800, fontSize: 'clamp(2.8rem, 5vw, 4.2rem)', lineHeight: 1.08, color: '#0f172a', marginBottom: '24px', letterSpacing: '-0.03em' }}>
+                                Starten.<br />
+                                <span style={{ color: '#C8102E' }}>Wachsen.</span><br />
+                                Verdienen.
+                            </h1>
+                            <p style={{ fontSize: '17px', color: '#475569', lineHeight: 1.75, maxWidth: '480px', marginBottom: '32px' }}>
+                                Qualifizierte Kunden-Anfragen direkt in Ihrer Region — ohne Kaltakquise, ohne Monatsgebühr. Melden Sie sich an und erhalten Sie Ihren ersten Auftrag innerhalb weniger Tage.
+                            </p>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap', marginBottom: '48px' }}>
+                                <a href="#anmelden" style={{ backgroundColor: '#C8102E', color: '#fff', padding: '13px 28px', fontWeight: 700, fontSize: '15px', letterSpacing: '0.04em', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 4px 16px rgba(200,16,46,0.25)', borderRadius: '4px' }}>
+                                    Jetzt anmelden <span style={{ fontSize: '18px' }}>›</span>
+                                </a>
+                                <a href="#vorteile" style={{ fontSize: '15px', fontWeight: 600, color: '#475569', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                    Alle Vorteile <span>›</span>
+                                </a>
+                            </div>
+
+                            {/* 4th screenshot style card — exact Stripe clone in our colors */}
+                            <div style={{ position: 'relative', display: 'inline-block', maxWidth: '340px', width: '100%' }}>
+                                {/* Rainbow gradient line on top — our colors: red → orange → amber */}
+                                <div style={{
+                                    height: '4px',
+                                    background: 'linear-gradient(90deg, #C8102E 0%, #e84c1e 18%, #f97316 36%, #f59e0b 54%, #C8102E 72%, #7b0018 100%)',
+                                    borderRadius: '3px 3px 0 0',
+                                }} />
+                                <div style={{ background: '#fff', border: '1px solid #e5e7eb', borderTop: 'none', padding: '20px 24px', boxShadow: '0 8px 32px rgba(0,0,0,0.08)' }}>
+                                    {/* Logo + label row */}
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
+                                        <div style={{ width: '22px', height: '22px', background: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '3px', flexShrink: 0 }}>
+                                            <span style={{ color: '#fff', fontWeight: 900, fontSize: '13px', fontFamily: 'Inter, sans-serif', lineHeight: 1 }}>K</span>
+                                        </div>
+                                        <span style={{ fontSize: '11px', fontWeight: 700, color: '#0f172a', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Kammerjäger Structon</span>
+                                    </div>
+                                    <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', marginBottom: '6px', lineHeight: 1.3 }}>Partner werden — in 3 Minuten</p>
+                                    <p style={{ fontSize: '13px', color: '#64748b', lineHeight: 1.6, marginBottom: '14px' }}>
+                                        Erstellt für selbstständige Kammerjäger und Schädlingsbekämpfer, die mehr Aufträge ohne Mehraufwand wollen.
+                                    </p>
+                                    <a href="#anmelden" style={{ fontSize: '13px', fontWeight: 600, color: '#C8102E', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                        Jetzt starten <span style={{ fontSize: '16px' }}>↓</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* RIGHT: floating dashboard mock */}
+                        <div style={{ position: 'relative', height: '540px', display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
+
+                            {/* Background blob */}
+                            <div style={{
+                                position: 'absolute', top: '-40px', right: '-60px', width: '480px', height: '480px',
+                                background: 'radial-gradient(ellipse at 60% 40%, rgba(200,16,46,0.18) 0%, rgba(200,16,46,0.06) 50%, transparent 75%)',
+                                borderRadius: '50%', zIndex: 0,
+                            }} />
+
+                            {/* Main earnings card */}
+                            <div style={{ position: 'absolute', left: '0px', top: '20px', width: '220px', background: '#fff', borderRadius: '12px', padding: '20px', boxShadow: '0 8px 40px rgba(0,0,0,0.12)', zIndex: 3 }}>
+                                <p style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600, marginBottom: '4px', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Ausstehend</p>
+                                <p style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', marginBottom: '4px', letterSpacing: '-0.02em' }}>€280.81</p>
+                                <p style={{ fontSize: '12px', color: '#94a3b8', marginBottom: '16px' }}>Verfügbares Guthaben: €341.42</p>
+                                <div style={{ background: '#C8102E', color: '#fff', padding: '9px 0', textAlign: 'center', borderRadius: '6px', fontSize: '13px', fontWeight: 700, cursor: 'pointer' }}>
+                                    Sofort auszahlen
+                                </div>
+                                <div style={{ marginTop: '16px' }}>
+                                    <p style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '10px' }}>Letzte Aufträge</p>
+                                    {[
+                                        { amount: '€432.33', info: '4 Aufträge', date: 'Gutgeschr. 17.09.' },
+                                        { amount: '€487.32', info: '5 Aufträge', date: 'Gutgeschr. 16.09.' },
+                                        { amount: '€290.79', info: '3 Aufträge', date: 'Gutgeschr. 15.09.' },
+                                    ].map((r, i) => (
+                                        <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '10px' }}>
+                                            <div style={{ width: '16px', height: '16px', borderRadius: '50%', background: '#dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '1px' }}>
+                                                <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><polyline points="2,5 4,7 8,3" stroke="#16a34a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                            </div>
+                                            <div>
+                                                <p style={{ fontSize: '12px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{r.amount} <span style={{ fontWeight: 400, color: '#94a3b8' }}>({r.info})</span></p>
+                                                <p style={{ fontSize: '11px', color: '#94a3b8', margin: 0 }}>{r.date}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Revenue chart card */}
+                            <div style={{ position: 'absolute', right: '0px', top: '0px', width: '240px', background: '#fff', borderRadius: '12px', padding: '18px', boxShadow: '0 8px 40px rgba(0,0,0,0.12)', zIndex: 2 }}>
+                                <p style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '2px' }}>Einnahmen</p>
+                                <p style={{ fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', marginBottom: '14px' }}>€5.839,41</p>
+                                {/* Mini bar chart */}
+                                <div style={{ display: 'flex', alignItems: 'flex-end', gap: '4px', height: '60px', marginBottom: '10px' }}>
+                                    {[20, 35, 28, 45, 38, 55, 42, 60, 48, 72].map((h, i) => (
+                                        <div key={i} style={{ flex: 1, borderRadius: '2px 2px 0 0', background: i === 9 ? '#C8102E' : `rgba(200,16,46,${0.2 + i * 0.07})`, height: `${h}%` }} />
+                                    ))}
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <span style={{ fontSize: '10px', color: '#94a3b8' }}>Sep 2025</span>
+                                    <span style={{ fontSize: '10px', color: '#94a3b8' }}>Sep 2026</span>
+                                </div>
+                                <div style={{ marginTop: '14px', borderTop: '1px solid #f1f5f9', paddingTop: '12px' }}>
+                                    <p style={{ fontSize: '12px', fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>September</p>
+                                    {[
+                                        { label: 'Neue Aufträge', val: '€1.216,75' },
+                                        { label: 'Abgeschlossen', val: '€4.244,87' },
+                                        { label: 'Stornierungen', val: '€22.38' },
+                                    ].map((row, i) => (
+                                        <div key={i} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+                                            <span style={{ fontSize: '11px', color: '#94a3b8' }}>{row.label}</span>
+                                            <span style={{ fontSize: '11px', fontWeight: 600, color: '#0f172a' }}>{row.val}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Success notification */}
+                            <div style={{ position: 'absolute', bottom: '30px', right: '20px', background: '#fff', borderRadius: '10px', padding: '14px 18px', boxShadow: '0 8px 32px rgba(0,0,0,0.12)', zIndex: 4, minWidth: '160px' }}>
+                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#C8102E', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 8px' }}>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="2,7 5.5,10.5 12,4" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                </div>
+                                <p style={{ fontSize: '18px', fontWeight: 800, color: '#0f172a', textAlign: 'center', margin: '0 0 2px', letterSpacing: '-0.02em' }}>€120.56</p>
+                                <p style={{ fontSize: '11px', color: '#94a3b8', textAlign: 'center', margin: 0 }}>Erster Auftrag erhalten!</p>
+                            </div>
+
                         </div>
                     </div>
+
+                    {/* Mobile fallback: stack vertically */}
+                    <style>{`@media(max-width:768px){.partner-hero-grid{grid-template-columns:1fr !important;}.partner-hero-mock{display:none !important;}}`}</style>
                 </section>
+
 
                 {/* 2 ─ VORTEILE (simple text list, compact headline) */}
                 <section style={{ padding: '80px 0', background: '#fff' }}>
