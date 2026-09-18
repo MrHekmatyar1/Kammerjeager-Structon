@@ -51,7 +51,7 @@ export default function Hero({ cityName, serviceName, heroSubtitle }: { cityName
             `}</style>
 
             <section
-                className="w-full flex justify-center border-b border-gray-100 -mt-[70px] pt-[150px] md:pt-[170px] pb-[200px] md:pb-[450px] mb-0 md:-mb-[250px] px-5 relative overflow-hidden"
+                className="w-full flex justify-center border-b border-gray-100 -mt-[70px] pt-[150px] md:pt-[170px] pb-[80px] md:pb-[450px] -mb-[10px] md:-mb-[250px] px-5 relative overflow-hidden"
             >
                 {/* Background image layers / Фоновые слои */}
                 

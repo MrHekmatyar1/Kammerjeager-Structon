@@ -15,9 +15,10 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: { params: { service: string } }): Promise<Metadata> {
-    const serviceData = SERVICES.find((s) => s.slug === params.service);
-    
+export async function generateMetadata({ params }: { params: Promise<{ service: string }> }): Promise<Metadata> {
+    const { service: serviceSlug } = await params;
+    const serviceData = SERVICES.find((s) => s.slug === serviceSlug);
+
     if (!serviceData) {
         return { title: 'Service nicht gefunden' };
     }
@@ -25,11 +26,15 @@ export async function generateMetadata({ params }: { params: { service: string }
     return {
         title: `Kammerjäger für ${serviceData.name} - 24/7 Notdienst | Experten vor Ort`,
         description: `${serviceData.description} Wir vermitteln zertifizierte Schädlingsbekämpfer in Ihrer Nähe. Schnell, diskret und zum Festpreis.`,
+        alternates: {
+            canonical: `https://kammerjaeger-structon.de/schaedlinge/${serviceData.slug}`,
+        },
     };
 }
 
-export default function ServicePage({ params }: { params: { service: string } }) {
-    const serviceData = SERVICES.find((s) => s.slug === params.service);
+export default async function ServicePage({ params }: { params: Promise<{ service: string }> }) {
+    const { service: serviceSlug } = await params;
+    const serviceData = SERVICES.find((s) => s.slug === serviceSlug);
 
     if (!serviceData) {
         notFound();
@@ -37,7 +42,7 @@ export default function ServicePage({ params }: { params: { service: string } })
 
     return (
         <main className="min-h-screen bg-white flex flex-col items-center w-full overflow-x-hidden">
-            <Hero serviceName={serviceData.shortName} />
+            <Hero serviceName={serviceData!.shortName} />
 
             <UnserProzess />
 
@@ -47,9 +52,9 @@ export default function ServicePage({ params }: { params: { service: string } })
                 </div>
             </section>
 
-            {/* <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
+            <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
                 <ReviewSlider />
-            </section> */}
+            </section>
 
             <Footer />
             <ChatBot />

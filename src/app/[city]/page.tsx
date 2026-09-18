@@ -87,6 +87,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
         <main className="min-h-screen bg-white flex flex-col items-center w-full overflow-x-hidden">
             <Hero
                 cityName={cityData.name}
+                serviceName="Schädlinge"
                 {...(cityData.bezirkInfo?.heroSubtitle ? { heroSubtitle: cityData.bezirkInfo.heroSubtitle } : {})}
             />
 
@@ -101,9 +102,9 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
             {/* Уникальный блок про район — только для берлинских Bezirke */}
             {isBezirk && <BezirkInfo city={cityData} />}
 
-            {/* <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
+            <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
                 <ReviewSlider />
-            </section> */}
+            </section>
 
             {/* FAQ */}
             <div className="w-full px-4 mt-20 md:mt-28 mb-20 md:mb-28">
