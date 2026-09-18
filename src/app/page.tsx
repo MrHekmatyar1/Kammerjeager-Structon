@@ -10,6 +10,7 @@ import Footer from '@/components/layout/Footer';
 import ChatBot from '@/components/interactive/ChatBot';
 import FAQ from '@/components/sections/FAQ';
 import CityGrid from '@/components/sections/CityGrid';
+import CTACards from '@/components/sections/CTACards';
 
 export const metadata: Metadata = {
     title: 'Kammerjäger Structon – Schädlingsbekämpfung in ganz Deutschland',
@@ -56,6 +57,11 @@ export default function Home() {
                 an die Stadtseiten weiter → schnellere Indexierung durch Google */}
             <div className="w-full px-4 mb-20 md:mb-28">
                 <CityGrid />
+            </div>
+
+            {/* ── CTA Cards ── */}
+            <div className="w-full px-4 mb-8">
+                <CTACards variant="client" />
             </div>
 
             {/* Footer / Подвал сайта */}

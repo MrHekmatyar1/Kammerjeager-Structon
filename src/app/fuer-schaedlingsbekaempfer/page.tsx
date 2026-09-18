@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import FAQ from '@/components/sections/FAQ';
+import CTACards from '@/components/sections/CTACards';
 
 // ─── Types & helpers ──────────────────────────────────────────────────────
 type PartnerTyp = '' | 'schaedlingsbekaempfer' | 'kooperation';
@@ -237,6 +238,9 @@ export default function PartnerPage() {
                         </div>
                     </div>
                 </section>
+
+                {/* ── CTA Cards ── */}
+                <CTACards variant="master" />
 
                 {/* ── FAQ ── */}
                 <div className="w-full px-4 mb-20 md:mb-28">
