@@ -206,6 +206,37 @@ export default function BranchePage({ params }: { params: Promise<{ branche: str
                     </div>
                 </section>
 
+                {/* ── Free Services Hook ── */}
+                <section className="w-full bg-[#f8f8f8] py-20 px-6 flex justify-center border-t border-gray-100">
+                    <div className="w-full max-w-[1200px]">
+                        <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#C8102E] mb-3">Kostenlos & Unverbindlich</p>
+                        <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)', color: '#1a1a1a', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '12px' }}>
+                            Das erhalten Sie ohne Berechnung
+                        </h2>
+                        <p className="text-[#666] text-[15px] leading-relaxed mb-10 max-w-[680px]">
+                            Kein Kleingedrucktes, keine versteckten Kosten. Auf dem deutschen Markt verlangen viele Anbieter bereits für die Erstbegehung Geld — bei uns ist das selbstverständlich kostenlos.
+                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {[
+                                { title: 'Kostenlose Erstbegehung vor Ort', desc: 'Unser Techniker kommt zu Ihnen, inspiziert alle Risikobereiche, zeigt Ihnen konkrete Befunde — und das vollständig kostenlos und unverbindlich. Keine Vertragspflicht, kein Verkaufsdruck.' },
+                                { title: 'Schriftlicher Befundbericht', desc: 'Sie erhalten nach der Erstbegehung einen schriftlichen Befundbericht mit Risikoeinschätzung und konkreten Handlungsempfehlungen — auch wenn Sie sich gegen einen Vertrag entscheiden.' },
+                                { title: 'HACCP-Risikobewertung', desc: 'Wir prüfen kostenlos, ob Ihr Betrieb den aktuellen HACCP-Anforderungen entspricht und wo Handlungsbedarf besteht — praxisnah, nicht bürokratisch.' },
+                                { title: 'Individuelles Angebot in 24h', desc: 'Nach der Begehung erhalten Sie innerhalb von 24 Stunden ein transparentes Festpreisangebot — ohne Überraschungen auf der Rechnung.' },
+                                { title: 'Beratung zu gesetzlichen Pflichten', desc: 'Wir erklären Ihnen verständlich, welche gesetzlichen Anforderungen (LFGB, EU-VO 852/2004, IfSG) für Ihren Betrieb gelten — kostenlos und ohne Fachchinesisch.' },
+                                { title: 'Notfalleinschätzung per Telefon', desc: 'Unsicher ob ein echter Befall vorliegt? Beschreiben Sie uns das Problem — wir geben Ihnen sofort eine ehrliche Einschätzung, ob ein Einsatz nötig ist.' },
+                            ].map((item, i) => (
+                                <div key={i} className="bg-white p-6 border border-gray-100 shadow-sm">
+                                    <div className="w-6 h-0.5 bg-[#C8102E] mb-4" />
+                                    <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: '18px', textTransform: 'uppercase', color: '#1a1a1a', marginBottom: '8px', letterSpacing: '0.01em', lineHeight: 1.2 }}>
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-[#666] text-[14px] leading-relaxed">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
                 {/* ── CTA Banner ── */}
                 <section className="w-full py-16 md:py-20 px-6 flex justify-center">
                     <div className="w-full max-w-[1000px] bg-[#1a1a1a] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
