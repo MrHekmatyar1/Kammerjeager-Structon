@@ -458,46 +458,47 @@ export default function PartnerPage() {
                                     " />
                                 </clipPath>
 
-                                {/* === BASE: diagonal dark-to-light gradient === */}
-                                <linearGradient id="kj-base" x1="0.15" y1="0" x2="0.85" y2="1">
-                                    <stop offset="0%"   stopColor="#C8102E" stopOpacity="1" />
-                                    <stop offset="35%"  stopColor="#a50e28" stopOpacity="1" />
-                                    <stop offset="70%"  stopColor="#7b0018" stopOpacity="1" />
-                                    <stop offset="100%" stopColor="#3a0009" stopOpacity="1" />
+                                {/* === BASE: lighter top, darker bottom — wide tonal range === */}
+                                <linearGradient id="kj-base" x1="0.1" y1="0" x2="0.9" y2="1">
+                                    <stop offset="0%"   stopColor="#d4152f" stopOpacity="1" />
+                                    <stop offset="30%"  stopColor="#b01228" stopOpacity="1" />
+                                    <stop offset="65%"  stopColor="#750016" stopOpacity="1" />
+                                    <stop offset="100%" stopColor="#2e0007" stopOpacity="1" />
                                 </linearGradient>
 
-                                {/* === BLOOM 1: upper-center highlight (lighter reddish-orange) === */}
-                                <radialGradient id="kj-bloom-top" cx="38%" cy="26%" r="58%">
-                                    <stop offset="0%"   stopColor="#e84c1e" stopOpacity="0.82" />
-                                    <stop offset="45%"  stopColor="#C8102E" stopOpacity="0.30" />
+                                {/* === BLOOM 1: BRIGHT upper highlight — must be visibly light === */}
+                                <radialGradient id="kj-bloom-top" cx="32%" cy="22%" r="55%">
+                                    <stop offset="0%"   stopColor="#ff7050" stopOpacity="1.0" />
+                                    <stop offset="30%"  stopColor="#e84c1e" stopOpacity="0.75" />
+                                    <stop offset="65%"  stopColor="#C8102E" stopOpacity="0.20" />
                                     <stop offset="100%" stopColor="#C8102E" stopOpacity="0"  />
                                 </radialGradient>
 
-                                {/* === BLOOM 2: lower-right warm area === */}
-                                <radialGradient id="kj-bloom-bot" cx="72%" cy="70%" r="42%">
-                                    <stop offset="0%"   stopColor="#d94040" stopOpacity="0.55" />
+                                {/* === BLOOM 2: secondary warm highlight — mid area === */}
+                                <radialGradient id="kj-bloom-mid" cx="60%" cy="52%" r="38%">
+                                    <stop offset="0%"   stopColor="#e05030" stopOpacity="0.65" />
                                     <stop offset="100%" stopColor="#C8102E" stopOpacity="0"  />
                                 </radialGradient>
 
-                                {/* === SHADOW: bottom-left of ribbon (depth at edge) === */}
-                                <radialGradient id="kj-shadow-bl" cx="4%" cy="92%" r="38%">
-                                    <stop offset="0%"   stopColor="#180004" stopOpacity="0.72" />
-                                    <stop offset="100%" stopColor="#180004" stopOpacity="0"  />
+                                {/* === SHADOW: bottom-left edge (deep shadow = depth) === */}
+                                <radialGradient id="kj-shadow-bl" cx="3%" cy="95%" r="42%">
+                                    <stop offset="0%"   stopColor="#0a0002" stopOpacity="0.85" />
+                                    <stop offset="100%" stopColor="#0a0002" stopOpacity="0"  />
                                 </radialGradient>
 
                                 {/* === SHADOW: top-right dark corner === */}
-                                <radialGradient id="kj-shadow-tr" cx="92%" cy="6%" r="34%">
-                                    <stop offset="0%"   stopColor="#180004" stopOpacity="0.65" />
-                                    <stop offset="100%" stopColor="#180004" stopOpacity="0"  />
+                                <radialGradient id="kj-shadow-tr" cx="95%" cy="4%" r="38%">
+                                    <stop offset="0%"   stopColor="#0a0002" stopOpacity="0.75" />
+                                    <stop offset="100%" stopColor="#0a0002" stopOpacity="0"  />
                                 </radialGradient>
 
-                                {/* === SHEEN: diagonal silk-like highlight === */}
-                                <linearGradient id="kj-sheen" x1="0" y1="0" x2="1" y2="1">
-                                    <stop offset="0%"   stopColor="rgba(255,180,160,0)"    />
-                                    <stop offset="28%"  stopColor="rgba(255,180,160,0.14)" />
-                                    <stop offset="48%"  stopColor="rgba(255,180,160,0.22)" />
-                                    <stop offset="68%"  stopColor="rgba(255,180,160,0.10)" />
-                                    <stop offset="100%" stopColor="rgba(255,180,160,0)"    />
+                                {/* === SHEEN: STRONG diagonal silk highlight (3× brighter) === */}
+                                <linearGradient id="kj-sheen" x1="0.05" y1="0" x2="0.55" y2="1">
+                                    <stop offset="0%"   stopColor="rgba(255,160,130,0)"    />
+                                    <stop offset="20%"  stopColor="rgba(255,160,130,0.28)" />
+                                    <stop offset="40%"  stopColor="rgba(255,160,130,0.42)" />
+                                    <stop offset="60%"  stopColor="rgba(255,160,130,0.20)" />
+                                    <stop offset="100%" stopColor="rgba(255,160,130,0)"    />
                                 </linearGradient>
 
                                 {/* === LEFT EDGE: fade to section bg (#f6f9fc) === */}
@@ -524,37 +525,44 @@ export default function PartnerPage() {
                                 {/* 1. Base diagonal gradient — the "body" */}
                                 <rect x="0" y="0" width="800" height="620" fill="url(#kj-base)" />
 
-                                {/* 2. Upper highlight bloom — creates bright "peak" of 3D fold */}
-                                <ellipse cx="295" cy="160" rx="420" ry="300"
+                                {/* 2. BRIGHT upper bloom — the "peak" of the fold, must pop */}
+                                <ellipse cx="240" cy="140" rx="380" ry="270"
                                     fill="url(#kj-bloom-top)"
                                     filter="url(#kj-blur-xl)"
                                 />
 
-                                {/* 3. Lower warm bloom — second "fold" area */}
-                                <ellipse cx="575" cy="435" rx="280" ry="210"
-                                    fill="url(#kj-bloom-bot)"
+                                {/* 3. Secondary mid bloom */}
+                                <ellipse cx="470" cy="320" rx="260" ry="190"
+                                    fill="url(#kj-bloom-mid)"
                                     filter="url(#kj-blur-md)"
                                 />
 
-                                {/* 4. Bottom-left shadow — depth at the ribbon edge */}
-                                <ellipse cx="55" cy="570" rx="210" ry="170"
+                                {/* 4. Deep shadow — bottom-left edge of ribbon */}
+                                <ellipse cx="40" cy="590" rx="220" ry="160"
                                     fill="url(#kj-shadow-bl)"
                                     filter="url(#kj-blur-md)"
                                 />
 
-                                {/* 5. Top-right dark corner shadow */}
-                                <ellipse cx="740" cy="35" rx="190" ry="150"
+                                {/* 5. Top-right dark corner */}
+                                <ellipse cx="760" cy="30" rx="200" ry="160"
                                     fill="url(#kj-shadow-tr)"
-                                    filter="url(#kj-blur-sm)"
+                                    filter="url(#kj-blur-md)"
                                 />
 
-                                {/* 6. Diagonal sheen — the "silk" highlight band */}
+                                {/* 6. Strong diagonal sheen across the surface */}
                                 <rect x="0" y="0" width="800" height="620" fill="url(#kj-sheen)" />
 
-                                {/* 7. Narrow bright ridge — crest of the 3D wave (most Stripe-like) */}
+                                {/* 7. WIDE bright ridge — the "crest" highlight (key to Stripe look) */}
                                 <path
-                                    d="M 55,0 C 140,70 210,170 175,320 C 148,430 90,510 65,600 L 130,600 C 155,510 215,430 242,320 C 278,170 208,70 125,0 Z"
-                                    fill="rgba(255,200,185,0.11)"
+                                    d="M 30,0 C 130,60 210,160 185,300 C 165,410 100,500 70,610 L 200,610 C 230,500 295,410 315,300 C 340,160 260,60 160,0 Z"
+                                    fill="rgba(255,190,170,0.28)"
+                                    filter="url(#kj-blur-md)"
+                                />
+
+                                {/* 8. Extra-bright narrow peak highlight on top of ridge */}
+                                <path
+                                    d="M 70,0 C 140,55 190,140 165,280 C 148,380 100,460 80,560 L 125,560 C 145,460 193,380 210,280 C 235,140 185,55 115,0 Z"
+                                    fill="rgba(255,220,210,0.22)"
                                     filter="url(#kj-blur-sm)"
                                 />
                             </g>
