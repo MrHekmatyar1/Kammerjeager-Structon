@@ -288,7 +288,7 @@ function VorteileCarousel() {
                             padding: '28px 24px 24px',
                             transition: 'all 0.18s ease',
                             transform: hoveredCard === i ? 'translateY(-6px)' : 'translateY(0)',
-                            boxShadow: hoveredCard === i ? '0 16px 40px rgba(200,16,46,0.13)' : '0 1px 4px rgba(0,0,0,0.04)',
+                            boxShadow: hoveredCard === i ? '0 12px 28px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06)' : '0 1px 4px rgba(0,0,0,0.04)',
                             cursor: isDragging.current ? 'grabbing' : 'pointer',
                             minHeight: '400px',
                         }}

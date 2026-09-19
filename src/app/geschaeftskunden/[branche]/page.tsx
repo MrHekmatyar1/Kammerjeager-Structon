@@ -128,47 +128,49 @@ const FREE_CARDS = [
 function FreeServicesCarousel() {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const isDragging = useRef(false);
+    const startX = useRef(0);
+    const scrollLeft = useRef(0);
 
-    const scroll = (dir: 'left' | 'right') => {
+    const onMouseDown = (e: React.MouseEvent) => {
         if (!scrollRef.current) return;
-        scrollRef.current.scrollBy({ left: dir === 'right' ? 340 : -340, behavior: 'smooth' });
+        isDragging.current = true;
+        startX.current = e.pageX - scrollRef.current.offsetLeft;
+        scrollLeft.current = scrollRef.current.scrollLeft;
+        scrollRef.current.style.cursor = 'grabbing';
+        scrollRef.current.style.userSelect = 'none';
+    };
+    const onMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging.current || !scrollRef.current) return;
+        e.preventDefault();
+        const x = e.pageX - scrollRef.current.offsetLeft;
+        scrollRef.current.scrollLeft = scrollLeft.current - (x - startX.current) * 1.2;
+    };
+    const stopDrag = () => {
+        isDragging.current = false;
+        if (scrollRef.current) { scrollRef.current.style.cursor = 'grab'; scrollRef.current.style.userSelect = ''; }
     };
 
     return (
         <section className="w-full bg-[#f4f6f8] border-t border-gray-100 py-16 overflow-hidden">
-            {/* Header row */}
-            <div className="max-w-[1200px] mx-auto px-6 flex items-end justify-between mb-8 gap-6">
-                <div className="flex-1">
-                    <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#C8102E] mb-2">Kostenlos & Unverbindlich</p>
-                    <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', color: '#0f172a', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
-                        Das erhalten Sie ohne Berechnung
-                    </h2>
-                    <p className="text-[#64748b] text-[15px] leading-relaxed mt-2 max-w-[520px]">
-                        Kein Kleingedrucktes, keine Kosten. Viele Anbieter verlangen bereits für die Erstbegehung Geld — bei uns ist das kostenlos.
-                    </p>
-                </div>
-                {/* Arrow buttons */}
-                <div className="flex gap-2 shrink-0 pb-1">
-                    <button
-                        onClick={() => scroll('left')}
-                        aria-label="Zurück"
-                        className="w-9 h-9 flex items-center justify-center border border-gray-300 bg-white hover:border-[#C8102E] hover:text-[#C8102E] transition-colors text-gray-600 rounded-sm"
-                    >
-                        ←
-                    </button>
-                    <button
-                        onClick={() => scroll('right')}
-                        aria-label="Weiter"
-                        className="w-9 h-9 flex items-center justify-center border border-gray-300 bg-white hover:border-[#C8102E] hover:text-[#C8102E] transition-colors text-gray-600 rounded-sm"
-                    >
-                        →
-                    </button>
-                </div>
+            {/* Header row — no arrow buttons */}
+            <div className="max-w-[1200px] mx-auto px-6 mb-8">
+                <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#C8102E] mb-2">Kostenlos & Unverbindlich</p>
+                <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', color: '#0f172a', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+                    Das erhalten Sie ohne Berechnung
+                </h2>
+                <p className="text-[#64748b] text-[15px] leading-relaxed mt-2 max-w-[520px]">
+                    Kein Kleingedrucktes, keine Kosten. Viele Anbieter verlangen bereits für die Erstbegehung Geld — bei uns ist das kostenlos.
+                </p>
             </div>
 
-            {/* Scrollable cards track */}
+            {/* Drag-scrollable card track */}
             <div
                 ref={scrollRef}
+                onMouseDown={onMouseDown}
+                onMouseMove={onMouseMove}
+                onMouseUp={stopDrag}
+                onMouseLeave={stopDrag}
                 style={{
                     display: 'flex',
                     gap: '16px',
@@ -176,6 +178,7 @@ function FreeServicesCarousel() {
                     scrollSnapType: 'x mandatory',
                     scrollbarWidth: 'none',
                     WebkitOverflowScrolling: 'touch',
+                    cursor: 'grab',
                     paddingLeft: 'max(24px, calc((100vw - 1200px) / 2 + 24px))',
                     paddingRight: '40px',
                     paddingBottom: '8px',
@@ -190,17 +193,19 @@ function FreeServicesCarousel() {
                             flexShrink: 0,
                             width: '300px',
                             scrollSnapAlign: 'start',
-                            background: hoveredIndex === i ? '#fff' : '#f9fafb',
-                            border: `1.5px solid ${hoveredIndex === i ? '#C8102E' : '#e2e8f0'}`,
+                            background: '#fff',
+                            border: '1px solid #e2e8f0',
                             borderTop: `3px solid ${hoveredIndex === i ? '#C8102E' : '#cbd5e1'}`,
                             padding: '28px 24px 24px',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '12px',
-                            cursor: 'pointer',
-                            transition: 'all 0.18s ease',
+                            cursor: isDragging.current ? 'grabbing' : 'default',
+                            transition: 'transform 0.18s ease, box-shadow 0.18s ease, border-top-color 0.18s ease',
                             transform: hoveredIndex === i ? 'translateY(-4px)' : 'translateY(0)',
-                            boxShadow: hoveredIndex === i ? '0 12px 32px rgba(200,16,46,0.12)' : '0 1px 3px rgba(0,0,0,0.04)',
+                            boxShadow: hoveredIndex === i
+                                ? '0 12px 28px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06)'
+                                : '0 1px 3px rgba(0,0,0,0.04)',
                             minHeight: '260px',
                             borderRadius: '2px',
                         }}
@@ -222,10 +227,11 @@ function FreeServicesCarousel() {
                                 marginTop: 'auto',
                             }}
                         >
-                            {card.link} <span style={{ transition: 'transform 0.15s', transform: hoveredIndex === i ? 'translateX(3px)' : 'translateX(0)' }}>›</span>
+                            {card.link} <span style={{ transition: 'transform 0.15s', transform: hoveredIndex === i ? 'translateX(3px)' : 'translateX(0)', display: 'inline-block' }}>›</span>
                         </a>
                     </div>
                 ))}
+                <div style={{ flexShrink: 0, width: '1px' }} />
             </div>
         </section>
     );
