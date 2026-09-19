@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { SERVICES } from '@/lib/data/services';
 
 import Hero from '@/components/sections/Hero';
-import ReviewSlider from '@/components/sections/ReviewSlider';
+// import ReviewSlider from '@/components/sections/ReviewSlider'; // TODO: реальные отзывы
 import UnserProzess from '@/components/sections/UnserProzess';
 import LeadWizard from '@/components/interactive/LeadWizard';
 import Footer from '@/components/layout/Footer';
@@ -52,9 +52,9 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
                 </div>
             </section>
 
-            <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
+            {/* <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
                 <ReviewSlider />
-            </section>
+            </section> */}
 
             <Footer />
             <ChatBot />

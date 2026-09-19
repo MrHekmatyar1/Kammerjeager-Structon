@@ -4,7 +4,7 @@ import { CITIES } from '@/lib/data/cities';
 import { SERVICES } from '@/lib/data/services';
 
 import Hero from '@/components/sections/Hero';
-import ReviewSlider from '@/components/sections/ReviewSlider';
+// import ReviewSlider from '@/components/sections/ReviewSlider'; // TODO: реальные отзывы
 import UnserProzess from '@/components/sections/UnserProzess';
 import LeadWizard from '@/components/interactive/LeadWizard';
 import Footer from '@/components/layout/Footer';

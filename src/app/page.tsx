@@ -3,7 +3,7 @@
 
 import type { Metadata } from 'next';
 import Hero from '@/components/sections/Hero';
-import ReviewSlider from '@/components/sections/ReviewSlider';
+// import ReviewSlider from '@/components/sections/ReviewSlider'; // TODO: реальные отзывы
 import UnserProzess from '@/components/sections/UnserProzess';
 import LeadWizard from '@/components/interactive/LeadWizard';
 import Footer from '@/components/layout/Footer';
@@ -41,11 +41,11 @@ export default function Home() {
             </section>
 
 
-            {/* Reviews slider: auto-playing customer feedback carousel
-                Слайдер отзывов: автоматическая карусель */}
+            {/* Reviews slider — временно скрыт, ждём настоящие отзывы
             <section className="w-full bg-[#F8FAFC] border-t border-gray-100 pt-[80px] pb-[96px]">
                 <ReviewSlider />
             </section>
+            */}
 
             {/* ── FAQ ── */}
             <div className="w-full px-4 mt-20 md:mt-28 mb-20 md:mb-28">
