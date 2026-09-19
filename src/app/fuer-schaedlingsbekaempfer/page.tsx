@@ -429,7 +429,7 @@ export default function PartnerPage() {
 
 
                 {/* 1 ─ STRIPE-STYLE HERO */}
-                <section style={{ padding: '80px 0 0', background: '#f6f9fc', overflow: 'hidden', position: 'relative', minHeight: '600px' }}>
+                <section style={{ padding: '80px 0 0', background: '#ffffff', overflow: 'hidden', position: 'relative', minHeight: '600px' }}>
 
                     {/* ── Stripe-style gradient: proper ribbon with organic clip + multi-layer depth ── */}
                     <div style={{
@@ -466,17 +466,18 @@ export default function PartnerPage() {
                                     <stop offset="100%" stopColor="#2e0007" stopOpacity="1" />
                                 </linearGradient>
 
-                                {/* === BLOOM 1: BRIGHT upper highlight — must be visibly light === */}
-                                <radialGradient id="kj-bloom-top" cx="32%" cy="22%" r="55%">
-                                    <stop offset="0%"   stopColor="#ff7050" stopOpacity="1.0" />
-                                    <stop offset="30%"  stopColor="#e84c1e" stopOpacity="0.75" />
-                                    <stop offset="65%"  stopColor="#C8102E" stopOpacity="0.20" />
+                                {/* === BLOOM 1: BRIGHT highlight at the ribbon's LEFT CURVED EDGE === */}
+                                {/* This is the "crest" — the part of the 3D surface facing the viewer */}
+                                <radialGradient id="kj-bloom-top" cx="8%" cy="35%" r="75%">
+                                    <stop offset="0%"   stopColor="#ff8060" stopOpacity="1.0" />
+                                    <stop offset="22%"  stopColor="#e84c1e" stopOpacity="0.88" />
+                                    <stop offset="55%"  stopColor="#C8102E" stopOpacity="0.35" />
                                     <stop offset="100%" stopColor="#C8102E" stopOpacity="0"  />
                                 </radialGradient>
 
-                                {/* === BLOOM 2: secondary warm highlight — mid area === */}
-                                <radialGradient id="kj-bloom-mid" cx="60%" cy="52%" r="38%">
-                                    <stop offset="0%"   stopColor="#e05030" stopOpacity="0.65" />
+                                {/* === BLOOM 2: secondary warm area — diagonal lower strip === */}
+                                <radialGradient id="kj-bloom-mid" cx="45%" cy="65%" r="42%">
+                                    <stop offset="0%"   stopColor="#d94030" stopOpacity="0.55" />
                                     <stop offset="100%" stopColor="#C8102E" stopOpacity="0"  />
                                 </radialGradient>
 
@@ -501,10 +502,10 @@ export default function PartnerPage() {
                                     <stop offset="100%" stopColor="rgba(255,160,130,0)"    />
                                 </linearGradient>
 
-                                {/* === LEFT EDGE: fade to section bg (#f6f9fc) === */}
+                                {/* === LEFT EDGE: fade to white === */}
                                 <linearGradient id="kj-left-fade" x1="0" y1="0" x2="1" y2="0">
-                                    <stop offset="0%"  stopColor="#f6f9fc" stopOpacity="1" />
-                                    <stop offset="100%" stopColor="#f6f9fc" stopOpacity="0" />
+                                    <stop offset="0%"  stopColor="#ffffff" stopOpacity="1" />
+                                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
                                 </linearGradient>
 
                                 {/* === FILTERS === */}
@@ -525,14 +526,14 @@ export default function PartnerPage() {
                                 {/* 1. Base diagonal gradient — the "body" */}
                                 <rect x="0" y="0" width="800" height="620" fill="url(#kj-base)" />
 
-                                {/* 2. BRIGHT upper bloom — the "peak" of the fold, must pop */}
-                                <ellipse cx="240" cy="140" rx="380" ry="270"
+                                {/* 2. BRIGHT bloom at left curved edge — the highlight "crest" */}
+                                <ellipse cx="60" cy="220" rx="340" ry="310"
                                     fill="url(#kj-bloom-top)"
                                     filter="url(#kj-blur-xl)"
                                 />
 
-                                {/* 3. Secondary mid bloom */}
-                                <ellipse cx="470" cy="320" rx="260" ry="190"
+                                {/* 3. Mid bloom — lower-center warm area */}
+                                <ellipse cx="360" cy="400" rx="280" ry="200"
                                     fill="url(#kj-bloom-mid)"
                                     filter="url(#kj-blur-md)"
                                 />
