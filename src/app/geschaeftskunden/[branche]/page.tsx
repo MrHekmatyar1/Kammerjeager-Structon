@@ -1,7 +1,7 @@
 'use client';
 
 import { notFound } from 'next/navigation';
-import { use } from 'react';
+import { use, useRef, useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -116,6 +116,121 @@ const BRANCHES: Record<string, {
     },
 };
 
+const FREE_CARDS = [
+    { title: 'Kostenlose Erstbegehung vor Ort', desc: 'Unser Techniker kommt zu Ihnen, inspiziert alle Risikobereiche, zeigt Ihnen konkrete Befunde — und das vollständig kostenlos und unverbindlich. Keine Vertragspflicht, kein Verkaufsdruck.', link: 'Termin vereinbaren' },
+    { title: 'Schriftlicher Befundbericht', desc: 'Sie erhalten nach der Erstbegehung einen schriftlichen Befundbericht mit Risikoeinschätzung und konkreten Handlungsempfehlungen — auch wenn Sie sich gegen einen Vertrag entscheiden.', link: 'Mehr erfahren' },
+    { title: 'HACCP-Risikobewertung', desc: 'Wir prüfen kostenlos, ob Ihr Betrieb den aktuellen HACCP-Anforderungen entspricht und wo Handlungsbedarf besteht — praxisnah, nicht bürokratisch.', link: 'Zur Checkliste' },
+    { title: 'Individuelles Angebot in 24h', desc: 'Nach der Begehung erhalten Sie innerhalb von 24 Stunden ein transparentes Festpreisangebot — ohne Überraschungen auf der Rechnung.', link: 'Angebot anfragen' },
+    { title: 'Beratung zu gesetzlichen Pflichten', desc: 'Wir erklären Ihnen verständlich, welche gesetzlichen Anforderungen (LFGB, EU-VO 852/2004, IfSG) für Ihren Betrieb gelten — kostenlos und ohne Fachchinesisch.', link: 'Rechtslage prüfen' },
+    { title: 'Notfalleinschätzung per Telefon', desc: 'Unsicher ob ein echter Befall vorliegt? Beschreiben Sie uns das Problem — wir geben Ihnen sofort eine ehrliche Einschätzung, ob ein Einsatz nötig ist.', link: 'Jetzt anrufen' },
+];
+
+function FreeServicesCarousel() {
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+    const scroll = (dir: 'left' | 'right') => {
+        if (!scrollRef.current) return;
+        scrollRef.current.scrollBy({ left: dir === 'right' ? 340 : -340, behavior: 'smooth' });
+    };
+
+    return (
+        <section className="w-full bg-[#f4f6f8] border-t border-gray-100 py-16 overflow-hidden">
+            {/* Header row */}
+            <div className="max-w-[1200px] mx-auto px-6 flex items-end justify-between mb-8 gap-6">
+                <div className="flex-1">
+                    <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#C8102E] mb-2">Kostenlos & Unverbindlich</p>
+                    <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', color: '#0f172a', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+                        Das erhalten Sie ohne Berechnung
+                    </h2>
+                    <p className="text-[#64748b] text-[15px] leading-relaxed mt-2 max-w-[520px]">
+                        Kein Kleingedrucktes, keine Kosten. Viele Anbieter verlangen bereits für die Erstbegehung Geld — bei uns ist das kostenlos.
+                    </p>
+                </div>
+                {/* Arrow buttons */}
+                <div className="flex gap-2 shrink-0 pb-1">
+                    <button
+                        onClick={() => scroll('left')}
+                        aria-label="Zurück"
+                        className="w-9 h-9 flex items-center justify-center border border-gray-300 bg-white hover:border-[#C8102E] hover:text-[#C8102E] transition-colors text-gray-600 rounded-sm"
+                    >
+                        ←
+                    </button>
+                    <button
+                        onClick={() => scroll('right')}
+                        aria-label="Weiter"
+                        className="w-9 h-9 flex items-center justify-center border border-gray-300 bg-white hover:border-[#C8102E] hover:text-[#C8102E] transition-colors text-gray-600 rounded-sm"
+                    >
+                        →
+                    </button>
+                </div>
+            </div>
+
+            {/* Scrollable cards track */}
+            <div
+                ref={scrollRef}
+                style={{
+                    display: 'flex',
+                    gap: '16px',
+                    overflowX: 'auto',
+                    scrollSnapType: 'x mandatory',
+                    scrollbarWidth: 'none',
+                    WebkitOverflowScrolling: 'touch',
+                    paddingLeft: 'max(24px, calc((100vw - 1200px) / 2 + 24px))',
+                    paddingRight: '40px',
+                    paddingBottom: '8px',
+                }}
+            >
+                {FREE_CARDS.map((card, i) => (
+                    <div
+                        key={i}
+                        onMouseEnter={() => setHoveredIndex(i)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                        style={{
+                            flexShrink: 0,
+                            width: '300px',
+                            scrollSnapAlign: 'start',
+                            background: hoveredIndex === i ? '#fff' : '#f9fafb',
+                            border: `1.5px solid ${hoveredIndex === i ? '#C8102E' : '#e2e8f0'}`,
+                            borderTop: `3px solid ${hoveredIndex === i ? '#C8102E' : '#cbd5e1'}`,
+                            padding: '28px 24px 24px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '12px',
+                            cursor: 'pointer',
+                            transition: 'all 0.18s ease',
+                            transform: hoveredIndex === i ? 'translateY(-4px)' : 'translateY(0)',
+                            boxShadow: hoveredIndex === i ? '0 12px 32px rgba(200,16,46,0.12)' : '0 1px 3px rgba(0,0,0,0.04)',
+                            minHeight: '260px',
+                            borderRadius: '2px',
+                        }}
+                    >
+                        <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: '17px', textTransform: 'uppercase', color: '#0f172a', letterSpacing: '0.01em', lineHeight: 1.25 }}>
+                            {card.title}
+                        </h3>
+                        <p style={{ fontSize: '13px', color: '#64748b', lineHeight: 1.7, flex: 1 }}>{card.desc}</p>
+                        <a
+                            href="/geschaeftskunden#kontakt"
+                            style={{
+                                fontSize: '13px',
+                                fontWeight: 600,
+                                color: '#C8102E',
+                                textDecoration: 'none',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '4px',
+                                marginTop: 'auto',
+                            }}
+                        >
+                            {card.link} <span style={{ transition: 'transform 0.15s', transform: hoveredIndex === i ? 'translateX(3px)' : 'translateX(0)' }}>›</span>
+                        </a>
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+}
+
 export default function BranchePage({ params }: { params: Promise<{ branche: string }> }) {
     const { branche } = use(params);
     const data = BRANCHES[branche];
@@ -206,36 +321,8 @@ export default function BranchePage({ params }: { params: Promise<{ branche: str
                     </div>
                 </section>
 
-                {/* ── Free Services Hook ── */}
-                <section className="w-full bg-[#f8f8f8] py-20 px-6 flex justify-center border-t border-gray-100">
-                    <div className="w-full max-w-[1200px]">
-                        <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#C8102E] mb-3">Kostenlos & Unverbindlich</p>
-                        <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)', color: '#1a1a1a', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '12px' }}>
-                            Das erhalten Sie ohne Berechnung
-                        </h2>
-                        <p className="text-[#666] text-[15px] leading-relaxed mb-10 max-w-[680px]">
-                            Kein Kleingedrucktes, keine versteckten Kosten. Auf dem deutschen Markt verlangen viele Anbieter bereits für die Erstbegehung Geld — bei uns ist das selbstverständlich kostenlos.
-                        </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {[
-                                { title: 'Kostenlose Erstbegehung vor Ort', desc: 'Unser Techniker kommt zu Ihnen, inspiziert alle Risikobereiche, zeigt Ihnen konkrete Befunde — und das vollständig kostenlos und unverbindlich. Keine Vertragspflicht, kein Verkaufsdruck.' },
-                                { title: 'Schriftlicher Befundbericht', desc: 'Sie erhalten nach der Erstbegehung einen schriftlichen Befundbericht mit Risikoeinschätzung und konkreten Handlungsempfehlungen — auch wenn Sie sich gegen einen Vertrag entscheiden.' },
-                                { title: 'HACCP-Risikobewertung', desc: 'Wir prüfen kostenlos, ob Ihr Betrieb den aktuellen HACCP-Anforderungen entspricht und wo Handlungsbedarf besteht — praxisnah, nicht bürokratisch.' },
-                                { title: 'Individuelles Angebot in 24h', desc: 'Nach der Begehung erhalten Sie innerhalb von 24 Stunden ein transparentes Festpreisangebot — ohne Überraschungen auf der Rechnung.' },
-                                { title: 'Beratung zu gesetzlichen Pflichten', desc: 'Wir erklären Ihnen verständlich, welche gesetzlichen Anforderungen (LFGB, EU-VO 852/2004, IfSG) für Ihren Betrieb gelten — kostenlos und ohne Fachchinesisch.' },
-                                { title: 'Notfalleinschätzung per Telefon', desc: 'Unsicher ob ein echter Befall vorliegt? Beschreiben Sie uns das Problem — wir geben Ihnen sofort eine ehrliche Einschätzung, ob ein Einsatz nötig ist.' },
-                            ].map((item, i) => (
-                                <div key={i} className="bg-white p-6 border border-gray-100 shadow-sm">
-                                    <div className="w-6 h-0.5 bg-[#C8102E] mb-4" />
-                                    <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: '18px', textTransform: 'uppercase', color: '#1a1a1a', marginBottom: '8px', letterSpacing: '0.01em', lineHeight: 1.2 }}>
-                                        {item.title}
-                                    </h3>
-                                    <p className="text-[#666] text-[14px] leading-relaxed">{item.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
+                {/* ── Free Services Carousel (Stripe-style) ── */}
+                <FreeServicesCarousel />
 
                 {/* ── CTA Banner ── */}
                 <section className="w-full py-16 md:py-20 px-6 flex justify-center">
