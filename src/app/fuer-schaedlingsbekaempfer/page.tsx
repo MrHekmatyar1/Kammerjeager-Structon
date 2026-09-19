@@ -18,6 +18,310 @@ const INITIAL: FormData = { typ: '', name: '', email: '', telefon: '', firma: ''
 const inp: React.CSSProperties = { width: '100%', padding: '10px 14px', border: '1px solid #d1d5db', fontSize: '14px', color: '#374151', background: '#fff', outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit', borderRadius: '0' };
 const lbl: React.CSSProperties = { display: 'block', fontSize: '13px', fontWeight: 500, color: '#374151', marginBottom: '6px' };
 
+// ─── VorteileCarousel ────────────────────────────────────────────────────
+const TABS = [
+    { id: 'auftraege', label: 'Aufträge', sub: 'Direktvermittlung' },
+    { id: 'verdienst', label: 'Verdienst', sub: 'Fair & transparent' },
+    { id: 'freiheit',  label: 'Freiheit',  sub: 'Volle Kontrolle' },
+];
+
+const VORTEIL_CARDS: Record<string, Array<{ tag: string; title: string; desc: string; visual: React.ReactNode }>> = {
+    auftraege: [
+        {
+            tag: 'Aufträge',
+            title: 'Vorqualifizierte Anfragen',
+            desc: 'Jede Anfrage kommt mit Befall-Typ, Adresse, Kontaktdaten und Dringlichkeit. Sie wissen sofort, worum es geht — kein Kaltakquise-Stress.',
+            visual: (
+                <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '14px', fontSize: '11px', color: '#475569' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                        <span style={{ fontWeight: 700, color: '#0f172a' }}>Neue Anfrage</span>
+                        <span style={{ background: '#fef2f2', color: '#C8102E', fontWeight: 700, padding: '2px 6px', borderRadius: '3px', fontSize: '10px' }}>AKUT</span>
+                    </div>
+                    <div style={{ marginBottom: '4px' }}>🐀 Ratten im Keller · Berlin-Mitte</div>
+                    <div style={{ marginBottom: '4px', color: '#94a3b8' }}>Heute gemeldet · 2,3 km entfernt</div>
+                    <div style={{ background: '#C8102E', color: '#fff', textAlign: 'center', padding: '6px', borderRadius: '4px', fontWeight: 700, marginTop: '8px' }}>Annehmen</div>
+                </div>
+            ),
+        },
+        {
+            tag: 'Aufträge',
+            title: 'Regionale Zuteilung',
+            desc: 'Ausschließlich Aufträge in Ihrem Einsatzgebiet. Sie definieren Ihre Postleitzahlen — keine weiten Anfahrtswege, keine verschwendete Zeit.',
+            visual: (
+                <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '14px', fontSize: '11px' }}>
+                    <div style={{ fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>Ihr Einsatzgebiet</div>
+                    {['10115 Berlin-Mitte', '10178 Alexanderplatz', '10117 Mitte', '10119 Prenzlauer Berg'].map((plz, i) => (
+                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '5px', color: '#475569' }}>
+                            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#C8102E', flexShrink: 0 }} />
+                            {plz}
+                        </div>
+                    ))}
+                </div>
+            ),
+        },
+        {
+            tag: 'Aufträge',
+            title: 'Sofort-Benachrichtigung',
+            desc: 'Neue Anfragen in Ihrer Region kommen per E-Mail und SMS — in Echtzeit. Schnell reagieren heißt mehr Aufträge sichern.',
+            visual: (
+                <div style={{ background: '#0f172a', borderRadius: '8px', padding: '14px', fontSize: '11px', color: '#94a3b8' }}>
+                    <div style={{ display: 'flex', gap: '6px', marginBottom: '8px', alignItems: 'center' }}>
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#C8102E' }} />
+                        <span style={{ color: '#e2e8f0', fontWeight: 700 }}>SMS Benachrichtigung</span>
+                    </div>
+                    <div style={{ color: '#94a3b8' }}>„Neue Anfrage in 10115 Berlin: Schaben-Befall, Dringlichkeit HOCH. Jetzt annehmen ›"</div>
+                    <div style={{ marginTop: '8px', color: '#64748b', fontSize: '10px' }}>gerade eben</div>
+                </div>
+            ),
+        },
+    ],
+    verdienst: [
+        {
+            tag: 'Verdienst',
+            title: 'Faire Provisionsstruktur',
+            desc: 'Nur Provision bei erfolgreich abgeschlossenem Auftrag. Keine Grundgebühr, keine Abonnements, keine Mindestabnahme — 100% ergebnisbasiert.',
+            visual: (
+                <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '14px', fontSize: '11px' }}>
+                    <div style={{ fontWeight: 700, color: '#0f172a', marginBottom: '10px' }}>Abrechnung September</div>
+                    {[
+                        { label: 'Aufträge abgeschlossen', val: '12' },
+                        { label: 'Ihr Umsatz', val: '€ 4.240' },
+                        { label: 'Provision (12%)', val: '−€ 508' },
+                        { label: 'Ihr Netto', val: '€ 3.732', bold: true },
+                    ].map((r, i) => (
+                        <div key={i} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px', color: r.bold ? '#0f172a' : '#64748b', fontWeight: r.bold ? 700 : 400, borderTop: r.bold ? '1px solid #e2e8f0' : 'none', paddingTop: r.bold ? '6px' : 0 }}>
+                            <span>{r.label}</span><span style={{ color: r.bold ? '#C8102E' : undefined }}>{r.val}</span>
+                        </div>
+                    ))}
+                </div>
+            ),
+        },
+        {
+            tag: 'Verdienst',
+            title: 'Keine Kosten bei Stornierung',
+            desc: 'Springt ein Kunde ab, zahlen Sie nichts. Abgerechnet wird ausschließlich für abgeschlossene Aufträge — kein finanzielles Risiko.',
+            visual: (
+                <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '14px', fontSize: '11px' }}>
+                    <div style={{ color: '#166534', fontWeight: 700, marginBottom: '8px' }}>Storniert — keine Kosten</div>
+                    <div style={{ color: '#4d7c0f' }}>Auftrag #1042 storniert vom Kunden.<br />Provision: €0,00</div>
+                    <div style={{ background: '#16a34a', color: '#fff', textAlign: 'center', padding: '6px', borderRadius: '4px', fontWeight: 700, marginTop: '10px', fontSize: '10px' }}>Kein Abzug von Ihrem Konto</div>
+                </div>
+            ),
+        },
+        {
+            tag: 'Verdienst',
+            title: 'Flexible Preisgestaltung',
+            desc: 'Ihre Preise bleiben vollständig in Ihren Händen. Wir geben keine Preise vor — Sie kennen Ihren Markt am besten.',
+            visual: (
+                <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '14px', fontSize: '11px' }}>
+                    <div style={{ fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>Ihr Angebot</div>
+                    <div style={{ color: '#475569', marginBottom: '5px' }}>Inspektion + Erstbehandlung</div>
+                    <input readOnly value="€ 249,00" style={{ width: '100%', border: '1px solid #C8102E', padding: '6px', fontSize: '13px', fontWeight: 700, color: '#C8102E', background: '#fff', borderRadius: '3px', boxSizing: 'border-box' }} />
+                    <div style={{ color: '#94a3b8', fontSize: '10px', marginTop: '4px' }}>Sie bestimmen den Preis — wir vermitteln.</div>
+                </div>
+            ),
+        },
+    ],
+    freiheit: [
+        {
+            tag: 'Freiheit',
+            title: 'Volle Kapazitätskontrolle',
+            desc: 'Sie wählen, welche Aufträge Sie annehmen. Keine Annahmepflicht, keine Mindestquoten — arbeiten Sie, wann und wie viel Sie wollen.',
+            visual: (
+                <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '14px', fontSize: '11px' }}>
+                    <div style={{ fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>Verfügbarkeit</div>
+                    {['Mo', 'Di', 'Mi', 'Do', 'Fr'].map((d, i) => (
+                        <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '5px' }}>
+                            <span style={{ color: '#475569' }}>{d}</span>
+                            <div style={{ width: '32px', height: '16px', borderRadius: '8px', background: i === 2 ? '#e2e8f0' : '#C8102E', position: 'relative', cursor: 'pointer' }}>
+                                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#fff', position: 'absolute', top: '2px', right: i === 2 ? 'auto' : '2px', left: i === 2 ? '2px' : 'auto' }} />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            ),
+        },
+        {
+            tag: 'Freiheit',
+            title: 'Kein Vertragszwang',
+            desc: 'Keine Mindestlaufzeit, kein Abo. Sie melden sich an, nehmen Aufträge an — und können jederzeit pausieren oder aufhören.',
+            visual: (
+                <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '14px', fontSize: '11px', color: '#475569' }}>
+                    <div style={{ fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>Partnervertrag</div>
+                    <div style={{ marginBottom: '4px' }}>Mindestlaufzeit: <strong style={{ color: '#16a34a' }}>Keine</strong></div>
+                    <div style={{ marginBottom: '4px' }}>Monatliche Gebühr: <strong style={{ color: '#16a34a' }}>€0</strong></div>
+                    <div style={{ marginBottom: '4px' }}>Kündigungsfrist: <strong style={{ color: '#16a34a' }}>Sofort</strong></div>
+                    <div style={{ background: '#C8102E', color: '#fff', textAlign: 'center', padding: '6px', borderRadius: '4px', fontWeight: 700, marginTop: '10px' }}>Jetzt kostenlos starten</div>
+                </div>
+            ),
+        },
+        {
+            tag: 'Freiheit',
+            title: 'Innovative Plattform',
+            desc: 'Mitgestalten statt nur nutzen — wir entwickeln die Plattform gemeinsam mit unseren Partnern. Ihr Feedback wird direkt umgesetzt.',
+            visual: (
+                <div style={{ background: '#0f172a', borderRadius: '8px', padding: '14px', fontSize: '11px', color: '#94a3b8' }}>
+                    <div style={{ color: '#e2e8f0', fontWeight: 700, marginBottom: '8px' }}>Partner-Feedback</div>
+                    {[
+                        { text: 'Routenoptimierung', done: true },
+                        { text: 'HACCP-Export PDF', done: true },
+                        { text: 'Gruppenaufträge', done: false },
+                    ].map((f, i) => (
+                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '5px' }}>
+                            <div style={{ width: '14px', height: '14px', borderRadius: '50%', background: f.done ? '#C8102E' : '#334155', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                {f.done && <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><polyline points="2,5 4,7 8,3" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                            </div>
+                            <span style={{ color: f.done ? '#e2e8f0' : '#64748b', textDecoration: f.done ? 'none' : 'none' }}>{f.text}</span>
+                        </div>
+                    ))}
+                </div>
+            ),
+        },
+    ],
+};
+
+function VorteileCarousel() {
+    const [activeTab, setActiveTab] = useState<string>('auftraege');
+    const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+    const scrollRef = React.useRef<HTMLDivElement>(null);
+    const isDragging = React.useRef(false);
+    const startX = React.useRef(0);
+    const scrollLeft = React.useRef(0);
+
+    // Mouse drag handlers
+    const onMouseDown = (e: React.MouseEvent) => {
+        if (!scrollRef.current) return;
+        isDragging.current = true;
+        startX.current = e.pageX - scrollRef.current.offsetLeft;
+        scrollLeft.current = scrollRef.current.scrollLeft;
+        scrollRef.current.style.cursor = 'grabbing';
+        scrollRef.current.style.userSelect = 'none';
+    };
+    const onMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging.current || !scrollRef.current) return;
+        e.preventDefault();
+        const x = e.pageX - scrollRef.current.offsetLeft;
+        const walk = (x - startX.current) * 1.2;
+        scrollRef.current.scrollLeft = scrollLeft.current - walk;
+    };
+    const onMouseUp = () => {
+        isDragging.current = false;
+        if (scrollRef.current) { scrollRef.current.style.cursor = 'grab'; scrollRef.current.style.userSelect = ''; }
+    };
+
+    const cards = VORTEIL_CARDS[activeTab] || [];
+
+    return (
+        <section style={{ background: '#fff', borderTop: '1px solid #f1f5f9', paddingTop: '64px', paddingBottom: '80px', overflow: 'hidden' }}>
+            {/* Header + tabs */}
+            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+                <p style={{ fontSize: '12px', fontWeight: 700, color: '#C8102E', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '10px' }}>Ihre Vorteile als Partner</p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '16px', marginBottom: '0' }}>
+                    <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.7rem, 3.5vw, 2.6rem)', color: '#0f172a', lineHeight: 1.1, letterSpacing: '-0.02em', margin: 0 }}>
+                        Warum mit uns<br />zusammenarbeiten?
+                    </h2>
+                    <p style={{ fontSize: '15px', color: '#64748b', lineHeight: 1.7, maxWidth: '420px', margin: 0 }}>
+                        Stripe bringt Kunden, wir bringen Aufträge. Entscheiden Sie selbst, wie viel Sie arbeiten.
+                    </p>
+                </div>
+
+                {/* Tab bar — like Stripe's "Нет кода | Низкий код | API" */}
+                <div style={{ display: 'flex', gap: '0', borderBottom: '2px solid #e2e8f0', marginTop: '40px', overflowX: 'auto' }}>
+                    {TABS.map(tab => (
+                        <button
+                            key={tab.id}
+                            onClick={() => { setActiveTab(tab.id); if (scrollRef.current) scrollRef.current.scrollLeft = 0; }}
+                            style={{
+                                padding: '12px 24px 14px',
+                                background: 'none',
+                                border: 'none',
+                                borderBottom: `3px solid ${activeTab === tab.id ? '#C8102E' : 'transparent'}`,
+                                marginBottom: '-2px',
+                                cursor: 'pointer',
+                                textAlign: 'left',
+                                flexShrink: 0,
+                            }}
+                        >
+                            <div style={{ fontSize: '14px', fontWeight: 700, color: activeTab === tab.id ? '#C8102E' : '#64748b', transition: 'color 0.15s' }}>{tab.label}</div>
+                            <div style={{ fontSize: '11px', color: '#94a3b8', marginTop: '1px' }}>{tab.sub}</div>
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            {/* Drag-scrollable card track */}
+            <div
+                ref={scrollRef}
+                onMouseDown={onMouseDown}
+                onMouseMove={onMouseMove}
+                onMouseUp={onMouseUp}
+                onMouseLeave={onMouseUp}
+                style={{
+                    display: 'flex',
+                    gap: '16px',
+                    overflowX: 'auto',
+                    scrollSnapType: 'x mandatory',
+                    scrollbarWidth: 'none',
+                    WebkitOverflowScrolling: 'touch',
+                    cursor: 'grab',
+                    paddingLeft: 'max(24px, calc((100vw - 1200px) / 2 + 24px))',
+                    paddingRight: '40px',
+                    paddingTop: '32px',
+                    paddingBottom: '8px',
+                }}
+            >
+                {cards.map((card, i) => (
+                    <div
+                        key={`${activeTab}-${i}`}
+                        onMouseEnter={() => setHoveredCard(i)}
+                        onMouseLeave={() => setHoveredCard(null)}
+                        style={{
+                            flexShrink: 0,
+                            width: '320px',
+                            scrollSnapAlign: 'start',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            background: '#fff',
+                            border: `1px solid ${hoveredCard === i ? '#C8102E' : '#e2e8f0'}`,
+                            borderTop: `3px solid ${hoveredCard === i ? '#C8102E' : '#cbd5e1'}`,
+                            borderRadius: '2px',
+                            padding: '28px 24px 24px',
+                            transition: 'all 0.18s ease',
+                            transform: hoveredCard === i ? 'translateY(-6px)' : 'translateY(0)',
+                            boxShadow: hoveredCard === i ? '0 16px 40px rgba(200,16,46,0.13)' : '0 1px 4px rgba(0,0,0,0.04)',
+                            cursor: isDragging.current ? 'grabbing' : 'pointer',
+                            minHeight: '400px',
+                        }}
+                    >
+                        {/* Tag */}
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '16px' }}>
+                            <div style={{ width: '8px', height: '8px', borderRadius: '2px', background: '#C8102E', flexShrink: 0 }} />
+                            <span style={{ fontSize: '11px', fontWeight: 700, color: '#C8102E', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{card.tag}</span>
+                        </div>
+
+                        {/* Title + desc */}
+                        <h3 style={{ fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 700, fontSize: '20px', color: '#0f172a', lineHeight: 1.3, marginBottom: '10px', letterSpacing: '-0.01em' }}>
+                            {card.title}
+                        </h3>
+                        <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.7, marginBottom: '20px' }}>{card.desc}</p>
+
+                        {/* Link */}
+                        <a href="#anmelden" style={{ fontSize: '13px', fontWeight: 600, color: '#C8102E', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '24px' }}>
+                            Mehr erfahren <span style={{ transition: 'transform 0.15s', transform: hoveredCard === i ? 'translateX(4px)' : 'translateX(0)', display: 'inline-block' }}>›</span>
+                        </a>
+
+                        {/* Visual mockup */}
+                        <div style={{ marginTop: 'auto' }}>{card.visual}</div>
+                    </div>
+                ))}
+
+                {/* Spacer so last card isn't flush to edge */}
+                <div style={{ flexShrink: 0, width: '1px' }} />
+            </div>
+        </section>
+    );
+}
+
 // ─── Form ────────────────────────────────────────────────────────────────
 function PartnerForm() {
     const [form, setForm] = useState<FormData>(INITIAL);
@@ -259,38 +563,8 @@ export default function PartnerPage() {
                 </section>
 
 
-                {/* 2 ─ VORTEILE (simple text list, compact headline) */}
-                <section style={{ padding: '80px 0', background: '#fff' }}>
-                    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-                        <p style={{ fontSize: '12px', fontWeight: 700, color: '#C8102E', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>Ihre Vorteile als Partner</p>
-                        <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: 'clamp(1.7rem, 3vw, 2.4rem)', textTransform: 'uppercase', color: '#1E293B', marginBottom: '40px' }}>Warum mit uns zusammenarbeiten?</h2>
-
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
-                            {[
-                                { title: 'Qualifizierte Aufträge', desc: 'Sie erhalten vorqualifizierte Kundenanfragen mit Befall-Details, Adresse, Kontaktdaten und Dringlichkeit. Kein Kaltakquise-Aufwand.' },
-                                { title: 'Regionale Zuteilung', desc: 'Ausschließlich Aufträge in Ihrem Einsatzgebiet. Sie definieren Ihre Postleitzahlen — keine weiten Anfahrtswege.' },
-                                { title: 'Faire Preisgestaltung', desc: 'Ihre Preise bleiben vollständig flexibel und werden von uns nicht eingeschränkt, solange sie marktgerecht sind.' },
-                                { title: 'Keine Kosten bei Stornierung', desc: 'Abgerechnet wird ausschließlich für erfolgreich abgeschlossene Aufträge. Kein finanzielles Risiko Ihrerseits.' },
-                                { title: 'Volle Kapazitätskontrolle', desc: 'Sie entscheiden selbst, welche Aufträge Sie annehmen. Keine Annahmepflicht, kein Vertragszwang.' },
-                                { title: 'Innovative Plattform', desc: 'Gestalten Sie Optimierungen aktiv mit. Wir bauen unsere Prozesse gemeinsam mit unseren Partnern kontinuierlich aus.' },
-                            ].map(item => (
-                                <div key={item.title} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                                    <span style={{ color: '#C8102E', fontWeight: 900, fontSize: '20px', lineHeight: 1, flexShrink: 0, marginTop: '2px' }}>—</span>
-                                    <div>
-                                        <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: '18px', textTransform: 'uppercase', color: '#1E293B', marginBottom: '8px' }}>{item.title}</h3>
-                                        <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.75, margin: 0 }}>{item.desc}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div style={{ marginTop: '40px' }}>
-                            <a href="#anmelden" style={{ backgroundColor: '#C8102E', color: '#fff', padding: '13px 36px', fontWeight: 700, fontSize: '14px', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block' }}>
-                                Jetzt Partner werden
-                            </a>
-                        </div>
-                    </div>
-                </section>
+                {/* 2 ─ VORTEILE — Stripe-style tabbed drag-carousel */}
+                <VorteileCarousel />
 
                 {/* 3 ─ UNSERE WERTE */}
                 <section style={{ padding: '80px 0', background: '#e8edf2', borderTop: '1px solid #e5e7eb' }}>
