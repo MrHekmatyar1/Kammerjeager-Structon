@@ -458,47 +458,59 @@ export default function PartnerPage() {
                                     " />
                                 </clipPath>
 
-                                {/* === BASE: lighter top, darker bottom — wide tonal range === */}
-                                <linearGradient id="kj-base" x1="0.1" y1="0" x2="0.9" y2="1">
+                                {/* === BASE: diagonal gradient — lighter top-left, darker bottom-right === */}
+                                <linearGradient id="kj-base" x1="0" y1="0" x2="1" y2="1">
                                     <stop offset="0%"   stopColor="#d4152f" stopOpacity="1" />
                                     <stop offset="30%"  stopColor="#b01228" stopOpacity="1" />
                                     <stop offset="65%"  stopColor="#750016" stopOpacity="1" />
                                     <stop offset="100%" stopColor="#2e0007" stopOpacity="1" />
                                 </linearGradient>
 
-                                {/* === BLOOM 1: BRIGHT highlight at the ribbon's LEFT CURVED EDGE === */}
-                                {/* This is the "crest" — the part of the 3D surface facing the viewer */}
-                                <radialGradient id="kj-bloom-top" cx="8%" cy="35%" r="75%">
+                                {/* === BLOOM 1: bright salmon at left-edge "crest" of ribbon === */}
+                                {/* gradientUnits=userSpaceOnUse so coords are viewBox pixels */}
+                                <radialGradient id="kj-bloom-top"
+                                    gradientUnits="userSpaceOnUse"
+                                    cx="0" cy="200" r="380"
+                                >
                                     <stop offset="0%"   stopColor="#ff8060" stopOpacity="1.0" />
-                                    <stop offset="22%"  stopColor="#e84c1e" stopOpacity="0.88" />
-                                    <stop offset="55%"  stopColor="#C8102E" stopOpacity="0.35" />
+                                    <stop offset="20%"  stopColor="#e84c1e" stopOpacity="0.85" />
+                                    <stop offset="50%"  stopColor="#C8102E" stopOpacity="0.30" />
                                     <stop offset="100%" stopColor="#C8102E" stopOpacity="0"  />
                                 </radialGradient>
 
-                                {/* === BLOOM 2: secondary warm area — diagonal lower strip === */}
-                                <radialGradient id="kj-bloom-mid" cx="45%" cy="65%" r="42%">
+                                {/* === BLOOM 2: warm mid bloom in lower-center === */}
+                                <radialGradient id="kj-bloom-mid"
+                                    gradientUnits="userSpaceOnUse"
+                                    cx="380" cy="430" r="240"
+                                >
                                     <stop offset="0%"   stopColor="#d94030" stopOpacity="0.55" />
                                     <stop offset="100%" stopColor="#C8102E" stopOpacity="0"  />
                                 </radialGradient>
 
-                                {/* === SHADOW: bottom-left edge (deep shadow = depth) === */}
-                                <radialGradient id="kj-shadow-bl" cx="3%" cy="95%" r="42%">
-                                    <stop offset="0%"   stopColor="#0a0002" stopOpacity="0.85" />
-                                    <stop offset="100%" stopColor="#0a0002" stopOpacity="0"  />
+                                {/* === SHADOW: deep bottom-left === */}
+                                <radialGradient id="kj-shadow-bl"
+                                    gradientUnits="userSpaceOnUse"
+                                    cx="30" cy="600" r="250"
+                                >
+                                    <stop offset="0%"   stopColor="#050001" stopOpacity="0.90" />
+                                    <stop offset="100%" stopColor="#050001" stopOpacity="0"  />
                                 </radialGradient>
 
-                                {/* === SHADOW: top-right dark corner === */}
-                                <radialGradient id="kj-shadow-tr" cx="95%" cy="4%" r="38%">
-                                    <stop offset="0%"   stopColor="#0a0002" stopOpacity="0.75" />
-                                    <stop offset="100%" stopColor="#0a0002" stopOpacity="0"  />
+                                {/* === SHADOW: dark top-right corner === */}
+                                <radialGradient id="kj-shadow-tr"
+                                    gradientUnits="userSpaceOnUse"
+                                    cx="780" cy="0" r="280"
+                                >
+                                    <stop offset="0%"   stopColor="#050001" stopOpacity="0.80" />
+                                    <stop offset="100%" stopColor="#050001" stopOpacity="0"  />
                                 </radialGradient>
 
-                                {/* === SHEEN: STRONG diagonal silk highlight (3× brighter) === */}
-                                <linearGradient id="kj-sheen" x1="0.05" y1="0" x2="0.55" y2="1">
+                                {/* === SHEEN: diagonal silk highlight — left-to-right fade === */}
+                                <linearGradient id="kj-sheen" x1="0" y1="0" x2="0.6" y2="1">
                                     <stop offset="0%"   stopColor="rgba(255,160,130,0)"    />
-                                    <stop offset="20%"  stopColor="rgba(255,160,130,0.28)" />
-                                    <stop offset="40%"  stopColor="rgba(255,160,130,0.42)" />
-                                    <stop offset="60%"  stopColor="rgba(255,160,130,0.20)" />
+                                    <stop offset="15%"  stopColor="rgba(255,160,130,0.32)" />
+                                    <stop offset="35%"  stopColor="rgba(255,160,130,0.48)" />
+                                    <stop offset="60%"  stopColor="rgba(255,160,130,0.18)" />
                                     <stop offset="100%" stopColor="rgba(255,160,130,0)"    />
                                 </linearGradient>
 
