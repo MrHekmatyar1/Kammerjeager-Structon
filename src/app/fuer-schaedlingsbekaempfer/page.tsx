@@ -430,29 +430,6 @@ export default function PartnerPage() {
 
                 {/* 1 ─ HERO SECTION */}
                 <section style={{ padding: '40px 0 0', background: '#ffffff', overflow: 'hidden', position: 'relative', minHeight: '560px' }}>
-
-                    {/* ── Background: Simple Circle Blob (as requested) ── */}
-                    <div style={{
-                        position: 'absolute',
-                        top: 0, right: 0,
-                        width: '65%',
-                        height: '100%',
-                        background: 'radial-gradient(circle at 60% 15%, rgba(200,16,46,0.15) 0%, rgba(200,16,46,0.03) 50%, rgba(200,16,46,0) 70%)',
-                        zIndex: 0,
-                        pointerEvents: 'none',
-                    }}>
-                        {/* More intense inner blob to match original look */}
-                        <div style={{
-                            position: 'absolute',
-                            top: '-5%', right: '5%',
-                            width: '80%', height: '80%',
-                            background: '#C8102E',
-                            filter: 'blur(120px)',
-                            opacity: 0.18,
-                            borderRadius: '50%',
-                        }} />
-                    </div>
-
                     <div style={{
                         maxWidth: '1200px', margin: '0 auto', padding: '0 24px',
                         display: 'grid', gridTemplateColumns: '1fr 1fr',
@@ -533,12 +510,26 @@ export default function PartnerPage() {
 
                         {/* RIGHT: floating dashboard mock cards */}
                         <div className="partner-hero-mock" style={{ position: 'relative', height: '540px' }}>
+                            {/* Isolated soft blob behind cards */}
+                            <div style={{
+                                position: 'absolute',
+                                top: '45%', left: '45%',
+                                transform: 'translate(-50%, -50%)',
+                                width: '400px', height: '400px',
+                                background: '#C8102E',
+                                filter: 'blur(90px)',
+                                opacity: 0.12,
+                                borderRadius: '50%',
+                                zIndex: 0,
+                            }} />
 
                             {/* Main earnings card */}
                             <div style={{
                                 position: 'absolute', left: '0px', top: '28px',
                                 width: '224px', background: '#fff', borderRadius: '14px',
-                                padding: '20px', boxShadow: '0 8px 40px rgba(0,0,0,0.14)', zIndex: 3,
+                                padding: '20px', 
+                                boxShadow: '0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07)', 
+                                zIndex: 3,
                             }}>
                                 <p style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600, marginBottom: '4px', letterSpacing: '0.07em', textTransform: 'uppercase' }}>Ausstehend</p>
                                 <p style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', marginBottom: '3px', letterSpacing: '-0.02em' }}>€280.81</p>
@@ -570,7 +561,9 @@ export default function PartnerPage() {
                             <div style={{
                                 position: 'absolute', right: '0px', top: '8px',
                                 width: '244px', background: '#fff', borderRadius: '14px',
-                                padding: '18px', boxShadow: '0 8px 40px rgba(0,0,0,0.12)', zIndex: 2,
+                                padding: '18px', 
+                                boxShadow: '0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07)', 
+                                zIndex: 2,
                             }}>
                                 <p style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '2px' }}>Einnahmen</p>
                                 <p style={{ fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', marginBottom: '12px' }}>€5.839,41</p>
@@ -606,7 +599,8 @@ export default function PartnerPage() {
                             <div style={{
                                 position: 'absolute', bottom: '52px', right: '24px',
                                 background: '#fff', borderRadius: '12px',
-                                padding: '14px 18px', boxShadow: '0 6px 32px rgba(0,0,0,0.12)',
+                                padding: '14px 18px', 
+                                boxShadow: '0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07)',
                                 zIndex: 4, minWidth: '160px', textAlign: 'center',
                             }}>
                                 <div style={{
