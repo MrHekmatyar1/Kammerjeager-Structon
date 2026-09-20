@@ -510,174 +510,183 @@ export default function PartnerPage() {
 
                         {/* RIGHT: floating dashboard mock cards */}
                         <div className="partner-hero-mock" style={{ position: 'relative', height: '680px' }}>
-                            {/* Isolated soft blob behind cards */}
-                            <div style={{
-                                position: 'absolute',
-                                top: '50%', left: '40%',
-                                transform: 'translate(-50%, -50%)',
-                                width: '800px', height: '800px',
-                                background: 'linear-gradient(135deg, #C8102E 0%, #a78bfa 100%)',
-                                filter: 'blur(120px)',
-                                opacity: 0.12,
-                                borderRadius: '50%',
-                                zIndex: 0,
-                            }} />
-
-                            {/* Card 1: Main earnings card (Left) */}
-                            <div style={{ position: 'absolute', left: '-50px', top: '100px', width: '320px', zIndex: 3 }}>
-                                {/* Top raised part */}
-                                <div style={{
-                                    background: '#fff', borderRadius: '16px',
-                                    padding: '32px 24px 24px', textAlign: 'center',
-                                    boxShadow: '0 20px 40px -10px rgba(0,0,0,0.15)',
-                                    position: 'relative', zIndex: 2
-                                }}>
-                                    <p style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a', marginBottom: '8px', letterSpacing: '-0.02em' }}>€280.81</p>
-                                    <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '24px' }}>Verfügbares Guthaben: €341.42</p>
-                                    <div style={{ background: '#111827', color: '#fff', padding: '14px 0', textAlign: 'center', borderRadius: '10px', fontSize: '15px', fontWeight: 600 }}>
-                                        Sofort auszahlen
-                                    </div>
-                                </div>
-                                
-                                {/* Bottom flat part */}
-                                <div style={{
-                                    background: 'rgba(255,255,255,0.75)', backdropFilter: 'blur(12px)',
-                                    borderRadius: '0 0 16px 16px',
-                                    marginTop: '-16px', paddingTop: '32px',
-                                    border: '1px solid rgba(255,255,255,0.6)',
-                                    boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
-                                }}>
-                                    <div style={{ padding: '0 24px 12px' }}>
-                                        <p style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0 }}>Letzte Aufträge</p>
-                                    </div>
-                                    <div>
-                                        {[
-                                            { amount: '€432.33', info: '19 Aufträge', date: 'Erhalten am 17.09.2026' },
-                                            { amount: '€487.32', info: '21 Aufträge', date: 'Erhalten am 16.09.2026' },
-                                            { amount: '€290.79', info: '17 Aufträge', date: 'Erhalten am 15.09.2026' },
-                                        ].map((r, i) => (
-                                            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '12px 24px', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
-                                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#ede9fe', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                                                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                                                </div>
-                                                <div>
-                                                    <p style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a', margin: '0 0 2px' }}>{r.amount} <span style={{ fontWeight: 400, color: '#64748b', fontSize: '13px' }}>({r.info})</span></p>
-                                                    <p style={{ fontSize: '13px', color: '#94a3b8', margin: 0 }}>{r.date}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div style={{ height: '16px' }} />
-                                </div>
-                            </div>
-
-                            {/* Card 2: Revenue / analytics card (Right) */}
-                            <div style={{
-                                position: 'absolute', right: '-40px', top: '0px',
-                                width: '420px', background: '#fff', borderRadius: '16px',
-                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)', 
-                                zIndex: 2, padding: '24px'
+                            <div style={{ 
+                                position: 'relative', 
+                                width: '720px', 
+                                height: '700px',
+                                transform: 'scale(0.8)',
+                                transformOrigin: 'center center',
+                                left: '-40px' // offset slightly to align better in the column
                             }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px' }}>
-                                    <div>
-                                        <p style={{ fontSize: '12px', color: '#64748b', fontWeight: 600, marginBottom: '8px' }}>Einnahmen</p>
-                                        <p style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', margin: 0 }}>€5.839,41</p>
-                                    </div>
-                                    <div style={{ display: 'flex', gap: '16px', marginTop: '12px' }}>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#8b5cf6' }} />
-                                            <span style={{ fontSize: '11px', color: '#64748b' }}>Offen</span>
-                                        </div>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#fb7185' }} />
-                                            <span style={{ fontSize: '11px', color: '#64748b' }}>Erhalten</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                {/* Isolated soft blob behind cards */}
+                                <div style={{
+                                    position: 'absolute',
+                                    top: '50%', left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    width: '800px', height: '800px',
+                                    background: 'linear-gradient(135deg, #C8102E 0%, #a78bfa 100%)',
+                                    filter: 'blur(120px)',
+                                    opacity: 0.12,
+                                    borderRadius: '50%',
+                                    zIndex: 0,
+                                }} />
 
-                                {/* Bar chart - 12 bars */}
-                                <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', height: '100px', marginBottom: '12px', padding: '0 8px' }}>
-                                    {[15, 20, 25, 30, 35, 45, 40, 50, 65, 75, 80, 90].map((h, i) => (
-                                        <div key={i} style={{
-                                            flex: 1, borderRadius: '3px 3px 0 0',
-                                            background: i === 11 ? '#a78bfa' : `rgba(251, 113, 133, ${0.4 + i * 0.05})`,
-                                            height: `${h}%`,
-                                        }} />
-                                    ))}
-                                </div>
-                                
-                                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '20px', marginBottom: '20px' }}>
-                                    <span style={{ fontSize: '11px', color: '#94a3b8' }}>Sep 2025</span>
-                                    <span style={{ fontSize: '11px', color: '#94a3b8' }}>Sep 2026</span>
-                                </div>
-                                
-                                {/* Inner box for summary */}
-                                <div style={{ background: '#fafafa', borderRadius: '12px', border: '1px solid #f1f5f9', padding: '20px' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                                        <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', margin: 0 }}>September Übersicht</p>
-                                        <div style={{ border: '1px solid #e2e8f0', borderRadius: '6px', padding: '4px 8px', fontSize: '11px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '6px', background: '#fff' }}>
-                                            Sep 2026
-                                            <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M4 6L7 9L10 6" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                {/* Card 1: Main earnings card (Left) */}
+                                <div style={{ position: 'absolute', left: '20px', top: '120px', width: '320px', zIndex: 3 }}>
+                                    {/* Top raised part */}
+                                    <div style={{
+                                        background: '#fff', borderRadius: '16px',
+                                        padding: '32px 24px 24px', textAlign: 'center',
+                                        boxShadow: '0 20px 40px -10px rgba(0,0,0,0.15)',
+                                        position: 'relative', zIndex: 2
+                                    }}>
+                                        <p style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a', marginBottom: '8px', letterSpacing: '-0.02em' }}>€280.81</p>
+                                        <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '24px' }}>Verfügbares Guthaben: €341.42</p>
+                                        <div style={{ background: '#111827', color: '#fff', padding: '14px 0', textAlign: 'center', borderRadius: '10px', fontSize: '15px', fontWeight: 600 }}>
+                                            Sofort auszahlen
                                         </div>
                                     </div>
                                     
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                                        {[
-                                            { label: 'Umsatz aus Aufträgen', val: '€1.216,75' },
-                                            { label: 'Unbearbeitete Anfragen', val: '€4.244,87' },
-                                            { label: 'Abzüglich Stornos', val: '€22,38' },
-                                            { label: 'Abzüglich Reklamationen', val: '€8,74' },
-                                            { label: 'Abzüglich Gebühren', val: '€190,56' },
-                                        ].map((row, i) => (
-                                            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                <span style={{ fontSize: '12px', color: '#0f172a', fontWeight: 600 }}>{row.label}</span>
-                                                <span style={{ fontSize: '12px', color: '#64748b' }}>{row.val}</span>
-                                            </div>
-                                        ))}
+                                    {/* Bottom flat part */}
+                                    <div style={{
+                                        background: 'rgba(255,255,255,0.75)', backdropFilter: 'blur(12px)',
+                                        borderRadius: '0 0 16px 16px',
+                                        marginTop: '-16px', paddingTop: '32px',
+                                        border: '1px solid rgba(255,255,255,0.6)',
+                                        boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
+                                    }}>
+                                        <div style={{ padding: '0 24px 12px' }}>
+                                            <p style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0 }}>Letzte Aufträge</p>
+                                        </div>
+                                        <div>
+                                            {[
+                                                { amount: '€432.33', info: '19 Aufträge', date: 'Erhalten am 17.09.2026' },
+                                                { amount: '€487.32', info: '21 Aufträge', date: 'Erhalten am 16.09.2026' },
+                                                { amount: '€290.79', info: '17 Aufträge', date: 'Erhalten am 15.09.2026' },
+                                            ].map((r, i) => (
+                                                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '12px 24px', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+                                                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#ede9fe', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                                        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                                    </div>
+                                                    <div>
+                                                        <p style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a', margin: '0 0 2px' }}>{r.amount} <span style={{ fontWeight: 400, color: '#64748b', fontSize: '13px' }}>({r.info})</span></p>
+                                                        <p style={{ fontSize: '13px', color: '#94a3b8', margin: 0 }}>{r.date}</p>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div style={{ height: '16px' }} />
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Card 3: First payment badge (Floating center) */}
-                            <div style={{
-                                position: 'absolute', top: '380px', left: '140px',
-                                background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)',
-                                borderRadius: '16px',
-                                padding: '28px 36px', 
-                                boxShadow: '0 30px 60px -15px rgba(0,0,0,0.15)',
-                                zIndex: 5, minWidth: '240px', textAlign: 'center',
-                            }}>
+                                {/* Card 2: Revenue / analytics card (Right) */}
                                 <div style={{
-                                    width: '40px', height: '40px', borderRadius: '50%', background: '#6366f1',
-                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    margin: '0 auto 16px',
-                                    boxShadow: '0 4px 12px rgba(99,102,241,0.3)',
+                                    position: 'absolute', left: '280px', top: '0px',
+                                    width: '420px', background: '#fff', borderRadius: '16px',
+                                    boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)', 
+                                    zIndex: 2, padding: '24px'
                                 }}>
-                                    <svg width="18" height="18" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                                </div>
-                                <p style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.02em' }}>€120.56</p>
-                                <p style={{ fontSize: '15px', color: '#64748b', margin: 0 }}>Erster Auftrag erhalten!</p>
-                            </div>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px' }}>
+                                        <div>
+                                            <p style={{ fontSize: '12px', color: '#64748b', fontWeight: 600, marginBottom: '8px' }}>Einnahmen</p>
+                                            <p style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', margin: 0 }}>€5.839,41</p>
+                                        </div>
+                                        <div style={{ display: 'flex', gap: '16px', marginTop: '12px' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#8b5cf6' }} />
+                                                <span style={{ fontSize: '11px', color: '#64748b' }}>Offen</span>
+                                            </div>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#fb7185' }} />
+                                                <span style={{ fontSize: '11px', color: '#64748b' }}>Erhalten</span>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            {/* Card 4: Payment link card (Floating bottom left) */}
-                            <div style={{
-                                position: 'absolute', top: '520px', left: '-10px',
-                                background: '#fff', borderRadius: '16px',
-                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
-                                zIndex: 4, width: '260px', overflow: 'hidden'
-                            }}>
-                                <div style={{ padding: '24px' }}>
-                                    <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', margin: '0 0 8px' }}>
-                                        Zahlungslink ist <span style={{ color: '#6366f1' }}>aktiv</span>
-                                    </p>
-                                    <p style={{ fontSize: '13px', color: '#64748b', margin: 0, lineHeight: 1.5 }}>
-                                        Teilen Sie Ihren Zahlungslink, um Zahlungen von Kunden zu erhalten.
-                                    </p>
+                                    {/* Bar chart - 12 bars */}
+                                    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', height: '100px', marginBottom: '12px', padding: '0 8px' }}>
+                                        {[15, 20, 25, 30, 35, 45, 40, 50, 65, 75, 80, 90].map((h, i) => (
+                                            <div key={i} style={{
+                                                flex: 1, borderRadius: '3px 3px 0 0',
+                                                background: i === 11 ? '#a78bfa' : `rgba(251, 113, 133, ${0.4 + i * 0.05})`,
+                                                height: `${h}%`,
+                                            }} />
+                                        ))}
+                                    </div>
+                                    
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '20px', marginBottom: '20px' }}>
+                                        <span style={{ fontSize: '11px', color: '#94a3b8' }}>Sep 2025</span>
+                                        <span style={{ fontSize: '11px', color: '#94a3b8' }}>Sep 2026</span>
+                                    </div>
+                                    
+                                    {/* Inner box for summary */}
+                                    <div style={{ background: '#fafafa', borderRadius: '12px', border: '1px solid #f1f5f9', padding: '20px' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+                                            <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', margin: 0 }}>September Übersicht</p>
+                                            <div style={{ border: '1px solid #e2e8f0', borderRadius: '6px', padding: '4px 8px', fontSize: '11px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '6px', background: '#fff' }}>
+                                                Sep 2026
+                                                <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M4 6L7 9L10 6" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                            </div>
+                                        </div>
+                                        
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                                            {[
+                                                { label: 'Umsatz aus Aufträgen', val: '€1.216,75' },
+                                                { label: 'Unbearbeitete Anfragen', val: '€4.244,87' },
+                                                { label: 'Abzüglich Stornos', val: '€22,38' },
+                                                { label: 'Abzüglich Reklamationen', val: '€8,74' },
+                                                { label: 'Abzüglich Gebühren', val: '€190,56' },
+                                            ].map((row, i) => (
+                                                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                    <span style={{ fontSize: '12px', color: '#0f172a', fontWeight: 600 }}>{row.label}</span>
+                                                    <span style={{ fontSize: '12px', color: '#64748b' }}>{row.val}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div style={{ background: '#f3e8ff', padding: '16px 24px', borderTop: '1px solid #e9d5ff' }}>
-                                    <p style={{ fontSize: '14px', fontWeight: 600, color: '#6366f1', margin: 0 }}>
-                                        structon.de/pay/aEU...
-                                    </p>
+
+                                {/* Card 3: First payment badge (Floating center) */}
+                                <div style={{
+                                    position: 'absolute', top: '400px', left: '220px',
+                                    background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)',
+                                    borderRadius: '16px',
+                                    padding: '28px 36px', 
+                                    boxShadow: '0 30px 60px -15px rgba(0,0,0,0.15)',
+                                    zIndex: 5, minWidth: '240px', textAlign: 'center',
+                                }}>
+                                    <div style={{
+                                        width: '40px', height: '40px', borderRadius: '50%', background: '#6366f1',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        margin: '0 auto 16px',
+                                        boxShadow: '0 4px 12px rgba(99,102,241,0.3)',
+                                    }}>
+                                        <svg width="18" height="18" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                    </div>
+                                    <p style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.02em' }}>€120.56</p>
+                                    <p style={{ fontSize: '15px', color: '#64748b', margin: 0 }}>Erster Auftrag erhalten!</p>
+                                </div>
+
+                                {/* Card 4: Payment link card (Floating bottom left) */}
+                                <div style={{
+                                    position: 'absolute', top: '530px', left: '-10px',
+                                    background: '#fff', borderRadius: '16px',
+                                    boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
+                                    zIndex: 4, width: '280px', overflow: 'hidden'
+                                }}>
+                                    <div style={{ padding: '24px' }}>
+                                        <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', margin: '0 0 8px' }}>
+                                            Zahlungslink ist <span style={{ color: '#6366f1' }}>aktiv</span>
+                                        </p>
+                                        <p style={{ fontSize: '13px', color: '#64748b', margin: 0, lineHeight: 1.5 }}>
+                                            Teilen Sie Ihren Zahlungslink, um Zahlungen von Kunden zu erhalten.
+                                        </p>
+                                    </div>
+                                    <div style={{ background: '#f3e8ff', padding: '16px 24px', borderTop: '1px solid #e9d5ff' }}>
+                                        <p style={{ fontSize: '14px', fontWeight: 600, color: '#6366f1', margin: 0 }}>
+                                            structon.de/pay/aEU...
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
 
