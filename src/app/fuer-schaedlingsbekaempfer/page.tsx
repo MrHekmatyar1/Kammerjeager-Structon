@@ -429,11 +429,11 @@ export default function PartnerPage() {
 
 
                 {/* 1 ─ HERO SECTION */}
-                <section style={{ padding: '40px 0 0', background: '#ffffff', overflow: 'hidden', position: 'relative', minHeight: '560px' }}>
+                <section style={{ padding: '40px 0 0', background: '#ffffff', overflow: 'hidden', position: 'relative', minHeight: '800px' }}>
                     <div style={{
                         maxWidth: '1200px', margin: '0 auto', padding: '0 24px',
                         display: 'grid', gridTemplateColumns: '1fr 1fr',
-                        gap: '40px', alignItems: 'center', minHeight: '560px',
+                        gap: '40px', alignItems: 'center', minHeight: '760px',
                         position: 'relative', zIndex: 1,
                     }} className="partner-hero-grid">
 
@@ -509,13 +509,13 @@ export default function PartnerPage() {
                         </div>
 
                         {/* RIGHT: floating dashboard mock cards */}
-                        <div className="partner-hero-mock" style={{ position: 'relative', height: '540px' }}>
+                        <div className="partner-hero-mock" style={{ position: 'relative', height: '680px' }}>
                             {/* Isolated soft blob behind cards */}
                             <div style={{
                                 position: 'absolute',
-                                top: '45%', left: '45%',
+                                top: '50%', left: '40%',
                                 transform: 'translate(-50%, -50%)',
-                                width: '400px', height: '400px',
+                                width: '450px', height: '450px',
                                 background: '#C8102E',
                                 filter: 'blur(90px)',
                                 opacity: 0.12,
@@ -523,96 +523,95 @@ export default function PartnerPage() {
                                 zIndex: 0,
                             }} />
 
-                            {/* Main earnings card (Left) */}
+                            {/* Card 1: Main earnings card (Left) */}
                             <div style={{
-                                position: 'absolute', left: '-20px', top: '28px',
-                                width: '260px', background: '#fff', borderRadius: '16px',
-                                boxShadow: '0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07)',
-                                zIndex: 3, overflow: 'hidden',
-                                border: '1px solid rgba(0,0,0,0.04)'
+                                position: 'absolute', left: '-50px', top: '20px',
+                                width: '320px', background: '#fff', borderRadius: '16px',
+                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
+                                zIndex: 3, overflow: 'hidden'
                             }}>
-                                <div style={{ padding: '24px 20px 20px', textAlign: 'center' }}>
-                                    <p style={{ fontSize: '24px', fontWeight: 700, color: '#0f172a', marginBottom: '4px', letterSpacing: '-0.02em' }}>€280.81</p>
-                                    <p style={{ fontSize: '12px', color: '#64748b', marginBottom: '16px' }}>Verfügbares Guthaben: €341.42</p>
-                                    <div style={{ background: '#1e293b', color: '#fff', padding: '10px 0', textAlign: 'center', borderRadius: '8px', fontSize: '13px', fontWeight: 600 }}>
+                                <div style={{ padding: '32px 24px 24px', textAlign: 'center' }}>
+                                    <p style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a', marginBottom: '8px', letterSpacing: '-0.02em' }}>€280.81</p>
+                                    <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '24px' }}>Verfügbares Guthaben: €341.42</p>
+                                    <div style={{ background: '#1e293b', color: '#fff', padding: '14px 0', textAlign: 'center', borderRadius: '8px', fontSize: '15px', fontWeight: 600, boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
                                         Sofort auszahlen
                                     </div>
                                 </div>
                                 
-                                <div style={{ background: '#f8fafc', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9', padding: '8px 20px' }}>
-                                    <p style={{ fontSize: '9px', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0 }}>Letzte Aufträge</p>
+                                <div style={{ background: '#f8fafc', padding: '10px 24px', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9' }}>
+                                    <p style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0 }}>Letzte Aufträge</p>
                                 </div>
                                 
-                                <div style={{ padding: '12px 20px' }}>
+                                <div>
                                     {[
-                                        { amount: '€432.33', info: '4 Aufträge', date: '17.09.2026' },
-                                        { amount: '€487.32', info: '5 Aufträge', date: '16.09.2026' },
-                                        { amount: '€290.79', info: '3 Aufträge', date: '15.09.2026' },
+                                        { amount: '€432.33', info: '4 Aufträge', date: 'Erhalten am 17.09.2026' },
+                                        { amount: '€487.32', info: '5 Aufträge', date: 'Erhalten am 16.09.2026' },
+                                        { amount: '€290.79', info: '3 Aufträge', date: 'Erhalten am 15.09.2026' },
                                     ].map((r, i) => (
-                                        <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: i === 2 ? 0 : '16px' }}>
-                                            <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#ede9fe', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                                                <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px 24px', borderBottom: i === 2 ? 'none' : '1px solid #f1f5f9' }}>
+                                            <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#ede9fe', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                                             </div>
                                             <div>
-                                                <p style={{ fontSize: '12px', fontWeight: 600, color: '#0f172a', margin: '0 0 2px' }}>{r.amount} <span style={{ fontWeight: 400, color: '#64748b' }}>({r.info})</span></p>
-                                                <p style={{ fontSize: '11px', color: '#94a3b8', margin: 0 }}>Erhalten am {r.date}</p>
+                                                <p style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a', margin: '0 0 2px' }}>{r.amount} <span style={{ fontWeight: 400, color: '#64748b', fontSize: '13px' }}>({r.info})</span></p>
+                                                <p style={{ fontSize: '13px', color: '#94a3b8', margin: 0 }}>{r.date}</p>
                                             </div>
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
-                            {/* Revenue / analytics card (Right) */}
+                            {/* Card 2: Revenue / analytics card (Right) */}
                             <div style={{
-                                position: 'absolute', right: '-40px', top: '0px',
-                                width: '340px', background: '#fff', borderRadius: '16px',
-                                boxShadow: '0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07)', 
-                                zIndex: 2, overflow: 'hidden',
-                                border: '1px solid rgba(0,0,0,0.04)'
+                                position: 'absolute', right: '-80px', top: '-10px',
+                                width: '420px', background: '#fff', borderRadius: '16px',
+                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)', 
+                                zIndex: 2, padding: '24px'
                             }}>
-                                <div style={{ padding: '24px 24px 16px' }}>
-                                    <p style={{ fontSize: '11px', color: '#64748b', fontWeight: 600, marginBottom: '6px' }}>Einnahmen</p>
-                                    
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
-                                        <p style={{ fontSize: '22px', fontWeight: 700, color: '#0f172a', letterSpacing: '-0.02em', margin: 0 }}>€5.839,41</p>
-                                        <div style={{ display: 'flex', gap: '12px', marginTop: '6px' }}>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#8b5cf6' }} />
-                                                <span style={{ fontSize: '10px', color: '#64748b' }}>Offen</span>
-                                            </div>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#fb7185' }} />
-                                                <span style={{ fontSize: '10px', color: '#64748b' }}>Erhalten</span>
-                                            </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
+                                    <div>
+                                        <p style={{ fontSize: '12px', color: '#64748b', fontWeight: 600, marginBottom: '8px' }}>Einnahmen</p>
+                                        <p style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', margin: 0 }}>€5.839,41</p>
+                                    </div>
+                                    <div style={{ display: 'flex', gap: '16px', marginTop: '12px' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#8b5cf6' }} />
+                                            <span style={{ fontSize: '11px', color: '#64748b' }}>Offen</span>
                                         </div>
-                                    </div>
-
-                                    {/* Bar chart */}
-                                    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', height: '80px', marginBottom: '8px' }}>
-                                        {[20, 25, 30, 40, 45, 55, 50, 70, 75, 80].map((h, i) => (
-                                            <div key={i} style={{
-                                                flex: 1, borderRadius: '2px 2px 0 0',
-                                                background: i === 9 ? '#a78bfa' : `rgba(251, 113, 133, ${0.4 + i * 0.06})`,
-                                                height: `${h}%`,
-                                            }} />
-                                        ))}
-                                    </div>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '16px' }}>
-                                        <span style={{ fontSize: '10px', color: '#94a3b8' }}>Sep 2025</span>
-                                        <span style={{ fontSize: '10px', color: '#94a3b8' }}>Sep 2026</span>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#fb7185' }} />
+                                            <span style={{ fontSize: '11px', color: '#64748b' }}>Erhalten</span>
+                                        </div>
                                     </div>
                                 </div>
+
+                                {/* Bar chart - 12 bars */}
+                                <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', height: '100px', marginBottom: '12px', padding: '0 8px' }}>
+                                    {[15, 20, 25, 30, 35, 45, 40, 50, 65, 75, 80, 90].map((h, i) => (
+                                        <div key={i} style={{
+                                            flex: 1, borderRadius: '3px 3px 0 0',
+                                            background: i === 11 ? '#a78bfa' : `rgba(251, 113, 133, ${0.4 + i * 0.05})`,
+                                            height: `${h}%`,
+                                        }} />
+                                    ))}
+                                </div>
                                 
-                                <div style={{ background: '#fafafa', padding: '16px 24px 24px', borderTop: '1px solid #f1f5f9' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-                                        <p style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', margin: 0 }}>September Übersicht</p>
-                                        <div style={{ border: '1px solid #e2e8f0', borderRadius: '4px', padding: '2px 6px', fontSize: '10px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px', background: '#fff' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '20px', marginBottom: '20px' }}>
+                                    <span style={{ fontSize: '11px', color: '#94a3b8' }}>Sep 2025</span>
+                                    <span style={{ fontSize: '11px', color: '#94a3b8' }}>Sep 2026</span>
+                                </div>
+                                
+                                {/* Inner box for summary */}
+                                <div style={{ background: '#fafafa', borderRadius: '12px', border: '1px solid #f1f5f9', padding: '20px' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+                                        <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', margin: 0 }}>September Übersicht</p>
+                                        <div style={{ border: '1px solid #e2e8f0', borderRadius: '6px', padding: '4px 8px', fontSize: '11px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '6px', background: '#fff' }}>
                                             Sep 2026
-                                            <svg width="8" height="8" viewBox="0 0 14 14" fill="none"><path d="M4 6L7 9L10 6" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                            <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M4 6L7 9L10 6" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                                         </div>
                                     </div>
                                     
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                                         {[
                                             { label: 'Umsatz aus Aufträgen', val: '€1.216,75' },
                                             { label: 'Unbearbeitete Anfragen', val: '€4.244,87' },
@@ -621,33 +620,54 @@ export default function PartnerPage() {
                                             { label: 'Abzüglich Gebühren', val: '€190,56' },
                                         ].map((row, i) => (
                                             <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                <span style={{ fontSize: '11px', color: '#0f172a', fontWeight: 500 }}>{row.label}</span>
-                                                <span style={{ fontSize: '11px', color: '#64748b' }}>{row.val}</span>
+                                                <span style={{ fontSize: '12px', color: '#0f172a', fontWeight: 600 }}>{row.label}</span>
+                                                <span style={{ fontSize: '12px', color: '#64748b' }}>{row.val}</span>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
                             </div>
 
-                            {/* First payment badge (Bottom center) */}
+                            {/* Card 3: First payment badge (Floating center) */}
                             <div style={{
-                                position: 'absolute', bottom: '20px', right: '40px',
+                                position: 'absolute', top: '480px', right: '80px',
                                 background: '#fff', borderRadius: '16px',
-                                padding: '20px 24px', 
-                                boxShadow: '0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07)',
-                                zIndex: 4, minWidth: '180px', textAlign: 'center',
-                                border: '1px solid rgba(0,0,0,0.04)'
+                                padding: '24px 32px', 
+                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
+                                zIndex: 5, minWidth: '220px', textAlign: 'center',
                             }}>
                                 <div style={{
-                                    width: '32px', height: '32px', borderRadius: '50%', background: '#6366f1',
+                                    width: '40px', height: '40px', borderRadius: '50%', background: '#6366f1',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    margin: '0 auto 12px',
+                                    margin: '0 auto 16px',
                                     boxShadow: '0 4px 12px rgba(99,102,241,0.3)',
                                 }}>
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                    <svg width="18" height="18" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                                 </div>
-                                <p style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: '0 0 4px', letterSpacing: '-0.02em' }}>€120.56</p>
-                                <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>Erster Auftrag erhalten!</p>
+                                <p style={{ fontSize: '24px', fontWeight: 800, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.02em' }}>€120.56</p>
+                                <p style={{ fontSize: '14px', color: '#64748b', margin: 0 }}>Erster Auftrag erhalten!</p>
+                            </div>
+
+                            {/* Card 4: Payment link card (Floating bottom left) */}
+                            <div style={{
+                                position: 'absolute', top: '510px', left: '-20px',
+                                background: '#fff', borderRadius: '16px',
+                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
+                                zIndex: 4, width: '280px', overflow: 'hidden'
+                            }}>
+                                <div style={{ padding: '24px' }}>
+                                    <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', margin: '0 0 8px' }}>
+                                        Zahlungslink ist <span style={{ color: '#6366f1' }}>aktiv</span>
+                                    </p>
+                                    <p style={{ fontSize: '13px', color: '#64748b', margin: 0, lineHeight: 1.5 }}>
+                                        Teilen Sie Ihren Zahlungslink, um Zahlungen von Kunden zu erhalten.
+                                    </p>
+                                </div>
+                                <div style={{ background: '#f3e8ff', padding: '16px 24px', borderTop: '1px solid #e9d5ff' }}>
+                                    <p style={{ fontSize: '14px', fontWeight: 600, color: '#6366f1', margin: 0 }}>
+                                        structon.de/pay/aEU...
+                                    </p>
+                                </div>
                             </div>
 
                         </div>
