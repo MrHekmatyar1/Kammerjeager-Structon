@@ -509,14 +509,13 @@ export default function PartnerPage() {
                         </div>
 
                         {/* RIGHT: floating dashboard mock cards */}
-                        <div className="partner-hero-mock" style={{ position: 'relative', height: '680px' }}>
+                        <div className="partner-hero-mock" style={{ position: 'relative', height: '680px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <div style={{ 
                                 position: 'relative', 
-                                width: '800px', 
+                                width: '760px', 
                                 height: '700px',
-                                transform: 'scale(0.7)',
-                                transformOrigin: 'center left',
-                                left: '0px'
+                                transform: 'scale(0.65)',
+                                transformOrigin: 'center center',
                             }}>
                                 {/* Isolated soft blob behind cards */}
                                 <div style={{
@@ -581,7 +580,7 @@ export default function PartnerPage() {
 
                                 {/* Card 2: Revenue / analytics card (Right) */}
                                 <div style={{
-                                    position: 'absolute', left: '360px', top: '0px',
+                                    position: 'absolute', right: '0px', top: '0px',
                                     width: '420px', background: '#fff', borderRadius: '16px',
                                     boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)', 
                                     zIndex: 2, padding: '24px'
