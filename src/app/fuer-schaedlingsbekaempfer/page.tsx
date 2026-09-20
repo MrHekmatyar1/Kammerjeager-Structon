@@ -434,21 +434,21 @@ export default function PartnerPage() {
                     {/* ── Background: Simple Circle Blob (as requested) ── */}
                     <div style={{
                         position: 'absolute',
-                        top: '-10%', right: '-5%',
+                        top: 0, right: 0,
                         width: '65%',
-                        height: '120%',
-                        background: 'radial-gradient(circle at 60% 40%, rgba(200,16,46,0.12) 0%, rgba(200,16,46,0.02) 50%, rgba(200,16,46,0) 70%)',
+                        height: '100%',
+                        background: 'radial-gradient(circle at 60% 15%, rgba(200,16,46,0.15) 0%, rgba(200,16,46,0.03) 50%, rgba(200,16,46,0) 70%)',
                         zIndex: 0,
                         pointerEvents: 'none',
                     }}>
                         {/* More intense inner blob to match original look */}
                         <div style={{
                             position: 'absolute',
-                            top: '15%', right: '10%',
-                            width: '80%', height: '70%',
+                            top: '-5%', right: '5%',
+                            width: '80%', height: '80%',
                             background: '#C8102E',
                             filter: 'blur(120px)',
-                            opacity: 0.15,
+                            opacity: 0.18,
                             borderRadius: '50%',
                         }} />
                     </div>
