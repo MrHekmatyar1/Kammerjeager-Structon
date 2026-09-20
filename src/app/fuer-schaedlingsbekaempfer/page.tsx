@@ -525,7 +525,7 @@ export default function PartnerPage() {
 
                             {/* Card 1: Main earnings card (Left) */}
                             <div style={{
-                                position: 'absolute', left: '-50px', top: '20px',
+                                position: 'absolute', left: '-80px', top: '160px',
                                 width: '320px', background: '#fff', borderRadius: '16px',
                                 boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
                                 zIndex: 3, overflow: 'hidden'
@@ -563,7 +563,7 @@ export default function PartnerPage() {
 
                             {/* Card 2: Revenue / analytics card (Right) */}
                             <div style={{
-                                position: 'absolute', right: '-80px', top: '-10px',
+                                position: 'absolute', right: '-40px', top: '0px',
                                 width: '420px', background: '#fff', borderRadius: '16px',
                                 boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)', 
                                 zIndex: 2, padding: '24px'
@@ -630,7 +630,7 @@ export default function PartnerPage() {
 
                             {/* Card 3: First payment badge (Floating center) */}
                             <div style={{
-                                position: 'absolute', top: '480px', right: '80px',
+                                position: 'absolute', top: '560px', right: '40px',
                                 background: '#fff', borderRadius: '16px',
                                 padding: '24px 32px', 
                                 boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
@@ -650,7 +650,7 @@ export default function PartnerPage() {
 
                             {/* Card 4: Payment link card (Floating bottom left) */}
                             <div style={{
-                                position: 'absolute', top: '510px', left: '-20px',
+                                position: 'absolute', top: '590px', left: '-20px',
                                 background: '#fff', borderRadius: '16px',
                                 boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
                                 zIndex: 4, width: '280px', overflow: 'hidden'
