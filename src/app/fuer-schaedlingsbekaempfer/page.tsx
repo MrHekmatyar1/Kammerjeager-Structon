@@ -512,11 +512,11 @@ export default function PartnerPage() {
                         <div className="partner-hero-mock" style={{ position: 'relative', height: '680px' }}>
                             <div style={{ 
                                 position: 'relative', 
-                                width: '720px', 
+                                width: '800px', 
                                 height: '700px',
-                                transform: 'scale(0.8)',
-                                transformOrigin: 'center center',
-                                left: '-40px' // offset slightly to align better in the column
+                                transform: 'scale(0.7)',
+                                transformOrigin: 'center left',
+                                left: '0px'
                             }}>
                                 {/* Isolated soft blob behind cards */}
                                 <div style={{
@@ -532,7 +532,7 @@ export default function PartnerPage() {
                                 }} />
 
                                 {/* Card 1: Main earnings card (Left) */}
-                                <div style={{ position: 'absolute', left: '20px', top: '120px', width: '320px', zIndex: 3 }}>
+                                <div style={{ position: 'absolute', left: '0px', top: '80px', width: '320px', zIndex: 3 }}>
                                     {/* Top raised part */}
                                     <div style={{
                                         background: '#fff', borderRadius: '16px',
@@ -581,7 +581,7 @@ export default function PartnerPage() {
 
                                 {/* Card 2: Revenue / analytics card (Right) */}
                                 <div style={{
-                                    position: 'absolute', left: '280px', top: '0px',
+                                    position: 'absolute', left: '360px', top: '0px',
                                     width: '420px', background: '#fff', borderRadius: '16px',
                                     boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)', 
                                     zIndex: 2, padding: '24px'
@@ -648,7 +648,7 @@ export default function PartnerPage() {
 
                                 {/* Card 3: First payment badge (Floating center) */}
                                 <div style={{
-                                    position: 'absolute', top: '400px', left: '220px',
+                                    position: 'absolute', top: '380px', left: '260px',
                                     background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)',
                                     borderRadius: '16px',
                                     padding: '28px 36px', 
@@ -669,7 +669,7 @@ export default function PartnerPage() {
 
                                 {/* Card 4: Payment link card (Floating bottom left) */}
                                 <div style={{
-                                    position: 'absolute', top: '530px', left: '-10px',
+                                    position: 'absolute', top: '500px', left: '20px',
                                     background: '#fff', borderRadius: '16px',
                                     boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
                                     zIndex: 4, width: '280px', overflow: 'hidden'
