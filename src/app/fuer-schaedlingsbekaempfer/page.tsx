@@ -523,96 +523,131 @@ export default function PartnerPage() {
                                 zIndex: 0,
                             }} />
 
-                            {/* Main earnings card */}
+                            {/* Main earnings card (Left) */}
                             <div style={{
-                                position: 'absolute', left: '0px', top: '28px',
-                                width: '224px', background: '#fff', borderRadius: '14px',
-                                padding: '20px', 
-                                boxShadow: '0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07)', 
-                                zIndex: 3,
+                                position: 'absolute', left: '-20px', top: '28px',
+                                width: '260px', background: '#fff', borderRadius: '16px',
+                                boxShadow: '0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07)',
+                                zIndex: 3, overflow: 'hidden',
+                                border: '1px solid rgba(0,0,0,0.04)'
                             }}>
-                                <p style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 600, marginBottom: '4px', letterSpacing: '0.07em', textTransform: 'uppercase' }}>Ausstehend</p>
-                                <p style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', marginBottom: '3px', letterSpacing: '-0.02em' }}>€280.81</p>
-                                <p style={{ fontSize: '11px', color: '#94a3b8', marginBottom: '14px' }}>Verfügbares Guthaben: €341.42</p>
-                                <div style={{ background: '#C8102E', color: '#fff', padding: '9px 0', textAlign: 'center', borderRadius: '7px', fontSize: '13px', fontWeight: 700 }}>
-                                    Sofort auszahlen
+                                <div style={{ padding: '24px 20px 20px', textAlign: 'center' }}>
+                                    <p style={{ fontSize: '24px', fontWeight: 700, color: '#0f172a', marginBottom: '4px', letterSpacing: '-0.02em' }}>€280.81</p>
+                                    <p style={{ fontSize: '12px', color: '#64748b', marginBottom: '16px' }}>Verfügbares Guthaben: €341.42</p>
+                                    <div style={{ background: '#1e293b', color: '#fff', padding: '10px 0', textAlign: 'center', borderRadius: '8px', fontSize: '13px', fontWeight: 600 }}>
+                                        Sofort auszahlen
+                                    </div>
                                 </div>
-                                <div style={{ marginTop: '16px' }}>
-                                    <p style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '10px' }}>Letzte Aufträge</p>
+                                
+                                <div style={{ background: '#f8fafc', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9', padding: '8px 20px' }}>
+                                    <p style={{ fontSize: '9px', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0 }}>Letzte Aufträge</p>
+                                </div>
+                                
+                                <div style={{ padding: '12px 20px' }}>
                                     {[
-                                        { amount: '€432.33', info: '4 Aufträge', date: 'Gutgeschr. 17.09.' },
-                                        { amount: '€487.32', info: '5 Aufträge', date: 'Gutgeschr. 16.09.' },
-                                        { amount: '€290.79', info: '3 Aufträge', date: 'Gutgeschr. 15.09.' },
+                                        { amount: '€432.33', info: '4 Aufträge', date: '17.09.2026' },
+                                        { amount: '€487.32', info: '5 Aufträge', date: '16.09.2026' },
+                                        { amount: '€290.79', info: '3 Aufträge', date: '15.09.2026' },
                                     ].map((r, i) => (
-                                        <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '9px' }}>
-                                            <div style={{ width: '15px', height: '15px', borderRadius: '50%', background: '#dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '1px' }}>
-                                                <svg width="7" height="7" viewBox="0 0 10 10" fill="none"><polyline points="2,5 4,7 8,3" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                        <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: i === 2 ? 0 : '16px' }}>
+                                            <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#ede9fe', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                                <svg width="10" height="10" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                                             </div>
                                             <div>
-                                                <p style={{ fontSize: '12px', fontWeight: 700, color: '#0f172a', margin: 0 }}>{r.amount} <span style={{ fontWeight: 400, color: '#94a3b8' }}>({r.info})</span></p>
-                                                <p style={{ fontSize: '10px', color: '#94a3b8', margin: 0 }}>{r.date}</p>
+                                                <p style={{ fontSize: '12px', fontWeight: 600, color: '#0f172a', margin: '0 0 2px' }}>{r.amount} <span style={{ fontWeight: 400, color: '#64748b' }}>({r.info})</span></p>
+                                                <p style={{ fontSize: '11px', color: '#94a3b8', margin: 0 }}>Erhalten am {r.date}</p>
                                             </div>
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
-                            {/* Revenue / analytics card */}
+                            {/* Revenue / analytics card (Right) */}
                             <div style={{
-                                position: 'absolute', right: '0px', top: '8px',
-                                width: '244px', background: '#fff', borderRadius: '14px',
-                                padding: '18px', 
+                                position: 'absolute', right: '-40px', top: '0px',
+                                width: '340px', background: '#fff', borderRadius: '16px',
                                 boxShadow: '0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07)', 
-                                zIndex: 2,
+                                zIndex: 2, overflow: 'hidden',
+                                border: '1px solid rgba(0,0,0,0.04)'
                             }}>
-                                <p style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '2px' }}>Einnahmen</p>
-                                <p style={{ fontSize: '20px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', marginBottom: '12px' }}>€5.839,41</p>
-                                <div style={{ display: 'flex', alignItems: 'flex-end', gap: '3px', height: '60px', marginBottom: '8px' }}>
-                                    {[20, 35, 28, 45, 38, 55, 42, 60, 48, 72].map((h, i) => (
-                                        <div key={i} style={{
-                                            flex: 1, borderRadius: '2px 2px 0 0',
-                                            background: i === 9 ? '#C8102E' : `rgba(200,16,46,${0.18 + i * 0.075})`,
-                                            height: `${h}%`,
-                                        }} />
-                                    ))}
-                                </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-                                    <span style={{ fontSize: '10px', color: '#cbd5e1' }}>Sep 2025</span>
-                                    <span style={{ fontSize: '10px', color: '#cbd5e1' }}>Sep 2026</span>
-                                </div>
-                                <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '10px' }}>
-                                    <p style={{ fontSize: '11px', fontWeight: 700, color: '#0f172a', marginBottom: '8px' }}>September</p>
-                                    {[
-                                        { label: 'Neue Aufträge', val: '€1.216,75' },
-                                        { label: 'Abgeschlossen', val: '€4.244,87' },
-                                        { label: 'Stornierungen', val: '€22,38' },
-                                    ].map((row, i) => (
-                                        <div key={i} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
-                                            <span style={{ fontSize: '10px', color: '#94a3b8' }}>{row.label}</span>
-                                            <span style={{ fontSize: '10px', fontWeight: 600, color: '#0f172a' }}>{row.val}</span>
+                                <div style={{ padding: '24px 24px 16px' }}>
+                                    <p style={{ fontSize: '11px', color: '#64748b', fontWeight: 600, marginBottom: '6px' }}>Einnahmen</p>
+                                    
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
+                                        <p style={{ fontSize: '22px', fontWeight: 700, color: '#0f172a', letterSpacing: '-0.02em', margin: 0 }}>€5.839,41</p>
+                                        <div style={{ display: 'flex', gap: '12px', marginTop: '6px' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#8b5cf6' }} />
+                                                <span style={{ fontSize: '10px', color: '#64748b' }}>Offen</span>
+                                            </div>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#fb7185' }} />
+                                                <span style={{ fontSize: '10px', color: '#64748b' }}>Erhalten</span>
+                                            </div>
                                         </div>
-                                    ))}
+                                    </div>
+
+                                    {/* Bar chart */}
+                                    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', height: '80px', marginBottom: '8px' }}>
+                                        {[20, 25, 30, 40, 45, 55, 50, 70, 75, 80].map((h, i) => (
+                                            <div key={i} style={{
+                                                flex: 1, borderRadius: '2px 2px 0 0',
+                                                background: i === 9 ? '#a78bfa' : `rgba(251, 113, 133, ${0.4 + i * 0.06})`,
+                                                height: `${h}%`,
+                                            }} />
+                                        ))}
+                                    </div>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '16px' }}>
+                                        <span style={{ fontSize: '10px', color: '#94a3b8' }}>Sep 2025</span>
+                                        <span style={{ fontSize: '10px', color: '#94a3b8' }}>Sep 2026</span>
+                                    </div>
+                                </div>
+                                
+                                <div style={{ background: '#fafafa', padding: '16px 24px 24px', borderTop: '1px solid #f1f5f9' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+                                        <p style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', margin: 0 }}>September Übersicht</p>
+                                        <div style={{ border: '1px solid #e2e8f0', borderRadius: '4px', padding: '2px 6px', fontSize: '10px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px', background: '#fff' }}>
+                                            Sep 2026
+                                            <svg width="8" height="8" viewBox="0 0 14 14" fill="none"><path d="M4 6L7 9L10 6" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                        {[
+                                            { label: 'Umsatz aus Aufträgen', val: '€1.216,75' },
+                                            { label: 'Unbearbeitete Anfragen', val: '€4.244,87' },
+                                            { label: 'Abzüglich Stornos', val: '€22,38' },
+                                            { label: 'Abzüglich Reklamationen', val: '€8,74' },
+                                            { label: 'Abzüglich Gebühren', val: '€190,56' },
+                                        ].map((row, i) => (
+                                            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                <span style={{ fontSize: '11px', color: '#0f172a', fontWeight: 500 }}>{row.label}</span>
+                                                <span style={{ fontSize: '11px', color: '#64748b' }}>{row.val}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
 
-                            {/* First payment badge */}
+                            {/* First payment badge (Bottom center) */}
                             <div style={{
-                                position: 'absolute', bottom: '52px', right: '24px',
-                                background: '#fff', borderRadius: '12px',
-                                padding: '14px 18px', 
+                                position: 'absolute', bottom: '20px', right: '40px',
+                                background: '#fff', borderRadius: '16px',
+                                padding: '20px 24px', 
                                 boxShadow: '0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07)',
-                                zIndex: 4, minWidth: '160px', textAlign: 'center',
+                                zIndex: 4, minWidth: '180px', textAlign: 'center',
+                                border: '1px solid rgba(0,0,0,0.04)'
                             }}>
                                 <div style={{
-                                    width: '30px', height: '30px', borderRadius: '50%', background: '#C8102E',
+                                    width: '32px', height: '32px', borderRadius: '50%', background: '#6366f1',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    margin: '0 auto 8px',
-                                    boxShadow: '0 3px 12px rgba(200,16,46,0.35)',
+                                    margin: '0 auto 12px',
+                                    boxShadow: '0 4px 12px rgba(99,102,241,0.3)',
                                 }}>
-                                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><polyline points="2,7 5.5,10.5 12,4" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                                 </div>
-                                <p style={{ fontSize: '19px', fontWeight: 800, color: '#0f172a', margin: '0 0 2px', letterSpacing: '-0.02em' }}>€120.56</p>
-                                <p style={{ fontSize: '11px', color: '#94a3b8', margin: 0 }}>Erster Auftrag erhalten!</p>
+                                <p style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: '0 0 4px', letterSpacing: '-0.02em' }}>€120.56</p>
+                                <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>Erster Auftrag erhalten!</p>
                             </div>
 
                         </div>
