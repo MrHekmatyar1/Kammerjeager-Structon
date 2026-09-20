@@ -428,161 +428,29 @@ export default function PartnerPage() {
             <main style={{ paddingTop: '68px' }} className="flex-grow w-full">
 
 
-                {/* 1 ─ STRIPE-STYLE HERO */}
-                <section style={{ padding: '80px 0 0', background: '#ffffff', overflow: 'hidden', position: 'relative', minHeight: '600px' }}>
+                {/* 1 ─ HERO SECTION */}
+                <section style={{ padding: '40px 0 0', background: '#ffffff', overflow: 'hidden', position: 'relative', minHeight: '560px' }}>
 
-                    {/* ── Stripe-style gradient: proper ribbon with organic clip + multi-layer depth ── */}
+                    {/* ── Background: Simple Circle Blob (as requested) ── */}
                     <div style={{
                         position: 'absolute',
-                        top: 0, right: 0,
-                        width: '64%',
-                        height: '100%',
+                        top: '-10%', right: '-5%',
+                        width: '65%',
+                        height: '120%',
+                        background: 'radial-gradient(circle at 60% 40%, rgba(200,16,46,0.12) 0%, rgba(200,16,46,0.02) 50%, rgba(200,16,46,0) 70%)',
                         zIndex: 0,
                         pointerEvents: 'none',
                     }}>
-                        <svg
-                            viewBox="0 0 780 620"
-                            preserveAspectRatio="xMidYMid slice"
-                            xmlns="http://www.w3.org/2000/svg"
-                            style={{ width: '100%', height: '100%', display: 'block', overflow: 'visible' }}
-                        >
-                            <defs>
-                                {/* === CLIP PATH — organic ribbon with curved left edge (like Stripe) === */}
-                                <clipPath id="kj-ribbon-clip">
-                                    <path d="
-                                        M 130,0
-                                        C 90,0  50,35  28,115
-                                        C 6,195  -8,340  8,455
-                                        C 24,570  78,620  148,620
-                                        L 800,620 L 800,0 Z
-                                    " />
-                                </clipPath>
-
-                                {/* === BASE: diagonal gradient — lighter top-left, darker bottom-right === */}
-                                <linearGradient id="kj-base" x1="0" y1="0" x2="1" y2="1">
-                                    <stop offset="0%"   stopColor="#d4152f" stopOpacity="1" />
-                                    <stop offset="30%"  stopColor="#b01228" stopOpacity="1" />
-                                    <stop offset="65%"  stopColor="#750016" stopOpacity="1" />
-                                    <stop offset="100%" stopColor="#2e0007" stopOpacity="1" />
-                                </linearGradient>
-
-                                {/* === BLOOM 1: bright salmon at left-edge "crest" of ribbon === */}
-                                {/* gradientUnits=userSpaceOnUse so coords are viewBox pixels */}
-                                <radialGradient id="kj-bloom-top"
-                                    gradientUnits="userSpaceOnUse"
-                                    cx="0" cy="200" r="380"
-                                >
-                                    <stop offset="0%"   stopColor="#ff8060" stopOpacity="1.0" />
-                                    <stop offset="20%"  stopColor="#e84c1e" stopOpacity="0.85" />
-                                    <stop offset="50%"  stopColor="#C8102E" stopOpacity="0.30" />
-                                    <stop offset="100%" stopColor="#C8102E" stopOpacity="0"  />
-                                </radialGradient>
-
-                                {/* === BLOOM 2: warm mid bloom in lower-center === */}
-                                <radialGradient id="kj-bloom-mid"
-                                    gradientUnits="userSpaceOnUse"
-                                    cx="380" cy="430" r="240"
-                                >
-                                    <stop offset="0%"   stopColor="#d94030" stopOpacity="0.55" />
-                                    <stop offset="100%" stopColor="#C8102E" stopOpacity="0"  />
-                                </radialGradient>
-
-                                {/* === SHADOW: deep bottom-left === */}
-                                <radialGradient id="kj-shadow-bl"
-                                    gradientUnits="userSpaceOnUse"
-                                    cx="30" cy="600" r="250"
-                                >
-                                    <stop offset="0%"   stopColor="#050001" stopOpacity="0.90" />
-                                    <stop offset="100%" stopColor="#050001" stopOpacity="0"  />
-                                </radialGradient>
-
-                                {/* === SHADOW: dark top-right corner === */}
-                                <radialGradient id="kj-shadow-tr"
-                                    gradientUnits="userSpaceOnUse"
-                                    cx="780" cy="0" r="280"
-                                >
-                                    <stop offset="0%"   stopColor="#050001" stopOpacity="0.80" />
-                                    <stop offset="100%" stopColor="#050001" stopOpacity="0"  />
-                                </radialGradient>
-
-                                {/* === SHEEN: diagonal silk highlight — left-to-right fade === */}
-                                <linearGradient id="kj-sheen" x1="0" y1="0" x2="0.6" y2="1">
-                                    <stop offset="0%"   stopColor="rgba(255,160,130,0)"    />
-                                    <stop offset="15%"  stopColor="rgba(255,160,130,0.32)" />
-                                    <stop offset="35%"  stopColor="rgba(255,160,130,0.48)" />
-                                    <stop offset="60%"  stopColor="rgba(255,160,130,0.18)" />
-                                    <stop offset="100%" stopColor="rgba(255,160,130,0)"    />
-                                </linearGradient>
-
-                                {/* === LEFT EDGE: fade to white === */}
-                                <linearGradient id="kj-left-fade" x1="0" y1="0" x2="1" y2="0">
-                                    <stop offset="0%"  stopColor="#ffffff" stopOpacity="1" />
-                                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-                                </linearGradient>
-
-                                {/* === FILTERS === */}
-                                <filter id="kj-blur-xl" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur stdDeviation="32" />
-                                </filter>
-                                <filter id="kj-blur-md" x="-30%" y="-30%" width="160%" height="160%">
-                                    <feGaussianBlur stdDeviation="14" />
-                                </filter>
-                                <filter id="kj-blur-sm" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feGaussianBlur stdDeviation="7" />
-                                </filter>
-                            </defs>
-
-                            {/* === MAIN RIBBON (clipped to organic shape) === */}
-                            <g clipPath="url(#kj-ribbon-clip)">
-
-                                {/* 1. Base diagonal gradient — the "body" */}
-                                <rect x="0" y="0" width="800" height="620" fill="url(#kj-base)" />
-
-                                {/* 2. BRIGHT bloom at left curved edge — the highlight "crest" */}
-                                <ellipse cx="60" cy="220" rx="340" ry="310"
-                                    fill="url(#kj-bloom-top)"
-                                    filter="url(#kj-blur-xl)"
-                                />
-
-                                {/* 3. Mid bloom — lower-center warm area */}
-                                <ellipse cx="360" cy="400" rx="280" ry="200"
-                                    fill="url(#kj-bloom-mid)"
-                                    filter="url(#kj-blur-md)"
-                                />
-
-                                {/* 4. Deep shadow — bottom-left edge of ribbon */}
-                                <ellipse cx="40" cy="590" rx="220" ry="160"
-                                    fill="url(#kj-shadow-bl)"
-                                    filter="url(#kj-blur-md)"
-                                />
-
-                                {/* 5. Top-right dark corner */}
-                                <ellipse cx="760" cy="30" rx="200" ry="160"
-                                    fill="url(#kj-shadow-tr)"
-                                    filter="url(#kj-blur-md)"
-                                />
-
-                                {/* 6. Strong diagonal sheen across the surface */}
-                                <rect x="0" y="0" width="800" height="620" fill="url(#kj-sheen)" />
-
-                                {/* 7. WIDE bright ridge — the "crest" highlight (key to Stripe look) */}
-                                <path
-                                    d="M 30,0 C 130,60 210,160 185,300 C 165,410 100,500 70,610 L 200,610 C 230,500 295,410 315,300 C 340,160 260,60 160,0 Z"
-                                    fill="rgba(255,190,170,0.28)"
-                                    filter="url(#kj-blur-md)"
-                                />
-
-                                {/* 8. Extra-bright narrow peak highlight on top of ridge */}
-                                <path
-                                    d="M 70,0 C 140,55 190,140 165,280 C 148,380 100,460 80,560 L 125,560 C 145,460 193,380 210,280 C 235,140 185,55 115,0 Z"
-                                    fill="rgba(255,220,210,0.22)"
-                                    filter="url(#kj-blur-sm)"
-                                />
-                            </g>
-
-                            {/* === LEFT SOFT FADE — blends ribbon into section bg === */}
-                            <rect x="0" y="0" width="220" height="620" fill="url(#kj-left-fade)" />
-                        </svg>
+                        {/* More intense inner blob to match original look */}
+                        <div style={{
+                            position: 'absolute',
+                            top: '15%', right: '10%',
+                            width: '80%', height: '70%',
+                            background: '#C8102E',
+                            filter: 'blur(120px)',
+                            opacity: 0.15,
+                            borderRadius: '50%',
+                        }} />
                     </div>
 
                     <div style={{
@@ -597,7 +465,7 @@ export default function PartnerPage() {
                             <h1 style={{
                                 fontFamily: 'Inter, system-ui, sans-serif',
                                 fontWeight: 800,
-                                fontSize: 'clamp(2.6rem, 4.8vw, 4.2rem)',
+                                fontSize: 'clamp(2.4rem, 4.2vw, 3.8rem)',
                                 lineHeight: 1.07,
                                 color: '#0f172a',
                                 marginBottom: '22px',
