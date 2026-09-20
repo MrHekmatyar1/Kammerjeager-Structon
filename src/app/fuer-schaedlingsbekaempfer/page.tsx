@@ -515,49 +515,59 @@ export default function PartnerPage() {
                                 position: 'absolute',
                                 top: '50%', left: '40%',
                                 transform: 'translate(-50%, -50%)',
-                                width: '450px', height: '450px',
-                                background: '#C8102E',
-                                filter: 'blur(90px)',
+                                width: '800px', height: '800px',
+                                background: 'linear-gradient(135deg, #C8102E 0%, #a78bfa 100%)',
+                                filter: 'blur(120px)',
                                 opacity: 0.12,
                                 borderRadius: '50%',
                                 zIndex: 0,
                             }} />
 
                             {/* Card 1: Main earnings card (Left) */}
-                            <div style={{
-                                position: 'absolute', left: '-80px', top: '160px',
-                                width: '320px', background: '#fff', borderRadius: '16px',
-                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
-                                zIndex: 3, overflow: 'hidden'
-                            }}>
-                                <div style={{ padding: '32px 24px 24px', textAlign: 'center' }}>
+                            <div style={{ position: 'absolute', left: '-50px', top: '100px', width: '320px', zIndex: 3 }}>
+                                {/* Top raised part */}
+                                <div style={{
+                                    background: '#fff', borderRadius: '16px',
+                                    padding: '32px 24px 24px', textAlign: 'center',
+                                    boxShadow: '0 20px 40px -10px rgba(0,0,0,0.15)',
+                                    position: 'relative', zIndex: 2
+                                }}>
                                     <p style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a', marginBottom: '8px', letterSpacing: '-0.02em' }}>€280.81</p>
                                     <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '24px' }}>Verfügbares Guthaben: €341.42</p>
-                                    <div style={{ background: '#1e293b', color: '#fff', padding: '14px 0', textAlign: 'center', borderRadius: '8px', fontSize: '15px', fontWeight: 600, boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
+                                    <div style={{ background: '#111827', color: '#fff', padding: '14px 0', textAlign: 'center', borderRadius: '10px', fontSize: '15px', fontWeight: 600 }}>
                                         Sofort auszahlen
                                     </div>
                                 </div>
                                 
-                                <div style={{ background: '#f8fafc', padding: '10px 24px', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9' }}>
-                                    <p style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0 }}>Letzte Aufträge</p>
-                                </div>
-                                
-                                <div>
-                                    {[
-                                        { amount: '€432.33', info: '4 Aufträge', date: 'Erhalten am 17.09.2026' },
-                                        { amount: '€487.32', info: '5 Aufträge', date: 'Erhalten am 16.09.2026' },
-                                        { amount: '€290.79', info: '3 Aufträge', date: 'Erhalten am 15.09.2026' },
-                                    ].map((r, i) => (
-                                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px 24px', borderBottom: i === 2 ? 'none' : '1px solid #f1f5f9' }}>
-                                            <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#ede9fe', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                                                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                {/* Bottom flat part */}
+                                <div style={{
+                                    background: 'rgba(255,255,255,0.75)', backdropFilter: 'blur(12px)',
+                                    borderRadius: '0 0 16px 16px',
+                                    marginTop: '-16px', paddingTop: '32px',
+                                    border: '1px solid rgba(255,255,255,0.6)',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
+                                }}>
+                                    <div style={{ padding: '0 24px 12px' }}>
+                                        <p style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0 }}>Letzte Aufträge</p>
+                                    </div>
+                                    <div>
+                                        {[
+                                            { amount: '€432.33', info: '19 Aufträge', date: 'Erhalten am 17.09.2026' },
+                                            { amount: '€487.32', info: '21 Aufträge', date: 'Erhalten am 16.09.2026' },
+                                            { amount: '€290.79', info: '17 Aufträge', date: 'Erhalten am 15.09.2026' },
+                                        ].map((r, i) => (
+                                            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '12px 24px', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+                                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#ede9fe', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                                </div>
+                                                <div>
+                                                    <p style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a', margin: '0 0 2px' }}>{r.amount} <span style={{ fontWeight: 400, color: '#64748b', fontSize: '13px' }}>({r.info})</span></p>
+                                                    <p style={{ fontSize: '13px', color: '#94a3b8', margin: 0 }}>{r.date}</p>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <p style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a', margin: '0 0 2px' }}>{r.amount} <span style={{ fontWeight: 400, color: '#64748b', fontSize: '13px' }}>({r.info})</span></p>
-                                                <p style={{ fontSize: '13px', color: '#94a3b8', margin: 0 }}>{r.date}</p>
-                                            </div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
+                                    <div style={{ height: '16px' }} />
                                 </div>
                             </div>
 
@@ -568,7 +578,7 @@ export default function PartnerPage() {
                                 boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)', 
                                 zIndex: 2, padding: '24px'
                             }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px' }}>
                                     <div>
                                         <p style={{ fontSize: '12px', color: '#64748b', fontWeight: 600, marginBottom: '8px' }}>Einnahmen</p>
                                         <p style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', margin: 0 }}>€5.839,41</p>
@@ -630,11 +640,12 @@ export default function PartnerPage() {
 
                             {/* Card 3: First payment badge (Floating center) */}
                             <div style={{
-                                position: 'absolute', top: '560px', right: '40px',
-                                background: '#fff', borderRadius: '16px',
-                                padding: '24px 32px', 
-                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
-                                zIndex: 5, minWidth: '220px', textAlign: 'center',
+                                position: 'absolute', top: '380px', left: '140px',
+                                background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)',
+                                borderRadius: '16px',
+                                padding: '28px 36px', 
+                                boxShadow: '0 30px 60px -15px rgba(0,0,0,0.15)',
+                                zIndex: 5, minWidth: '240px', textAlign: 'center',
                             }}>
                                 <div style={{
                                     width: '40px', height: '40px', borderRadius: '50%', background: '#6366f1',
@@ -644,16 +655,16 @@ export default function PartnerPage() {
                                 }}>
                                     <svg width="18" height="18" viewBox="0 0 14 14" fill="none"><polyline points="3,7 6,10 11,4" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                                 </div>
-                                <p style={{ fontSize: '24px', fontWeight: 800, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.02em' }}>€120.56</p>
-                                <p style={{ fontSize: '14px', color: '#64748b', margin: 0 }}>Erster Auftrag erhalten!</p>
+                                <p style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.02em' }}>€120.56</p>
+                                <p style={{ fontSize: '15px', color: '#64748b', margin: 0 }}>Erster Auftrag erhalten!</p>
                             </div>
 
                             {/* Card 4: Payment link card (Floating bottom left) */}
                             <div style={{
-                                position: 'absolute', top: '590px', left: '-20px',
+                                position: 'absolute', top: '520px', left: '-10px',
                                 background: '#fff', borderRadius: '16px',
                                 boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
-                                zIndex: 4, width: '280px', overflow: 'hidden'
+                                zIndex: 4, width: '260px', overflow: 'hidden'
                             }}>
                                 <div style={{ padding: '24px' }}>
                                     <p style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', margin: '0 0 8px' }}>
