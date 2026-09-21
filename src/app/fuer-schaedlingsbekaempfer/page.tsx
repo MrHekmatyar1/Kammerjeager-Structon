@@ -512,7 +512,7 @@ export default function PartnerPage() {
                         <div className="partner-hero-mock" style={{ position: 'relative', height: '680px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <div style={{ 
                                 position: 'relative', 
-                                width: '760px', 
+                                width: '840px', 
                                 height: '700px',
                                 transform: 'scale(0.65)',
                                 transformOrigin: 'center center',
@@ -647,7 +647,7 @@ export default function PartnerPage() {
 
                                 {/* Card 3: First payment badge (Floating center) */}
                                 <div style={{
-                                    position: 'absolute', top: '380px', left: '260px',
+                                    position: 'absolute', top: '380px', left: '250px',
                                     background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)',
                                     borderRadius: '16px',
                                     padding: '28px 36px', 
