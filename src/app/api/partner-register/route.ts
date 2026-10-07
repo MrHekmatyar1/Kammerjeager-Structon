@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
             plz,
             anmerkung,
             datenschutz,  // boolean
+            sachkunde,    // boolean (only sent for typ === 'schaedlingsbekaempfer')
         } = body;
 
         // Validation
@@ -39,6 +40,12 @@ export async function POST(req: NextRequest) {
             );
         }
 
+        // Combine metadata safely into note text
+        const extraNotes = [
+            typ === 'schaedlingsbekaempfer' ? `[Sachkunde/Erlaubnis/Haftpflicht bestätigt: ${sachkunde ? 'Ja' : 'Nein'}]` : null,
+            anmerkung?.trim() || null
+        ].filter(Boolean).join(' ');
+
         // If Supabase is configured — save to DB
         if (supabaseUrl && supabaseKey) {
             const supabase = createClient(supabaseUrl, supabaseKey);
@@ -52,7 +59,7 @@ export async function POST(req: NextRequest) {
                     telefon: telefon.trim(),
                     firma: firma?.trim() || null,
                     plz: plz?.trim() || null,
-                    anmerkung: anmerkung?.trim() || null,
+                    anmerkung: extraNotes || null,
                     erstellt_am: new Date().toISOString(),
                     status: 'neu',
                 }]);

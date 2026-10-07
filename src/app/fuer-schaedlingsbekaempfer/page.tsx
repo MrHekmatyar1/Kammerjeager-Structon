@@ -37,7 +37,7 @@ const VORTEIL_CARDS: Record<string, Array<{ tag: string; title: string; desc: st
                         <span style={{ fontWeight: 700, color: '#0f172a' }}>Neue Anfrage</span>
                         <span style={{ background: '#fef2f2', color: '#C8102E', fontWeight: 700, padding: '2px 6px', borderRadius: '3px', fontSize: '10px' }}>AKUT</span>
                     </div>
-                    <div style={{ marginBottom: '4px' }}>🐀 Ratten im Keller · Berlin-Mitte</div>
+                    <div style={{ marginBottom: '4px' }}>Ratten im Keller · Berlin-Mitte</div>
                     <div style={{ marginBottom: '4px', color: '#94a3b8' }}>Heute gemeldet · 2,3 km entfernt</div>
                     <div style={{ background: '#C8102E', color: '#fff', textAlign: 'center', padding: '6px', borderRadius: '4px', fontWeight: 700, marginTop: '8px' }}>Annehmen</div>
                 </div>
@@ -221,7 +221,7 @@ function VorteileCarousel() {
                         Warum mit uns<br />zusammenarbeiten?
                     </h2>
                     <p style={{ fontSize: '15px', color: '#64748b', lineHeight: 1.7, maxWidth: '420px', margin: 0 }}>
-                        Stripe bringt Kunden, wir bringen Aufträge. Entscheiden Sie selbst, wie viel Sie arbeiten.
+                        Wir bringen die Kunden, Sie bringen die Expertise. Entscheiden Sie selbst, wie viel Sie arbeiten.
                     </p>
                 </div>
 
@@ -512,8 +512,8 @@ export default function PartnerPage() {
                         <div className="partner-hero-mock" style={{ position: 'relative', height: '680px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <div style={{ 
                                 position: 'relative', 
-                                width: '840px', 
-                                height: '700px',
+                                width: '980px', 
+                                height: '600px',
                                 transform: 'scale(0.65)',
                                 transformOrigin: 'center center',
                             }}>
@@ -531,7 +531,7 @@ export default function PartnerPage() {
                                 }} />
 
                                 {/* Card 1: Main earnings card (Left) */}
-                                <div style={{ position: 'absolute', left: '0px', top: '80px', width: '320px', zIndex: 3 }}>
+                                <div style={{ position: 'absolute', left: '0px', top: '0px', width: '320px', zIndex: 3 }}>
                                     {/* Top raised part */}
                                     <div style={{
                                         background: '#fff', borderRadius: '16px',
@@ -647,12 +647,12 @@ export default function PartnerPage() {
 
                                 {/* Card 3: First payment badge (Floating center) */}
                                 <div style={{
-                                    position: 'absolute', top: '380px', left: '250px',
+                                    position: 'absolute', top: '400px', left: '300px',
                                     background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)',
                                     borderRadius: '16px',
                                     padding: '28px 36px', 
                                     boxShadow: '0 30px 60px -15px rgba(0,0,0,0.15)',
-                                    zIndex: 5, minWidth: '240px', textAlign: 'center',
+                                    zIndex: 5, width: '240px', textAlign: 'center',
                                 }}>
                                     <div style={{
                                         width: '40px', height: '40px', borderRadius: '50%', background: '#6366f1',
@@ -668,7 +668,7 @@ export default function PartnerPage() {
 
                                 {/* Card 4: Payment link card (Floating bottom left) */}
                                 <div style={{
-                                    position: 'absolute', top: '500px', left: '20px',
+                                    position: 'absolute', top: '400px', left: '0px',
                                     background: '#fff', borderRadius: '16px',
                                     boxShadow: '0 25px 50px -12px rgba(0,0,0,0.15)',
                                     zIndex: 4, width: '280px', overflow: 'hidden'

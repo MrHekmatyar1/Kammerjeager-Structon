@@ -77,6 +77,7 @@ const NAV_LINKS = [
     { label: 'Privatkunden', href: '/' },
     { label: 'Geschäftskunden', href: '/geschaeftskunden' },
     { label: 'Über uns', href: '/ueber-uns' },
+    { label: 'Karriere', href: '/fuer-schaedlingsbekaempfer' },
 ];
 
 export default function Header() {
@@ -278,6 +279,20 @@ export default function Header() {
                                 </Link>
                             </div>
                         ))}
+
+                        {/* Karriere — plain link to the partner page (no mega menu) */}
+                        <div className="relative h-full flex items-center">
+                            <Link
+                                href="/fuer-schaedlingsbekaempfer"
+                                className={`flex items-center h-full px-[18px] text-[15px] font-medium whitespace-nowrap transition-colors border-b-[3px] duration-150 hover:text-[#C8102E] hover:border-[#C8102E] ${
+                                    pathname?.startsWith('/fuer-schaedlingsbekaempfer')
+                                        ? 'text-[#C8102E] border-[#C8102E]'
+                                        : (isPortal ? 'text-slate-600 dark:text-white border-transparent' : 'text-slate-600 dark-header-text border-transparent')
+                                }`}
+                            >
+                                Karriere
+                            </Link>
+                        </div>
                     </nav>
 
                     {/* Desktop action buttons: phone & booking / Кнопки на ПК: звонок и бронь */}

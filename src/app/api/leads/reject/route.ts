@@ -7,6 +7,7 @@ import { createClient } from '@supabase/supabase-js';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { sendPartnerLeadNotification, cancelScheduledEmail } from '@/lib/email/resend';
 import { sendTelegramMessage } from '@/lib/telegram';
+import { getLeadPricing } from '@/lib/pricing';
 
 const supabaseAdmin = () => createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -32,7 +33,7 @@ export async function POST(req: NextRequest) {
         // Находим текущего мастера
         const { data: currentMaster } = await supabase
             .from('masters')
-            .select('id, name, email')
+            .select('id, name, email, billing_model')
             .or(`email.eq.${user.email},user_id.eq.${user.id}`)
             .single();
 
@@ -106,21 +107,30 @@ export async function POST(req: NextRequest) {
             rejected_at: new Date().toISOString(),
         };
 
-        // Если отменяется уже принятый лид (возврат средств)
+        // Если отменяется уже принятый лид — возвращаем ровно ту сумму, что списана при accept
         if (lead.status === 'angenommen') {
-            const LEAD_PRICE = 25;
-            // Refund the credits to current master
-            const { data: currentMasterData } = await supabase
-                .from('masters')
-                .select('credits')
-                .eq('id', currentMaster.id)
-                .single();
-                
-            if (currentMasterData) {
-                await supabase
+            const pricing = getLeadPricing(
+                lead.schaedling,
+                currentMaster.billing_model || 'pay_per_lead',
+                lead.billing_override_type,
+                lead.billing_override_value
+            );
+            // Только фиксированная цена списывается при accept; комиссия — после завершения
+            const refundAmount = pricing.type === 'fixed' ? pricing.numericValue : 0;
+
+            if (refundAmount > 0) {
+                const { data: currentMasterData } = await supabase
                     .from('masters')
-                    .update({ credits: (currentMasterData.credits || 0) + LEAD_PRICE })
-                    .eq('id', currentMaster.id);
+                    .select('credits')
+                    .eq('id', currentMaster.id)
+                    .single();
+
+                if (currentMasterData) {
+                    await supabase
+                        .from('masters')
+                        .update({ credits: (currentMasterData.credits || 0) + refundAmount })
+                        .eq('id', currentMaster.id);
+                }
             }
         }
 
