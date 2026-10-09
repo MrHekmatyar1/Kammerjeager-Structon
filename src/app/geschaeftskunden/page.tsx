@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import FAQ from '@/components/sections/FAQ';
-import CTACards from '@/components/sections/CTACards';
+
 
 const inp: React.CSSProperties = {
     width: '100%',
@@ -749,10 +749,7 @@ export default function GeschaeftskundenPage() {
 
             </main>
 
-            {/* ── CTA Cards ── */}
-            <div style={{ padding: '40px 0 0' }}>
-                <CTACards variant="b2b" />
-            </div>
+
 
             <Footer />
         </>
