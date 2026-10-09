@@ -69,9 +69,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
-  // ── Berlin Bezirk × Service (96 Seiten) ──────────────────────────────────
+  // ── Stadt × Service (über 700 Seiten) ──────────────────────────────────
   // Priorität 0.85 — Long-tail Zielseiten
-  const bezirkServicePages: MetadataRoute.Sitemap = BERLIN_BEZIRKE.flatMap(city =>
+  const cityServicePages: MetadataRoute.Sitemap = CITIES.flatMap(city =>
     SERVICES.map(service => ({
       url: `${baseUrl}/${city.slug}/${service.slug}`,
       lastModified: new Date(),
@@ -101,7 +101,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticPages,
     ...cityPages,
     ...bezirkPages,
-    ...bezirkServicePages,
+    ...cityServicePages,
     ...branchPages,
     ...serviceLandingPages,
   ]
